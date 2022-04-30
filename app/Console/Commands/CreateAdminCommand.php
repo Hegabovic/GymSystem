@@ -39,7 +39,7 @@ class CreateAdminCommand extends Command
                 "name" => 'admin',
                 "password" => Hash::make($this->option('password'))
             ]);
-            $admin->assignRole('admin');
+            $admin->assignRole('Admin');
         } catch (QueryException) {
             echo "Admin record has not been added, An error happened !!! \n";
         }
