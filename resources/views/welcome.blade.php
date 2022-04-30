@@ -1,132 +1,1737 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Dashboard 2</title>
 
-        <title>Laravel</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="wrapper">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
 
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
-        </style>
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-dark">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="index3.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Contact</a>
+            </li>
+        </ul>
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Navbar Search -->
+            <li class="nav-item">
+                <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                    <i class="fas fa-search"></i>
+                </a>
+                <div class="navbar-search-block">
+                    <form class="form-inline">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            @endif
+            </li>
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
+            <!-- Messages Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-comments"></i>
+                    <span class="badge badge-danger navbar-badge">3</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Brad Diesel
+                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">Call me whenever you can...</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    John Pierce
+                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">I got your message bro</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Nora Silvester
+                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">The subject goes here</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
                 </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </li>
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge">15</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">15 Notifications</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-envelope mr-2"></i> 4 new messages
+                        <span class="float-right text-muted text-sm">3 mins</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-users mr-2"></i> 8 friend requests
+                        <span class="float-right text-muted text-sm">12 hours</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-file mr-2"></i> 3 new reports
+                        <span class="float-right text-muted text-sm">2 days</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
                 </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                    <i class="fas fa-th-large"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
 
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="index3.html" class="brand-link">
+            <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">AdminLTE 3</span>
+        </a>
 
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">Alexander Pierce</a>
+                </div>
+            </div>
 
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+            <!-- SidebarSearch Form -->
+            <div class="form-inline">
+                <div class="input-group" data-widget="sidebar-search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-sidebar">
+                            <i class="fas fa-search fa-fw"></i>
+                        </button>
                     </div>
                 </div>
             </div>
+
+            <!-- Sidebar Menu -->
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                    <li class="nav-item menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Dashboard
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="./index.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dashboard v1</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./index2.html" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dashboard v2</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./index3.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Dashboard v3</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pages/widgets.html" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Widgets
+                                <span class="right badge badge-danger">New</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                Layout Options
+                                <i class="fas fa-angle-left right"></i>
+                                <span class="badge badge-info right">6</span>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/layout/top-nav.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Top Navigation</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Top Navigation + Sidebar</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/layout/boxed.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Boxed</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Fixed Sidebar</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Fixed Sidebar <small>+ Custom Area</small></p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/layout/fixed-topnav.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Fixed Navbar</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/layout/fixed-footer.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Fixed Footer</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Collapsed Sidebar</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Charts
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>ChartJS</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/flot.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Flot</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/inline.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Inline</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/uplot.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>uPlot</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-tree"></i>
+                            <p>
+                                UI Elements
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/UI/general.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>General</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/UI/icons.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Icons</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/UI/buttons.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Buttons</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/UI/sliders.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sliders</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/UI/modals.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Modals & Alerts</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/UI/navbar.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Navbar & Tabs</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/UI/timeline.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Timeline</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/UI/ribbons.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Ribbons</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-edit"></i>
+                            <p>
+                                Forms
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/forms/general.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>General Elements</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/forms/advanced.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Advanced Elements</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/forms/editors.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Editors</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/forms/validation.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Validation</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Tables
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/tables/simple.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Simple Tables</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>DataTables</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/jsgrid.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>jsGrid</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-header">EXAMPLES</li>
+                    <li class="nav-item">
+                        <a href="pages/calendar.html" class="nav-link">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <p>
+                                Calendar
+                                <span class="badge badge-info right">2</span>
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pages/gallery.html" class="nav-link">
+                            <i class="nav-icon far fa-image"></i>
+                            <p>
+                                Gallery
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pages/kanban.html" class="nav-link">
+                            <i class="nav-icon fas fa-columns"></i>
+                            <p>
+                                Kanban Board
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-envelope"></i>
+                            <p>
+                                Mailbox
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Inbox</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/mailbox/compose.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Compose</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/mailbox/read-mail.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Read</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Pages
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/examples/invoice.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Invoice</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/profile.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Profile</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/e-commerce.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>E-commerce</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/projects.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Projects</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/project-add.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Project Add</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/project-edit.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Project Edit</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/project-detail.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Project Detail</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/contacts.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Contacts</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/faq.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>FAQ</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/contact-us.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Contact us</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-plus-square"></i>
+                            <p>
+                                Extras
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Login & Register v1
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="pages/examples/login.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Login v1</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/examples/register.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Register v1</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/examples/forgot-password.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Forgot Password v1</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/examples/recover-password.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Recover Password v1</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Login & Register v2
+                                        <i class="fas fa-angle-left right"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="pages/examples/login-v2.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Login v2</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/examples/register-v2.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Register v2</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/examples/forgot-password-v2.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Forgot Password v2</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/examples/recover-password-v2.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Recover Password v2</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/lockscreen.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Lockscreen</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/legacy-user-menu.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Legacy User Menu</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/language-menu.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Language Menu</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/404.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Error 404</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/500.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Error 500</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/pace.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Pace</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/examples/blank.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Blank Page</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="starter.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Starter Page</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Search
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/search/simple.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Simple Search</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/search/enhanced.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Enhanced</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-header">MISCELLANEOUS</li>
+                    <li class="nav-item">
+                        <a href="iframe.html" class="nav-link">
+                            <i class="nav-icon fas fa-ellipsis-h"></i>
+                            <p>Tabbed IFrame Plugin</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://adminlte.io/docs/3.1/" class="nav-link">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>Documentation</p>
+                        </a>
+                    </li>
+                    <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-circle nav-icon"></i>
+                            <p>Level 1</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-circle"></i>
+                            <p>
+                                Level 1
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Level 2</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Level 2
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Level 3</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Level 3</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            <i class="far fa-dot-circle nav-icon"></i>
+                                            <p>Level 3</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Level 2</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-circle nav-icon"></i>
+                            <p>Level 1</p>
+                        </a>
+                    </li>
+                    <li class="nav-header">LABELS</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-circle text-danger"></i>
+                            <p class="text">Important</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-circle text-warning"></i>
+                            <p>Warning</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-circle text-info"></i>
+                            <p>Informational</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- /.sidebar-menu -->
         </div>
-    </body>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard v2</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v2</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Info boxes -->
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">CPU Traffic</span>
+                                <span class="info-box-number">
+                  10
+                  <small>%</small>
+                </span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Likes</span>
+                                <span class="info-box-number">41,410</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+
+                    <!-- fix for small devices only -->
+                    <div class="clearfix hidden-md-up"></div>
+
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Sales</span>
+                                <span class="info-box-number">760</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">New Members</span>
+                                <span class="info-box-number">2,000</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Monthly Recap Report</h5>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fas fa-wrench"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                            <a href="#" class="dropdown-item">Action</a>
+                                            <a href="#" class="dropdown-item">Another action</a>
+                                            <a href="#" class="dropdown-item">Something else here</a>
+                                            <a class="dropdown-divider"></a>
+                                            <a href="#" class="dropdown-item">Separated link</a>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p class="text-center">
+                                            <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                                        </p>
+
+                                        <div class="chart">
+                                            <!-- Sales Chart Canvas -->
+                                            <canvas id="salesChart" height="180" style="height: 180px;"></canvas>
+                                        </div>
+                                        <!-- /.chart-responsive -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <p class="text-center">
+                                            <strong>Goal Completion</strong>
+                                        </p>
+
+                                        <div class="progress-group">
+                                            Add Products to Cart
+                                            <span class="float-right"><b>160</b>/200</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+                                        <!-- /.progress-group -->
+
+                                        <div class="progress-group">
+                                            Complete Purchase
+                                            <span class="float-right"><b>310</b>/400</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-danger" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- /.progress-group -->
+                                        <div class="progress-group">
+                                            <span class="progress-text">Visit Premium Page</span>
+                                            <span class="float-right"><b>480</b>/800</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- /.progress-group -->
+                                        <div class="progress-group">
+                                            Send Inquiries
+                                            <span class="float-right"><b>250</b>/500</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                        <!-- /.progress-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- ./card-body -->
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-sm-3 col-6">
+                                        <div class="description-block border-right">
+                                            <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 17%</span>
+                                            <h5 class="description-header">$35,210.43</h5>
+                                            <span class="description-text">TOTAL REVENUE</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-6">
+                                        <div class="description-block border-right">
+                                            <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i> 0%</span>
+                                            <h5 class="description-header">$10,390.90</h5>
+                                            <span class="description-text">TOTAL COST</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-6">
+                                        <div class="description-block border-right">
+                                            <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> 20%</span>
+                                            <h5 class="description-header">$24,813.53</h5>
+                                            <span class="description-text">TOTAL PROFIT</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-6">
+                                        <div class="description-block">
+                                            <span class="description-percentage text-danger"><i class="fas fa-caret-down"></i> 18%</span>
+                                            <h5 class="description-header">1200</h5>
+                                            <span class="description-text">GOAL COMPLETIONS</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.card-footer -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <!-- Main row -->
+                <div class="row">
+                    <!-- Left col -->
+                    <div class="col-md-8">
+                        <!-- MAP & BOX PANE -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">US-Visitors Report</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                <div class="d-md-flex">
+                                    <div class="p-1 flex-fill" style="overflow: hidden">
+                                        <!-- Map will be created here -->
+                                        <div id="world-map-markers" style="height: 325px; overflow: hidden">
+                                            <div class="map"></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-pane-right bg-success pt-2 pb-2 pl-4 pr-4">
+                                        <div class="description-block mb-4">
+                                            <div class="sparkbar pad" data-color="#fff">90,70,90,70,75,80,70</div>
+                                            <h5 class="description-header">8390</h5>
+                                            <span class="description-text">Visits</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                        <div class="description-block mb-4">
+                                            <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
+                                            <h5 class="description-header">30%</h5>
+                                            <span class="description-text">Referrals</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                        <div class="description-block">
+                                            <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
+                                            <h5 class="description-header">70%</h5>
+                                            <span class="description-text">Organic</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div><!-- /.card-pane-right -->
+                                </div><!-- /.d-md-flex -->
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- DIRECT CHAT -->
+                                <div class="card direct-chat direct-chat-warning">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Direct Chat</h3>
+
+                                        <div class="card-tools">
+                                            <span title="3 New Messages" class="badge badge-warning">3</span>
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
+                                                <i class="fas fa-comments"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <!-- Conversations are loaded here -->
+                                        <div class="direct-chat-messages">
+                                            <!-- Message. Default to the left -->
+                                            <div class="direct-chat-msg">
+                                                <div class="direct-chat-infos clearfix">
+                                                    <span class="direct-chat-name float-left">Alexander Pierce</span>
+                                                    <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+                                                </div>
+                                                <!-- /.direct-chat-infos -->
+                                                <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                                                <!-- /.direct-chat-img -->
+                                                <div class="direct-chat-text">
+                                                    Is this template really for free? That's unbelievable!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div>
+                                            <!-- /.direct-chat-msg -->
+
+                                            <!-- Message to the right -->
+                                            <div class="direct-chat-msg right">
+                                                <div class="direct-chat-infos clearfix">
+                                                    <span class="direct-chat-name float-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+                                                </div>
+                                                <!-- /.direct-chat-infos -->
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                                                <!-- /.direct-chat-img -->
+                                                <div class="direct-chat-text">
+                                                    You better believe it!
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div>
+                                            <!-- /.direct-chat-msg -->
+
+                                            <!-- Message. Default to the left -->
+                                            <div class="direct-chat-msg">
+                                                <div class="direct-chat-infos clearfix">
+                                                    <span class="direct-chat-name float-left">Alexander Pierce</span>
+                                                    <span class="direct-chat-timestamp float-right">23 Jan 5:37 pm</span>
+                                                </div>
+                                                <!-- /.direct-chat-infos -->
+                                                <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                                                <!-- /.direct-chat-img -->
+                                                <div class="direct-chat-text">
+                                                    Working with AdminLTE on a great new app! Wanna join?
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div>
+                                            <!-- /.direct-chat-msg -->
+
+                                            <!-- Message to the right -->
+                                            <div class="direct-chat-msg right">
+                                                <div class="direct-chat-infos clearfix">
+                                                    <span class="direct-chat-name float-right">Sarah Bullock</span>
+                                                    <span class="direct-chat-timestamp float-left">23 Jan 6:10 pm</span>
+                                                </div>
+                                                <!-- /.direct-chat-infos -->
+                                                <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                                                <!-- /.direct-chat-img -->
+                                                <div class="direct-chat-text">
+                                                    I would love to.
+                                                </div>
+                                                <!-- /.direct-chat-text -->
+                                            </div>
+                                            <!-- /.direct-chat-msg -->
+
+                                        </div>
+                                        <!--/.direct-chat-messages-->
+
+                                        <!-- Contacts are loaded here -->
+                                        <div class="direct-chat-contacts">
+                                            <ul class="contacts-list">
+                                                <li>
+                                                    <a href="#">
+                                                        <img class="contacts-list-img" src="dist/img/user1-128x128.jpg" alt="User Avatar">
+
+                                                        <div class="contacts-list-info">
+                              <span class="contacts-list-name">
+                                Count Dracula
+                                <small class="contacts-list-date float-right">2/28/2015</small>
+                              </span>
+                                                            <span class="contacts-list-msg">How have you been? I was...</span>
+                                                        </div>
+                                                        <!-- /.contacts-list-info -->
+                                                    </a>
+                                                </li>
+                                                <!-- End Contact Item -->
+                                                <li>
+                                                    <a href="#">
+                                                        <img class="contacts-list-img" src="dist/img/user7-128x128.jpg" alt="User Avatar">
+
+                                                        <div class="contacts-list-info">
+                              <span class="contacts-list-name">
+                                Sarah Doe
+                                <small class="contacts-list-date float-right">2/23/2015</small>
+                              </span>
+                                                            <span class="contacts-list-msg">I will be waiting for...</span>
+                                                        </div>
+                                                        <!-- /.contacts-list-info -->
+                                                    </a>
+                                                </li>
+                                                <!-- End Contact Item -->
+                                                <li>
+                                                    <a href="#">
+                                                        <img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Avatar">
+
+                                                        <div class="contacts-list-info">
+                              <span class="contacts-list-name">
+                                Nadia Jolie
+                                <small class="contacts-list-date float-right">2/20/2015</small>
+                              </span>
+                                                            <span class="contacts-list-msg">I'll call you back at...</span>
+                                                        </div>
+                                                        <!-- /.contacts-list-info -->
+                                                    </a>
+                                                </li>
+                                                <!-- End Contact Item -->
+                                                <li>
+                                                    <a href="#">
+                                                        <img class="contacts-list-img" src="dist/img/user5-128x128.jpg" alt="User Avatar">
+
+                                                        <div class="contacts-list-info">
+                              <span class="contacts-list-name">
+                                Nora S. Vans
+                                <small class="contacts-list-date float-right">2/10/2015</small>
+                              </span>
+                                                            <span class="contacts-list-msg">Where is your new...</span>
+                                                        </div>
+                                                        <!-- /.contacts-list-info -->
+                                                    </a>
+                                                </li>
+                                                <!-- End Contact Item -->
+                                                <li>
+                                                    <a href="#">
+                                                        <img class="contacts-list-img" src="dist/img/user6-128x128.jpg" alt="User Avatar">
+
+                                                        <div class="contacts-list-info">
+                              <span class="contacts-list-name">
+                                John K.
+                                <small class="contacts-list-date float-right">1/27/2015</small>
+                              </span>
+                                                            <span class="contacts-list-msg">Can I take a look at...</span>
+                                                        </div>
+                                                        <!-- /.contacts-list-info -->
+                                                    </a>
+                                                </li>
+                                                <!-- End Contact Item -->
+                                                <li>
+                                                    <a href="#">
+                                                        <img class="contacts-list-img" src="dist/img/user8-128x128.jpg" alt="User Avatar">
+
+                                                        <div class="contacts-list-info">
+                              <span class="contacts-list-name">
+                                Kenneth M.
+                                <small class="contacts-list-date float-right">1/4/2015</small>
+                              </span>
+                                                            <span class="contacts-list-msg">Never mind I found...</span>
+                                                        </div>
+                                                        <!-- /.contacts-list-info -->
+                                                    </a>
+                                                </li>
+                                                <!-- End Contact Item -->
+                                            </ul>
+                                            <!-- /.contacts-list -->
+                                        </div>
+                                        <!-- /.direct-chat-pane -->
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer">
+                                        <form action="#" method="post">
+                                            <div class="input-group">
+                                                <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                                <span class="input-group-append">
+                          <button type="button" class="btn btn-warning">Send</button>
+                        </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- /.card-footer-->
+                                </div>
+                                <!--/.direct-chat -->
+                            </div>
+                            <!-- /.col -->
+
+                            <div class="col-md-6">
+                                <!-- USERS LIST -->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Latest Members</h3>
+
+                                        <div class="card-tools">
+                                            <span class="badge badge-danger">8 New Members</span>
+                                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body p-0">
+                                        <ul class="users-list clearfix">
+                                            <li>
+                                                <img src="dist/img/user1-128x128.jpg" alt="User Image">
+                                                <a class="users-list-name" href="#">Alexander Pierce</a>
+                                                <span class="users-list-date">Today</span>
+                                            </li>
+                                            <li>
+                                                <img src="dist/img/user8-128x128.jpg" alt="User Image">
+                                                <a class="users-list-name" href="#">Norman</a>
+                                                <span class="users-list-date">Yesterday</span>
+                                            </li>
+                                            <li>
+                                                <img src="dist/img/user7-128x128.jpg" alt="User Image">
+                                                <a class="users-list-name" href="#">Jane</a>
+                                                <span class="users-list-date">12 Jan</span>
+                                            </li>
+                                            <li>
+                                                <img src="dist/img/user6-128x128.jpg" alt="User Image">
+                                                <a class="users-list-name" href="#">John</a>
+                                                <span class="users-list-date">12 Jan</span>
+                                            </li>
+                                            <li>
+                                                <img src="dist/img/user2-160x160.jpg" alt="User Image">
+                                                <a class="users-list-name" href="#">Alexander</a>
+                                                <span class="users-list-date">13 Jan</span>
+                                            </li>
+                                            <li>
+                                                <img src="dist/img/user5-128x128.jpg" alt="User Image">
+                                                <a class="users-list-name" href="#">Sarah</a>
+                                                <span class="users-list-date">14 Jan</span>
+                                            </li>
+                                            <li>
+                                                <img src="dist/img/user4-128x128.jpg" alt="User Image">
+                                                <a class="users-list-name" href="#">Nora</a>
+                                                <span class="users-list-date">15 Jan</span>
+                                            </li>
+                                            <li>
+                                                <img src="dist/img/user3-128x128.jpg" alt="User Image">
+                                                <a class="users-list-name" href="#">Nadia</a>
+                                                <span class="users-list-date">15 Jan</span>
+                                            </li>
+                                        </ul>
+                                        <!-- /.users-list -->
+                                    </div>
+                                    <!-- /.card-body -->
+                                    <div class="card-footer text-center">
+                                        <a href="javascript:">View All Users</a>
+                                    </div>
+                                    <!-- /.card-footer -->
+                                </div>
+                                <!--/.card -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+
+                        <!-- TABLE: LATEST ORDERS -->
+                        <div class="card">
+                            <div class="card-header border-transparent">
+                                <h3 class="card-title">Latest Orders</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table m-0">
+                                        <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Item</th>
+                                            <th>Status</th>
+                                            <th>Popularity</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                            <td>Call of Duty IV</td>
+                                            <td><span class="badge badge-success">Shipped</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                            <td>Samsung Smart TV</td>
+                                            <td><span class="badge badge-warning">Pending</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                            <td>iPhone 6 Plus</td>
+                                            <td><span class="badge badge-danger">Delivered</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                            <td>Samsung Smart TV</td>
+                                            <td><span class="badge badge-info">Processing</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                            <td>Samsung Smart TV</td>
+                                            <td><span class="badge badge-warning">Pending</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                            <td>iPhone 6 Plus</td>
+                                            <td><span class="badge badge-danger">Delivered</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                            <td>Call of Duty IV</td>
+                                            <td><span class="badge badge-success">Shipped</span></td>
+                                            <td>
+                                                <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer clearfix">
+                                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
+                                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
+                            </div>
+                            <!-- /.card-footer -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+
+                    <div class="col-md-4">
+                        <!-- Info Boxes Style 2 -->
+                        <div class="info-box mb-3 bg-warning">
+                            <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Inventory</span>
+                                <span class="info-box-number">5,200</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                        <div class="info-box mb-3 bg-success">
+                            <span class="info-box-icon"><i class="far fa-heart"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Mentions</span>
+                                <span class="info-box-number">92,050</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                        <div class="info-box mb-3 bg-danger">
+                            <span class="info-box-icon"><i class="fas fa-cloud-download-alt"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Downloads</span>
+                                <span class="info-box-number">114,381</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                        <div class="info-box mb-3 bg-info">
+                            <span class="info-box-icon"><i class="far fa-comment"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Direct Messages</span>
+                                <span class="info-box-number">163,921</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Browser Usage</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="chart-responsive">
+                                            <canvas id="pieChart" height="150"></canvas>
+                                        </div>
+                                        <!-- ./chart-responsive -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <ul class="chart-legend clearfix">
+                                            <li><i class="far fa-circle text-danger"></i> Chrome</li>
+                                            <li><i class="far fa-circle text-success"></i> IE</li>
+                                            <li><i class="far fa-circle text-warning"></i> FireFox</li>
+                                            <li><i class="far fa-circle text-info"></i> Safari</li>
+                                            <li><i class="far fa-circle text-primary"></i> Opera</li>
+                                            <li><i class="far fa-circle text-secondary"></i> Navigator</li>
+                                        </ul>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer p-0">
+                                <ul class="nav nav-pills flex-column">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            United States of America
+                                            <span class="float-right text-danger">
+                        <i class="fas fa-arrow-down text-sm"></i>
+                        12%</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            India
+                                            <span class="float-right text-success">
+                        <i class="fas fa-arrow-up text-sm"></i> 4%
+                      </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">
+                                            China
+                                            <span class="float-right text-warning">
+                        <i class="fas fa-arrow-left text-sm"></i> 0%
+                      </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /.footer -->
+                        </div>
+                        <!-- /.card -->
+
+                        <!-- PRODUCT LIST -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Recently Added Products</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body p-0">
+                                <ul class="products-list product-list-in-card pl-2 pr-2">
+                                    <li class="item">
+                                        <div class="product-img">
+                                            <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title">Samsung TV
+                                                <span class="badge badge-warning float-right">$1800</span></a>
+                                            <span class="product-description">
+                        Samsung 32" 1080p 60Hz LED Smart HDTV.
+                      </span>
+                                        </div>
+                                    </li>
+                                    <!-- /.item -->
+                                    <li class="item">
+                                        <div class="product-img">
+                                            <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title">Bicycle
+                                                <span class="badge badge-info float-right">$700</span></a>
+                                            <span class="product-description">
+                        26" Mongoose Dolomite Men's 7-speed, Navy Blue.
+                      </span>
+                                        </div>
+                                    </li>
+                                    <!-- /.item -->
+                                    <li class="item">
+                                        <div class="product-img">
+                                            <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title">
+                                                Xbox One <span class="badge badge-danger float-right">
+                        $350
+                      </span>
+                                            </a>
+                                            <span class="product-description">
+                        Xbox One Console Bundle with Halo Master Chief Collection.
+                      </span>
+                                        </div>
+                                    </li>
+                                    <!-- /.item -->
+                                    <li class="item">
+                                        <div class="product-img">
+                                            <img src="dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title">PlayStation 4
+                                                <span class="badge badge-success float-right">$399</span></a>
+                                            <span class="product-description">
+                        PlayStation 4 500GB Console (PS4)
+                      </span>
+                                        </div>
+                                    </li>
+                                    <!-- /.item -->
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer text-center">
+                                <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                            </div>
+                            <!-- /.card-footer -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div><!--/. container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+            <b>Version</b> 3.2.0
+        </div>
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.js"></script>
+
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="plugins/raphael/raphael.min.js"></script>
+<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="dist/js/pages/dashboard2.js"></script>
+</body>
 </html>
