@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Console\Commands;
+
 use Illuminate\Support\Facades\Hash;
 
 
 use App\Models\User;
 use Illuminate\Console\Command;
 use PHPUnit\TextUI\Exception;
-use Illuminate\Database\QueryException ;
+use Illuminate\Database\QueryException;
 
 class CreateAdminCommand extends Command
 {
@@ -23,7 +24,7 @@ class CreateAdminCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Create admin user';
 
     /**
      * Execute the console command.
@@ -32,14 +33,14 @@ class CreateAdminCommand extends Command
      */
     public function handle()
     {
-        try{
-        $admin=User::create([
-            "email"=>$this->option('email'),
-            "name"=>'admin',
-            "password"=>Hash::make($this->option('email'))
-        ]);
-        $admin->assignRole('admin');
-        }catch (QueryException ){
+        try {
+            $admin = User::create([
+                "email" => $this->option('email'),
+                "name" => 'admin',
+                "password" => Hash::make($this->option('email'))
+            ]);
+            $admin->assignRole('admin');
+        } catch (QueryException) {
             echo "Admin record has not been added, An error happened !!! \n";
         }
 
