@@ -37,7 +37,6 @@ class PermissionSeeder extends Seeder
             'permission_delete_couch',
             'permission_update_couch',
             'permission_select_couch',
-            'user_register',
             'permission_buy_package',
             'user_register',
             'user_login',
@@ -73,7 +72,6 @@ class PermissionSeeder extends Seeder
             'permission_delete_couch',
             'permission_update_couch',
             'permission_select_couch',
-            'user_register',
             'permission_buy_package',
             ...$userPermissions
         ];
