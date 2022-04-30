@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('training_session', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 100);
+            $table->date('start_at');
+            $table->date('finish_at');
             $table->timestamps();
         });
     }
