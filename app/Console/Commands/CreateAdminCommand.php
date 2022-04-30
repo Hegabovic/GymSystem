@@ -31,13 +31,13 @@ class CreateAdminCommand extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         try {
             $admin = User::create([
                 "email" => $this->option('email'),
                 "name" => 'admin',
-                "password" => Hash::make($this->option('email'))
+                "password" => Hash::make($this->option('password'))
             ]);
             $admin->assignRole('admin');
         } catch (QueryException) {
