@@ -57,29 +57,13 @@ class PermissionSeeder extends Seeder
         $gymManagerRole = Role::create(['name' => 'GymManager']);
         $userRole = Role::create(['name' => 'User']);
 
-        $cityMangerPermissions = [
-            'permission_create_Gym',
-            'permission_delete_Gym',
-            'permission_update_Gym',
-            'permission_show_Gym',
-            'permission_create_GymManager',
-            'permission_delete_GymManager',
-            'permission_update_GymManager',
-            'permission_show_GymManager',
-            'permission_buy_package',
-            'permission_create_trainingSession',
-            'permission_delete_trainingSession',
-            'permission_update_trainingSession',
-            'permission_show_trainingSession',
-            'permission_create_couch',
-            'permission_delete_couch',
-            'permission_update_couch',
-            'permission_select_couch',
+        $userPermissions = [
             'user_register',
             'user_login',
             'user_update',
             'user_remaining_sessions'
         ];
+
         $gymMangerPermissions = [
             'permission_create_trainingSession',
             'permission_delete_trainingSession',
@@ -90,17 +74,20 @@ class PermissionSeeder extends Seeder
             'permission_update_couch',
             'permission_select_couch',
             'user_register',
-            'user_register',
-            'user_login',
-            'user_update',
-            'user_remaining_sessions'
+            'permission_buy_package',
+            ...$userPermissions
         ];
 
-        $userPermissions = [
-            'user_register',
-            'user_login',
-            'user_update',
-            'user_remaining_sessions'
+        $cityMangerPermissions = [
+            'permission_create_Gym',
+            'permission_delete_Gym',
+            'permission_update_Gym',
+            'permission_show_Gym',
+            'permission_create_GymManager',
+            'permission_delete_GymManager',
+            'permission_update_GymManager',
+            'permission_show_GymManager',
+            ...$gymMangerPermissions
         ];
 
         foreach ($permissions as $permission) {
