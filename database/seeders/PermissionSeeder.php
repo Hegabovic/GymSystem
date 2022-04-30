@@ -90,9 +90,9 @@ class PermissionSeeder extends Seeder
             ...$gymMangerPermissions
         ];
 
-        foreach ($permissions as $permission) {
-            $adminRole->givePermissionTo($permission);
-        }
+//        foreach ($permissions as $permission) {
+//            $adminRole->givePermissionTo($permission);
+//        }
 
         foreach ($userPermissions as $permission) {
             $userRole->givePermissionTo($permission);
