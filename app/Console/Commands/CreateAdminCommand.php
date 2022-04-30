@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Console\Commands;
+use Illuminate\Support\Facades\Hash;
+
 
 use App\Models\User;
 use Illuminate\Console\Command;
@@ -34,7 +36,7 @@ class CreateAdminCommand extends Command
         $admin=User::create([
             "email"=>$this->option('email'),
             "name"=>'admin',
-            "password"=>$this->option('password')
+            "password"=>Hash::make($this->option('email'))
         ]);
         $admin->assignRole('admin');
         }catch (QueryException ){
