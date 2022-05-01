@@ -278,7 +278,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
-                                Layout Options
+                                Revenue
                                 <i class="fas fa-angle-left right"></i>
                                 <span class="badge badge-info right">6</span>
                             </p>
@@ -338,7 +338,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
-                                Charts
+                                users
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -367,13 +367,14 @@
                                     <p>uPlot</p>
                                 </a>
                             </li>
+
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tree"></i>
                             <p>
-                                UI Elements
+                                gymes
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -432,7 +433,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
-                                Forms
+                                cities
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -467,7 +468,65 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
-                                Tables
+                                attendances
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/tables/simple.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Simple Tables</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>DataTables</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/jsgrid.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>jsGrid</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                training packages
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/tables/simple.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Simple Tables</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>DataTables</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/jsgrid.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>jsGrid</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                couches
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
