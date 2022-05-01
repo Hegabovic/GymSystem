@@ -21,5 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/create-user',function (){
+    return view('create_user');
+})->name('create_user');
 
 Auth::routes();
