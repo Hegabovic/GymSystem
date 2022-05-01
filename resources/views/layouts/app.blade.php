@@ -342,13 +342,20 @@
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+
+
                         <ul class="nav nav-treeview">
+                            {{--@can('permission_create_CityManager')--}}
+
+                           @if(auth()->user()->hasRole('Admin'))
                             <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                <a href="{{route('create_user')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create User</p>
                                 </a>
                             </li>
+                            @endif
+                            {{--@endcan--}}
                             <li class="nav-item">
                                 <a href="pages/charts/chartjs.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
