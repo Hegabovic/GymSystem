@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
-class CoachController extends Controller
+class CityController extends Controller
 {
     public function index(): Factory|View|Application
     {
-        return view('coaches.show');
+        return view('cities/cities');
     }
 
     public function create(): Factory|View|Application
     {
-        return view('coaches.create');
+        return view('cities/create');
     }
 }

@@ -27,6 +27,10 @@ class HomeController extends Controller
     }
     public function createUserForm()
     {
-        return view('create_user');
+        return view('users.create_user');
+    }
+    public function showUsers()
+    {
+        return view('users.show_users');
     }
 }
