@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -25,7 +26,15 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/create-user', [HomeController::class, 'createUserForm'])->name('create_user');
 Route::post('/user/store', [UserController::class, 'store'])->name('store_user');
+
 Route::get('/coach', [CoachController::class, 'index'])->name('show_coaches');
+
 Route::get('/coach-create', [CoachController::class, 'create'])->name('create_coach');
 Route::post('/coach-store', [CoachController::class, 'store'])->name('store_coach');
+
+Route::get('/city', [CityController::class, 'index'])->name('show_cities');
+
+Route::get('/city-create', [CityController::class, 'create'])->name('create');
+Route::post('/city/store', [CityController::class, 'store'])->name('store_city');
+
 Auth::routes();
