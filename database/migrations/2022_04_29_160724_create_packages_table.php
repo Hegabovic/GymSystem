@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::dropIfExists('city_managers_');
+        Schema::create('packages', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('price');
+            $table->integer('number_of_sessions');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('packages');
     }
 };

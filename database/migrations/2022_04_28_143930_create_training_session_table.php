@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('customers');
-        
+        Schema::create('training_sessions', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 100);
+            $table->date('start_at');
+            $table->date('finish_at');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('training_session');
     }
 };

@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('attendence', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('gym_id');
+            $table->unsignedBigInteger('training_session_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('gym_id')->references('id')->on('gyms');
             $table->foreign('training_session_id')->references('id')->on('training_sessions');
