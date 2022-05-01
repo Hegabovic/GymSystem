@@ -26,6 +26,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/create-user', [HomeController::class, 'createUserForm'])->name('create_user');
 Route::post('/user/store', [UserController::class, 'store'])->name('store_user');
 Route::get('/coach', [CoachController::class, 'index'])->name('show_coaches');
-Route::get('/coach/create', [CoachController::class, 'create'])->name('create_coach');
-Route::post('/coach/store', [CoachController::class, 'store'])->name('store_coach');
+Route::get('/coach-create', [CoachController::class, 'create'])->name('create_coach');
+Route::post('/coach-store', [CoachController::class, 'store'])->name('store_coach');
 Auth::routes();
