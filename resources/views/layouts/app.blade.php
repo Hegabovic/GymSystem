@@ -347,13 +347,13 @@
                         <ul class="nav nav-treeview">
                             {{--@can('permission_create_CityManager')--}}
 
-                           @if(auth()->user()->hasRole('Admin'))
-                            <li class="nav-item">
-                                <a href="{{route('create_user')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create User</p>
-                                </a>
-                            </li>
+                            @if(auth()->user()->hasRole('Admin'))
+                                <li class="nav-item">
+                                    <a href="{{route('create_user')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create User</p>
+                                    </a>
+                                </li>
                             @endif
                             {{--@endcan--}}
                             <li class="nav-item">
@@ -519,29 +519,23 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <i class="nav-ivon fas fa-dumbbell"></i>
                             <p>
-                                couches
+                                coaches
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/tables/simple.html" class="nav-link">
+                                <a href="{{route('create_coach')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Simple Tables</p>
+                                    <p>Create</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="{{route('show_coaches')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>DataTables</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/tables/jsgrid.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>jsGrid</p>
+                                    <p>Show</p>
                                 </a>
                             </li>
                         </ul>
