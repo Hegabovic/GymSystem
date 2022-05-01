@@ -355,9 +355,15 @@
                             @endif
                             {{--@endcan--}}
                             <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                <a href="{{route('show_users')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Show Users</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('create_customer')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create customer</p>
                                 </a>
                             </li>
 

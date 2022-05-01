@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\CoachController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -37,4 +35,8 @@ Route::get('/city', [CityController::class, 'index'])->name('show_cities');
 Route::get('/city-create', [CityController::class, 'create'])->name('create');
 Route::post('/city/store', [CityController::class, 'store'])->name('store_city');
 
+Route::get('/create-user',[HomeController::class,'createUserForm'])->name('create_user');
+Route::post('/user/store',[UserController::class,'store'])->name('store_user');
+Route::get('/show-users',[UserController::class,'showUsers'])->name('show_users');
+Route::get('/create-customer',[UserController::class,'createCustomer'])->name('create_customer');
 Auth::routes();
