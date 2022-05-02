@@ -504,23 +504,18 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/tables/simple.html" class="nav-link">
+                                <a href="{{route('packages.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Simple Tables</p>
+                                    <p>All Packages</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/order" class="nav-link">
+                                <a href="{{route('packages.create')}}"  class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>DataTables</p>
+                                    <p>Create Package</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="pages/tables/jsgrid.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>jsGrid</p>
-                                </a>
-                            </li>
+                            
                         </ul>
                     </li>
                     <li class="nav-item">
