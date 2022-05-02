@@ -473,13 +473,60 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/jsgrid.html" class="nav-link">
+                                <a href="/attendance" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>jsGrid</p>
+                                    <p>show attendances</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/create/attendance" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>create attendance</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
+
+                    {{-- orders nav item --}}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Orders
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/tables/simple.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Simple Tables</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>DataTables</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/order" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>show Orders</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/create/order" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>create Orders</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {{-- order nav item done --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
@@ -496,7 +543,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="/order" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>DataTables</p>
                                 </a>

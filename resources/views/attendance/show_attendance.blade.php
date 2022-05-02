@@ -1,4 +1,34 @@
-@extends('layouts.app')
+{{-- <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+<table id="example" >
+    {{-- class="table table-striped table-bordered" --}}
+    
+    {{-- <thead>
+        <tr>
+            <th>user name</th>
+            <th>email</th>
+            <th>training session name</th>
+            <th>attendance time</th>
+            <th>attendance date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+           <td>adham</td> 
+        </tr>
+    <tbody> 
+     --}}
+{{-- </table>
+
+<script>
+   $(document).ready(function() {
+    $('#example').DataTable();
+} );
+   </script> --}}
+   
+
+   @extends('layouts.app')
 @section('content')
     <div class="wrapper">
 
@@ -38,7 +68,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">order here soon</h5>
+                                <h5 class="card-title">showing attendances here soon</h5>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
