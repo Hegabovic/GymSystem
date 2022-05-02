@@ -50,6 +50,7 @@ Route::get('/city', [CityController::class, 'index'])->name('show_cities');
 
 Route::get('/city-create', [CityController::class, 'create'])->name('create');
 Route::post('/city/store', [CityController::class, 'store'])->name('store_city');
+Route::delete('/city/delete', [CityController::class, 'delete'])->name('delete_city');
 
 Route::get('/create-user',[HomeController::class,'createUserForm'])->name('create_user');
 
