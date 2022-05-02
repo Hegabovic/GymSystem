@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("city_id");
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->foreign('city_id')->references('city_id')->on('cities');
             $table->timestamps();
         });
     }
