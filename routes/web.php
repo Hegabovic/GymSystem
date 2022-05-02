@@ -9,11 +9,7 @@ use App\Http\Controllers\GymController;
 
 use App\Http\Controllers\attendanceController;
 use App\Http\Controllers\orderController;
-<<<<<<< HEAD
 use App\Http\Controllers\PackageController;
-=======
-
->>>>>>> d4e1cdf09cf75a6acc8e6a9b4999dcfb29501281
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -65,11 +61,10 @@ Route::get('/create/attendance', [attendanceController::class, 'create'])->name(
 Route::get('/order', [orderController::class, 'show'])->name('show.order');
 Route::get('/create/order', [orderController::class, 'create'])->name('create.order');
 
-<<<<<<< HEAD
+
 Route::get('/packages', [PackageController::class,'index'])->name('packages.index');
 Route::get('/packages/create', [PackageController::class,'create'])->name('packages.create');
 
-=======
->>>>>>> d4e1cdf09cf75a6acc8e6a9b4999dcfb29501281
+
 Auth::routes();
 
