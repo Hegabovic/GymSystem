@@ -99,7 +99,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">Monthly Recap Report</h5>
+                                <h5 class="card-title">Monthly Revenue Report</h5>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -140,7 +140,7 @@
                                     <!-- /.col -->
                                     <div class="col-md-4">
                                         <p class="text-center">
-                                            <strong>Goal Completion</strong>
+                                            <strong>Recap</strong>
                                         </p>
 
                                         <div class="progress-group">
@@ -589,7 +589,7 @@
                         <!-- TABLE: LATEST ORDERS -->
                         <div class="card">
                             <div class="card-header border-transparent">
-                                <h3 class="card-title">Latest Orders</h3>
+                                <h3 class="card-title">Purchases history</h3>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -606,10 +606,11 @@
                                     <table class="table m-0">
                                         <thead>
                                         <tr>
-                                            <th>Order ID</th>
-                                            <th>Item</th>
-                                            <th>Status</th>
-                                            <th>Popularity</th>
+                                            <th>user email</th>
+                                            <th>name</th>
+                                            <th>Package name</th>
+                                            <th>paid price</th>
+                                            <th>package type</th> {{-- gym or city package--}}
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -706,8 +707,8 @@
                             <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Inventory</span>
-                                <span class="info-box-number">5,200</span>
+                                <span class="info-box-text">City Revenues</span>
+                                <span class="info-box-number">92,200</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -716,33 +717,13 @@
                             <span class="info-box-icon"><i class="far fa-heart"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Mentions</span>
-                                <span class="info-box-number">92,050</span>
+                                <span class="info-box-text">Gym Revenues</span>
+                                <span class="info-box-number">5,050</span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
-                        <!-- /.info-box -->
-                        <div class="info-box mb-3 bg-danger">
-                            <span class="info-box-icon"><i class="fas fa-cloud-download-alt"></i></span>
 
-                            <div class="info-box-content">
-                                <span class="info-box-text">Downloads</span>
-                                <span class="info-box-number">114,381</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                        <div class="info-box mb-3 bg-info">
-                            <span class="info-box-icon"><i class="far fa-comment"></i></span>
-
-                            <div class="info-box-content">
-                                <span class="info-box-text">Direct Messages</span>
-                                <span class="info-box-number">163,921</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-
+                        {{-- ** browser history ** --}}
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Browser Usage</h3>
