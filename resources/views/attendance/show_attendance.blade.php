@@ -106,6 +106,8 @@
                         <th>training session name</th>
                         <th>attendance time</th>
                         <th>attendance date</th>
+                        <th>Gym</th>
+                        <th>City</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -117,7 +119,7 @@
                         <td>{{$table->attendance_time}}</td> 
                         <td>{{$table->attendance_date}}</td> 
                         <td>{{$table->gym->name}}</td> 
-                        <td>{{$table->gym->city}}</td> 
+                        <td>{{$table->gym->city->city_name}}</td> 
                         {{-- add 'belongsTo line in gym model so its possible to use the above line ^' --}}
                         {{-- remember to add new migration that edits attendance time type -> time() --}}
                     </tr>
