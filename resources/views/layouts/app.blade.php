@@ -353,7 +353,7 @@
 
                             @can('permission_create_CityManager')
                                 <li class="nav-item">
-                                    <a href="{{route('create_user')}}" class="nav-link">
+                                    <a href="{{route('create_city_manager')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Create City-manager</p>
                                     </a>
@@ -361,7 +361,7 @@
                             @endcan
                             @can('permission_create_GymManager')
                                 <li class="nav-item">
-                                    <a href="{{route('create_user')}}" class="nav-link">
+                                    <a href="{{route('create_gym_manager')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Create Gym-manager</p>
                                     </a>
@@ -372,12 +372,6 @@
                                 <a href="{{route('show_users')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Show Users</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('create_customer')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create customer</p>
                                 </a>
                             </li>
 

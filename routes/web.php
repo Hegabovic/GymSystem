@@ -30,8 +30,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/create-city-manager', [HomeController::class, 'createUserForm'])->name('create_user');
-Route::get('/create-gym-manager', [HomeController::class, 'createUserForm'])->name('create_user');
+Route::get('/create-city-manager', [UserController::class, 'createCityManager'])->name('create_city_manager');
+Route::get('/create-gym-manager', [UserController::class, 'createGymManager'])->name('create_gym_manager');
+Route::post('/store-gym-manager',[UserController::class,'storeGymManager'])->name('store_gym_manager');
+Route::post('/store-city-manager',[UserController::class,'storeCityManager'])->name('store_city_manager');
+Route::get('/show-users',[UserController::class,'showUsers'])->name('show_users');
 
 Route::get('/show-gyms',[GymController::class,'show'])->name('show_gyms');
 
@@ -49,9 +52,8 @@ Route::get('/city-create', [CityController::class, 'create'])->name('create');
 Route::post('/city/store', [CityController::class, 'store'])->name('store_city');
 
 Route::get('/create-user',[HomeController::class,'createUserForm'])->name('create_user');
-Route::post('/user/store',[UserController::class,'store'])->name('store_user');
-Route::get('/show-users',[UserController::class,'showUsers'])->name('show_users');
-Route::get('/create-customer',[UserController::class,'createCustomer'])->name('create_customer');
+
+
 Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendance');
 Route::get('/create/attendance', [attendanceController::class, 'create'])->name('create.attendance');
 
