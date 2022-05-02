@@ -18,11 +18,14 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('gym_id');
             $table->unsignedBigInteger('training_session_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            // $table->foreign('user_id')->references('id')->on('customers');
+            $table->foreign('user_id')->references('id')->on('users'); ##instead of above line
+            
             $table->foreign('gym_id')->references('id')->on('gyms');
             $table->foreign('training_session_id')->references('id')->on('training_sessions');
             $table->date('attendance_date');
-            $table->date('attendance_time');
+            // $table->date('attendance_time');
+             $table->time('attendance_time'); ##instead of above line
             $table->timestamps();
         });
     }

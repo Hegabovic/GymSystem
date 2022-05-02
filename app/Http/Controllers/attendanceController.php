@@ -9,7 +9,7 @@ class attendanceController extends Controller
 {
     public function show(){
         $tableData=Attendance::all();
-        return view('attendance/show_attendance',['table'=>$tableData]);
+        return view('attendance/show_attendance',['items'=>$tableData]);
     }
 
     public function create(){
