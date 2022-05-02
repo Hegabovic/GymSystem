@@ -377,10 +377,10 @@
                             <li class="nav-item">
                                 <a href="pages/UI/general.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>General</p>
+                                    <p>Availble-Gymes</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="pages/UI/icons.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Icons</p>
@@ -423,7 +423,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
