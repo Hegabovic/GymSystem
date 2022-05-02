@@ -1,34 +1,4 @@
-{{-- <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
-
-<table id="example" >
-    {{-- class="table table-striped table-bordered" --}}
-    
-    {{-- <thead>
-        <tr>
-            <th>user name</th>
-            <th>email</th>
-            <th>training session name</th>
-            <th>attendance time</th>
-            <th>attendance date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-           <td>adham</td> 
-        </tr>
-    <tbody> 
-     --}}
-{{-- </table>
-
-<script>
-   $(document).ready(function() {
-    $('#example').DataTable();
-} );
-   </script> --}}
-   
-
-   @extends('layouts.app')
+@extends('layouts.app')
 @section('content')
     <div class="wrapper">
 
@@ -68,7 +38,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">showing attendances here soon</h5>
+                                <h5 class="card-title">Stay tuned !!!!</h5>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -95,47 +65,6 @@
                             <!-- /.card-header -->
 
                             <!-- ./card-body -->
-            <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-            <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
-
-            <table id="example" class="table table-striped table-bordered">
-                 <thead>
-                    <tr>
-                        <th>user name</th>
-                        <th>email</th>
-                        <th>training session name</th>
-                        <th>attendance time</th>
-                        <th>attendance date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($items as $table)
-                    <tr>
-                        <td>{{$table->user->name}}</td> 
-                        <td>{{$table->user->email}}</td> 
-                        <td>{{$table->training_session->name}}</td> 
-                        <td>{{$table->attendance_time}}</td> 
-                        <td>{{$table->attendance_date}}</td> 
-                        <td>{{$table->gym->name}}</td> 
-                        <td>{{$table->gym->city}}</td> 
-                        {{-- add 'belongsTo line in gym model so its possible to use the above line ^' --}}
-                        {{-- remember to add new migration that edits attendance time type -> time() --}}
-                    </tr>
-                    @endforeach
-                    
-                <tbody> 
-               
-               
-             </table>
-             <!-- ./card-body done-->
-{{-- 
-<script>
-   $(document).ready(function() {
-    $('#example').DataTable();
-} );
-   </script>  --}}
-   
-
 
                             <!-- /.card-footer -->
                         </div>

@@ -25,12 +25,5 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function createUserForm()
-    {
-        return view('users.create_user');
-    }
-    public function showUsers()
-    {
-        return view('users.show_users');
-    }
+
 }

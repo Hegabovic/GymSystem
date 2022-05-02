@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string("cover_image");
             $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("city_id");
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
         });
     }
