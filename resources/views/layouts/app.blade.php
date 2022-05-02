@@ -236,35 +236,36 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Dashboard
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v1</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v2</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index3.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v3</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    {{-- ** dashboard ** --}}
+{{--                    <li class="nav-item menu-open">--}}
+{{--                        <a href="#" class="nav-link active">--}}
+{{--                            <i class="nav-icon fas fa-tachometer-alt"></i>--}}
+{{--                            <p>--}}
+{{--                                Dashboard--}}
+{{--                                <i class="right fas fa-angle-left"></i>--}}
+{{--                            </p>--}}
+{{--                        </a>--}}
+{{--                        <ul class="nav nav-treeview">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="./index.html" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Dashboard v1</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="./index2.html" class="nav-link active">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Dashboard v2</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="./index3.html" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Dashboard v3</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                     <li class="nav-item">
                         <a href="pages/widgets.html" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -275,64 +276,69 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        {{-- ** if Ajax ** --}}
+                        {{-- data-post-id="{{$post->id}}" --}}
+                        {{--<i data-post-id="{{$post->id}}" ></i>--}}
+{{--                        <a href="{{route('', [])}}" class="nav-link">--}}
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
-                                Revenue
-                                <i class="fas fa-angle-left right"></i>
-                                <span class="badge badge-info right">6</span>
+                                Buy package
+                                {{-- ** number of package notifications and drop down ** --}}
+                                {{-- <i class="fas fa-angle-left right"></i> --}}
+                                {{-- <span class="badge badge-info right">6</span>--}}
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/layout/top-nav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation + Sidebar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/boxed.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Boxed</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Sidebar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Navbar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Footer</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Collapsed Sidebar</p>
-                                </a>
-                            </li>
-                        </ul>
+{{--                        <ul class="nav nav-treeview">--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="pages/layout/top-nav.html" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Top Navigation</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Top Navigation + Sidebar</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="pages/layout/boxed.html" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Boxed</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="pages/layout/fixed-sidebar.html" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Fixed Sidebar</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Fixed Sidebar <small>+ Custom Area</small></p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="pages/layout/fixed-topnav.html" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Fixed Navbar</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="pages/layout/fixed-footer.html" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Fixed Footer</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">--}}
+{{--                                    <i class="far fa-circle nav-icon"></i>--}}
+{{--                                    <p>Collapsed Sidebar</p>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
@@ -342,8 +348,6 @@
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-
-
                         <ul class="nav nav-treeview">
                             {{--@can('permission_create_CityManager')--}}
 
@@ -357,9 +361,15 @@
                             @endif
                             {{--@endcan--}}
                             <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                <a href="{{route('show_users')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Show Users</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('create_customer')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create customer</p>
                                 </a>
                             </li>
 
@@ -435,27 +445,15 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/forms/general.html" class="nav-link">
+                                <a href="{{route('create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>General Elements</p>
+                                    <p>create city</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/forms/advanced.html" class="nav-link">
+                                <a href="{{route('show_cities')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Advanced Elements</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/forms/editors.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Editors</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/forms/validation.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Validation</p>
+                                    <p>show cities</p>
                                 </a>
                             </li>
                         </ul>
@@ -482,13 +480,60 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/jsgrid.html" class="nav-link">
+                                <a href="/attendance" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>jsGrid</p>
+                                    <p>show attendances</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/create/attendance" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>create attendance</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
+
+                    {{-- orders nav item --}}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Orders
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/tables/simple.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Simple Tables</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/tables/data.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>DataTables</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/order" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>show Orders</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="/create/order" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>create Orders</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {{-- order nav item done --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
@@ -505,7 +550,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="/order" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>DataTables</p>
                                 </a>

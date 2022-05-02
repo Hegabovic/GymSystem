@@ -19,4 +19,13 @@ class UserController extends Controller
         if($input['role']==='city-manager') $user->assignRole('CityManager');
         elseif ($input['role']==='gym-manager') $user->assignRole('GymManager');
     }
+
+    public function showUsers()
+    {
+        return view('users.show_users');
+    }
+    public function createCustomer()
+    {
+        return view('users.create_customer');
+    }
 }
