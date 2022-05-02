@@ -375,7 +375,8 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/UI/general.html" class="nav-link">
+
+                                <a href="{{route('show_gym')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Availble-Gymes</p>
                                 </a>
