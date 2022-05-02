@@ -9,10 +9,8 @@ class GymController extends Controller
 {
     public function show()
     {
-
-
         $gymes= Gym::all();
-        return view('layout.show_gym',['gymes'=>$gymes]);
+        return view('gyms.show_gym',['gymes'=>$gymes]);
     }
 }
 

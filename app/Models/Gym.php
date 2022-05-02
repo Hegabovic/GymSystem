@@ -12,7 +12,7 @@ class Gym extends Model
         'name',
         'created at',
         'cover_image',
-        'city_manger'
+        'city_manger',
     ];
 
 
