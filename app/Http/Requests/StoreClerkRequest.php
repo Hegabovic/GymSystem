@@ -25,7 +25,6 @@ class StoreClerkRequest extends FormRequest
      */
     public function rules()
     {
-
         $validationRules=['name'=>['required','max:50'],
             'email'=>['required','unique:users'],
             'password'=>['required','min:8','confirmed'],

@@ -46,5 +46,8 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(ClerkRepositoryInterface::class,GymManagerRepository::class);
         $this->app->bind(ClerkRepositoryInterface::class,CityManagerRepository::class);
         $this->app->bind(BaseRepositoryInterface::class,CustomerRepository::class);
+        $this->app->bind(BaseRepositoryInterface::class,UserRepository::class);
+        $this->app->bind(BaseRepositoryInterface::class,CityManagerRepository::class);
+        $this->app->bind(BaseRepositoryInterface::class,GymManagerRepository::class);
     }
 }
