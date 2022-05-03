@@ -36,38 +36,24 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Stay tuned !!!!</h5>
-
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-tool dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <i class="fas fa-wrench"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                            <a href="#" class="dropdown-item">Action</a>
-                                            <a href="#" class="dropdown-item">Another action</a>
-                                            <a href="#" class="dropdown-item">Something else here</a>
-                                            <a class="dropdown-divider"></a>
-                                            <a href="#" class="dropdown-item">Separated link</a>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
+                        <form method="post" action="{{route('store_city_manager',['clerk'=>'city-manager'])}}">
+                            @csrf
+                            <div class="card-body">
+                           @include('forms.create_clerk_form')
+                            <div class="form-group">
+                                <label for="city-input">city</label>
+                                <select name="city" id="city-input" class="form-control" >
+                                    <option>city-1</option>
+                                    <option>city-1</option>
+                                    <option>city-1</option>
+                                </select>
                                 </div>
+
                             </div>
-                            <!-- /.card-header -->
-
-                            <!-- ./card-body -->
-
-                            <!-- /.card-footer -->
-                        </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
                         <!-- /.card -->
 
                     </div>

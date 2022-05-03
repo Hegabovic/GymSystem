@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreClerkRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function store()
+    public function store(StoreClerkRequest $request)
     {
-        $input=\request()->all();
+        $input=request()->validated();
         $user=User::create([
             'name'=>$input['username'],
             'email'=>$input['email'],
             'password'=>Hash::make($input['password']),
         ]);
-        if($input['role']==='city-manager') $user->assignRole('CityManager');
-        elseif ($input['role']==='gym-manager') $user->assignRole('GymManager');
+        if($request->clerk==='city-manager') $user->assignRole('CityManager');
+        elseif ($request->clerk==='gym-manager') $user->assignRole('GymManager');
     }
-    public function storeGymManager()
+    /*public function storeGymManager()
     {
         //
     }
@@ -27,7 +28,7 @@ class UserController extends Controller
     public function storeCityManager()
     {
         //
-    }
+    }*/
     public function showUsers()
     {
         return view('users.show_users');
