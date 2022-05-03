@@ -13,27 +13,27 @@ class CityController extends Controller
     public function index(): Factory|View|Application
     {
         $cities = City::all();
-        return view('cities.cities',[
-            'cities'=> $cities,
-        ]);
+        return view('cities.cities');
     }
 
     // =======================================================//
     public function create(): Factory|View|Application
     {
         $cities = City::all();
-        return view('cities.create',[
-            'cities'=> $cities,
+        return view('cities.create', [
+            'cities' => $cities,
         ]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         City::create([
             'city_id' => $request->city_id,
             'city_name' => $request->city_name,
         ]);
         return to_route('cities.cities');
     }
+
     // =======================================================//
     public function delete($cityID)
     {

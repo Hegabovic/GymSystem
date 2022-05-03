@@ -28,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($gymes as $gym)
+                    @foreach($gyms as $gym)
                     <tr>
                         <!-- <td><a href="pages/examples/invoice.html">OR9842</a></td> -->
                         <td value="{{$gym->id}}">{{ $gym->name }}</td>
