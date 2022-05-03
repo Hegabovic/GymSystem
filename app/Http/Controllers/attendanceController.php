@@ -9,30 +9,26 @@ class attendanceController extends Controller
 {
     public function show(){
         $tableData=Attendance::all();
-        return view('attendance/show_attendance',['items'=>$tableData]);
+        return view('attendance/show_attendance',['items'=>$tableData,'userData'=>request()->user()]);
     }
 
+    //incoming two methods should be in Api 
     public function create(){
         return view('attendance/create_attendance');
     }
 
     public function store(Request $request){
-        // get data from request
-        // dd(request()->all());
         $data=request()->all(); 
-        dd($request->user());
-        // dd($user = auth()->user());
-        //validate data
+        // dd($data);
+        $userData=$request->user();
+        // dd($data['training_session_id']);
         $attendance=Attendance::create(
             [
-                'user_id' =>$data['name'],
-                'email' =>$data['email'],
-                'training_session_name' =>$data['training_session_name'],
-                // 'attendance_date' =>$data['created_at'],
-                // 'attendance_time' =>$data['updated_at'],
+                'customer_id' =>$userData['id'],
+                'gym_id' =>$data['gym_id'],
+                'training_session_id' =>$data['training_session_name'],
+
             ]);
-        //return to route show.attendances
-        // return view('attendance/create_attendance');
         return to_route('show.attendances');
     }
 }

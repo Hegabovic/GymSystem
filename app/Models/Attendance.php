@@ -12,10 +12,9 @@ class Attendance extends Model
     protected $table = 'attendence';
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'training_session_name',
+        'customer_id',
+        'gym_id',
+        'training_session_id',
         
 
     ];
@@ -25,9 +24,9 @@ class Attendance extends Model
         return $this->belongsTo(Training_session::class);
     }
 
-    public function user()
+    public function customer()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Customer::class);
     }
 
     public function gym()

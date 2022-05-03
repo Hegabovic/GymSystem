@@ -30,6 +30,9 @@
 
    @extends('layouts.app')
 @section('content')
+
+<script src="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"></script>
+<script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -104,24 +107,24 @@
                         <th>user name</th>
                         <th>email</th>
                         <th>training session name</th>
-                        <th>attendance time</th>
                         <th>attendance date</th>
+                        <th>attendance time</th>
                         <th>Gym</th>
                         <th>City</th>
+                        {{-- <th>Delete</th> --}}
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($items as $table)
                     <tr>
-                        <td>{{$table->user->name}}</td> 
-                        <td>{{$table->user->email}}</td> 
+                        <td>{{$userData->name}}</td> 
+                        <td>{{$userData->email}}</td> 
                         <td>{{$table->training_session->name}}</td> 
-                        <td>{{$table->updated_at}}</td> 
-                        <td>{{$table->created_at}}</td> 
+                        <td>{{$table->created_at->toDateString() }}</td> 
+                        <td>{{$table->created_at->format('H:i')}}</td> 
                         <td>{{$table->gym->name}}</td> 
-                        <td>{{$table->gym->city->city_name}}</td> 
-                        {{-- add 'belongsTo line in gym model so its possible to use the above line ^' --}}
-                        {{-- remember to add new migration that edits attendance time type -> time() --}}
+                        <td>{{$table->gym->city->name}}</td> 
+                        {{-- <td><button>delete</button></td>  --}}
                     </tr>
                     @endforeach
                     
@@ -129,6 +132,15 @@
                
                
              </table>
+
+
+             <script>
+                $(document).ready(function() {
+                 $('#example').DataTable();
+             } );
+                </script> 
+
+
              <!-- ./card-body done-->
 {{-- 
 <script>

@@ -30,6 +30,9 @@
 
    @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
+<script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -120,8 +123,13 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="training_session_name">training session name</label>
+                                    <label for="training_session_name">training session id</label>
                                     <input type="text" class="form-control" name="training_session_name" aria-describedby="emailHelp" placeholder="Enter training session name">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="gym_id">gym id</label>
+                                    <input type="text" class="form-control" name="gym_id" aria-describedby="emailHelp" placeholder="Enter gym id">
                                   </div>
                                 
                                 <button type="submit" class="btn btn-primary">Submit</button>

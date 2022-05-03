@@ -56,6 +56,7 @@ Route::post('/city-store', [CityController::class, 'store'])->name('store_city')
 Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete_city');
 
 Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendances');
+//next two routes should be in Api
 Route::get('/attendance-create', [attendanceController::class, 'create'])->name('create.attendances');
 Route::post('/attendance-store', [attendanceController::class, 'store'])->name('store.attendances');
 
