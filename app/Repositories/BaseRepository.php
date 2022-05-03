@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Contracts\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 
-class BaseRepository  implements BaseRepositoryInterface
+class BaseRepository implements BaseRepositoryInterface
 {
 
     private Model $model;
@@ -20,10 +20,9 @@ class BaseRepository  implements BaseRepositoryInterface
         return $this->model->create($entity);
     }
 
-    public function all(int $pageSize)
+    public function all()
     {
-        return $this->model->withTrashed()
-            ->paginate($pageSize);
+        return $this->model->withTrashed()->get();
     }
 
     public function findById($id)
