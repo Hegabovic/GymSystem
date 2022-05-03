@@ -36,6 +36,15 @@
 
                 <div class="row">
                     <div class="col-md-12">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form method="post" action="{{route('store_clerk',['clerk'=>'gym-manager'])}}">
                             @csrf
                             <div class="card-body">
@@ -43,9 +52,9 @@
                                 <div class="form-group">
                                     <label for="gym-input">gym</label>
                                     <select name="facility" id="gym-input" class="form-control" >
-                                        <option>gym-1</option>
-                                        <option>gym-1</option>
-                                        <option>gym-1</option>
+                                        <option value="1">gym-1</option>
+                                        <option value="2">gym-1</option>
+                                        <option value="3">gym-1</option>
                                     </select>
                                 </div>
 

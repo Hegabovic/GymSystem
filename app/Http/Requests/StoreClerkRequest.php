@@ -25,13 +25,14 @@ class StoreClerkRequest extends FormRequest
      */
     public function rules()
     {
+
         $validationRules=['name'=>['required','max:50'],
             'email'=>['required','unique:users'],
             'password'=>['required','min:8'],
-            'n_id'=>['required','digits:16', 'unique:users'],
+            'n_id'=>['required','digits:16', 'unique:city_managers','unique:gym_managers'],
             'photo'=>['mimetypes:image/jpg,image/png,image/jpeg']];
-        if($this->clerk==='city-manager') $validationRules['facility']=['required','exists:cities:id'];
-        elseif ($this->clerk==='gym-manager') $validationRules['facility']=['required','exists:gyms:id'];
+        if($this->clerk==='city-manager') $validationRules['facility']=['required','exists:cities,id'];
+        elseif ($this->clerk==='gym-manager') $validationRules['facility']=['required','exists:gyms,id'];
         return $validationRules;
     }
     public function messages()

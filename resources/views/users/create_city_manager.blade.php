@@ -36,16 +36,25 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <form method="post" action="{{route('store_city_manager',['clerk'=>'city-manager'])}}">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form method="post" action="{{route('store_clerk',['clerk'=>'city-manager'])}}">
                             @csrf
                             <div class="card-body">
                            @include('forms.create_clerk_form')
                             <div class="form-group">
                                 <label for="city-input">city</label>
-                                <select name="city" id="city-input" class="form-control" >
-                                    <option>city-1</option>
-                                    <option>city-1</option>
-                                    <option>city-1</option>
+                                <select name="facility" id="city-input" class="form-control" >
+                                    <option value="1">city-1</option>
+                                    <option value="2">city-1</option>
+                                    <option value="3">city-1</option>
                                 </select>
                                 </div>
 
