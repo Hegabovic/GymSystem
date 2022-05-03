@@ -55,11 +55,12 @@ Route::delete('/city/delete', [CityController::class, 'delete'])->name('delete_c
 Route::get('/create-user',[HomeController::class,'createUserForm'])->name('create_user');
 
 
-Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendance');
-Route::get('/create/attendance', [attendanceController::class, 'create'])->name('create.attendance');
+Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendances');
+Route::get('/create-attendance', [attendanceController::class, 'create'])->name('create.attendances');
+Route::post('/store-attendance', [attendanceController::class, 'store'])->name('store.attendances');
 
 Route::get('/order', [orderController::class, 'show'])->name('show.order');
-Route::get('/create/order', [orderController::class, 'create'])->name('create.order');
+Route::get('/create-order', [orderController::class, 'create'])->name('create.order');
 
 
 Route::get('/packages', [PackageController::class,'index'])->name('packages.index');

@@ -440,14 +440,14 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/attendance" class="nav-link">
+                                <a href="{{route('show.attendances')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>show attendances</p>
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="/create/attendance" class="nav-link">
+                                <a href="{{route('create.attendances')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>create attendance</p>
                                 </a>

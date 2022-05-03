@@ -7,8 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model
 {
+
     use HasFactory;
     protected $table = 'attendence';
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'training_session_name',
+        
+
+    ];
 
     public function training_session()
     {
