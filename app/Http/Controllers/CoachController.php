@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\CoachRepositoryInterface;
+use App\Http\Requests\StoreCoachRequest;
 use App\Models\Coach;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -31,7 +32,7 @@ class CoachController extends Controller
         return view('coaches.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreCoachRequest $request): RedirectResponse
     {
         $this->coachRepository->create([
             "name" => $request->name,
