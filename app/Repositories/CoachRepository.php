@@ -11,6 +11,7 @@ class CoachRepository extends BaseRepository implements CoachRepositoryInterface
 
     public function __construct(Coach $coach)
     {
+        parent::__construct($coach);
         $this->coach = $coach;
     }
 }
