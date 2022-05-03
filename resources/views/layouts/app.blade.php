@@ -236,35 +236,36 @@
                     data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item menu-open">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>
-                                Dashboard
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="./index.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v1</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index2.html" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v2</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="./index3.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v3</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    {{-- ** dashboard ** --}}
+                    {{--                    <li class="nav-item menu-open">--}}
+                    {{--                        <a href="#" class="nav-link active">--}}
+                    {{--                            <i class="nav-icon fas fa-tachometer-alt"></i>--}}
+                    {{--                            <p>--}}
+                    {{--                                Dashboard--}}
+                    {{--                                <i class="right fas fa-angle-left"></i>--}}
+                    {{--                            </p>--}}
+                    {{--                        </a>--}}
+                    {{--                        <ul class="nav nav-treeview">--}}
+                    {{--                            <li class="nav-item">--}}
+                    {{--                                <a href="./index.html" class="nav-link">--}}
+                    {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                    {{--                                    <p>Dashboard v1</p>--}}
+                    {{--                                </a>--}}
+                    {{--                            </li>--}}
+                    {{--                            <li class="nav-item">--}}
+                    {{--                                <a href="./index2.html" class="nav-link active">--}}
+                    {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                    {{--                                    <p>Dashboard v2</p>--}}
+                    {{--                                </a>--}}
+                    {{--                            </li>--}}
+                    {{--                            <li class="nav-item">--}}
+                    {{--                                <a href="./index3.html" class="nav-link">--}}
+                    {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                    {{--                                    <p>Dashboard v3</p>--}}
+                    {{--                                </a>--}}
+                    {{--                            </li>--}}
+                    {{--                        </ul>--}}
+                    {{--                    </li>--}}
                     <li class="nav-item">
                         <a href="pages/widgets.html" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -275,155 +276,121 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        {{-- ** if Ajax ** --}}
+                        {{-- data-post-id="{{$post->id}}" --}}
+                        {{--<i data-post-id="{{$post->id}}" ></i>--}}
+                        {{--                        <a href="{{route('', [])}}" class="nav-link">--}}
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
-                                Layout Options
-                                <i class="fas fa-angle-left right"></i>
-                                <span class="badge badge-info right">6</span>
+                                Buy package
+                                {{-- ** number of package notifications and drop down ** --}}
+                                {{-- <i class="fas fa-angle-left right"></i> --}}
+                                {{-- <span class="badge badge-info right">6</span>--}}
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/layout/top-nav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Top Navigation + Sidebar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/boxed.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Boxed</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Sidebar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Navbar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/fixed-footer.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Fixed Footer</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Collapsed Sidebar</p>
-                                </a>
-                            </li>
-                        </ul>
+                        {{--                        <ul class="nav nav-treeview">--}}
+                        {{--                            <li class="nav-item">--}}
+                        {{--                                <a href="pages/layout/top-nav.html" class="nav-link">--}}
+                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                    <p>Top Navigation</p>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                            <li class="nav-item">--}}
+                        {{--                                <a href="pages/layout/top-nav-sidebar.html" class="nav-link">--}}
+                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                    <p>Top Navigation + Sidebar</p>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                            <li class="nav-item">--}}
+                        {{--                                <a href="pages/layout/boxed.html" class="nav-link">--}}
+                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                    <p>Boxed</p>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                            <li class="nav-item">--}}
+                        {{--                                <a href="pages/layout/fixed-sidebar.html" class="nav-link">--}}
+                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                    <p>Fixed Sidebar</p>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                            <li class="nav-item">--}}
+                        {{--                                <a href="pages/layout/fixed-sidebar-custom.html" class="nav-link">--}}
+                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                    <p>Fixed Sidebar <small>+ Custom Area</small></p>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                            <li class="nav-item">--}}
+                        {{--                                <a href="pages/layout/fixed-topnav.html" class="nav-link">--}}
+                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                    <p>Fixed Navbar</p>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                            <li class="nav-item">--}}
+                        {{--                                <a href="pages/layout/fixed-footer.html" class="nav-link">--}}
+                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                    <p>Fixed Footer</p>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                            <li class="nav-item">--}}
+                        {{--                                <a href="pages/layout/collapsed-sidebar.html" class="nav-link">--}}
+                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
+                        {{--                                    <p>Collapsed Sidebar</p>--}}
+                        {{--                                </a>--}}
+                        {{--                            </li>--}}
+                        {{--                        </ul>--}}
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chart-pie"></i>
                             <p>
-                                Charts
+                                users
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
+                            {{--@can('permission_create_CityManager')--}}
+
+                            @can('permission_create_CityManager')
+                                <li class="nav-item">
+                                    <a href="{{route('create_city_manager')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create City manager</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('permission_create_GymManager')
+                                <li class="nav-item">
+                                    <a href="{{route('create_gym_manager')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create Gym manager</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            {{--@endcan--}}
                             <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                <a href="{{route('show_users')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>ChartJS</p>
+                                    <p>show</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/flot.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Flot</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/inline.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Inline</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/uplot.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>uPlot</p>
-                                </a>
-                            </li>
+
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tree"></i>
                             <p>
-                                UI Elements
+                                gymes
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/UI/general.html" class="nav-link">
+
+                                <a href="{{route('show_gyms')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>General</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/UI/icons.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Icons</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/UI/buttons.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Buttons</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/UI/sliders.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Sliders</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/UI/modals.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Modals & Alerts</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/UI/navbar.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Navbar & Tabs</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/UI/timeline.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Timeline</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/UI/ribbons.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Ribbons</p>
+                                    <p>show</p>
                                 </a>
                             </li>
                         </ul>
@@ -432,33 +399,21 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
-                                Forms
+                                cities
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/forms/general.html" class="nav-link">
+                                <a href="{{route('create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>General Elements</p>
+                                    <p>create</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/forms/advanced.html" class="nav-link">
+                                <a href="{{route('show_cities')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Advanced Elements</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/forms/editors.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Editors</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/forms/validation.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Validation</p>
+                                    <p>show</p>
                                 </a>
                             </li>
                         </ul>
@@ -467,27 +422,96 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
-                                Tables
+                                attendances
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/tables/simple.html" class="nav-link">
+                                <a href="{{route("show.attendance")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Simple Tables</p>
+                                    <p>show</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/data.html" class="nav-link">
+                                <a href="{{route("create.attendance")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>DataTables</p>
+                                    <p>create</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {{-- orders nav item --}}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Orders
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route("show.order")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Show</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{route("create.order")}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {{-- order nav item done --}}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                training packages
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('packages.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>show</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/tables/jsgrid.html" class="nav-link">
+                                <a href="{{route('packages.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>jsGrid</p>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-ivon fas fa-dumbbell"></i>
+                            <p>
+                                coaches
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('create_coach')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('show_coaches')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Show</p>
                                 </a>
                             </li>
                         </ul>
@@ -606,7 +630,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="pages/examples/faq.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    Package <i class="far fa-circle nav-icon"></i>
                                     <p>FAQ</p>
                                 </a>
                             </li>
