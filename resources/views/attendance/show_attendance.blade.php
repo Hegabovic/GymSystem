@@ -68,7 +68,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">showing attendances here soon</h5>
+                                <h5 class="card-title">Attendances</h5>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -116,8 +116,8 @@
                         <td>{{$table->user->name}}</td> 
                         <td>{{$table->user->email}}</td> 
                         <td>{{$table->training_session->name}}</td> 
-                        <td>{{$table->attendance_time}}</td> 
-                        <td>{{$table->attendance_date}}</td> 
+                        <td>{{$table->updated_at}}</td> 
+                        <td>{{$table->created_at}}</td> 
                         <td>{{$table->gym->name}}</td> 
                         <td>{{$table->gym->city->city_name}}</td> 
                         {{-- add 'belongsTo line in gym model so its possible to use the above line ^' --}}
