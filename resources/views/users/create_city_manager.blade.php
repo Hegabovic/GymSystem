@@ -36,7 +36,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <form method="post" action="{{route('store_city_manager')}}">
+                        <form method="post" action="{{route('store_city_manager',['clerk'=>'city-manager'])}}">
                             @csrf
                             <div class="card-body">
                            @include('forms.create_clerk_form')

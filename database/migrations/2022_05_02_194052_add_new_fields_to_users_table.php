@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->string('avatar_path')->nullable();
+            $table->string('n_id')->nullable();
+            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->date('dob')->nullable();
         });
     }
 

@@ -32,9 +32,15 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/create-city-manager', [UserController::class, 'createCityManager'])->name('create_city_manager');
 Route::get('/create-gym-manager', [UserController::class, 'createGymManager'])->name('create_gym_manager');
+
 Route::post('/store-gym-manager', [UserController::class, 'storeGymManager'])->name('store_gym_manager');
 Route::post('/store-city-manager', [UserController::class, 'storeCityManager'])->name('store_city_manager');
 Route::get('/show-users', [UserController::class, 'showUsers'])->name('show_users');
+
+Route::post('/store/{clerk}',[UserController::class,'store'])->name('store_clerk');
+//Route::post('/store-city-manager',[UserController::class,'storeCityManager'])->name('store_city_manager');
+Route::get('/show-users',[UserController::class,'showUsers'])->name('show_users');
+
 
 Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
 

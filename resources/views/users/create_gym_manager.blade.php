@@ -36,13 +36,13 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <form method="post" action="{{route('store_gym_manager')}}">
+                        <form method="post" action="{{route('store_clerk',['clerk'=>'gym-manager'])}}">
                             @csrf
                             <div class="card-body">
                                 @include('forms.create_clerk_form')
                                 <div class="form-group">
                                     <label for="gym-input">gym</label>
-                                    <select name="city" id="gym-input" class="form-control" >
+                                    <select name="facility" id="gym-input" class="form-control" >
                                         <option>gym-1</option>
                                         <option>gym-1</option>
                                         <option>gym-1</option>
