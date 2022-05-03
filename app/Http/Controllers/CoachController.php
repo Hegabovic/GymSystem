@@ -7,6 +7,8 @@ use App\Models\Coach;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class CoachController extends Controller
 {
@@ -27,5 +29,16 @@ class CoachController extends Controller
     public function create(): Factory|View|Application
     {
         return view('coaches.create');
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $this->coachRepository->create([
+            "name" => $request->name,
+            "phone" => $request->phone,
+            "address" => $request->address
+        ]);
+
+        return back();
     }
 }

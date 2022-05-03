@@ -15,6 +15,8 @@ class Coach extends Model
 
     protected $fillable = [
         'name',
+        "phone",
+        "address"
     ];
 
     protected $casts = [

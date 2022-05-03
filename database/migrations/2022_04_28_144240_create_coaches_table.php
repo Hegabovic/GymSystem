@@ -15,6 +15,8 @@ return new class extends Migration {
         Schema::create('coaches', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable(false);
+            $table->string('phone')->nullable(false);
+            $table->string('address')->nullable(false);
             $table->softDeletes();
             $table->timestamps();
         });
