@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,15 +13,24 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('attendence', function (Blueprint $table) {
+        Schema::create('training_sessions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('customer_id');
+            $table->string('name', 100);
             $table->unsignedBigInteger('gym_id');
-            $table->unsignedBigInteger('training_session_id');
-            $table->foreign('customer_id')->references('user_id')->on('customers'); ##instead of above line
             $table->foreign('gym_id')->references('id')->on('gyms');
-            $table->foreign('training_session_id')->references('id')->on('training_sessions');
+            $table->date('start_at');
+            $table->date('finish_at');
             $table->timestamps();
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('training_session');
     }
 };
