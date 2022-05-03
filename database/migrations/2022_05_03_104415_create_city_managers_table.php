@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,11 +13,12 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('gyms', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 100);
-            $table->string("cover_image");
-            $table->unsignedBigInteger("city_id");
+        Schema::create('city_managers', function (Blueprint $table) {
+            $table->string('avatar_path');
+            $table->unsignedBigInteger('n_id');
+            $table->unsignedBigInteger('user_id')->unique();
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
         });
@@ -29,6 +31,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('gyms');
+        Schema::dropIfExists('city_managers');
     }
 };
