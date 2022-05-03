@@ -6,20 +6,32 @@ use Illuminate\Http\Request;
 
 class PackageController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         return view('packages.index');
     }
-    public function create(){
-        
+
+    public function create()
+    {
+
         return view('packages.create');
     }
-    public function store(){}
-    public function show(){
+
+    public function store()
+    {
+    }
+
+    public function show()
+    {
         return view('packages.show');
     }
-    public function edit(){} 
-    public function update(){}
 
-  
+    public function edit()
+    {
+    }
+
+    public function update()
+    {
+    }
 }
