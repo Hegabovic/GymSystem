@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\City;
 use App\Models\Customer;
 use App\Models\Gym;
+use App\Models\Package;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,5 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GymSeeder::class);
         $this->call(TrainingSessionSeeder::class);
         $this->call(AttendanceSeeder::class);
+        $this->call(PackageSeeder::class);
+        $this->call(OrderSeeder::class);
     }
 }
