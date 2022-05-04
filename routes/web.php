@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::group(['middleware'=>'auth'],function () {
+Route::group(['middleware'=>'auth'],function (){
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/create-city-manager', [UserController::class, 'createCityManager'])->name('create_city_manager');
