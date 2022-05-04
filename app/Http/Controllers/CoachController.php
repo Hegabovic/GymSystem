@@ -25,14 +25,14 @@ class CoachController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $numberOfCoaches = count($this->coachRepository->all());
-        return view('coaches.show');
+        $coaches = $this->coachRepository->all();
+        return view('coaches.show', ['coaches' => $coaches]);
     }
 
     public function showCoachesTable()
     {
-        $query = $this->coachRepository->all();
-        return datatables($query)->make(true);
+//        $coaches = $this->coachRepository->all();
+//        return datatables($query)->make(true);
     }
 
     public function create(): Factory|View|Application
