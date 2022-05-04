@@ -30,6 +30,9 @@
 
    @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
+<script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
+
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -68,7 +71,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">Creating Attendances here soon</h5>
+                                <h5 class="card-title">Creating Attendances</h5>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -94,8 +97,43 @@
                             </div>
                             <!-- /.card-header -->
 
-                            <!-- ./card-body -->
+                            {{-- <div class="form-control">
+                                <form action="{{route('show.attendances')}}" method="POST">
+                                <input type="text" class="form-control" placeholder="Name">
+                                <input type="text" class="form-control" placeholder="email">
+                                </form>
+                            </div> --}}
 
+                            {{-- <form> --}}
+                            <form action="{{route('store.attendances')}}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter training session name">
+                                  </div>
+
+                                <div class="form-group">
+                                  <label for="email">Email address</label>
+                                  <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputPassword1">Password</label>
+                                  <input type="password" class="form-control" name="password" placeholder="Password">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="training_session_name">training session id</label>
+                                    <input type="text" class="form-control" name="training_session_name" aria-describedby="emailHelp" placeholder="Enter training session name">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="gym_id">gym id</label>
+                                    <input type="text" class="form-control" name="gym_id" aria-describedby="emailHelp" placeholder="Enter gym id">
+                                  </div>
+                                
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
                             <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->

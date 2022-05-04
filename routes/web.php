@@ -55,11 +55,14 @@ Route::get('/city-create', [CityController::class, 'create'])->name('create');
 Route::post('/city-store', [CityController::class, 'store'])->name('store_city');
 Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete_city');
 
-Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendance');
-Route::get('/create-attendance', [attendanceController::class, 'create'])->name('create.attendance');
+Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendances');
+//next two routes should be in Api
+Route::get('/attendance-create', [attendanceController::class, 'create'])->name('create.attendances');
+Route::post('/attendance-store', [attendanceController::class, 'store'])->name('store.attendances');
+// Route::post('/attendance-delete', [attendanceController::class, 'delete'])->name('delete.attendances');
 
 Route::get('/order', [orderController::class, 'show'])->name('show.order');
-Route::get('/order-create', [orderController::class, 'create'])->name('create.order');
+Route::get('/create-order', [orderController::class, 'create'])->name('create.order');
 
 
 Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');

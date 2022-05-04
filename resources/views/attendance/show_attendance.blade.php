@@ -30,6 +30,9 @@
 
    @extends('layouts.app')
 @section('content')
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+{{-- <script src="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"></script> --}}
+{{-- <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> --}}
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -68,7 +71,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">showing attendances here soon</h5>
+                                <h5 class="card-title">Attendances</h5>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -95,40 +98,124 @@
                             <!-- /.card-header -->
 
                             <!-- ./card-body -->
-            <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-            <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+            {{-- <script src="../../plugins/datatables/jquery.dataTables.min.js"></script> --}}
+            {{-- <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script> --}}
 
-            <table id="example" class="table table-striped table-bordered">
+            <table id="example" class="table table-bordered" style="color: black">
                  <thead>
                     <tr>
+                        <th>Id</th>
                         <th>user name</th>
                         <th>email</th>
                         <th>training session name</th>
-                        <th>attendance time</th>
                         <th>attendance date</th>
+                        <th>attendance time</th>
                         <th>Gym</th>
                         <th>City</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($items as $table)
+                    {{-- @if ( ! $table->trashed()) --}}
                     <tr>
-                        <td>{{$table->user->name}}</td> 
-                        <td>{{$table->user->email}}</td> 
+                        <td>{{$table->id}}</td> 
+                        <td>{{$table->customer->user->name}}</td> 
+                        <td>{{$table->customer->user->email}}</td> 
                         <td>{{$table->training_session->name}}</td> 
-                        <td>{{$table->attendance_time}}</td> 
-                        <td>{{$table->attendance_date}}</td> 
+                        
+                        @if($table->created_at)
+                        <td>{{$table->created_at->toDateString() }}</td> 
+                        @endif
+                        
+                        @if($table->created_at)
+                        <td>{{$table->created_at->format('H:i')}}</td> 
+                        @endif
                         <td>{{$table->gym->name}}</td> 
-                        <td>{{$table->gym->city->city_name}}</td> 
-                        {{-- add 'belongsTo line in gym model so its possible to use the above line ^' --}}
-                        {{-- remember to add new migration that edits attendance time type -> time() --}}
+                        <td>{{$table->gym->city->name}}</td> 
+                        <td><button class="btn btn-primary delete" id="{{$table->id}}">Delete</button></td> 
                     </tr>
+                    {{-- @endif --}}
+                    {{-- @else
+                <tr align="center">
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+                    <th scope="col">-</th>
+
+                    <td  align="center">
+                        <form method="post" action="{{ route('attendance.restore', ['id' => $post->id])}}">
+                            @csrf
+                            @method('put')
+                            <button type="submit"  class="btn btn-warning"><i class="bi bi-pencil-square"></i> Restore</button>
+                            <input name="id" type="hidden" value="{{ $table->id }}">
+                        </form>
+                    </td>
+                </tr>
+            @endif --}}
                     @endforeach
+
+                    <script > 
+                     $(document).on('click', '.delete', function() {
+                        $confirm=confirm('Are you sure you want to delete ?');
+                        if($confirm)
+                        {
+                            $(this).parent().parent().css("background-color", "grey");
+                            let Attendance_id=this.id;
+                            // $(this).parent().parent().remove();
+                            $.ajax({
+                                url: "{{route('delete.attendances')}}"+`?id=${Attendance_id}`,
+                                type: 'DELETE',
+                                contentType: 'application/json',
+                                data: `{"id":"${Attendance_id}"}`,
+                                success: function(result) {
+                                    // Do something with the result
+                                    
+                                }
+                            });
+
+                            
+                        }
+                    });
+                    </script>
                     
                 <tbody> 
                
                
              </table>
+
+             
+             <script>
+                $(document).ready(function() {
+                 $('#example').DataTable();
+             } );
+                </script>  
+                
+                
+                {{-- <script>
+                $(document).ready(function () {
+                    $('#example').DataTable({
+                        'user name': true,
+                        'name': true,
+                        "ajax": {{ json_encode($items) }},
+                        'columns': [
+                            {"data": 'username'},
+                            {"data": 'email'},
+                            {"data": 'training session name'},
+                            {"data": 'attendance date'},
+                            {"data": 'attendance time'},
+                            {"data": 'Gym'},
+                            {"data": 'City'},
+                        ]
+                    });
+                });
+            </script> --}}
+
              <!-- ./card-body done-->
 {{-- 
 <script>
