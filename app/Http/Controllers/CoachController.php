@@ -56,6 +56,7 @@ class CoachController extends Controller
             "address" => $formData["address"]
         ];
         $this->coachRepository->update($request->id, $updatedCoach);
+
         return to_route('show_coaches');
     }
 
@@ -71,7 +72,6 @@ class CoachController extends Controller
             "phone" => $request->phone,
             "address" => $request->address
         ]);
-
-        return back();
+        return to_route('show_coaches');
     }
 }
