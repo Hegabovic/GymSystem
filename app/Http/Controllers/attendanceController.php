@@ -31,13 +31,16 @@ class attendanceController extends Controller
             ]);
         return to_route('show.attendances');
     }
-    public function restore($postID)
+    public function restore()
     {
-        $post = Attendance::withTrashed($postID)->where('id', $postID)->first();
+        $data=request()->input('id'); 
+        $post = Attendance::withTrashed()->where('id', $data)->first();
         $post->restore();
         $post->save();
 
-        return to_route('attendance.show');
+        // return ['success' =>'true'];
+        return to_route('show.attendances');
+
     }
 
 
