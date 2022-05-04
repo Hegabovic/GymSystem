@@ -43,8 +43,18 @@ class attendanceController extends Controller
 
     public function delete()
     {
+        $isDeleted=false;
         $data=request()->input('id'); 
-        Attendance::find($data)->delete();
-        return ['success' =>'true'];
+        $record=Attendance::find($data);
+        if($record)
+        {
+            $isDeleted=$record->delete();
+        }
+        if($isDeleted)
+        {
+            return ['success' =>'true'];
+        }else{
+            return ['success' =>'false'];
+        }
     }
 }   
