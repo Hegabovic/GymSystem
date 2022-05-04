@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\BaseRepositoryInterface;
+use App\Http\Requests\EditClerkRequest;
 use App\Http\Requests\StoreClerkRequest;
 use App\Models\User;
 //use App\Repositories\BaseRepository;
@@ -10,7 +11,10 @@ use App\Repositories\CityManagerRepository;
 use App\Repositories\GymManagerRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -83,5 +87,25 @@ class UserController extends Controller
     public function edit()
     {
         return view('users.edit_profile');
+    }
+    public function update(EditClerkRequest $request)
+    {
+        $input=$request->validated();
+       //dd($input);
+        if($request->hasFile('avatar'))
+        {
+            $avatarPath=$request->file('avatar')->store('public/photos');
+            if($request->user()->hasrole('GymManager'))
+            {
+                $this->gymManagerRepository->updateavatar($request->user()->gymManager->id,$avatarPath);
+            }
+            if($request->user()->hasrole('CityManager'))
+            {
+                $this->cityManagerRepository->updateavatar($request->user()->cityManager->id,$avatarPath);
+            }
+        }
+        if(isset($input['password'])) $input['password']=Hash::make($input['password']);
+        $this->userRepository->update($request->user()->id,$input);
+        return to_route('edit_profile');
     }
 }

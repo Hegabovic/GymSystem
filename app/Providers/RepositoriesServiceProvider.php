@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Contracts\BaseRepositoryInterface;
+use App\Contracts\ClerkRepositoryInterface;
 use App\Contracts\CityRepositoryInterface;
 use App\Contracts\CoachRepositoryInterface;
 use App\Contracts\OrderRepositoryInterface;
@@ -41,5 +42,7 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(BaseRepositoryInterface::class,UserRepository::class);
         $this->app->bind(BaseRepositoryInterface::class,CityManagerRepository::class);
         $this->app->bind(BaseRepositoryInterface::class,GymManagerRepository::class);
+        $this->app->bind(ClerkRepositoryInterface::class,GymManagerRepository::class);
+        $this->app->bind(ClerkRepositoryInterface::class,CityManagerRepository::class);
     }
 }

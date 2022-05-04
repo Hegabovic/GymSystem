@@ -38,7 +38,7 @@ class StoreClerkRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'A title is required',
+            'name.required' => 'A name is required',
             'email.unique'=>'There is already post with the same name',
             'name.max' => 'Title cannot exceed 20 letters',
         ];

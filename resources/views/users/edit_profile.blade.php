@@ -38,12 +38,23 @@
                         </div>
                         <h6 class="text-right">Edit Profile</h6>
                     </div>
-                    <form>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form method="post" action="{{route('edit_profile')}}" enctype="multipart/form-data">
+                        @csrf
+                        @method('put')
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">name</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" name="name" >
+                                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" name="name" value="{{Auth::user()->name}}" >
                             </div>
                         </div>
                     </div>
@@ -51,7 +62,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email">
+                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email" value="{{Auth::user()->email}}">
                             </div>
                         </div>
                     </div>

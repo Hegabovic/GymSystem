@@ -38,6 +38,7 @@ Route::group(['middleware'=>'auth'],function (){
     Route::get('/show-users',[UserController::class,'showUsers'])->name('show_users');
 
     Route::get('/edit-profile',[UserController::class,'edit'])->name('edit_profile');
+    Route::put('/edit-profile',[UserController::class,'update'])->name('edit_profile');
 
     Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
 

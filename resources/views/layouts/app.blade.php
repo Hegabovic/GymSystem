@@ -224,7 +224,7 @@
                     @elseif(Auth::user()->hasRole('CityManager'))
                         <img src="{{Storage::url(Auth::user()->cityManager->avatar_path)}}" class="img-circle elevation-2" alt="User Image">
                     @else
-                        <img src="{{Storage::url(Auth::user()->cityManager->avatar_path)}}" class="img-circle elevation-2" alt="User Image">
+                        <img src="{{Storage::url(env('DEFAULT_AVATAR'))}}" class="img-circle elevation-2" alt="User Image">
                     @endif
                 </div>
                 <div class="info">
@@ -461,6 +461,18 @@
                                 <span class="badge badge-info right">2</span>
                             </p>
                         </a>
+                    </li>
+                    <li class="nav-header">logout</li>
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
                     </li>
                 </ul>
             </nav>
