@@ -25,14 +25,15 @@
                                         <td>{{$coach->phone}}</td>
                                         <td>{{$coach->address}}</td>
                                         <td>
-                                            <button class="btn btn-primary m-1 d-inline-block "
-                                                    data-id="{{$coach->id}}">
+                                            <a role="button" href="{{route('update_coach',[$coach->id])}}"
+                                               class="btn btn-primary m-1 d-inline-block"
+                                               data-id="{{$coach->id}}">
                                                 <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-danger m-1 d-inline-block delete"
-                                                    data-id="{{$coach->id}}">
+                                            </a>
+                                            <a role="button" class="btn btn-danger m-1 d-inline-block delete"
+                                               data-id="{{$coach->id}}">
                                                 <i class="fas fa-trash-alt"></i>
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -52,7 +53,8 @@
         sendDeleteRequest();
 
         function sendDeleteRequest() {
-            $(document).on('click', '.delete', function () {
+            $(document).on('click', '.delete', function (event) {
+                event.preventDefault();
                 let coachId = this.getAttribute('data-id');
                 let url = "{{route('coach.delete')}}" + `?id=${coachId}`;
 
@@ -72,6 +74,7 @@
                 }
             });
         }
+
     </script>
 @endsection
 

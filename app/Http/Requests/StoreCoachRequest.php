@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreCoachRequest extends FormRequest
 {
@@ -24,8 +25,16 @@ class StoreCoachRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:coaches|max:255',
-            'phone' => 'required|unique:coaches|regex:/(01)[0-9]{9}/',
+            'name' => [
+                'required',
+                'min:3',
+                'max:255',
+                Rule::unique('coaches', 'name')->ignore($this->id)
+            ],
+            'phone' => [
+                'required',
+                Rule::unique('coaches', 'phone')->ignore($this->id)
+            ],
             'address' => ' required'
         ];
     }

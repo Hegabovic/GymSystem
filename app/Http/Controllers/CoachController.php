@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\CoachRepositoryInterface;
 use App\Http\Requests\StoreCoachRequest;
+use App\Models\Attendance;
 use App\Models\Coach;
 use App\Models\SessionsCoaches;
 use Illuminate\Contracts\Foundation\Application;
@@ -35,9 +36,27 @@ class CoachController extends Controller
         $result = $this->coachRepository->delete($coachId);
         if ($result > 0)
             return ["success" => true];
+
         else
             return ["success" => false];
+    }
 
+    public function edit($coachId)
+    {
+        $selectedCoach = $this->coachRepository->findById($coachId);
+        return view('coaches.edit', ['coach' => $selectedCoach]);
+    }
+
+    public function storeEdit(StoreCoachRequest $request)
+    {
+        $formData = $request->all();
+        $updatedCoach = [
+            "name" => $formData["name"],
+            "phone" => $formData["phone"],
+            "address" => $formData["address"]
+        ];
+        $this->coachRepository->update($request->id, $updatedCoach);
+        return to_route('show_coaches');
     }
 
     public function create(): Factory|View|Application
