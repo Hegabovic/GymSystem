@@ -37,5 +37,4 @@ class ApiUserController extends Controller
     {
 
     }
-
 }
