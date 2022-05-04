@@ -68,14 +68,20 @@ class UserController extends Controller
     }*/
     public function showUsers()
     {
+        dd(\request()->user()->gymManager);
         return view('users.show_users');
     }
     public function createCityManager()
     {
         return view('users.create_city_manager');
     }
-    public function createGymManager()
+    public function createGymManager(Request $request)
     {
+
         return view('users.create_gym_manager');
+    }
+    public function edit()
+    {
+        return view('users.edit_profile');
     }
 }
