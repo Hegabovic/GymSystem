@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerRegisterRequest;
 use App\Models\User;
+use App\Notifications\Welcome;
 use App\Repositories\CityManagerRepository;
 use App\Repositories\CustomerRepository;
 use App\Repositories\GymManagerRepository;
@@ -47,6 +48,9 @@ class AuthController extends Controller
             'birth_date'=>$input['birth_date']
         ]);
         event(new Registered($user));
+
+
+
 
         $token = $user->createToken('authtoken');
 
