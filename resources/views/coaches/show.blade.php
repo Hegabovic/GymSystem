@@ -50,16 +50,8 @@
                     {"data": "name"},
                     {"data": "phone"},
                     {"data": "address"},
-                    {
-                        "defaultContent": ` <div class="buttonsContainer">
-                                            <button  class='btn btn-primary btnEdit'>
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button  class='btn btn-danger btnDelete'>
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        <div>`
-                    },
+                    {"data":"action"},
+
                 ],
             });
         });
