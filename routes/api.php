@@ -21,5 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('coaches-table', [CoachController::class, 'showCoachesTable'])->name('show_coaches_table');
 Route::delete('/attendance-delete', 'App\Http\Controllers\attendanceController@delete')->name('delete.attendances');
+Route::delete('/order-delete', 'App\Http\Controllers\orderController@delete')->name('delete.orders');
 
 
