@@ -138,14 +138,14 @@
              </table>
 
              
-             {{-- <script>
+             <script>
                 $(document).ready(function() {
                  $('#example').DataTable();
              } );
-                </script>   --}}
+                </script>  
                 
                 
-                <script>
+                {{-- <script>
                 $(document).ready(function () {
                     $('#example').DataTable({
                         'user name': true,
@@ -162,7 +162,7 @@
                         ]
                     });
                 });
-            </script>
+            </script> --}}
 
              <!-- ./card-body done-->
 {{-- 
