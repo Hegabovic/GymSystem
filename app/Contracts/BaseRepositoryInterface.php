@@ -8,6 +8,8 @@ interface BaseRepositoryInterface
 
     public function all();
 
+    public function allWithTrashed();
+
     public function findById($id);
 
     public function update($id, $entity): bool|null;

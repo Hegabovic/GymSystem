@@ -22,6 +22,11 @@ class BaseRepository implements BaseRepositoryInterface
 
     public function all()
     {
+        return $this->model->all();
+    }
+
+    public function allWithTrashed()
+    {
         return $this->model->withTrashed()->get();
     }
 

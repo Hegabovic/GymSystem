@@ -29,8 +29,14 @@ class CoachController extends Controller
         return view('coaches.show', ['coaches' => $coaches]);
     }
 
-    public function showCoachesTable()
+    public function delete()
     {
+        $coachId = request()->input('id');
+        $result = $this->coachRepository->delete($coachId);
+        if ($result > 0)
+            return ["success" => true];
+        else
+            return ["success" => false];
 
     }
 
