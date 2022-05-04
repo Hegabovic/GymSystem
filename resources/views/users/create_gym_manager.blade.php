@@ -45,7 +45,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form method="post" action="{{route('store_clerk',['clerk'=>'gym-manager'])}}">
+                        <form method="post" action="{{route('store_clerk',['clerk'=>'gym-manager'])}}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 @include('forms.create_clerk_form')
