@@ -38,6 +38,8 @@ Route::post('/user-store', [UserController::class, 'store'])->name('store_user')
 Route::get('/coach', [CoachController::class, 'index'])->name('show_coaches');
 Route::get('/coach-create', [CoachController::class, 'create'])->name('create_coach');
 Route::post('/coach-store', [CoachController::class, 'store'])->name('store_coach');
+Route::get('/coach-edit/{id}', [CoachController::class, 'edit'])->name('update_coach');
+Route::put('/coach-update/{id}', [CoachController::class, 'storeEdit'])->name('store_updated_coach');
 Route::get('/city', [CityController::class, 'index'])->name('show_cities');
 Route::get('/city-create', [CityController::class, 'create'])->name('create');
 Route::post('/city-store', [CityController::class, 'store'])->name('store_city');
