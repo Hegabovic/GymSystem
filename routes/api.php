@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ApiUserController;
 use App\Http\Controllers\CoachController;
@@ -20,9 +22,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('/customer/register',[ApiUserController::class,'register'])->name('customer-register');
-
+Route::group(['middleware'=>['auth:sanctum','verified']],function (){
+    Route::get('/users',[ApiUserController::class,'index']);
+});
+Route::post('/customer/register',[AuthController::class,'register'])->name('customer-register');
+Route::post('/login',[AuthController::class,'login'])->name('customer-login');
+Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
+Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
 Route::get('coaches-table', [CoachController::class, 'showCoachesTable'])->name('show_coaches_table');
 Route::delete('/attendance-delete', 'App\Http\Controllers\attendanceController@delete')->name('delete.attendances');
 
