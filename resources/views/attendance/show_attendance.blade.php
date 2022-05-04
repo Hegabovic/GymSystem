@@ -1,38 +1,5 @@
-{{-- <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
-
-<table id="example" >
-    {{-- class="table table-striped table-bordered" --}}
-    
-    {{-- <thead>
-        <tr>
-            <th>user name</th>
-            <th>email</th>
-            <th>training session name</th>
-            <th>attendance time</th>
-            <th>attendance date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-           <td>adham</td> 
-        </tr>
-    <tbody> 
-     --}}
-{{-- </table>
-
-<script>
-   $(document).ready(function() {
-    $('#example').DataTable();
-} );
-   </script> --}}
-   
-
-   @extends('layouts.app')
+@extends('layouts.app')
 @section('content')
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-{{-- <script src="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"></script> --}}
-{{-- <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> --}}
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -98,8 +65,6 @@
                             <!-- /.card-header -->
 
                             <!-- ./card-body -->
-            {{-- <script src="../../plugins/datatables/jquery.dataTables.min.js"></script> --}}
-            {{-- <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script> --}}
 
             <table id="example" class="table table-bordered" style="color: black">
                  <thead>
@@ -113,6 +78,7 @@
                         <th>Gym</th>
                         <th>City</th>
                         <th>Delete</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -133,30 +99,15 @@
                         @endif
                         <td>{{$table->gym->name}}</td> 
                         <td>{{$table->gym->city->name}}</td> 
-                        <td><button class="btn btn-primary delete" id="{{$table->id}}">Delete</button></td> 
+                        <td><button class="btn btn-primary delete" data-id="{{$table->id}}">Delete</button></td> 
+                        <td>
+                            <a href={{route('edit.attendances', ['id'=>$table->id])}}> 
+                            <button class="btn btn-primary edit" edit-id="{{$table->id}}">Edit</button>
+                            </a> 
+                        </td> 
                     </tr>
                     {{-- @endif --}}
                     @else
-                {{-- <tr align="center">
-                    <th scope="col">-</th>
-                    <th scope="col">-</th>
-                    <th scope="col">-</th>
-                    <th scope="col">-</th>
-                    <th scope="col">-</th>
-                    <th scope="col">-</th>
-                    <th scope="col">-</th>
-                    <th scope="col">-</th>
-                    <th scope="col">-</th>
-
-                    <td  align="center">
-                        <form method="post" action="{{ route('attendance.restore', ['id' => $table->id])}}">
-                            @csrf
-                            @method('put')
-                            <button type="submit"  class="btn btn-warning"><i class="bi bi-pencil-square"></i> Restore</button>
-                            <input name="id" type="hidden" value="{{ $table->id }}">
-                        </form>
-                    </td>
-                </tr> --}}
             @endif
                     @endforeach
 
@@ -168,7 +119,7 @@
                             let myThis=$(this).parent().parent()
                             $(this).parent().parent().css("background-color", "grey");
 
-                            let Attendance_id=this.id;
+                            let Attendance_id=this.getAttribute('data-id');
                             $.ajax({
                                 url: "{{route('delete.attendances')}}"+`?id=${Attendance_id}`,
                                 type: 'DELETE',
@@ -178,8 +129,6 @@
                                     myThis.remove();
                                 }
                             });
-
-                            
                         }
                     });
                     </script>
@@ -196,18 +145,6 @@
              } );
                 </script>  
                 
-            
-
-             <!-- ./card-body done-->
-{{-- 
-<script>
-   $(document).ready(function() {
-    $('#example').DataTable();
-} );
-   </script>  --}}
-   
-
-
                             <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->

@@ -59,7 +59,8 @@ Route::get('/attendance', [attendanceController::class, 'show'])->name('show.att
 //next two routes should be in Api
 Route::get('/attendance-create', [attendanceController::class, 'create'])->name('create.attendances');
 Route::post('/attendance-store', [attendanceController::class, 'store'])->name('store.attendances');
-// Route::post('/attendance-delete', [attendanceController::class, 'delete'])->name('delete.attendances');
+Route::get('/attendance-edit/{id}', [attendanceController::class, 'edit'])->name('edit.attendances');
+Route::put('/attendance-update/{id}', [attendanceController::class, 'update'])->name('update.attendances');
 
 Route::get('/order', [orderController::class, 'show'])->name('show.order');
 Route::get('/create-order', [orderController::class, 'create'])->name('create.order');

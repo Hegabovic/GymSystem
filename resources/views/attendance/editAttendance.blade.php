@@ -65,43 +65,54 @@
                             </div>
                             <!-- /.card-header -->
 
-                            {{-- <div class="form-control">
-                                <form action="{{route('show.attendances')}}" method="POST">
-                                <input type="text" class="form-control" placeholder="Name">
-                                <input type="text" class="form-control" placeholder="email">
-                                </form>
-                            </div> --}}
-
                             {{-- <form> --}}
-                            <form action="{{route('store.attendances')}}" method="POST">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter training session name">
-                                  </div>
 
-                                <div class="form-group">
-                                  <label for="email">Email address</label>
-                                  <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                </div>
-                                <div class="form-group">
-                                  <label for="exampleInputPassword1">Password</label>
-                                  <input type="password" class="form-control" name="password" placeholder="Password">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="training_session_name">training session id</label>
-                                    <input type="text" class="form-control" name="training_session_name" aria-describedby="emailHelp" placeholder="Enter training session name">
-                                  </div>
+                                {{-- //     $attendance_id=$attendance->id;
+                                //     $name=$attendance->customer->user->name;
+                                //     $email=$attendance->customer->user->email;
+                                //     $session_name=$attendance->training_session->name; 
+                                //     $gym_name=$attendance->gym->name;
+                                //     $city_name=$attendance->gym->city->name;   --}}
+                                <?php>
+                                    // $attendance_id=$attendance->id;
+                                    $name=$attendance->customer->user->name;
+                                    $email=$attendance->customer->user->email;
+                                    $session_name=$attendance->training_session->name; 
+                                    $gym_name=$attendance->gym->name;
+                                    $city_name=$attendance->gym->city->name;
+                                    
+                                ?>
+                                <form method="POST" action="{{route('update.attendances',['id'=>$attendance->id])}} enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Name</label>
+                                        <input type="text" class="form-control" value="{{$attendance->customer->user->name}}" Name="name" />
+                                    </div>
 
-                                  <div class="form-group">
-                                    <label for="gym_id">gym id</label>
-                                    <input type="text" class="form-control" name="gym_id" aria-describedby="emailHelp" placeholder="Enter gym id">
-                                  </div>
-                                
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                              </form>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">email</label>
+                                        <input type="text" class="form-control" value="{{$attendance->customer->user->email}}" Name="email" />
+                                    </div>
+                                    {{-- $attendance->training_session->name --}}
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Training Session</label>
+                                        <input type="text" class="form-control" value="{{$attendance->training_session->name}}" Name="session_name" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Gym Name</label>
+                                        <input type="text" class="form-control" value="{{$attendance->gym->name}}" Name="gym_name" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">City Name</label>
+                                        <input type="text" class="form-control" value="{{$attendance->gym->city->name}}" Name="city_name" />
+                                    </div>
+                        
+                                  <button class="btn btn-primary btn-lg">Update</button>
+                                </form>
+                        
                             <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->
