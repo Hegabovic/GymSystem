@@ -20,6 +20,7 @@ class Gym extends Model
 
 
     use HasFactory;
+    use SoftDeletes;
 
     public function city()
     {

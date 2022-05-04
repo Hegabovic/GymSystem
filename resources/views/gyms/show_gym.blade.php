@@ -18,13 +18,14 @@
 
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table m-0" id="datatable">
+            <table class="table m-0" id="datatable" style="color: black;">
                 <thead>
                     <tr>
                         <th>id</th>
                         <th>name</th>
                         <th>created at</th>
                         <th>cover image</th>
+                        <th>options</th>
                         <!-- <th>city manger name</th> -->
                     </tr>
                 </thead>
@@ -40,6 +41,19 @@
                                 {{ $gym->cover_image }}
                             </div>
                         </td>
+
+
+                        <td>
+                        <button class="btn btn-primary m-1 d-inline-block" data-id="{{$gym->id}}">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-danger m-1 d-inline-block" data-id="{{$gym->id}}">
+                                                <i class="fas fa-trash-alt"></i>
+                     </button>
+                        </td>
+
+
+
                     </tr>
                     @endforeach
                 </tbody>
