@@ -47,7 +47,7 @@
                         <button class="btn btn-primary m-1 d-inline-block" data-id="{{$gym->id}}">
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            <button class="btn btn-danger m-1 d-inline-block" data-id="{{$gym->id}}">
+                        <button class="delete  btn btn-danger m-1 d-inline-block" data-id="{{$gym->id}}">
                                                 <i class="fas fa-trash-alt"></i>
                      </button>
                         </td>
@@ -56,6 +56,31 @@
 
                     </tr>
                     @endforeach
+                    <script >
+                         function sendDeleteRequest() {
+            $(document).on('click', '.delete', function () {
+                let gymId = this.getAttribute('data-id');
+                let url = "{{route('gym.delete')}}" + `?id=${gymId}`;
+
+                let result = confirm('Are you sure you want to delete ?');
+                if (result) {
+                    let row = $(this).parent().parent();
+                    $(this).parent().parent().css("background-color", "grey");
+
+                    $.ajax({
+                        url: url,
+                        type: 'DELETE',
+                        contentType: 'application/json',
+                        success: function (result) {
+                            row.remove();
+                        }
+                    });
+                }
+            });
+        }
+
+                sendDeleteRequest();
+                    </script>
                 </tbody>
 
             </table>
