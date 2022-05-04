@@ -58,9 +58,9 @@
                     @endforeach
                     <script >
                          function sendDeleteRequest() {
-            $(document).on('click', '.delete', function () {
-                let gymId = this.getAttribute('data-id');
-                let url = "{{route('gym.delete')}}" + `?id=${gymId}`;
+                              $(document).on('click', '.delete', function () {
+                                let gymId = this.getAttribute('data-id');
+                             let url = "{{route('gym.delete')}}" + `?id=${gymId}`;
 
                 let result = confirm('Are you sure you want to delete ?');
                 if (result) {
@@ -71,8 +71,16 @@
                         url: url,
                         type: 'DELETE',
                         contentType: 'application/json',
-                        success: function (result) {
-                            row.remove();
+                        success:  function (result) {
+                          if(result.success ){
+                            alert(result.messege);
+                                row.remove();
+
+                          }
+                          else{
+                            alert (result.messege);
+                          }
+
                         }
                     });
                 }

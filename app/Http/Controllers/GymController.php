@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Attendance;
 use App\Models\Gym;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 
 class GymController extends Controller
@@ -15,22 +17,24 @@ class GymController extends Controller
     }
 
     public function delete()
+
     {
-        $isDeleted=false;
-        $data=request()->input('id');
-        $record=Gym::find($data);
-        if($record)
-        {
-            $isDeleted=$record->delete();
-        }
-        if($isDeleted)
-        {
-            return ['success' =>'true'];
-        }else{
-            return ['success' =>'false'];
+
+
+        $gymid=request()->input('id');
+        $record=Gym::find($gymid);
+        // Attendance::select([ 'training_session_id'])->count()->where('gym_id',$gymid);
+        $NumberOfTrainingSession =Attendance::select([ 'training_session_id'])->where('gym_id',$gymid)->count();
+        if ($record) {
+
+
+            if ($NumberOfTrainingSession>0) {
+                return ["success" => false , "messege"=>"there is a training session in the gym"];
+            } else {
+
+                $isDeleted=$record->delete();
+                return ["success"=>true , "messege"=>"record has been deleted" ];
+            }
         }
     }
-
-
-    
 }
