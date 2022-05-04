@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\BaseRepositoryInterface;
+use App\Models\Attendance;
 use Illuminate\Database\Eloquent\Model;
 
 class BaseRepository implements BaseRepositoryInterface
@@ -21,6 +22,11 @@ class BaseRepository implements BaseRepositoryInterface
     }
 
     public function all()
+    {
+        return $this->model->all();
+    }
+
+    public function allWithTrashed()
     {
         return $this->model->withTrashed()->get();
     }
