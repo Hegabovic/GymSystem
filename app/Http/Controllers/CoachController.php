@@ -38,7 +38,7 @@ class CoachController extends Controller
             return ["success" => true];
 
         else
-            return ["success" => false];
+            return ["success" => false, "message" => "Delete hasn't completed successfully."];
     }
 
     public function edit($coachId)

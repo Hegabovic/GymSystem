@@ -61,14 +61,14 @@
                 let result = confirm('Are you sure you want to delete ?');
                 if (result) {
                     let row = $(this).parent().parent();
-                    $(this).parent().parent().css("background-color", "grey");
-
                     $.ajax({
                         url: url,
                         type: 'DELETE',
-                        contentType: 'application/json',
                         success: function (result) {
-                            row.remove();
+                            if (result.success)
+                                row.remove();
+                            else
+                                alert(result.message);
                         }
                     });
                 }
