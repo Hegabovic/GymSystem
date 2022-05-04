@@ -33,8 +33,5 @@ class ApiUserController extends Controller
    {
        return $this->userRepository->all();
    }
-    public function register(CustomerRegisterRequest $request)
-    {
 
-    }
 }
