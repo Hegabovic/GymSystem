@@ -1,7 +1,4 @@
 @extends('layouts.app')
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-@endsection
 @section('content')
     <div class="wrapper">
         <div class="container">
@@ -11,7 +8,7 @@
                         <div class="panel-heading">Coaches</div>
 
                         <div class="panel-body">
-                            <table class="table" style="color: black" id="datatable">
+                            <table class="table table-bordere" style="color: black;" id="datatable">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
@@ -22,6 +19,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($coaches as $coach)
+                                    <tr>
+                                        <td>{{$coach->id}}</td>
+                                        <td>{{$coach->name}}</td>
+                                        <td>{{$coach->phone}}</td>
+                                        <td>{{$coach->address}}</td>
+                                        <td>
+                                            <button class="btn btn-primary m-1 d-inline-block" data-id="{{$coach->id}}">
+                                                Edit
+                                            </button>
+                                            <button class="btn btn-danger m-1 d-inline-block" data-id="{{$coach->id}}">
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -30,39 +43,12 @@
             </div>
         </div>
     </div>
-
-@endsection
-@section('javascripts')
-    <script type="text/javascript" charset="utf8"
-            src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#datatable').DataTable({
-                processing: true,
-                serverSide: true,
-                contentType: "application/json",
-                ajax: {
-                    url: "{{ route('show_coaches_table') }}",
-                    dataSrc: "data",
-                },
-                columns: [
-                    {"data": "id"},
-                    {"data": "name"},
-                    {"data": "phone"},
-                    {"data": "address"},
-                    {"data":"action"},
-
-                ],
-            });
-        });
-
-        let table = document.getElementById("datatable");
-        table.addEventListener("click", (event) => {
-            let rowID;
-            if (event.target.classList.contains(['btnEdit']) || event.target.classList.contains('fa-edit') || event.target.classList.contains(['btnDelete'])) {
-                let rowID = event.target.closest('tr').firstElementChild.innerText;
-                console.log(rowID);
-            }
+            $('#datatable').DataTable();
         });
     </script>
 @endsection
+
+
+
