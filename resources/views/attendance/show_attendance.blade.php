@@ -3,7 +3,7 @@
 
 <table id="example" >
     {{-- class="table table-striped table-bordered" --}}
-    
+
     {{-- <thead>
         <tr>
             <th>user name</th>
@@ -15,9 +15,9 @@
     </thead>
     <tbody>
         <tr>
-           <td>adham</td> 
+           <td>adham</td>
         </tr>
-    <tbody> 
+    <tbody>
      --}}
 {{-- </table>
 
@@ -26,7 +26,7 @@
     $('#example').DataTable();
 } );
    </script> --}}
-   
+
 
    @extends('layouts.app')
 @section('content')
@@ -119,21 +119,21 @@
                     @foreach ($items as $table)
                     @if ( ! $table->trashed())
                     <tr>
-                        <td>{{$table->id}}</td> 
-                        <td>{{$table->customer->user->name}}</td> 
-                        <td>{{$table->customer->user->email}}</td> 
-                        <td>{{$table->training_session->name}}</td> 
-                        
+                        <td>{{$table->id}}</td>
+                        <td>{{$table->customer->user->name}}</td>
+                        <td>{{$table->customer->user->email}}</td>
+                        <td>{{$table->training_session->name}}</td>
+
                         @if($table->created_at)
-                        <td>{{$table->created_at->toDateString() }}</td> 
+                        <td>{{$table->created_at->toDateString() }}</td>
                         @endif
-                        
+
                         @if($table->created_at)
-                        <td>{{$table->created_at->format('H:i')}}</td> 
+                        <td>{{$table->created_at->format('H:i')}}</td>
                         @endif
-                        <td>{{$table->gym->name}}</td> 
-                        <td>{{$table->gym->city->name}}</td> 
-                        <td><button class="btn btn-primary delete" id="{{$table->id}}">Delete</button></td> 
+                        <td>{{$table->gym->name}}</td>
+                        <td>{{$table->gym->city->name}}</td>
+                        <td><button class="btn btn-primary delete" id="{{$table->id}}">Delete</button></td>
                     </tr>
                     {{-- @endif --}}
                     @else
@@ -160,7 +160,7 @@
             @endif
                     @endforeach
 
-                    <script > 
+                    <script >
                      $(document).on('click', '.delete', function() {
                         $confirm=confirm('Are you sure you want to delete ?');
                         if($confirm)
@@ -179,33 +179,33 @@
                                 }
                             });
 
-                            
+
                         }
                     });
                     </script>
-                    
-                <tbody> 
-               
-               
+
+                <tbody>
+
+
              </table>
 
-             
+
              <script>
                 $(document).ready(function() {
                  $('#example').DataTable();
              } );
-                </script>  
-                
-            
+                </script>
+
+
 
              <!-- ./card-body done-->
-{{-- 
+{{--
 <script>
    $(document).ready(function() {
     $('#example').DataTable();
 } );
    </script>  --}}
-   
+
 
 
                             <!-- /.card-footer -->

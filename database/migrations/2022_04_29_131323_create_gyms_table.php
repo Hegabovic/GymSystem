@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string("cover_image");
             $table->unsignedBigInteger("city_id");
             $table->foreign('city_id')->references('id')->on('cities');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

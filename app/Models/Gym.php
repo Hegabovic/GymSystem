@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Gym extends Model
 {
@@ -13,6 +14,7 @@ class Gym extends Model
         'created at',
         'cover_image',
         'city_manger',
+
     ];
 
 

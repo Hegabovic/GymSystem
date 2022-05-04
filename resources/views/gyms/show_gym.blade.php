@@ -18,9 +18,10 @@
 
     <div class="card-body p-0">
         <div class="table-responsive">
-            <table class="table m-0">
+            <table class="table m-0" id="datatable">
                 <thead>
                     <tr>
+                        <th>id</th>
                         <th>name</th>
                         <th>created at</th>
                         <th>cover image</th>
@@ -31,6 +32,7 @@
                     @foreach($gyms as $gym)
                     <tr>
                         <!-- <td><a href="pages/examples/invoice.html">OR9842</a></td> -->
+                        <td value="{{$gym->id}}">{{ $gym->id }}</td>
                         <td value="{{$gym->id}}">{{ $gym->name }}</td>
                         <td value="{{$gym->id}}"><span class=" badge badge-success ">{{ $gym->created_at}}</span></td>
                         <td>
@@ -44,5 +46,10 @@
 
             </table>
 
+            <script>
+                $(document).ready(function() {
+                      $('#datatable').DataTable();
+                 } );
+            </script>
 
             @endsection

@@ -9,6 +9,7 @@ class GymController extends Controller
 {
     public function show()
     {
+        $tableData=Gym::withTrashed()->get();
         $gyms = Gym::all();
         return view('gyms.show_gym', ['gyms' => $gyms]);
     }
