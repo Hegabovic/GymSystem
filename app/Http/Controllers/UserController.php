@@ -33,14 +33,17 @@ class UserController extends Controller
             'email'=>$input['email'],
             'password'=>Hash::make($input['password']),
         ]);
-
-
+        $avatarPath=env('DEFAULT_AVATAR');
+        if($request->hasFile('avatar')){
+            $avatarPath=$request->file('avatar')->store('public/photos');
+        }
         if($request->clerk === 'city-manager') {
             $user->assignRole('CityManager');
+
             $this->cityManagerRepository->create([
                 'user_id'=>$user->id,
                 'n_id'=>$input['n_id'],
-                'avatar_path'=>'sdsd',
+                'avatar_path'=>$avatarPath,
                 'city_id'=>$input['facility']
             ]);
         }
@@ -49,7 +52,7 @@ class UserController extends Controller
             $this->gymManagerRepository->create([
                 'user_id'=>$user->id,
                 'n_id'=>$input['n_id'],
-                'avatar_path'=>'sdsd',
+                'avatar_path'=>$avatarPath,
                 'gym_id'=>$input['facility']
             ]);
             }
