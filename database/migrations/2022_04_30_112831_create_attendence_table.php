@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->foreign('customer_id')->references('id')->on('customers'); ##instead of above line
             $table->foreign('gym_id')->references('id')->on('gyms');
             $table->foreign('training_session_id')->references('id')->on('training_sessions');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

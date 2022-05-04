@@ -8,7 +8,7 @@ use App\Models\Attendance;
 class attendanceController extends Controller
 {
     public function show(){
-        $tableData=Attendance::all();
+        $tableData=Attendance::withTrashed()->get();
         return view('attendance/show_attendance',['items'=>$tableData,'userData'=>request()->user()]);
     }
 
@@ -31,4 +31,20 @@ class attendanceController extends Controller
             ]);
         return to_route('show.attendances');
     }
-}
+    public function restore($postID)
+    {
+        $post = Attendance::withTrashed($postID)->where('id', $postID)->first();
+        $post->restore();
+        $post->save();
+
+        return to_route('attendance.show');
+    }
+
+
+    public function delete()
+    {
+        $data=request()->input('id'); 
+        Attendance::find($data)->delete();
+        return ['success' =>'true'];
+    }
+}   
