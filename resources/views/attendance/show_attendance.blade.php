@@ -127,7 +127,6 @@
                         @if($table->created_at)
                         <td>{{$table->created_at->format('H:i')}}</td> 
                         @endif
-                        {{-- notice above functions won't work unless the data was actually created and not seeded --}}
                         <td>{{$table->gym->name}}</td> 
                         <td>{{$table->gym->city->name}}</td> 
                     </tr>
@@ -139,19 +138,19 @@
              </table>
 
              
-             <script>
+             {{-- <script>
                 $(document).ready(function() {
                  $('#example').DataTable();
              } );
-                </script>  
+                </script>   --}}
                 
                 
-                {{-- <script>
+                <script>
                 $(document).ready(function () {
                     $('#example').DataTable({
                         'user name': true,
                         'name': true,
-                        "ajax": {{ route('show.attendances') }},
+                        "ajax": {{ json_encode($items) }},
                         'columns': [
                             {"data": 'username'},
                             {"data": 'email'},
@@ -163,7 +162,7 @@
                         ]
                     });
                 });
-            </script> --}}
+            </script>
 
              <!-- ./card-body done-->
 {{-- 
