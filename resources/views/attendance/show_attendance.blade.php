@@ -117,7 +117,7 @@
                 </thead>
                 <tbody>
                     @foreach ($items as $table)
-                    {{-- @if ( ! $table->trashed()) --}}
+                    @if ( ! $table->trashed())
                     <tr>
                         <td>{{$table->id}}</td> 
                         <td>{{$table->customer->user->name}}</td> 
@@ -136,8 +136,8 @@
                         <td><button class="btn btn-primary delete" id="{{$table->id}}">Delete</button></td> 
                     </tr>
                     {{-- @endif --}}
-                    {{-- @else
-                <tr align="center">
+                    @else
+                {{-- <tr align="center">
                     <th scope="col">-</th>
                     <th scope="col">-</th>
                     <th scope="col">-</th>
@@ -149,15 +149,15 @@
                     <th scope="col">-</th>
 
                     <td  align="center">
-                        <form method="post" action="{{ route('attendance.restore', ['id' => $post->id])}}">
+                        <form method="post" action="{{ route('attendance.restore', ['id' => $table->id])}}">
                             @csrf
                             @method('put')
                             <button type="submit"  class="btn btn-warning"><i class="bi bi-pencil-square"></i> Restore</button>
                             <input name="id" type="hidden" value="{{ $table->id }}">
                         </form>
                     </td>
-                </tr>
-            @endif --}}
+                </tr> --}}
+            @endif
                     @endforeach
 
                     <script > 
@@ -165,17 +165,17 @@
                         $confirm=confirm('Are you sure you want to delete ?');
                         if($confirm)
                         {
+                            let myThis=$(this).parent().parent()
                             $(this).parent().parent().css("background-color", "grey");
+
                             let Attendance_id=this.id;
-                            // $(this).parent().parent().remove();
                             $.ajax({
                                 url: "{{route('delete.attendances')}}"+`?id=${Attendance_id}`,
                                 type: 'DELETE',
                                 contentType: 'application/json',
                                 data: `{"id":"${Attendance_id}"}`,
                                 success: function(result) {
-                                    // Do something with the result
-                                    
+                                    myThis.remove();
                                 }
                             });
 
@@ -196,25 +196,7 @@
              } );
                 </script>  
                 
-                
-                {{-- <script>
-                $(document).ready(function () {
-                    $('#example').DataTable({
-                        'user name': true,
-                        'name': true,
-                        "ajax": {{ json_encode($items) }},
-                        'columns': [
-                            {"data": 'username'},
-                            {"data": 'email'},
-                            {"data": 'training session name'},
-                            {"data": 'attendance date'},
-                            {"data": 'attendance time'},
-                            {"data": 'Gym'},
-                            {"data": 'City'},
-                        ]
-                    });
-                });
-            </script> --}}
+            
 
              <!-- ./card-body done-->
 {{-- 
