@@ -6,7 +6,7 @@ interface BaseRepositoryInterface
 {
     public function create($entity);
 
-    public function all(int $pageSize);
+    public function all();
 
     public function findById($id);
 
