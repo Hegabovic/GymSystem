@@ -7,7 +7,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Coaches</div>
                         <div class="panel-body">
-                            <table class="table table-bordere" style="color: black;" id="datatable">
+                            <table class="table table-bordered" style="color: black;" id="datatable">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
