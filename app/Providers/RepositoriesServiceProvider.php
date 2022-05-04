@@ -11,6 +11,7 @@ use App\Repositories\BaseRepository;
 use App\Repositories\CityManagerRepository;
 use App\Repositories\CityRepository;
 use App\Repositories\CoachRepository;
+use App\Repositories\CustomerRepository;
 use App\Repositories\GymManagerRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\OrderRepository;
@@ -44,5 +45,6 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(BaseRepositoryInterface::class,GymManagerRepository::class);
         $this->app->bind(ClerkRepositoryInterface::class,GymManagerRepository::class);
         $this->app->bind(ClerkRepositoryInterface::class,CityManagerRepository::class);
+        $this->app->bind(BaseRepositoryInterface::class,CustomerRepository::class);
     }
 }

@@ -11,7 +11,7 @@ class Customer extends Model
     protected $fillable=[
         'user_id',
         'national_id',
-        'avatar_image',
+        'avatar_path',
         'birth_date',
         'gender',
     ];
