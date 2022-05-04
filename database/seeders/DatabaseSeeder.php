@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CustomerSeeder::class);
         $this->call(CitySeeder::class);
         $this->call(GymSeeder::class);
+        $this->call(TrainingSessionSeeder::class);
+        $this->call(AttendanceSeeder::class);
     }
 }
