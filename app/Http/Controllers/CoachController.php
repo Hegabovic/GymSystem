@@ -32,7 +32,12 @@ class CoachController extends Controller
     public function showCoachesTable()
     {
         $query = $this->coachRepository->all();
-        return datatables($query)->make(true);
+        return datatables($query)->addColumn('action', function ($row) {
+            $attr = "onclick=confirm(Are you sure ?)";
+            $btn = "<a class='btn btn-danger' id='btnDelete$row->id'" . "$attr" . "> Delete</a>";
+            $btn .= "<a href='javascript:void(0)' class='btn btn-warning' id='btnEdit$row->id'>Edit</a>";
+            return $btn;
+        })->rawColumns(['action'])->make(true);
     }
 
     public function create(): Factory|View|Application
