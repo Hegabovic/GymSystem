@@ -2,18 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\BaseRepositoryInterface;
 use App\Http\Requests\StoreClerkRequest;
 use App\Models\User;
+//use App\Repositories\BaseRepository;
+use App\Repositories\CityManagerRepository;
+use App\Repositories\GymManagerRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    private GymManagerRepository $gymManagerRepository;
+    private CityManagerRepository $cityManagerRepository;
+    private UserRepository $userRepository;
+
+    public function __construct(UserRepository $userRepository,GymManagerRepository $gymManagerRepository,CityManagerRepository $cityManagerRepository)
+    {
+        $this->cityManagerRepository=$cityManagerRepository;
+        $this->gymManagerRepository=$gymManagerRepository;
+        $this->userRepository=$userRepository;
+    }
     public function store(StoreClerkRequest $request)
     {
-        $input=request()->validated();
-        $user=User::create([
-            'name'=>$input['username'],
+        $input=$request->validated();
+
+        $user=$this->userRepository->create([
+            'name'=>$input['name'],
             'email'=>$input['email'],
             'password'=>Hash::make($input['password']),
         ]);
@@ -58,7 +74,7 @@ class UserController extends Controller
     {
         return view('users.create_city_manager');
     }
-    public function createGymManager(Request $request)
+    public function createGymManager()
     {
         return view('users.create_gym_manager');
     }
