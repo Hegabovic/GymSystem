@@ -30,9 +30,9 @@
 
    @extends('layouts.app')
 @section('content')
-
-<script src="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"></script>
-<script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+{{-- <script src="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"></script> --}}
+{{-- <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> --}}
     <div class="wrapper">
 
         <!-- Preloader -->
@@ -98,10 +98,10 @@
                             <!-- /.card-header -->
 
                             <!-- ./card-body -->
-            <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-            <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+            {{-- <script src="../../plugins/datatables/jquery.dataTables.min.js"></script> --}}
+            {{-- <script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script> --}}
 
-            <table id="example" class="table table-striped table-bordered">
+            <table id="example" class="table table-bordered" style="color: black">
                  <thead>
                     <tr>
                         <th>user name</th>
@@ -111,20 +111,25 @@
                         <th>attendance time</th>
                         <th>Gym</th>
                         <th>City</th>
-                        {{-- <th>Delete</th> --}}
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($items as $table)
                     <tr>
-                        <td>{{$userData->name}}</td> 
-                        <td>{{$userData->email}}</td> 
+                        <td>{{$table->customer->user->name}}</td> 
+                        <td>{{$table->customer->user->email}}</td> 
                         <td>{{$table->training_session->name}}</td> 
+                        
+                        @if($table->created_at)
                         <td>{{$table->created_at->toDateString() }}</td> 
+                        @endif
+                        
+                        @if($table->created_at)
                         <td>{{$table->created_at->format('H:i')}}</td> 
+                        @endif
+                        {{-- notice above functions won't work unless the data was actually created and not seeded --}}
                         <td>{{$table->gym->name}}</td> 
                         <td>{{$table->gym->city->name}}</td> 
-                        {{-- <td><button>delete</button></td>  --}}
                     </tr>
                     @endforeach
                     
@@ -133,13 +138,32 @@
                
              </table>
 
-
+             
              <script>
                 $(document).ready(function() {
                  $('#example').DataTable();
              } );
-                </script> 
-
+                </script>  
+                
+                
+                {{-- <script>
+                $(document).ready(function () {
+                    $('#example').DataTable({
+                        'user name': true,
+                        'name': true,
+                        "ajax": {{ route('show.attendances') }},
+                        'columns': [
+                            {"data": 'username'},
+                            {"data": 'email'},
+                            {"data": 'training session name'},
+                            {"data": 'attendance date'},
+                            {"data": 'attendance time'},
+                            {"data": 'Gym'},
+                            {"data": 'City'},
+                        ]
+                    });
+                });
+            </script> --}}
 
              <!-- ./card-body done-->
 {{-- 
