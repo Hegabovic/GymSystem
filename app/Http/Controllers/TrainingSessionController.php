@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\AttendanceRepositoryInterface;
 use App\Http\Requests\StoreTrainingSessionRequest;
 use App\Repositories\TrainingSessionsRepository;
 use Illuminate\Contracts\Foundation\Application;
@@ -13,10 +14,12 @@ use Illuminate\Http\Request;
 class TrainingSessionController extends Controller
 {
     private TrainingSessionsRepository $trainingSessionsRepository;
+    private AttendanceRepositoryInterface $attendanceRepository;
 
-    public function __construct(TrainingSessionsRepository $trainingSessionsRepository)
+    public function __construct(TrainingSessionsRepository $trainingSessionsRepository, AttendanceRepositoryInterface $attendanceRepository)
     {
         $this->trainingSessionsRepository = $trainingSessionsRepository;
+        $this->attendanceRepository = $attendanceRepository;
     }
 
     public function index(): Factory|View|Application
