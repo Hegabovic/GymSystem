@@ -13,4 +13,9 @@ class TrainingSessionsRepository extends BaseRepository implements TrainingSessi
         parent::__construct($training_session);
 
     }
+
+    function isLegal($startDate, $endDate): bool
+    {
+
+    }
 }
