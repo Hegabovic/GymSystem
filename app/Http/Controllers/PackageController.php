@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Package;
 use Illuminate\Http\Request;
 
 class PackageController extends Controller
 {
     public function index()
     {
+        $packages = Package::all();
 
-        return view('packages.index');
+        return view('packages.index')->with(['packages'=>$packages]);
     }
 
     public function create()
