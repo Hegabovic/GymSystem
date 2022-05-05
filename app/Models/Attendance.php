@@ -18,12 +18,11 @@ class Attendance extends Model
         'customer_id',
         'gym_id',
         'training_session_id',
-        
-
     ];
 
     public function training_session()
     {
+        
         return $this->belongsTo(Training_session::class);
     }
 

@@ -11,6 +11,7 @@ use App\Http\Controllers\orderController;
 use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Contracts\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 
 Route::group(['middleware'=>'auth'],function (){
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -37,6 +37,10 @@ Route::group(['middleware'=>'auth'],function (){
     Route::put('/edit-profile', [UserController::class, 'update'])->name('edit_profile');
 
     Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
+    Route::get('/gyms/edit/{id}',[GymController::class,'edit'])->name('edit.gyms');
+    Route::get('/gym-store/{id}',[GymController::class,'storeUpdate'])->name('store_gyms');
+    Route::get('/create-gym',[GymController::class,'create'])->name('create_gyms');
+    Route::post('/create-store', [GymController::class, 'store'])->name('store_gym');
 
     Route::get('/coach', [CoachController::class, 'index'])->name('show_coaches');
     Route::get('/coach-create', [CoachController::class, 'create'])->name('create_coach');

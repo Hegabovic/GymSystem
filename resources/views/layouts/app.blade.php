@@ -38,11 +38,13 @@
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
-
+  
   <!-- Preloader -->
     <div class="flex-column justify-content-center align-items-center">
         <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
+
+
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark">
@@ -327,6 +329,10 @@
                                 <a href="{{route('show_gyms')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>show</p>
+                                </a>
+                                <a href="{{route('create_gyms')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>create</p>
                                 </a>
                             </li>
                         </ul>
