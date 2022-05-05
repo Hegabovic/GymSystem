@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTrainingSessionRequest;
 use App\Repositories\TrainingSessionsRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -42,8 +43,9 @@ class TrainingSessionController extends Controller
         return view('trainingSessions.edit', ['trainingSession' => $selectedTrainingSession]);
     }
 
-    public function storeEdit(Request $request)
+    public function storeEdit(StoreTrainingSessionRequest $request)
     {
+
         $formData = $request->all();
         $updatedTrainingSession = [
             "name" => $request->name,
@@ -60,7 +62,7 @@ class TrainingSessionController extends Controller
         return view('trainingSessions.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreTrainingSessionRequest $request): RedirectResponse
     {
         $this->trainingSessionsRepository->create([
             "name" => $request->name,

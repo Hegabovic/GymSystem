@@ -17,7 +17,7 @@
                     <label for="FinishAt">Finish at</label>
                     <input type="datetime-local" name="finishAt" class="form-control" id="FinishAt"
                            placeholder="Finish at">
-                </div>C
+                </div>
             </div>
 
             <div class="card-footer">

@@ -14,7 +14,7 @@ class StoreTrainingSessionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,10 +24,24 @@ class StoreTrainingSessionRequest extends FormRequest
      */
     public function rules()
     {
+//        dd($this);
         return [
             'name' => 'required',
-            'start_at' => 'required|date|after:tomorrow',
-            'finish_at' => 'required|date|after:start_date',
+            'startAt' => 'after:tomorrow|required',
+            'finishAt' => 'after:start_date|required',
+        ];
+    }
+
+    public function messages()
+    {
+        // use trans instead on Lang
+        return [
+            'name.required' => 'Name field is required',
+            'start_at.required' => 'Start date field is required',
+            'finish_at.required' => 'Finish date field is required',
+            'finish_at.date' => 'Please enter a valid finish date',
+            'start_at.date' => 'Please enter a valid start date',
+            'finish_at.after' => 'Finish date must be after start date',
         ];
     }
 }
