@@ -45,8 +45,10 @@ Route::get('/show-users',[UserController::class,'showUsers'])->name('show_users'
 
 Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
 Route::get('/gyms/edit/{id}',[GymController::class,'edit'])->name('edit.gyms');
-Route::get('/gym-store',[GymController::class,'storeUpdate'])->name('store_gyms');
+Route::get('/gym-store/{id}',[GymController::class,'storeUpdate'])->name('store_gyms');
+
 Route::get('/create-gym',[GymController::class,'create'])->name('create_gyms');
+Route::post('/create-store', [GymController::class, 'store'])->name('store_gym');
 
 
 Route::post('/user-store', [UserController::class, 'store'])->name('store_user');

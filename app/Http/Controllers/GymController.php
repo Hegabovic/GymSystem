@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\City;
 use App\Models\Gym;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
@@ -12,16 +13,17 @@ class GymController extends Controller
     public function show()
     {
         $gyms = Gym::all();
-        return view('gyms.show_gym', ['gyms' => $gyms]);
+        return view('gyms.show', ['gyms' => $gyms]);
     }
 
 
     public function create () {
 
-        $gyms= Gym::All();
+        $cities= City::All();
 
         return view  ('gyms.create',[
-            'gyms'=>$gyms,
+            'cities'=>$cities,
+
         ]);
 
     }
@@ -57,20 +59,31 @@ class GymController extends Controller
     }
 
 
-    public function storeUpdate (Request $request){
-        $formData = $request->all();
-        dd($formData);
-        $id = $formData["id"];
-        $gyms=Gym::find($id);
-        $gyms->name = $formData["name"];
-        $updatedGym = [
-                          "name"=> $formData["name"],
-                          "created at"=>$formData["created_at"],
-                          "cover image"=>$formData["cover_image"],
+    public function storeUpdate (Request $request,$gymId){
 
-                       ];
-        $gyms->update($updatedGym);
+        $gym=Gym::find($gymId);
+        $gym->update([
+                          "name"=> $request["name"],
+                          "created at"=>$request["created_at"],
+                          "cover image"=>$request["cover_image"],
+
+        ]);
+        return to_route('show_gyms',['gym' => $gym]);
+
+    }
+    public function store(Request $request)
+    {
+        Gym::create([
+            "name" => $request ['name'],
+            "cover_image" => $request['cover_image'],
+            "city_id" => $request ['city_id']
+        ]);
+
+        return to_route('show_gyms');
     }
 }
+
+
+
 
 

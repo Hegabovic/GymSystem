@@ -205,6 +205,10 @@
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>show</p>
                                 </a>
+                                <a href="{{route('create_gyms')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>create</p>
+                                </a>
                             </li>
                         </ul>
                     </li>
