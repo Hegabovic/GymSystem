@@ -17,7 +17,7 @@
                                     Enter your credit card information
                                 </label>
                             </div>
-                            @dd($data)
+{{--                            @dd($data)--}}
                             <div class="card-body">
                                 {{--
                                          drop down > user

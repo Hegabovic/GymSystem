@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\PlanRepositoryInterface;
 use App\Models\Plan;
+use App\Repositories\CustomerRepository;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -12,10 +13,12 @@ use Illuminate\Contracts\View\View;
 class PlanController extends Controller
 {
     private PlanRepositoryInterface $planRepository;
+    private CustomerRepository $customerRepository;
 
-    public function __construct(PlanRepositoryInterface $planRepository)
+    public function __construct(PlanRepositoryInterface $planRepository,CustomerRepository $customerRepository)
     {
         $this->planRepository = $planRepository;
+        $this->customerRepository = $customerRepository;
     }
 
     public function index(): Factory|View|Application
@@ -28,7 +31,7 @@ class PlanController extends Controller
 
     public function show(Plan $plan, Request $request): Factory|View|Application
     {
-        $data =  $this->planRepository->all();
+        $data =  $this->customerRepository->all();
         return view('plans.show_plan', [
             'plan' => $plan,
             'data' => $data,
