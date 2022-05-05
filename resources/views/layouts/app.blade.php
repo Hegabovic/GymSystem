@@ -364,13 +364,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route("show.attendance")}}" class="nav-link">
+                                <a href="{{route("show.attendances")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>show</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route("create.attendance")}}" class="nav-link">
+                                <a href="{{route("create.attendances")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>create</p>
                                 </a>
