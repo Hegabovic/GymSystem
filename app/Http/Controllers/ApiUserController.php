@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerRegisterRequest;
+
 use App\Repositories\CityManagerRepository;
 use App\Repositories\CustomerRepository;
 use App\Repositories\GymManagerRepository;
@@ -13,8 +14,11 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Hash;
 
 
+
+
 class ApiUserController extends Controller
 {
+
 
     private UserRepository $userRepository;
     private CustomerRepository $customerRepository;
@@ -29,4 +33,9 @@ class ApiUserController extends Controller
    {
        return $this->userRepository->all();
    }
+    public function register(CustomerRegisterRequest $request)
+    {
+
+    }
+
 }
