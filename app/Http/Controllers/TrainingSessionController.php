@@ -37,8 +37,9 @@ class TrainingSessionController extends Controller
 
     public function edit($coachId)
     {
-        $selectedCoach = $this->trainingSessionsRepository->findById($coachId);
-        return view('trainingSessions.edit', ['trainingSession' => $selectedCoach]);
+
+        $selectedTrainingSession = $this->trainingSessionsRepository->findById($coachId);
+        return view('trainingSessions.edit', ['trainingSession' => $selectedTrainingSession]);
     }
 
     public function storeEdit(Request $request)

@@ -56,7 +56,7 @@
             $(document).on('click', '.delete', function (event) {
                 event.preventDefault();
                 let trainingSessionId = this.getAttribute('data-id');
-                let url = "{{route('coach.delete')}}" + `?id=${trainingSessionId}`;
+                let url = "{{route('trainingSession.delete')}}" + `?id=${trainingSessionId}`;
 
                 let result = confirm('Are you sure you want to delete ?');
                 if (result) {
@@ -64,11 +64,12 @@
                     $.ajax({
                         url: url,
                         type: 'DELETE',
-                        success: function (result) {
-                            if (result.success)
+                        success: function (response) {
+                            console.log(response);
+                            if (response.success) {
                                 row.remove();
-                            else
-                                alert(result.message);
+                            } else
+                                alert(response.message);
                         }
                     });
                 }
