@@ -50,4 +50,11 @@
 
                     
     </div>
+    @if($errors->any())
+        <div class="m-auto text-center">
+            @foreach($errors->all() as $error)
+                <li style="color: red;list-style: none"><strong>{{$error}}</strong></li>
+            @endforeach
+        </div>
+    @endif
 @endsection
