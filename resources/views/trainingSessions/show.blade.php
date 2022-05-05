@@ -22,8 +22,8 @@
                                     <tr>
                                         <td>{{$trainingSession->id}}</td>
                                         <td>{{$trainingSession->name}}</td>
-                                        <td>{{$trainingSession->start_at}}</td>
-                                        <td>{{$trainingSession->finish_at}}</td>
+                                        <td>{{$trainingSession->start_at->format('d-m-Y h:iA')}}</td>
+                                        <td>{{$trainingSession->finish_at->format('d-m-Y h:iA')}}</td>
                                         <td>
                                             <a role="button"
                                                href="{{route('update_trainingSession',[$trainingSession->id])}}"

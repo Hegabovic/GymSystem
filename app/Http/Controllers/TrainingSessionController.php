@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTrainingSessionRequest;
 use App\Repositories\TrainingSessionsRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -42,8 +43,9 @@ class TrainingSessionController extends Controller
         return view('trainingSessions.edit', ['trainingSession' => $selectedTrainingSession]);
     }
 
-    public function storeEdit(Request $request)
+    public function storeEdit(StoreTrainingSessionRequest $request)
     {
+
         $formData = $request->all();
         $updatedTrainingSession = [
             "name" => $request->name,
@@ -57,16 +59,21 @@ class TrainingSessionController extends Controller
 
     public function create(): Factory|View|Application
     {
-        return view('trainingSessions.create');
+        return view('trainingSessions.create', ['isOverlap' => false]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoreTrainingSessionRequest $request): View|Factory|Application|RedirectResponse
     {
-        $this->trainingSessionsRepository->create([
-            "name" => $request->name,
-            "start_at" => $request->startAt,
-            "finish_at" => $request->finishAt
-        ]);
-        return to_route('show_trainingSessions');
+        $isLegalTime = $this->trainingSessionsRepository->isLegal($request->startAt, $request->finishAt);
+
+        if ($isLegalTime) {
+            $this->trainingSessionsRepository->create([
+                "name" => $request->name,
+                "start_at" => $request->startAt,
+                "finish_at" => $request->finishAt
+            ]);
+            return to_route('show_trainingSessions');
+        } else
+            return view('trainingSessions.create', ['isOverlap' => true]);
     }
 }

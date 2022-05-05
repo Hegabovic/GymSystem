@@ -10,11 +10,13 @@
                 </div>
                 <div class="form-group">
                     <label for="StartAt">Start at</label>
-                    <input type="date" name="startAt" class="form-control" id="StartAt" placeholder="Start at">
+                    <input type="datetime-local" name="startAt" class="form-control" id="StartAt"
+                           placeholder="Start at">
                 </div>
                 <div class="form-group">
                     <label for="FinishAt">Finish at</label>
-                    <input type="date" name="finishAt" class="form-control" id="FinishAt" placeholder="Finish at">
+                    <input type="datetime-local" name="finishAt" class="form-control" id="FinishAt"
+                           placeholder="Finish at">
                 </div>
             </div>
 
@@ -23,6 +25,14 @@
             </div>
         </form>
     </div>
+
+    @if($isOverlap)
+        <div class="m-auto text-center">
+            <li style="color: red;list-style: none">
+                <strong>session time is overlapped with other session</strong>
+            </li>
+        </div>
+    @endif
 
     @if($errors->any())
         <div class="m-auto text-center">
