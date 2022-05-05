@@ -7,6 +7,8 @@ use App\Http\Controllers\CityController;
 
 use App\Http\Controllers\ApiUserController;
 use App\Http\Controllers\CoachController;
+use App\Http\Controllers\TrainingSessionController;
+use App\Http\Controllers\PackageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,17 +37,12 @@ Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'ver
 
 Route::post('/customer/register',[ApiUserController::class,'register'])->name('customer-register');
 
-
-Route::get('coaches-table', [CoachController::class, 'showCoachesTable'])->name('show_coaches_table');
 Route::delete('/attendance-delete', 'App\Http\Controllers\attendanceController@delete')->name('delete.attendances');
 
-
-
-
-
-
 Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete.city');
-Route::put('/city-restore',[CityController::class,'restore'])->name('restore.city');
 Route::delete('/coach-delete', [CoachController::class, 'delete'])->name('coach.delete');
+
 Route::delete('/order-delete', 'App\Http\Controllers\orderController@delete')->name('delete.orders');
 
+Route::delete('/trainingSession-delete', [TrainingSessionController::class, 'delete'])->name('trainingSession.delete');
+Route::delete('/packages-delete','App\Http\Controllers\PackageController@delete')->name('packages.delete');

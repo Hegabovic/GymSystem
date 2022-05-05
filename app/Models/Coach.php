@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Coach extends Model
@@ -23,9 +24,9 @@ class Coach extends Model
         'created_at' => 'datetime',
     ];
 
-    public function sessionsCoaches(): BelongsTo
+    public function sessionsCoaches(): HasMany
     {
-        return $this->belongsTo(SessionsCoaches::class);
+        return $this->hasMany(SessionsCoaches::class);
     }
 
 }

@@ -65,43 +65,54 @@
                             </div>
                             <!-- /.card-header -->
 
-                            {{-- <div class="form-control">
-                                <form action="{{route('show.attendances')}}" method="POST">
-                                <input type="text" class="form-control" placeholder="Name">
-                                <input type="text" class="form-control" placeholder="email">
-                                </form>
-                            </div> --}}
-
                             {{-- <form> --}}
-                            <form action="{{route('store.attendances')}}" method="POST">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter training session name">
-                                  </div>
 
-                                <div class="form-group">
-                                  <label for="email">Email address</label>
-                                  <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                </div>
-                                <div class="form-group">
-                                  <label for="exampleInputPassword1">Password</label>
-                                  <input type="password" class="form-control" name="password" placeholder="Password">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="training_session_name">training session id</label>
-                                    <input type="text" class="form-control" name="training_session_name" aria-describedby="emailHelp" placeholder="Enter training session name">
-                                  </div>
+                                <form method="POST" action="{{route('update.attendances',['id'=>$thisAttendance->id])}} enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    {{-- @dd($attendance->customer) --}}
+                                    
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlTextarea1" class="form-label ">Customer</label>
+                                        <select class="form-control" name="user">
+                                            @foreach ($attendances as $attendance)
+                                     {{-- @dd($attendance->customer) --}}
+                                    <option value="{{$attendance->customer->id}}">{{$attendance->customer->user->email}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
-                                  <div class="form-group">
-                                    <label for="gym_id">gym id</label>
-                                    <input type="text" class="form-control" name="gym_id" aria-describedby="emailHelp" placeholder="Enter gym id">
-                                  </div>
-                                
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                              </form>
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlTextarea1" class="form-label ">Gym</label>
+                                        <select class="form-control" name="gym">
+                                            @foreach ($attendances as $attendance)
+                                            {{-- @dd($attendance->gym) --}}
+                                            <option value="{{$attendance->gym->id}}">{{$attendance->gym->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlTextarea1" class="form-label ">Training Session</label>
+                                        <select class="form-control" name="training_session">
+                                            @foreach ($attendances as $attendance)
+                                            {{-- @dd($posts->user->id) --}}
+                                            <option value="{{$attendance->training_session->id}}">{{$attendance->training_session->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+
+                                    
+
+                                    {{-- <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">City Name</label>
+                                        <input type="text" class="form-control" value="{{$attendance->gym->city->name}}" Name="city_name" />
+                                    </div> --}}
+                        
+                                  <button class="btn btn-primary btn-lg">Update</button>
+                                </form>
+                        
                             <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->

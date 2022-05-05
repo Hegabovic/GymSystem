@@ -17,10 +17,9 @@ class Training_sessionFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->name(),
-            'gym_id'=>rand(1,10),
-            'start_at'=>$this->faker->date(),
-            'finish_at'=>$this->faker->date(),
+            'name' => $this->faker->name(),
+            'start_at' => $this->faker->date(),
+            'finish_at' => $this->faker->date(),
         ];
     }
 }
