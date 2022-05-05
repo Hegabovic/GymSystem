@@ -29,7 +29,7 @@ class AuthController extends Controller
         $this->userRepository=$userRepository;
         $this->customerRepository=$customerRepository;
     }
-    public function register(CustomerRegisterRequest $request)
+    public function register(CustomerRegisterRequest $request): \Illuminate\Http\JsonResponse
     {
         $input=$request->validated();
 
