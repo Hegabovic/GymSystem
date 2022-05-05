@@ -35,7 +35,8 @@
                                     </select>
                                 </div>
 
-                                <div id="card-element">
+                                <div id="card-element" class="container">
+
                                     <!-- A Stripe Element will be inserted here with JS below. -->
                                 </div>
                                 <!-- Used to display form errors. -->
@@ -53,34 +54,45 @@
     </div>
 @endsection
 @section('scripts')
-    <script src="https://js.stripe.com/v3/"></script>
-    <script>
+    <script src="https://js.stripe.com/v3"></script>
+
+        <script>
         // Create a Stripe client.
         let stripe = Stripe('{{ env("STRIPE_KEY") }}');
+        {{--let clientSecret = Stripe('{{ env("STRIPE_SECRET_KEY") }}');--}}
 
         // Create an instance of Elements.
-        let elements = stripe.elements();
+        // let elements = stripe.elements();
 
         // Custom styling can be passed to options when creating an Element.
         // (Note that this demo uses a wider set of styles than the guide below.)
-        let style = {
-            base: {
-                color: '#32325d',
-                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-                fontSmoothing: 'antialiased',
-                fontSize: '16px',
-                '::placeholder': {
-                    color: '#aab7c4'
-                }
+        const appearance = {
+            theme: 'night',
+            variables: {
+                fontFamily: 'Sohne, system-ui, sans-serif',
+                fontWeightNormal: '500',
+                borderRadius: '8px',
+                colorBackground: '#0A2540',
+                colorPrimary: '#EFC078',
+                colorPrimaryText: '#1A1B25',
+                colorText: 'white',
+                colorTextSecondary: 'white',
+                colorTextPlaceholder: '#727F96',
+                colorIconTab: 'white',
+                colorLogo: 'dark'
             },
-            invalid: {
-                color: '#fa755a',
-                iconColor: '#fa755a'
+            rules: {
+                '.Input, .Block': {
+                    backgroundColor: 'transparent',
+                    border: '1.5px solid var(--colorPrimary)'
+                }
             }
         };
 
         // Create an instance of the card Element.
-        let card = elements.create('card', {style: style});
+
+        const elements = stripe.elements({stripe, appearance});
+        let card = elements.create('card', {style:  appearance });
 
         // Add an instance of the card Element into the `card-element` <div>.
         card.mount('#card-element');
