@@ -11,6 +11,8 @@ use App\Http\Controllers\TrainingSessionController;
 use App\Http\Controllers\PackageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GymController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +40,9 @@ Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'ver
 
 
 Route::delete('/attendance-delete', 'App\Http\Controllers\attendanceController@delete')->name('delete.attendances');
+Route::delete('/gym-delete', [GymController::class, 'delete'])->name('gym.delete');
+
+
 
 Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete.city');
 Route::delete('/coach-delete', [CoachController::class, 'delete'])->name('coach.delete');

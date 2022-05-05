@@ -14,16 +14,13 @@ class attendanceController extends Controller
         return view('attendance/show_attendance',['items'=>$tableData,'userData'=>request()->user()]);
     }
 
-    //incoming two methods should be in Api 
     public function create(){
         return view('attendance/create_attendance');
     }
 
     public function store(Request $request){
         $data=request()->all(); 
-        // dd($data);
         $userData=$request->user();
-        // dd($data['training_session_id']);
         $attendance=Attendance::create(
             [
                 'customer_id' =>$userData['id'],
@@ -39,13 +36,8 @@ class attendanceController extends Controller
         $post = Attendance::withTrashed()->where('id', $data)->first();
         $post->restore();
         $post->save();
-
-        // return ['success' =>'true'];
         return to_route('show.attendances');
-
     }
-
-
     public function delete()
     {
         $isDeleted=false;
@@ -62,7 +54,6 @@ class attendanceController extends Controller
             return ['success' =>'false'];
         }
     }
-
     public function edit($id)
     {
         $attendance=Attendance::All();
@@ -75,7 +66,6 @@ class attendanceController extends Controller
     {
         $attendance = Attendance::find($attendance_id);
         $training_session = Training_session::find($attendance_id);
-        // dd($request->all());
         $attendance->update([
             "customer_id" => $request->user,
             "gym_id" => $request->gym,

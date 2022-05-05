@@ -64,14 +64,7 @@
                                 </div>
                             </div>
                             <!-- /.card-header -->
-
-                            {{-- <div class="form-control">
-                                <form action="{{route('show.attendances')}}" method="POST">
-                                <input type="text" class="form-control" placeholder="Name">
-                                <input type="text" class="form-control" placeholder="email">
-                                </form>
-                            </div> --}}
-
+                            
                             {{-- <form> --}}
                             <form action="{{route('store.attendances')}}" method="POST">
                                 @csrf

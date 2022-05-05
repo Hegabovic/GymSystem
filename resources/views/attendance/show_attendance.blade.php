@@ -59,13 +59,19 @@
                                     <th>training session name</th>
                                     <th>attendance date</th>
                                     <th>attendance time</th>
+                                    @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
                                     <th>Gym</th>
+                                    @endif
+                                    @if (request()->user()->hasrole('Admin'))
                                     <th>City</th>
+                                    @endif
                                     <th>options</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($items as $table)
+                                     @if ( ! $table->trashed())
+
                                     <tr align="center">
                                         <td>{{$table->id}}</td>
                                         <td>{{$table->customer->user->name}}</td>
@@ -79,12 +85,23 @@
                                         @if($table->created_at)
                                             <td>{{$table->created_at->format('H:i')}}</td>
                                         @endif
+
+                                        @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
                                         <td>{{$table->gym->name}}</td>
+                                        @endif
+
+                                        @if ( request()->user()->hasrole('Admin'))
                                         <td>{{$table->gym->city->name}}</td>
+                                        @endif
+
                                         <td>
                                             <button class="btn btn-danger delete" id="{{$table->id}}"><i class="fas fa-trash-alt"></i></button>
+                                            <a href="{{ route('edit.attendances',  $table->id) }}" class="btn btn-primary edit"><i class="fas fa-edit"></i>
+                                            </a>
+
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
 
                                 <script>
@@ -121,3 +138,4 @@
         </section>
     </div>
 @endsection
+
