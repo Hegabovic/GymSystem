@@ -43,7 +43,7 @@ Route::get('/show-users',[UserController::class,'showUsers'])->name('show_users'
 
 
 Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
-Route::get('/edit-gyms',[GymController::class,'edit'])->name('edit.gyms');
+Route::get('/gyms/{gym}/edit',[GymController::class,'edit'])->name('edit.gyms');
 
 
 
