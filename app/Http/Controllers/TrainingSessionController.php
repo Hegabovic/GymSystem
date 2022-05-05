@@ -59,10 +59,10 @@ class TrainingSessionController extends Controller
 
     public function create(): Factory|View|Application
     {
-        return view('trainingSessions.create');
+        return view('trainingSessions.create', ['isOverlap' => false]);
     }
 
-    public function store(StoreTrainingSessionRequest $request): RedirectResponse
+    public function store(StoreTrainingSessionRequest $request): View|Factory|Application|RedirectResponse
     {
         $isLegalTime = $this->trainingSessionsRepository->isLegal($request->startAt, $request->finishAt);
 
@@ -72,8 +72,8 @@ class TrainingSessionController extends Controller
                 "start_at" => $request->startAt,
                 "finish_at" => $request->finishAt
             ]);
-        }
-
-        return to_route('show_trainingSessions');
+            return to_route('show_trainingSessions');
+        } else
+            return view('trainingSessions.create', ['isOverlap' => true]);
     }
 }

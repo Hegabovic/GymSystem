@@ -19,9 +19,9 @@ class TrainingSessionsRepository extends BaseRepository implements TrainingSessi
         $result = Training_session::whereBetween('start_at', [$startDate, $endDate])
             ->orWhereBetween('finish_at', [$startDate, $endDate])
             ->orWhereRaw('? BETWEEN start_at and finish_at', [$startDate])
-            ->orWhereRaw('? BETWEEN start_at and finish_at', [$endDate])->get();
+            ->orWhereRaw('? BETWEEN start_at and finish_at', [$endDate])->get()->count();
 
-        if ($result)
+        if ($result > 0)
             return false;
         return true;
     }

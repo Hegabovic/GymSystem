@@ -26,6 +26,14 @@
         </form>
     </div>
 
+    @if($isOverlap)
+        <div class="m-auto text-center">
+            <li style="color: red;list-style: none">
+                <strong>session time is overlapped with other session</strong>
+            </li>
+        </div>
+    @endif
+
     @if($errors->any())
         <div class="m-auto text-center">
             @foreach($errors->all() as $error)
