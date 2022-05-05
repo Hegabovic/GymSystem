@@ -21,7 +21,10 @@ return new class extends Migration
             // $table->unsignedBigInteger('id')->unique();
             $table->date('birth_date');
             $table->enum('gender',['male','female']);
-            
+            $table->string('stripe_id')->nullable()->collation('utf8mb4_bin');
+            $table->string('card_brand')->nullable();
+            $table->string('card_last_four', 4)->nullable();
+            $table->timestamp('trial_ends_at')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
