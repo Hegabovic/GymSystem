@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\CityRepositoryInterface;
+use App\Http\Requests\StoreCityRequest;
 use App\Models\City;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -10,13 +12,22 @@ use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
-    public function index(): Factory|View|Application
+    private CityRepositoryInterface $cityRepository;
+
+    public function __construct(CityRepositoryInterface $cityRepository)
     {
-        $cities = City::all();
-        return view('cities.cities');
+
+        $this->cityRepository = $cityRepository;
     }
 
-    // =======================================================//
+    public function index(): Factory|View|Application
+    {
+        $cities = $this->cityRepository->all();
+        return view('cities.cities', [
+            'cities' => $cities,
+        ]);
+    }
+
     public function create(): Factory|View|Application
     {
         $cities = City::all();
@@ -27,18 +38,44 @@ class CityController extends Controller
 
     public function store(Request $request)
     {
-        City::create([
-            'city_id' => $request->city_id,
-            'city_name' => $request->city_name,
+
+        $this->cityRepository->create([
+            'name' => $request['cityName'],
         ]);
-        return to_route('cities.cities');
+        return to_route('show_cities');
     }
 
-    // =======================================================//
-    public function delete($cityID)
+    public function edit($cityID)
     {
-        City::findOrFail($cityID)->delete();
-        return to_route('cities.cities');
+        $city = City::find($cityID);
+
+        return view('cities.edit', [
+            'city' => $city,
+        ]);
     }
 
+    public function update(Request $request, $cityID)
+    {
+        $city = City::find($cityID);
+
+        $city->update([
+            'name' => $request->cityName,
+        ]);
+        return to_route('show_cities');
+    }
+
+    public function delete()
+    {
+        $cityID = request()->input('id');
+        $selectedCity = City::find($cityID);
+        if ($selectedCity) {
+            $result = $selectedCity->delete();
+            if ($result > 0) {
+                return ['success' => true];
+            } else {
+                return ['success' => false, 'msg' => 'something went wrong!!'];
+            }
+        }
+        return ['success' => false, 'msg' => 'city doesnt exist!!'];
+    }
 }
