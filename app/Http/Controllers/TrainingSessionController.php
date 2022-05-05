@@ -28,6 +28,7 @@ class TrainingSessionController extends Controller
     public function delete()
     {
         $coachId = request()->input('id');
+
         $result = $this->trainingSessionsRepository->delete($coachId);
         if ($result > 0)
             return ["success" => true];
