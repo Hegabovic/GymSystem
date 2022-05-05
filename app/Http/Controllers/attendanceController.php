@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Attendance;
+use App\Models\Training_session;
 use Illuminate\Support\Facades\View;
 
 class attendanceController extends Controller
@@ -64,24 +65,21 @@ class attendanceController extends Controller
 
     public function edit($id)
     {
-        $attendance=Attendance::find($id);
-        //     $attendance_id=$attendance->id;
-        //     $name=$attendance->customer->user->name;
-        //     $email=$attendance->customer->user->email;
-        //     $session_name=$attendance->training_session->name; 
-        //     $gym_name=$attendance->gym->name;
-        //     $city_name=$attendance->gym->city->name; 
-            // return view('attendance/editAttendance',['attendance'=>$attendance]);
-            return View::make('attendance/editAttendance')->with('attendance', $attendance); 
-            // return redirect(route('edit.attendances'))->with('id', $attendance->id);
+        $attendance=Attendance::All();
+        $thisAttendance=Attendance::find($id);
+
+       return view('attendance/editAttendance',['attendances'=>$attendance,'thisAttendance'=>$thisAttendance]);
     }
 
     public function update(Request $request, $attendance_id)
     {
         $attendance = Attendance::find($attendance_id);
-
+        $training_session = Training_session::find($attendance_id);
+        // dd($request->all());
         $attendance->update([
-            'name' => $request->cityName,
+            "customer_id" => $request->user,
+            "gym_id" => $request->gym,
+            "training_session_id" => $request->training_session,
         ]);
         return to_route('show.attendances');
     }
