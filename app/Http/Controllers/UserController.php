@@ -6,7 +6,6 @@ use App\Contracts\BaseRepositoryInterface;
 use App\Http\Requests\EditClerkRequest;
 use App\Http\Requests\StoreClerkRequest;
 use App\Models\User;
-//use App\Repositories\BaseRepository;
 use App\Repositories\CityManagerRepository;
 use App\Repositories\GymManagerRepository;
 use App\Repositories\UserRepository;

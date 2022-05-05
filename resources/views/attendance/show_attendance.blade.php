@@ -96,7 +96,6 @@
 
                                         <td>
                                             <button class="btn btn-danger delete" id="{{$table->id}}"><i class="fas fa-trash-alt"></i></button>
-                                            {{-- <button class="btn btn-primary edit" edit-id="{{$table->id}}"><i class="fas fa-edit"></i></button> --}}
                                             <a href="{{ route('edit.attendances',  $table->id) }}" class="btn btn-primary edit"><i class="fas fa-edit"></i>
                                             </a>
 
