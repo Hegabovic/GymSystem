@@ -7,11 +7,11 @@ use App\Contracts\CityRepositoryInterface;
 use App\Contracts\CoachRepositoryInterface;
 use App\Contracts\OrderRepositoryInterface;
 use App\Contracts\TrainingSessionInterface;
+use App\Contracts\PackageRepositoryInterface;
 use App\Repositories\BaseRepository;
 use App\Repositories\CityRepository;
 use App\Repositories\CoachRepository;
 use App\Repositories\OrderRepository;
-use App\Repositories\TrainingSessionsRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoriesServiceProvider extends ServiceProvider
@@ -38,5 +38,6 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(CityRepositoryInterface::class, CityRepository::class);
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
         $this->app->bind(TrainingSessionInterface::class, TrainingSessionsRepository::class);
+        $this->app->bind(PackageRepositoryInterface::class, PackageRepository::class);
     }
 }

@@ -55,10 +55,17 @@ Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete_c
 Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendances');
 Route::get('/attendance-create', [attendanceController::class, 'create'])->name('create.attendances');
 Route::post('/attendance-store', [attendanceController::class, 'store'])->name('store.attendances');
+Route::get('/attendance-edit/{id}', [attendanceController::class, 'edit'])->name('edit.attendances');
+Route::put('/attendance-update/{id}', [attendanceController::class, 'update'])->name('update.attendances');
+
 Route::get('/order', [orderController::class, 'show'])->name('show.order');
 Route::get('/create-order', [orderController::class, 'create'])->name('create.order');
+
 Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
 Route::get('/packages-create', [PackageController::class, 'create'])->name('packages.create');
+Route::post ('/packages',[PackageController::class,'store'])->name('packages.store');
+Route::get('/packages-edit/{id}',[PackageController::class, 'edit'])->name('packages.edit');
+Route::put('/packages-update/{id}',[PackageController::class, 'update'])->name('packages.update');
 
 Auth::routes();
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('pkg_id')->references('id')->on('packages');
             $table->foreign('customer_id')->references('id')->on('users');
             $table->foreign('gym_id')->references('id')->on('gyms');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
