@@ -11,12 +11,12 @@
             <div class="form-group">
                 <label for="StartAt">Start at</label>
                 <input type="date" name="startAt" class="form-control" id="StartAt"
-                       value="{{$trainingSession->start_at}}">
+                       value="{{$trainingSession->start_at->format('d-m-Y h:iA')}}">
             </div>
             <div class="form-group">
                 <label for="FinishAt">Finish at</label>
                 <input type="date" name="finishAt" class="form-control" id="FinishAt"
-                       value="{{$trainingSession->finish_at}}">
+                       value="{{$trainingSession->finish_at->format('d-m-Y h:iA')}}">
             </div>
         </div>
 
