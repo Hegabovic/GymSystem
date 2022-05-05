@@ -3,6 +3,8 @@
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TrainingSessionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GymController;
