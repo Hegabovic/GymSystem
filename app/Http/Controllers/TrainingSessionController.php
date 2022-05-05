@@ -64,11 +64,16 @@ class TrainingSessionController extends Controller
 
     public function store(StoreTrainingSessionRequest $request): RedirectResponse
     {
-        $this->trainingSessionsRepository->create([
-            "name" => $request->name,
-            "start_at" => $request->startAt,
-            "finish_at" => $request->finishAt
-        ]);
+        $isLegalTime = $this->trainingSessionsRepository->isLegal($request->startAt, $request->finishAt);
+
+        if ($isLegalTime) {
+            $this->trainingSessionsRepository->create([
+                "name" => $request->name,
+                "start_at" => $request->startAt,
+                "finish_at" => $request->finishAt
+            ]);
+        }
+
         return to_route('show_trainingSessions');
     }
 }
