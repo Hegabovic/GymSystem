@@ -57,8 +57,6 @@
                 event.preventDefault();
                 let coachId = this.getAttribute('data-id');
                 let url = "{{route('coach.delete')}}" + `?id=${coachId}`;
-                cons
-
                 let result = confirm('Are you sure you want to delete ?');
                 if (result) {
                     let row = $(this).parent().parent();
