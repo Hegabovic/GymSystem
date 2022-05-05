@@ -58,19 +58,21 @@
                                     <th>Customer Name</th>
                                     <th>Gym</th>
                                     <th>city</th>
+                                    <th>options</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($items as $table)
                                     @if ( ! $table->trashed())
+
                                         <tr>
                                             <td>{{$table->id}}</td>
                                             <td>{{$table->customer->user->name}}</td>
 
                                             <td>{{$table->gym->name}}</td>
                                             <td>{{$table->gym->city->name}}</td>
-                                            <td>
-                                                <button class="btn btn-primary delete" id="{{$table->id}}">Delete
+                                            <td align="center">
+                                                <button class="btn btn-danger delete" id="{{$table->id}}"><i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -78,25 +80,30 @@
                                 @endforeach
 
                                 <script>
-                                    $(document).on('click', '.delete', function () {
-                                        $confirm = confirm('Are you sure you want to delete ?');
-                                        if ($confirm) {
-                                            let row = $(this).parent().parent()
-                                            row.css("background-color", "grey");
-
+                                    function sendDeleteRequest() {
+                                        $(document).on('click', '.delete', function (event) {
+                                            event.preventDefault();
                                             let order_id = this.id;
-                                            console.log(order_id)
-                                            $.ajax({
-                                                url: "{{route('delete.orders')}}" + `?id=${order_id}`,
-                                                type: 'DELETE',
-                                                contentType: 'application/json',
-                                                data: `{"id":"${order_id}"}`,
-                                                success: function (result) {
-                                                    row.remove();
-                                                }
-                                            });
-                                        }
-                                    });
+                                            let url = "{{route('delete.orders')}}" + `?id=${order_id}`;
+                                            let result = confirm('Are you sure you want to delete ?');
+                                            if (result) {
+                                                let row = $(this).parent().parent();
+                                                $.ajax({
+                                                    url: url,
+                                                    contentType: 'application/json',
+                                                    data: `{"id":"${order_id}"}`,
+                                                    type: 'DELETE',
+                                                    success: function (result) {
+                                                        if (result.success)
+                                                            row.remove()
+                                                        else
+                                                            alert(result.msg)
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
+                                    sendDeleteRequest()
                                 </script>
 
                                 <tbody>

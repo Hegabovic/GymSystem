@@ -52,7 +52,7 @@
                             </div>
                             <table id="example" class="table table-bordered" style="color: black">
                                 <thead>
-                                <tr>
+                                <tr align="center">
                                     <th>Id</th>
                                     <th>City Name</th>
                                     <th>attendance date</th>
@@ -63,7 +63,7 @@
                                 <tbody>
                                 @foreach ($cities as $city)
 
-                                    <tr>
+                                    <tr align="center">
                                         <td>{{$city->id}}</td>
                                         <td>{{$city->name}}</td>
 
@@ -76,9 +76,9 @@
                                         @endif
 
                                         <td>
-                                            <button class="btn btn-primary delete" id="{{$city->id}}">Delete
+                                            <button class="btn btn-danger delete" id="{{$city->id}}"><i class="fas fa-trash-alt"></i>
                                             </button>
-                                            <a href="{{ route('city.edit',  $city->id) }}" class="btn btn-primary edit">Edit
+                                            <a href="{{ route('city.edit',  $city->id) }}" class="btn btn-primary edit"><i class="fas fa-edit"></i>
                                             </a>
                                         </td>
                                     </tr>
