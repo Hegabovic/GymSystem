@@ -34,4 +34,5 @@ class ApiUserController extends Controller
        return $this->userRepository->all();
    }
 
+
 }
