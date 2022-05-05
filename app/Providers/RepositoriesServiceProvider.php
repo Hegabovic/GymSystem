@@ -8,8 +8,10 @@ use App\Contracts\ClerkRepositoryInterface;
 use App\Contracts\CityRepositoryInterface;
 use App\Contracts\CoachRepositoryInterface;
 use App\Contracts\OrderRepositoryInterface;
+use App\Contracts\SessionsCoachesRepositoryInterface;
 use App\Contracts\TrainingSessionInterface;
 use App\Contracts\PackageRepositoryInterface;
+use App\Models\SessionsCoaches;
 use App\Repositories\AttendanceRepository;
 use App\Repositories\BaseRepository;
 use App\Repositories\CityManagerRepository;
@@ -55,5 +57,6 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(ClerkRepositoryInterface::class, CityManagerRepository::class);
         $this->app->bind(BaseRepositoryInterface::class, CustomerRepository::class);
         $this->app->bind(AttendanceRepositoryInterface::class, AttendanceRepository::class);
+        $this->app->bind(SessionsCoachesRepositoryInterface::class, SessionsCoaches::class);
     }
 }
