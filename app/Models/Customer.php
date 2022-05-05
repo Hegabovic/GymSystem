@@ -23,4 +23,8 @@ class Customer extends Model
     {
         return $this->hasOne(Order::class);
     }
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 }

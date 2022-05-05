@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomerAttendanceRequest;
 use App\Http\Requests\CustomerRegisterRequest;
 
+use App\Http\Resources\AttendanceResource;
 use App\Models\Customer;
 use App\Repositories\AttendanceRepository;
 use App\Repositories\BaseRepository;
@@ -64,6 +65,10 @@ class ApiUserController extends Controller
                             'finishes_at'=>$session->finish_at,
                             'you attended at'=>date('H:m:s a')]]);
    }
-
+   public function getAttendedSessions()
+   {
+       $customer=\request()->user()->customer;
+       return AttendanceResource::collection($customer->attendance);
+   }
 
 }
