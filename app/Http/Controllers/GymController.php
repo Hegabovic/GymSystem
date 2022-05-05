@@ -11,7 +11,6 @@ class GymController extends Controller
 {
     public function show()
     {
-        $tableData=Gym::all();
         $gyms = Gym::all();
         return view('gyms.show_gym', ['gyms' => $gyms]);
     }
@@ -36,13 +35,14 @@ class GymController extends Controller
 
     public function edit(Request $request,$id)
     {
-     $gyms=Gym::find($id);
-     $gyms->name = $request->input('name');
-     $gyms->created_at = $request->input('created at');
-     $gyms->cover_image = $request->input('cover_image');
+     $gym=Gym::find($id);
+
+    //  $gyms->name = $request->input('name');
+    //  $gyms->created_at = $request->input('created at');
+    //  $gyms->cover_image = $request->input('cover_image');
 
 
-     return to_route('show_gyms');
+     return view('gyms.edit',['gym' => $gym]);
     }
 
 }
