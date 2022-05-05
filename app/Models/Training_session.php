@@ -25,7 +25,6 @@ class Training_session extends Model
 
     protected $fillable = [
         'name',
-        'gym_id',
         'start_at',
         'finish_at'
     ];

@@ -46,7 +46,6 @@ class TrainingSessionController extends Controller
         $formData = $request->all();
         $updatedTrainingSession = [
             "name" => $request->name,
-            "gym_id" => $request->gym,
             "start_at" => $request->start_at,
             "finish_at" => $request->finish_at
         ];
@@ -64,7 +63,6 @@ class TrainingSessionController extends Controller
     {
         $this->trainingSessionsRepository->create([
             "name" => $request->name,
-            "gym_id" => $request->gym,
             "start_at" => $request->start_at,
             "finish_at" => $request->finish_at
         ]);

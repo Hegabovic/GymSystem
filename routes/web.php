@@ -3,6 +3,7 @@
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TrainingSessionController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\GymController;
@@ -40,11 +41,11 @@ Route::get('/coach-create', [CoachController::class, 'create'])->name('create_co
 Route::post('/coach-store', [CoachController::class, 'store'])->name('store_coach');
 Route::get('/coach-edit/{id}', [CoachController::class, 'edit'])->name('update_coach');
 Route::put('/coach-update/{id}', [CoachController::class, 'storeEdit'])->name('store_updated_coach');
-Route::get('/trainingSession', [CoachController::class, 'index'])->name('show_trainingSessions');
-Route::get('/trainingSession-create', [CoachController::class, 'create'])->name('create_trainingSession');
-Route::post('/trainingSession-store', [CoachController::class, 'store'])->name('store_trainingSession');
-Route::get('/trainingSession-edit/{id}', [CoachController::class, 'edit'])->name('update_trainingSession');
-Route::put('/trainingSession-update/{id}', [CoachController::class, 'storeEdit'])->name('store_updated_trainingSession');
+Route::get('/trainingSession', [TrainingSessionController::class, 'index'])->name('show_trainingSessions');
+Route::get('/trainingSession-create', [TrainingSessionController::class, 'create'])->name('create_trainingSession');
+Route::post('/trainingSession-store', [TrainingSessionController::class, 'store'])->name('store_trainingSession');
+Route::get('/trainingSession-edit/{id}', [TrainingSessionController::class, 'edit'])->name('update_trainingSession');
+Route::put('/trainingSession-update/{id}', [TrainingSessionController::class, 'storeEdit'])->name('store_updated_trainingSession');
 Route::get('/city', [CityController::class, 'index'])->name('show_cities');
 Route::get('/city-create', [CityController::class, 'create'])->name('create');
 Route::post('/city-store', [CityController::class, 'store'])->name('store_city');

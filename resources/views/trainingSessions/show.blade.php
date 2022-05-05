@@ -12,7 +12,6 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Gym</th>
                                     <th>Start at</th>
                                     <th>Finish At</th>
                                     <th>Options</th>
@@ -23,9 +22,8 @@
                                     <tr>
                                         <td>{{$trainingSession->id}}</td>
                                         <td>{{$trainingSession->name}}</td>
-                                        <td>{{$trainingSession->gym->name}}</td>
                                         <td>{{$trainingSession->start_at}}</td>
-                                        <td>{{$trainingSession->fisish_at}}</td>
+                                        <td>{{$trainingSession->finish_at}}</td>
                                         <td>
                                             <a role="button" href="{{route('update_coach',[$trainingSession->id])}}"
                                                class="btn btn-primary m-1 d-inline-block"

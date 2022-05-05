@@ -336,7 +336,7 @@
 
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="fas fa-pennant"></i>
+                            <i class="nav-icon fas fa-play"></i>
                             <p>
                                 Training Sessions
                                 <i class="fas fa-angle-left right"></i>

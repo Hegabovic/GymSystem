@@ -18,14 +18,7 @@
                 <input type="text" name="address" class="form-control" id="FinishAt"
                        value="{{$trainingSession->finish_at}}">
             </div>
-            <div class="form-group">
-                <label for="gym-input">Gym</label>
-                <select name="gym" id="gym-input" class="form-control">
-                    <option>gym-1</option>
-                    <option>gym-1</option>
-                    <option>gym-1</option>
-                </select>
-            </div>
+
         </div>
 
         <div class="card-footer">

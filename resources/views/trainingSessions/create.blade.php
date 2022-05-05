@@ -9,14 +9,6 @@
                     <input type="text" name="name" class="form-control" id="Name" placeholder="Enter email">
                 </div>
                 <div class="form-group">
-                    <label for="gym-input">Gym</label>
-                    <select name="gym" id="gym-input" class="form-control">
-                        <option>gym-1</option>
-                        <option>gym-1</option>
-                        <option>gym-1</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label for="StartAt">Start at</label>
                     <input type="text" name="startAt" class="form-control" id="StartAt" placeholder="Password">
                 </div>
