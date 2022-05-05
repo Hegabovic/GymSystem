@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\PackageController;
 use Illuminate\Http\Request;
@@ -21,8 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::delete('/attendance-delete', 'App\Http\Controllers\attendanceController@delete')->name('delete.attendances');
+Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete.city');
+Route::put('/city-restore',[CityController::class,'restore'])->name('restore.city');
 Route::delete('/coach-delete', [CoachController::class, 'delete'])->name('coach.delete');
 Route::delete('/order-delete', 'App\Http\Controllers\orderController@delete')->name('delete.orders');
-Route::delete('/packages-delete','App\Http\Controllers\attendanceController@delete')->name('packages.delete');
-
-
+Route::delete('/packages-delete','App\Http\Controllers\PackageController@delete')->name('packages.delete');
