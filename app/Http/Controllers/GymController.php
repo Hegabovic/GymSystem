@@ -15,6 +15,17 @@ class GymController extends Controller
         return view('gyms.show_gym', ['gyms' => $gyms]);
     }
 
+
+    public function create () {
+
+        $gyms= Gym::All();
+
+        return view  ('gyms.create',[
+            'gyms'=>$gyms,
+        ]);
+
+    }
+
     public function delete()
 
     {
