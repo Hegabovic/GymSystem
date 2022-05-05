@@ -59,8 +59,12 @@
                                     <th>training session name</th>
                                     <th>attendance date</th>
                                     <th>attendance time</th>
+                                    @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
                                     <th>Gym</th>
+                                    @endif
+                                    @if (request()->user()->hasrole('Admin'))
                                     <th>City</th>
+                                    @endif
                                     <th>options</th>
                                 </tr>
                                 </thead>
@@ -81,8 +85,15 @@
                                         @if($table->created_at)
                                             <td>{{$table->created_at->format('H:i')}}</td>
                                         @endif
+
+                                        @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
                                         <td>{{$table->gym->name}}</td>
+                                        @endif
+
+                                        @if ( request()->user()->hasrole('Admin'))
                                         <td>{{$table->gym->city->name}}</td>
+                                        @endif
+
                                         <td>
                                             <button class="btn btn-danger delete" id="{{$table->id}}"><i class="fas fa-trash-alt"></i></button>
                                             {{-- <button class="btn btn-primary edit" edit-id="{{$table->id}}"><i class="fas fa-edit"></i></button> --}}
