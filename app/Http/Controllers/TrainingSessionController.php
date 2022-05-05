@@ -30,14 +30,19 @@ class TrainingSessionController extends Controller
 
     public function delete()
     {
-        $coachId = request()->input('id');
+        $trainingSessionId = request()->input('id');
+        $attendanceCount = $this->attendanceRepository->selectCountOfUsersBySessionId($trainingSessionId);
 
-        $result = $this->trainingSessionsRepository->delete($coachId);
-        if ($result > 0)
-            return ["success" => true];
+        if ($attendanceCount == 0) {
+            $result = $this->trainingSessionsRepository->delete($trainingSessionId);
+            if ($result > 0)
+                return ["success" => true];
 
-        else
-            return ["success" => false, "message" => "Delete hasn't completed successfully."];
+            else
+                return ["success" => false, "message" => "Delete hasn't completed successfully."];
+        } else {
+            return ["success" => false, "message" => "Cannot delete session because someone is attending in."];
+        }
     }
 
     public function edit($coachId)
