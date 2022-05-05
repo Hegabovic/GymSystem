@@ -47,8 +47,8 @@ class TrainingSessionController extends Controller
         $formData = $request->all();
         $updatedTrainingSession = [
             "name" => $request->name,
-            "start_at" => $request->start_at,
-            "finish_at" => $request->finish_at
+            "start_at" => $request->startAt,
+            "finish_at" => $request->finishAt
         ];
         $this->trainingSessionsRepository->update($request->id, $updatedTrainingSession);
 
@@ -64,8 +64,8 @@ class TrainingSessionController extends Controller
     {
         $this->trainingSessionsRepository->create([
             "name" => $request->name,
-            "start_at" => $request->start_at,
-            "finish_at" => $request->finish_at
+            "start_at" => $request->startAt,
+            "finish_at" => $request->finishAt
         ]);
         return to_route('show_trainingSessions');
     }

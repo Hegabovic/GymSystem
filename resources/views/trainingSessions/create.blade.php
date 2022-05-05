@@ -6,15 +6,15 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="Name">Name</label>
-                    <input type="text" name="name" class="form-control" id="Name" placeholder="Enter email">
+                    <input type="text" name="name" class="form-control" id="Name" placeholder="Name">
                 </div>
                 <div class="form-group">
                     <label for="StartAt">Start at</label>
-                    <input type="text" name="startAt" class="form-control" id="StartAt" placeholder="Password">
+                    <input type="date" name="startAt" class="form-control" id="StartAt" placeholder="Start at">
                 </div>
                 <div class="form-group">
                     <label for="FinishAt">Finish at</label>
-                    <input type="text" name="FinishAt" class="form-control" id="FinishAt" placeholder="Password">
+                    <input type="date" name="finishAt" class="form-control" id="FinishAt" placeholder="Finish at">
                 </div>
             </div>
 
