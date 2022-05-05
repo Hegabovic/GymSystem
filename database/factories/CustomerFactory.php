@@ -20,7 +20,6 @@ class CustomerFactory extends Factory
         $gender=['male','female'];
         return [
             'user_id'=>$this->faker->unique()->numberBetween(1, User::count()),
-            'n_id'=>$this->faker->numerify('################'),
             'birth_date'=>$this->faker->date(),
             'gender'=>$gender[rand(0,1)],
             'avatar_path'=>'default image'

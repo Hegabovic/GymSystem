@@ -1,37 +1,5 @@
-{{-- <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
-
-<table id="example" >
-    {{-- class="table table-striped table-bordered" --}}
-    
-    {{-- <thead>
-        <tr>
-            <th>user name</th>
-            <th>email</th>
-            <th>training session name</th>
-            <th>attendance time</th>
-            <th>attendance date</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-           <td>adham</td> 
-        </tr>
-    <tbody> 
-     --}}
-{{-- </table>
-
-<script>
-   $(document).ready(function() {
-    $('#example').DataTable();
-} );
-   </script> --}}
-   
-
-   @extends('layouts.app')
+@extends('layouts.app')
 @section('content')
-<link rel="stylesheet" type="text/css" href="/DataTables/datatables.css">
-<script type="text/javascript" charset="utf8" src="/DataTables/datatables.js"></script>
 
     <div class="wrapper">
 
@@ -96,14 +64,7 @@
                                 </div>
                             </div>
                             <!-- /.card-header -->
-
-                            {{-- <div class="form-control">
-                                <form action="{{route('show.attendances')}}" method="POST">
-                                <input type="text" class="form-control" placeholder="Name">
-                                <input type="text" class="form-control" placeholder="email">
-                                </form>
-                            </div> --}}
-
+                            
                             {{-- <form> --}}
                             <form action="{{route('store.attendances')}}" method="POST">
                                 @csrf

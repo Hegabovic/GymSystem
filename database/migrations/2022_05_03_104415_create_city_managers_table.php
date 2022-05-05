@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('city_managers', function (Blueprint $table) {
+            $table->id();
             $table->string('avatar_path');
             $table->unsignedBigInteger('n_id');
             $table->unsignedBigInteger('user_id')->unique();
