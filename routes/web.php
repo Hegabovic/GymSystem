@@ -31,8 +31,8 @@ Route::get('/create-gym-manager', [UserController::class, 'createGymManager'])->
 Route::post('/store-gym-manager', [UserController::class, 'storeGymManager'])->name('store_gym_manager');
 Route::post('/store-city-manager', [UserController::class, 'storeCityManager'])->name('store_city_manager');
 Route::get('/show-users', [UserController::class, 'showUsers'])->name('show_users');
-Route::post('/store/{clerk}',[UserController::class,'store'])->name('store_clerk');
-Route::get('/show-users',[UserController::class,'showUsers'])->name('show_users');
+Route::post('/store/{clerk}', [UserController::class, 'store'])->name('store_clerk');
+Route::get('/show-users', [UserController::class, 'showUsers'])->name('show_users');
 Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
 Route::post('/user-store', [UserController::class, 'store'])->name('store_user');
 Route::get('/coach', [CoachController::class, 'index'])->name('show_coaches');
@@ -40,11 +40,16 @@ Route::get('/coach-create', [CoachController::class, 'create'])->name('create_co
 Route::post('/coach-store', [CoachController::class, 'store'])->name('store_coach');
 Route::get('/coach-edit/{id}', [CoachController::class, 'edit'])->name('update_coach');
 Route::put('/coach-update/{id}', [CoachController::class, 'storeEdit'])->name('store_updated_coach');
+Route::get('/trainingSession', [CoachController::class, 'index'])->name('show_trainingSession');
+Route::get('/trainingSession-create', [CoachController::class, 'create'])->name('trainingSession_coach');
+Route::post('/trainingSession-store', [CoachController::class, 'store'])->name('store_trainingSession');
+Route::get('/trainingSession-edit/{id}', [CoachController::class, 'edit'])->name('update_trainingSession');
+Route::put('/trainingSession-update/{id}', [CoachController::class, 'storeEdit'])->name('store_updated_trainingSession');
 Route::get('/city', [CityController::class, 'index'])->name('show_cities');
 Route::get('/city-create', [CityController::class, 'create'])->name('create');
 Route::post('/city-store', [CityController::class, 'store'])->name('store_city');
-Route::get('/edit/{id}',[CityController::class,'edit'])->name('city.edit');
-Route::put('/update/{id}',[CityController::class,'update'])->name('city.update');
+Route::get('/edit/{id}', [CityController::class, 'edit'])->name('city.edit');
+Route::put('/update/{id}', [CityController::class, 'update'])->name('city.update');
 Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete_city');
 Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendances');
 Route::get('/attendance-create', [attendanceController::class, 'create'])->name('create.attendances');
@@ -53,7 +58,6 @@ Route::get('/order', [orderController::class, 'show'])->name('show.order');
 Route::get('/create-order', [orderController::class, 'create'])->name('create.order');
 Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
 Route::get('/packages-create', [PackageController::class, 'create'])->name('packages.create');
-
 
 Auth::routes();
 

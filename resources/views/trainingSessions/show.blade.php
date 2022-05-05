@@ -5,33 +5,35 @@
             <div class="row">
                 <div class="col-md-12 ">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Coaches</div>
+                        <div class="panel-heading">Training Sessions</div>
                         <div class="panel-body">
                             <table class="table table-bordered" style="color: black;" id="datatable">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
+                                    <th>Gym</th>
+                                    <th>Start at</th>
+                                    <th>Finish At</th>
                                     <th>Options</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($coaches as $coach)
+                                @foreach($trainingSessions as $trainingSession)
                                     <tr>
-                                        <td>{{$coach->id}}</td>
-                                        <td>{{$coach->name}}</td>
-                                        <td>{{$coach->phone}}</td>
-                                        <td>{{$coach->address}}</td>
+                                        <td>{{$trainingSession->id}}</td>
+                                        <td>{{$trainingSession->name}}</td>
+                                        <td>{{$trainingSession->gym->name}}</td>
+                                        <td>{{$trainingSession->start_at}}</td>
+                                        <td>{{$trainingSession->fisish_at}}</td>
                                         <td>
-                                            <a role="button" href="{{route('update_coach',[$coach->id])}}"
+                                            <a role="button" href="{{route('update_coach',[$trainingSession->id])}}"
                                                class="btn btn-primary m-1 d-inline-block"
-                                               data-id="{{$coach->id}}">
+                                               data-id="{{$trainingSession->id}}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <a role="button" class="btn btn-danger m-1 d-inline-block delete"
-                                               data-id="{{$coach->id}}">
+                                               data-id="{{$trainingSession->id}}">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>
@@ -55,8 +57,8 @@
         function sendDeleteRequest() {
             $(document).on('click', '.delete', function (event) {
                 event.preventDefault();
-                let coachId = this.getAttribute('data-id');
-                let url = "{{route('coach.delete')}}" + `?id=${coachId}`;
+                let trainingSessionId = this.getAttribute('data-id');
+                let url = "{{route('coach.delete')}}" + `?id=${trainingSessionId}`;
 
                 let result = confirm('Are you sure you want to delete ?');
                 if (result) {

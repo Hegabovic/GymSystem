@@ -1,20 +1,30 @@
 @extends('layouts.app')
 @section('content')
-    <form method="post" action="{{route("store_updated_coach",$coach->id)}}">
+    <form method="post" action="{{route("store_updated_trainingSession",$trainingSession->id)}}">
         @csrf
         @method('put')
         <div class="card-body">
             <div class="form-group">
                 <label for="Name">Name</label>
-                <input type="text" name="name" class="form-control" id="Name" value="{{$coach->name}}">
+                <input type="text" name="name" class="form-control" id="Name" value="{{$trainingSession->name}}">
             </div>
             <div class="form-group">
-                <label for="Phone">Phone</label>
-                <input type="text" name="phone" class="form-control" id="Phone" value="{{$coach->phone}}">
+                <label for="StartAt">Start at</label>
+                <input type="text" name="phone" class="form-control" id="StartAt"
+                       value="{{$trainingSession->start_at}}">
             </div>
             <div class="form-group">
-                <label for="Address">Address</label>
-                <input type="text" name="address" class="form-control" id="Address" value="{{$coach->address}}">
+                <label for="FinishAt">Finish at</label>
+                <input type="text" name="address" class="form-control" id="FinishAt"
+                       value="{{$trainingSession->finish_at}}">
+            </div>
+            <div class="form-group">
+                <label for="gym-input">Gym</label>
+                <select name="gym" id="gym-input" class="form-control">
+                    <option>gym-1</option>
+                    <option>gym-1</option>
+                    <option>gym-1</option>
+                </select>
             </div>
         </div>
 
