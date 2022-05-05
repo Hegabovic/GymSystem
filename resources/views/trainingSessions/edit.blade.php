@@ -10,15 +10,14 @@
             </div>
             <div class="form-group">
                 <label for="StartAt">Start at</label>
-                <input type="text" name="phone" class="form-control" id="StartAt"
+                <input type="text" name="startAt" class="form-control" id="StartAt"
                        value="{{$trainingSession->start_at}}">
             </div>
             <div class="form-group">
                 <label for="FinishAt">Finish at</label>
-                <input type="text" name="address" class="form-control" id="FinishAt"
+                <input type="text" name="finishAt" class="form-control" id="FinishAt"
                        value="{{$trainingSession->finish_at}}">
             </div>
-
         </div>
 
         <div class="card-footer">
