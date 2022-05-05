@@ -27,17 +27,17 @@ class StoreClerkRequest extends FormRequest
     {
         $validationRules=['name'=>['required','max:50'],
             'email'=>['required','unique:users'],
-            'password'=>['required','min:8'],
-            'n_id'=>['required','digits:16', 'unique:users'],
-            'photo'=>['mimetypes:image/jpg,image/png,image/jpeg']];
-        if($this->clerk==='city-manager') $validationRules['facility']=['required','exists:cities:id'];
-        elseif ($this->clerk==='gym-manager') $validationRules['facility']=['required','exists:gyms:id'];
+            'password'=>['required','min:8','confirmed'],
+            'n_id'=>['required','digits:16', 'unique:city_managers','unique:gym_managers'],
+            'avatar'=>['mimetypes:image/jpg,image/png,image/jpeg']];
+        if($this->clerk==='city-manager') $validationRules['facility']=['required','exists:cities,id'];
+        elseif ($this->clerk==='gym-manager') $validationRules['facility']=['required','exists:gyms,id'];
         return $validationRules;
     }
     public function messages()
     {
         return [
-            'name.required' => 'A title is required',
+            'name.required' => 'A name is required',
             'email.unique'=>'There is already post with the same name',
             'name.max' => 'Title cannot exceed 20 letters',
         ];

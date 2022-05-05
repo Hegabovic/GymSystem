@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="wrapper">
+        <div class="container">
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
@@ -14,12 +15,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard v2</h1>
+                        <h1 class="m-0">Add Gym Manager</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard v2</li>
+                            <li class="breadcrumb-item active">add a gym manager</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -36,16 +37,25 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <form method="post" action="{{route('store_clerk',['clerk'=>'gym-manager'])}}">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form method="post" action="{{route('store_clerk',['clerk'=>'gym-manager'])}}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 @include('forms.create_clerk_form')
                                 <div class="form-group">
                                     <label for="gym-input">gym</label>
                                     <select name="facility" id="gym-input" class="form-control" >
-                                        <option>gym-1</option>
-                                        <option>gym-1</option>
-                                        <option>gym-1</option>
+                                        <option value="1">gym-1</option>
+                                        <option value="2">gym-1</option>
+                                        <option value="3">gym-1</option>
                                     </select>
                                 </div>
 
@@ -66,5 +76,6 @@
                 <!-- /.row -->
             </div><!--/. container-fluid -->
         </section>
+    </div>
     </div>
 @endsection
