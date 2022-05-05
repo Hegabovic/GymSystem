@@ -10,12 +10,12 @@
             </div>
             <div class="form-group">
                 <label for="StartAt">Start at</label>
-                <input type="text" name="startAt" class="form-control" id="StartAt"
+                <input type="date" name="startAt" class="form-control" id="StartAt"
                        value="{{$trainingSession->start_at}}">
             </div>
             <div class="form-group">
                 <label for="FinishAt">Finish at</label>
-                <input type="text" name="finishAt" class="form-control" id="FinishAt"
+                <input type="date" name="finishAt" class="form-control" id="FinishAt"
                        value="{{$trainingSession->finish_at}}">
             </div>
         </div>

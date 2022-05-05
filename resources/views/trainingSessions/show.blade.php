@@ -25,7 +25,8 @@
                                         <td>{{$trainingSession->start_at}}</td>
                                         <td>{{$trainingSession->finish_at}}</td>
                                         <td>
-                                            <a role="button" href="{{route('update_coach',[$trainingSession->id])}}"
+                                            <a role="button"
+                                               href="{{route('update_trainingSession',[$trainingSession->id])}}"
                                                class="btn btn-primary m-1 d-inline-block"
                                                data-id="{{$trainingSession->id}}">
                                                 <i class="fas fa-edit"></i>
