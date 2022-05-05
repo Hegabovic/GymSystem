@@ -1,7 +1,6 @@
-
 @extends('layouts.app')
 @section('content')
- <form method="POST" action="{{ route('store_gyms',$gym->id) }}" enctype="multipart/form-data">
+<form method="GET" action="{{ route('store_gyms',$gym->id) }}" enctype="multipart/form-data">
         @csrf
      <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label ">  name</label>
@@ -22,5 +21,4 @@
          <button class="btn btn-success">Update</button>
 
 </form>
-@section('content')
-
+@endsection
