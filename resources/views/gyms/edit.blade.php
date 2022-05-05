@@ -2,7 +2,6 @@
 @extends('layouts.app')
 @section('content')
  <form method="POST" action="">
-        @method('PUT')
         @csrf
      <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label ">  name</label>

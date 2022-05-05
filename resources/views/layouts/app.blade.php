@@ -10,7 +10,7 @@
 
     {{-- <link rel="stylesheet" type="text/css" href="<link rel="stylesheet" href="{{ asset('css/datatables.main.css') }}" >
     <script type="text/javascript" charset="utf8" src="{ asset('css/datatables.main.css') }}"></script> --}}
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
           crossorigin="anonymous"/>
@@ -35,10 +35,10 @@
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
-    <!-- Preloader -->
+    <!-- Preloader
     <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-    </div>
+    </div> -->
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark">

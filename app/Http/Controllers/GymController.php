@@ -45,5 +45,21 @@ class GymController extends Controller
      return view('gyms.edit',['gym' => $gym]);
     }
 
+
+    public function storeUpdate (Request $request){
+        $formData = $request->all();
+        dd($formData);
+        $id = $formData["id"];
+        $gyms=Gym::find($id);
+        $gyms->name = $formData["name"];
+        $updatedGym = [
+                          "name"=> $formData["name"],
+                          "created at"=>$formData["created_at"],
+                          "cover image"=>$formData["cover_image"],
+
+                       ];
+        $gyms->update($updatedGym);
+    }
 }
+
 

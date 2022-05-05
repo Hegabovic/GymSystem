@@ -12,6 +12,7 @@ use App\Http\Controllers\orderController;
 use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Contracts\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,7 @@ Route::get('/show-users',[UserController::class,'showUsers'])->name('show_users'
 
 Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
 Route::get('/gyms/edit/{id}',[GymController::class,'edit'])->name('edit.gyms');
+Route::get('/gym-store',[GymController::class,'storeUpdate'])->name('store_gyms');
 
 
 Route::post('/user-store', [UserController::class, 'store'])->name('store_user');
