@@ -40,8 +40,8 @@ Route::get('/coach-create', [CoachController::class, 'create'])->name('create_co
 Route::post('/coach-store', [CoachController::class, 'store'])->name('store_coach');
 Route::get('/coach-edit/{id}', [CoachController::class, 'edit'])->name('update_coach');
 Route::put('/coach-update/{id}', [CoachController::class, 'storeEdit'])->name('store_updated_coach');
-Route::get('/trainingSession', [CoachController::class, 'index'])->name('show_trainingSession');
-Route::get('/trainingSession-create', [CoachController::class, 'create'])->name('trainingSession_coach');
+Route::get('/trainingSession', [CoachController::class, 'index'])->name('show_trainingSessions');
+Route::get('/trainingSession-create', [CoachController::class, 'create'])->name('create_trainingSession');
 Route::post('/trainingSession-store', [CoachController::class, 'store'])->name('store_trainingSession');
 Route::get('/trainingSession-edit/{id}', [CoachController::class, 'edit'])->name('update_trainingSession');
 Route::put('/trainingSession-update/{id}', [CoachController::class, 'storeEdit'])->name('store_updated_trainingSession');

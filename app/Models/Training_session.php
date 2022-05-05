@@ -30,5 +30,4 @@ class Training_session extends Model
         'finish_at'
     ];
 
-
 }
