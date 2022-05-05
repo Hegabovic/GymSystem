@@ -1,39 +1,26 @@
 @extends('layouts.app')
 @section('content')
     <div class="wrapper">
-
-        <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
         </div>
-
-
-        <!-- Content Wrapper. Contains page content -->
-        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">Dashboard v2</h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active">Dashboard v2</li>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <!-- Info boxes -->
-
-                <!-- /.row -->
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -62,102 +49,75 @@
                                     </button>
                                 </div>
                             </div>
-                            <!-- /.card-header -->
 
-                            <!-- ./card-body -->
+                            <table id="example" class="table table-bordered" style="color: black">
+                                <thead>
+                                <tr align="center">
+                                    <th>Id</th>
+                                    <th>user name</th>
+                                    <th>email</th>
+                                    <th>training session name</th>
+                                    <th>attendance date</th>
+                                    <th>attendance time</th>
+                                    <th>Gym</th>
+                                    <th>City</th>
+                                    <th>options</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($items as $table)
+                                    <tr align="center">
+                                        <td>{{$table->id}}</td>
+                                        <td>{{$table->customer->user->name}}</td>
+                                        <td>{{$table->customer->user->email}}</td>
+                                        <td>{{$table->training_session->name}}</td>
 
-            <table id="example" class="table table-bordered" style="color: black">
-                 <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>user name</th>
-                        <th>email</th>
-                        <th>training session name</th>
-                        <th>attendance date</th>
-                        <th>attendance time</th>
-                        <th>Gym</th>
-                        <th>City</th>
-                        <th>Delete</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($items as $table)
-                    @if ( ! $table->trashed())
-                    <tr>
-                        <td>{{$table->id}}</td> 
-                        <td>{{$table->customer->user->name}}</td> 
-                        <td>{{$table->customer->user->email}}</td> 
-                        <td>{{$table->training_session->name}}</td> 
-                        
-                        @if($table->created_at)
-                        <td>{{$table->created_at->toDateString() }}</td> 
-                        @endif
-                        
-                        @if($table->created_at)
-                        <td>{{$table->created_at->format('H:i')}}</td> 
-                        @endif
-                        <td>{{$table->gym->name}}</td> 
-                        <td>{{$table->gym->city->name}}</td> 
-                        <td><button class="btn btn-primary delete" data-id="{{$table->id}}">Delete</button></td> 
-                        <td>
-                            <a href={{route('edit.attendances', ['id'=>$table->id])}}> 
-                            <button class="btn btn-primary edit" edit-id="{{$table->id}}">Edit</button>
-                            </a> 
-                        </td> 
-                    </tr>
-                    {{-- @endif --}}
-                    @else
-            @endif
-                    @endforeach
+                                        @if($table->created_at)
+                                            <td>{{$table->created_at->toDateString() }}</td>
+                                        @endif
 
-                    <script > 
-                     $(document).on('click', '.delete', function() {
-                        $confirm=confirm('Are you sure you want to delete ?');
-                        if($confirm)
-                        {
-                            let myThis=$(this).parent().parent()
-                            $(this).parent().parent().css("background-color", "grey");
+                                        @if($table->created_at)
+                                            <td>{{$table->created_at->format('H:i')}}</td>
+                                        @endif
+                                        <td>{{$table->gym->name}}</td>
+                                        <td>{{$table->gym->city->name}}</td>
+                                        <td>
+                                            <button class="btn btn-danger delete" id="{{$table->id}}"><i class="fas fa-trash-alt"></i></button>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
-                            let Attendance_id=this.getAttribute('data-id');
-                            $.ajax({
-                                url: "{{route('delete.attendances')}}"+`?id=${Attendance_id}`,
-                                type: 'DELETE',
-                                contentType: 'application/json',
-                                data: `{"id":"${Attendance_id}"}`,
-                                success: function(result) {
-                                    myThis.remove();
-                                }
-                            });
-                        }
-                    });
-                    </script>
-                    
-                <tbody> 
-               
-               
-             </table>
+                                <script>
+                                    $(document).on('click', '.delete', function () {
+                                        let attend = confirm('Are you sure you want to delete ?');
+                                        if (attend) {
+                                            let myThis = $(this).parent().parent()
+                                            $(this).parent().parent().css("background-color", "grey");
 
-             
-             <script>
-                $(document).ready(function() {
-                 $('#example').DataTable();
-             } );
-                </script>  
-                
-                            <!-- /.card-footer -->
+                                            let Attendance_id = this.id;
+                                            $.ajax({
+                                                url: "{{route('delete.attendances')}}" + `?id=${Attendance_id}`,
+                                                type: 'DELETE',
+                                                contentType: 'application/json',
+                                                data: `{"id":"${Attendance_id}"}`,
+                                                success: function (result) {
+                                                    myThis.remove();
+                                                }
+                                            });
+                                        }
+                                    });
+                                </script>
+                                <tbody>
+                            </table>
+                            <script>
+                                $(document).ready(function () {
+                                    $('#example').DataTable();
+                                });
+                            </script>
                         </div>
-                        <!-- /.card -->
-
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
-
-                <!-- Main row -->
-
-                <!-- /.row -->
-            </div><!--/. container-fluid -->
+            </div>
         </section>
     </div>
 @endsection

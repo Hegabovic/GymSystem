@@ -56,7 +56,9 @@ Route::get('/order', [orderController::class, 'show'])->name('show.order');
 Route::get('/create-order', [orderController::class, 'create'])->name('create.order');
 Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
 Route::get('/packages-create', [PackageController::class, 'create'])->name('packages.create');
-
+Route::post ('/packages',[PackageController::class,'store'])->name('packages.store');
+Route::get('/packages-edit/{id}',[PackageController::class, 'edit'])->name('packages.edit');
+Route::put('/packages-update/{id}',[PackageController::class, 'update'])->name('packages.update');
 
 Auth::routes();
 
