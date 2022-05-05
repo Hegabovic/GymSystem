@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->string('name', 100);
             $table->softDeletes();
-            $table->date('start_at');
-            $table->date('finish_at');
+            $table->dateTime('start_at');
+            $table->dateTime('finish_at');
             $table->timestamps();
         });
     }
