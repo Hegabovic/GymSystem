@@ -19,14 +19,10 @@ class GymController extends Controller
     public function delete()
 
     {
-
-
         $gymid=request()->input('id');
         $record=Gym::find($gymid);
-        // Attendance::select([ 'training_session_id'])->count()->where('gym_id',$gymid);
         $NumberOfTrainingSession =Attendance::select([ 'training_session_id'])->where('gym_id',$gymid)->count();
         if ($record) {
-
 
             if ($NumberOfTrainingSession>0) {
                 return ["success" => false , "messege"=>"there is a training session in the gym"];
@@ -37,4 +33,17 @@ class GymController extends Controller
             }
         }
     }
+
+    public function edit(Request $request,$id)
+    {
+     $gyms=Gym::find($id);
+     $gyms->name = $request->input('name');
+     $gyms->created_at = $request->input('created at');
+     $gyms->cover_image = $request->input('cover_image');
+
+
+     return to_route('show_gyms');
+    }
+
 }
+
