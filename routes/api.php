@@ -31,13 +31,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware'=>['auth:sanctum','verified']],function (){
     Route::get('/training-sessions/{id}/attend',[ApiUserController::class,'attend']);
+    Route::get('/attendance-history',[ApiUserController::class,'getAttendedSessions']);
 });
 Route::post('/customer/register',[AuthController::class,'register'])->name('customer-register');
 Route::post('/login',[AuthController::class,'login'])->name('customer-login');
 Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
 Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
 
-Route::post('/customer/register',[ApiUserController::class,'register'])->name('customer-register');
 
 Route::delete('/attendance-delete', 'App\Http\Controllers\attendanceController@delete')->name('delete.attendances');
 Route::delete('/gym-delete', [GymController::class, 'delete'])->name('gym.delete');

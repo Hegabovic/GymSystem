@@ -10,6 +10,7 @@ use App\Repositories\CityManagerRepository;
 use App\Repositories\CustomerRepository;
 use App\Repositories\GymManagerRepository;
 use App\Repositories\UserRepository;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -29,7 +30,7 @@ class AuthController extends Controller
         $this->userRepository=$userRepository;
         $this->customerRepository=$customerRepository;
     }
-    public function register(CustomerRegisterRequest $request)
+    public function register(CustomerRegisterRequest $request): \Illuminate\Http\JsonResponse
     {
         $input=$request->validated();
 
@@ -77,7 +78,7 @@ class AuthController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
-
+        event(new Login('web',$user,true));
         return $user->createToken($request->device_name)->plainTextToken;
     }
 

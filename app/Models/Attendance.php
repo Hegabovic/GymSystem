@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,6 +20,12 @@ class Attendance extends Model
         'gym_id',
         'training_session_id',
     ];
+  
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value);
+    }
+
 
     public function training_session()
     {
