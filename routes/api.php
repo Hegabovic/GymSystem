@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::group(['middleware'=>['auth:sanctum','verified']],function (){
-    Route::get('/users',[ApiUserController::class,'index']);
+    Route::get('/training-sessions/{id}/attend',[ApiUserController::class,'attend']);
 });
 Route::post('/customer/register',[AuthController::class,'register'])->name('customer-register');
 Route::post('/login',[AuthController::class,'login'])->name('customer-login');
