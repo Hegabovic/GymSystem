@@ -15,8 +15,6 @@ return new class extends Migration {
         Schema::create('training_sessions', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
-            $table->unsignedBigInteger('gym_id');
-            $table->foreign('gym_id')->references('id')->on('gyms');
             $table->softDeletes();
             $table->date('start_at');
             $table->date('finish_at');
