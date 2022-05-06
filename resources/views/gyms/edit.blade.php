@@ -17,8 +17,8 @@
             <label for="exampleFormControlTextarea1" class="form-label "> cover image</label>
             <input name="cover_image" class="form-control" id="exampleFormControlTextarea1" value="{{ $gym->cover_image }}" rows="1">
        </div>
-
+       @can('permission_Update_Gym')
          <button class="btn btn-success">Update</button>
-
+       @endcan
 </form>
 @endsection
