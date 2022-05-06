@@ -27,7 +27,7 @@ class SubscriptionController extends Controller
 
         $plan = Plan::findOrFail($request->get('plan'));
         $tableData = Order::withTrashed()->get();
-        Stripe\Stripe::setApiKey(env("STRIPE_SECRET_KEY"));
+        Stripe\Stripe::setApiKey(env("STRIPE_SECRET"));
 
         Stripe\Charge::create ([
             "amount" => 100 * $order_cost,

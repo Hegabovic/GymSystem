@@ -77,7 +77,7 @@
         <script>
         // Create a Stripe client.
         let stripe = Stripe('{{ env("STRIPE_KEY") }}');
-        {{--let clientSecret = Stripe('{{ env("STRIPE_SECRET_KEY") }}');--}}
+        {{--let clientSecret = Stripe('{{ env("STRIPE_SECRET") }}');--}}
 
         // Create an instance of Elements.
         // let elements = stripe.elements();
