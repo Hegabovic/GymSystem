@@ -5,10 +5,6 @@
         @method('put')
         <div class="card-body">
             <div class="form-group">
-                <label for="Name">Name</label>
-                <input type="text" name="name" class="form-control" id="Name" value="{{$trainingSession->name}}">
-            </div>
-            <div class="form-group">
                 <label for="StartAt">Start at</label>
                 <input type="datetime-local" name="startAt" class="form-control" id="StartAt"
                        value="{{$trainingSession->start_at->format('d-m-Y h:iA')}}">

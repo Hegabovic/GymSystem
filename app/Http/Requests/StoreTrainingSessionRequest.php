@@ -27,7 +27,7 @@ class StoreTrainingSessionRequest extends FormRequest
 //        dd($this);
         return [
             'name' => 'required',
-            'startAt' => 'after:tomorrow|required',
+            'startAt' => 'required',
             'finishAt' => 'after:start_date|required',
         ];
     }
