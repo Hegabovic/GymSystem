@@ -269,12 +269,12 @@
                                     <p>show</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{route("create.attendances")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>create</p>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
 
