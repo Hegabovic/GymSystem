@@ -14,7 +14,7 @@
                                         <h5>{{ $plan->name }}</h5>
                                         <h5>${{ number_format(($plan->cost)/100, 3) }} monthly</h5>
                                         <h5>{{ $plan->description }}</h5>
-                                        <a href="{{ route('show.plan', $plan->slug) }}" class="btn btn-outline-dark pull-right">Choose</a>
+                                        <a href="{{ route('show.plan', $plan->slug) }}" class="btn btn-dark">Choose</a>
                                     </div>
                                 </li>
                             @endforeach
