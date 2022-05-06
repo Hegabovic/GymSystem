@@ -28,7 +28,7 @@ class CustomerRegisterRequest extends FormRequest
             'email'=>['required','unique:users'],
             'password'=>['required','min:8','confirmed'],
             'gender'=>['required','in:male,female'],
-            'birth_date'=>['required','date_format:Y-m-d'],
+            'birth_date'=>['required','date_format:Y-m-d','before:today'],
             'photo'=>['required','mimetypes:image/jpg,image/png,image/jpeg']
         ];
     }
