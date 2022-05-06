@@ -6,67 +6,62 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="">
-                    <p>You will be charged ${{ number_format(($plan->cost)/100, 2) }} for {{ $plan->name }} Plan</p>
+                    <h3>You will be charged ${{ number_format(($plan->cost)/100, 2) }} for {{ $plan->name }} Plan</h3>
                 </div>
-                <div class="card">
+                <div class="wrapper">
                     <form action="{{ route('subscription.create') }}" method="post" id="payment-form">
                         @csrf
                         <div class="form-group">
-                            <div class="card-header">
-                                <label for="card-element">
-                                    Enter your credit card information
-                                </label>
-                            </div>
-{{--                            @dd($data)--}}
                             <div class="card-body">
-                                {{--
-                                         drop down > user
-                                                   > train
-                                                   > gym
-                                 --}}
-                                <div class="d-flex flex-wrap align-items-center mb-4 card-element">
-                                    <label class="me-2 flex-grow-0 form-label" for="created_by">
-                                        Plan buyer
-                                    </label>
-                                    <select class="form-select" id="created_by" name="customer_id">
-                                        @foreach($customer as $info)
-                                            <option value="{{$info->user->id}}">{{$info->user->name}}</option>
-                                        @endforeach
-                                    </select>
+
+                                <div class="container">
+                                    <div class="d-flex flex-wrap align-items-center mb-4 card-element">
+                                        <label class="me-2 flex-grow-0 form-label" for="created_by">
+                                            Plan buyer
+                                        </label>
+                                        <select class="form-select form-control" id="created_by" name="customer_id">
+                                            @foreach($customer as $info)
+                                                <option value="{{$info->user->id}}">{{$info->user->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="d-flex flex-wrap align-items-center mb-4 card-element">
+                                        <label class="me-2 flex-grow-0 form-label" for="created_by">
+                                            Package
+                                        </label>
+
+                                        <select class="form-select form-control" id="created_by" name="package_id">
+                                            @foreach($package as $info)
+                                                <option value="{{$info->id}}">{{$info->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="me-2 flex-grow-0 form-label" for="created_by">
+                                            Gym
+                                        </label>
+                                        <select class="form-select form-control" id="created_by" name="gym_id">
+                                            @foreach($gym as $info)
+                                                <option value="{{$info->id}}">{{$info->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
 
-                                <div class="d-flex flex-wrap align-items-center mb-4 card-element">
-                                    <label class="me-2 flex-grow-0 form-label" for="created_by">
-                                        Package
-                                    </label>
-
-                                    <select class="form-select" id="created_by" name="package_id">
-                                        @foreach($package as $info)
-                                            <option value="{{$info->id}}">{{$info->name}}</option>
-                                        @endforeach
-                                    </select>
-
-                                    <label class="me-2 flex-grow-0 form-label" for="created_by">
-                                        Gym
-                                    </label>
-                                    <select class="form-select" id="created_by" name="gym_id">
-                                        @foreach($gym as $info)
-                                            <option value="{{$info->id}}">{{$info->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div id="card-element" class="container">
+                                <br><br>
+                                <h4>Please Enter Card Details</h4>
+                                <div id="card-element" class="container form-control">
 
                                     <!-- A Stripe Element will be inserted here with JS below. -->
                                 </div>
                                 <!-- Used to display form errors. -->
                                 <div id="card-errors" role="alert"></div>
-                                <input type="hidden" name="plan" value="{{ $plan->id }}" />
+                                <input type="hidden"  name="plan" value="{{ $plan->id }}" />
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <button class="btn btn-dark" type="submit">Pay</button>
+
+                        <div class="card-footer" align="center" >
+                            <button class="btn btn-primary" type="submit" style="width: 300px">Pay</button>
                         </div>
                     </form>
                 </div>
