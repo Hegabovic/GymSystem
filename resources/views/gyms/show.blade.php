@@ -20,7 +20,7 @@
         <div class="table-responsive">
             <table class="table m-0" id="datatable" style="color: black;">
                 <thead>
-                    <tr>
+                    <tr align="center">
                         <th>id</th>
                         <th>name</th>
                         <th>created at</th>
@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                     @foreach($gyms as $gym)
-                    <tr>
+                    <tr align="center">
                         <!-- <td><a href="pages/examples/invoice.html">OR9842</a></td> -->
                         <td value="{{$gym->id}}">{{ $gym->id }}</td>
                         <td value="{{$gym->id}}">{{ $gym->name }}</td>
@@ -42,7 +42,7 @@
                             </div>
                         </td>
 
-                        
+
                         <td>
                         <a  href="{{route('edit.gyms',$gym->id)}}" class="btn btn-primary m-1 d-inline-block" data-id="">
                                                 <i class="fas fa-edit"></i>
