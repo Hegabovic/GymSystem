@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+{{--@extends('layouts.app')--}}
+{{--@section('content')--}}
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
@@ -62,9 +62,10 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 @foreach ($items as $table)
                                     @if ( ! $table->trashed())
-
+{{--                                        @dd($table->gym->name)--}}
                                         <tr>
                                             <td>{{$table->id}}</td>
                                             <td>{{$table->customer->user->name}}</td>
