@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CustomerAttendanceRequest;
 use App\Http\Requests\CustomerRegisterRequest;
 
+use App\Http\Requests\CustomerUpdateProfileRequest;
 use App\Http\Resources\AttendanceResource;
 use App\Models\Customer;
 use App\Repositories\AttendanceRepository;
@@ -69,6 +70,19 @@ class ApiUserController extends Controller
    {
        $customer=\request()->user()->customer;
        return AttendanceResource::collection($customer->attendance);
+   }
+
+   public function update(CustomerUpdateProfileRequest $request )
+   {
+       $input=$request->validated();
+       if($request->hasFile('avatar'))
+       {
+           $avatarPath=$request->file('avatar')->store('public/photos');
+           $this->userRepository->updateAvatar($request->user()->id,$avatarPath);
+       }
+       if(isset($input['password'])) $input['password']=Hash::make($input['password']);
+       $this->userRepository->update($request->user()->id,$input);
+       return $input;
    }
 
 }

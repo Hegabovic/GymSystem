@@ -22,7 +22,6 @@ class CustomerFactory extends Factory
             'user_id'=>$this->faker->unique()->numberBetween(1, User::count()),
             'birth_date'=>$this->faker->date(),
             'gender'=>$gender[rand(0,1)],
-            'avatar_path'=>'default image'
         ];
     }
 }
