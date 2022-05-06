@@ -84,7 +84,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/packages-update/{id}',[PackageController::class, 'update'])->name('packages.update');
 
     Route::get('/plans' , [PlanController::class, 'index'])->name('plans.show');
-    Route::get('/plans/{plan}', [PlanController::class, 'show'])->name('show.plan');
+    Route::get('/buy_package', [PlanController::class, 'show'])->name('show.plan');
     Route::post('/subscription', [SubscriptionController::class, 'create'])->name('subscription.create');
 
 
