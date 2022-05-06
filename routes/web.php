@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\HomeController;
@@ -8,12 +9,13 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TrainingSessionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GymController;
-use App\Http\Controllers\attendanceController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\TrainingSessionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Spatie\Permission\Contracts\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,7 @@ use Spatie\Permission\Contracts\Role;
 |
 */
 
-Route::group(['middleware'=>'auth'],function (){
+Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -39,9 +41,9 @@ Route::group(['middleware'=>'auth'],function (){
     Route::put('/edit-profile', [UserController::class, 'update'])->name('edit_profile');
 
     Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
-    Route::get('/gyms/edit/{id}',[GymController::class,'edit'])->name('edit.gyms');
-    Route::get('/gym-store/{id}',[GymController::class,'storeUpdate'])->name('store_gyms');
-    Route::get('/create-gym',[GymController::class,'create'])->name('create_gyms');
+    Route::get('/gyms/edit/{id}', [GymController::class, 'edit'])->name('edit.gyms');
+    Route::get('/gym-store/{id}', [GymController::class, 'storeUpdate'])->name('store_gyms');
+    Route::get('/create-gym', [GymController::class, 'create'])->name('create_gyms');
     Route::post('/create-store', [GymController::class, 'store'])->name('store_gym');
 
     Route::get('/coach', [CoachController::class, 'index'])->name('show_coaches');
@@ -62,11 +64,18 @@ Route::group(['middleware'=>'auth'],function (){
     Route::get('/edit/{id}', [CityController::class, 'edit'])->name('city.edit');
     Route::put('/update/{id}', [CityController::class, 'update'])->name('city.update');
 
+
     Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendances');
     Route::get('/attendance-create', [attendanceController::class, 'create'])->name('create.attendances');
     Route::post('/attendance-store', [attendanceController::class, 'store'])->name('store.attendances');
     Route::get('/attendance-edit/{id}', [attendanceController::class, 'edit'])->name('edit.attendances');
     Route::put('/attendance-update/{id}', [attendanceController::class, 'update'])->name('update.attendances');
+
+    Route::get('/attendance', [AttendanceController::class, 'show'])->name('show.attendances');
+    Route::get('/attendance-create', [AttendanceController::class, 'create'])->name('create.attendances');
+    Route::post('/attendance-store', [AttendanceController::class, 'store'])->name('store.attendances');
+    Route::get('/attendance-edit/{id}', [AttendanceController::class, 'edit'])->name('edit.attendances');
+    Route::put('/attendance-update/{id}', [AttendanceController::class, 'update'])->name('update.attendances');
 
     Route::get('/order', [orderController::class, 'show'])->name('show.order');
     Route::get('/create-order', [orderController::class, 'create'])->name('create.order');
@@ -80,6 +89,7 @@ Route::group(['middleware'=>'auth'],function (){
     Route::get('/plans' , [PlanController::class, 'index'])->name('plans.show');
     Route::get('/plans/{plan}', [PlanController::class, 'show'])->name('show.plan');
     Route::post('/subscription', [SubscriptionController::class, 'create'])->name('subscription.create');
+
 
 });
 
