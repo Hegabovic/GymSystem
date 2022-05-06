@@ -46,4 +46,5 @@ Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete.c
 Route::delete('/coach-delete', [CoachController::class, 'delete'])->name('coach.delete');
 Route::delete('/order-delete', 'App\Http\Controllers\orderController@delete')->name('delete.orders');
 Route::delete('/trainingSession-delete', [TrainingSessionController::class, 'delete'])->name('trainingSession.delete');
-Route::delete('/packages-delete', 'App\Http\Controllers\PackageController@delete')->name('packages.delete');
+Route::delete('/packages-delete','App\Http\Controllers\PackageController@delete')->name('packages.delete');
+Route::delete('/customers-delete','App\Http\Controllers\CustomerController@delete')->name('customers.delete');
