@@ -10,7 +10,7 @@
                         <div class="panel-body">
                             <table class="table table-bordered" style="color: black;" id="datatable">
                 <thead>
-                    <tr>
+                    <tr align="center">
                         <th>Id</th>
                         <th>Name</th>
                         <th>Price</th>
@@ -19,9 +19,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($packages as $package)   
-            
-            <tr>
+                @foreach ($packages as $package)
+
+            <tr align="center">
                 <td>{{$package->id }} </td>
               <td>{{ $package->name }}</th>
               <td>{{ $package->toDollar()}}</td>
@@ -32,11 +32,11 @@
                                                data-id="{{$package->id}}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            
+
                                             <a role="button" class="btn btn-danger m-1 d-inline-block delete"
                                                data-id="{{$package->id}}">
                                                 <i class="fas fa-trash-alt"></i>
-                                            </a> 
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -69,7 +69,7 @@
                         url: url,
                         type: 'DELETE',
                         success: function (result) {
-                            
+
                             if (result.success) {
                                 row.remove();
                                 console.log(result.count);
@@ -79,9 +79,8 @@
                     });
                 }
             });
-            
+
         }
 
     </script>
             @endsection
-            
