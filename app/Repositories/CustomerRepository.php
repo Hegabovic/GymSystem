@@ -2,11 +2,9 @@
 
 namespace App\Repositories;
 
-<<<<<<< HEAD
+
 use App\Contracts\UserRepositoryInterface;
-=======
-use App\Contracts\ClerkRepositoryInterface;
->>>>>>> customersCrud
+
 use App\Models\Customer;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;

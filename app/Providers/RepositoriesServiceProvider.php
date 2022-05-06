@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Contracts\AttendanceRepositoryInterface;
 use App\Contracts\BaseRepositoryInterface;
 use App\Contracts\CityRepositoryInterface;
-use App\Contracts\ClerkRepositoryInterface;
 use App\Contracts\CoachRepositoryInterface;
 use App\Contracts\GymRepositoryInterface;
 use App\Contracts\OrderRepositoryInterface;
@@ -61,7 +60,6 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(BaseRepositoryInterface::class, UserRepository::class);
         $this->app->bind(BaseRepositoryInterface::class, CityManagerRepository::class);
         $this->app->bind(BaseRepositoryInterface::class, GymManagerRepository::class);
-<<<<<<< HEAD
         $this->app->bind(UserRepositoryInterface::class, GymManagerRepository::class);
         $this->app->bind(UserRepositoryInterface::class, CityManagerRepository::class);
         $this->app->bind(BaseRepositoryInterface::class, CustomerRepository::class);
@@ -69,11 +67,6 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(AttendanceRepositoryInterface::class, AttendanceRepository::class);
         $this->app->bind(SessionsCoachesRepositoryInterface::class, SessionsCoachesRepository::class);
         $this->app->bind(GymRepositoryInterface::class, GymRepository::class);
-=======
-        $this->app->bind(ClerkRepositoryInterface::class, GymManagerRepository::class);
-        $this->app->bind(ClerkRepositoryInterface::class, CityManagerRepository::class);
-        $this->app->bind(ClerkRepositoryInterface::class, CustomerRepository::class);
-
->>>>>>> customersCrud
+        
     }
 }
