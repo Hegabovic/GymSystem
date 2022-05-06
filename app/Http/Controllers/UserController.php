@@ -34,6 +34,7 @@ class UserController extends Controller
     public function store(StoreClerkRequest $request)
     {
         $input = $request->validated();
+
         $avatarPath = env('DEFAULT_AVATAR');
         if ($request->hasFile('avatar')) {
             $avatarPath = $request->file('avatar')->store('public/photos');
@@ -45,6 +46,7 @@ class UserController extends Controller
             'password' => Hash::make($input['password']),
             'avatar_path' => $avatarPath
         ]);
+
 
         if ($request->clerk === 'city-manager') {
             $user->assignRole('CityManager');
@@ -64,11 +66,15 @@ class UserController extends Controller
 
             return to_route('show_gymManagers');
         }
+
+
+        return to_route('show_users');
     }
 
     public function showGymManagers()
     {
-        return view('gymManagers.show');
+        $gymManagers = $this->gymManagerRepository->all();
+        return view('gymManagers.show', ['managers' => $gymManagers]);
     }
 
     public function showUsers()
