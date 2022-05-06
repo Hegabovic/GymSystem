@@ -14,6 +14,7 @@
                                     <th>Name</th>
                                     <th>Start at</th>
                                     <th>Finish At</th>
+                                    <th>Coach</th>
                                     <th>Options</th>
                                 </tr>
                                 </thead>
@@ -24,6 +25,16 @@
                                         <td>{{$trainingSession->name}}</td>
                                         <td>{{$trainingSession->start_at->format('d-m-Y h:iA')}}</td>
                                         <td>{{$trainingSession->finish_at->format('d-m-Y h:iA')}}</td>
+                                        <td>
+                                            <div class="mb-3">
+                                                <label for="coach" class="form-label">city</label>
+                                                <select id="coach" name="coach_id" class="form-control">
+                                                    @foreach ($coaches as $coach)
+                                                        <option value="{{ $coach->id }}"> {{ $coach->name }} </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </td>
                                         <td>
                                             <a role="button"
                                                href="{{route('update_trainingSession',[$trainingSession->id])}}"

@@ -15,8 +15,15 @@ class SessionsCoaches extends Model
         return $this->belongsTo(Coach::class);
     }
 
+    public function trainingSessions(): BelongsTo
+    {
+        return $this->belongsTo(Training_session::class);
+    }
+
     protected $fillable = [
         'coach_id',
         'session_id',
     ];
+
+
 }

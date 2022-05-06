@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="wrapper">
-        <form method="post" action="{{route("store_trainingSession")}}">
+        <form method="post"  action="{{route("store_trainingSession")}}">
             @csrf
             <div class="card-body">
                 <div class="form-group">
@@ -18,14 +18,13 @@
                     <input type="datetime-local" name="finishAt" class="form-control" id="FinishAt"
                            placeholder="Finish at">
                 </div>
+
                 <div class="form-group">
-                    <label for="Coach" class="form-label">Coach</label>
-                    <select id="Coach" name="coachId" class="form-control">
-
+                    <label for="Coaches">Coaches</label>
+                    <select id="Coaches" name="coaches[]" multiple="multiple" class="form-control">
                         @foreach ($coaches as $coach)
-                            <option value="{{ $coach->id }}"> {{ $coach->name }} </option>
+                            <option value="{{ $coach->id }}">{{ $coach->name }}</option>
                         @endforeach
-
                     </select>
                 </div>
             </div>

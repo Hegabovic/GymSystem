@@ -6,6 +6,7 @@ use App\Contracts\AttendanceRepositoryInterface;
 use App\Contracts\SessionsCoachesRepositoryInterface;
 use App\Contracts\TrainingSessionsRepositoryInterface;
 use App\Http\Requests\StoreTrainingSessionRequest;
+use App\Models\Coach;
 use App\Repositories\CoachRepository;
 use App\Repositories\TrainingSessionsRepository;
 use Illuminate\Contracts\Foundation\Application;
@@ -67,7 +68,6 @@ class TrainingSessionController extends Controller
 
         $formData = $request->all();
         $updatedTrainingSession = [
-            "name" => $request->name,
             "start_at" => $request->startAt,
             "finish_at" => $request->finishAt
         ];
@@ -87,6 +87,7 @@ class TrainingSessionController extends Controller
         $isLegalTime = $this->trainingSessionsRepository->isLegal($request->startAt, $request->finishAt);
         $coaches = $this->coachRepository->all();
 
+
         if ($isLegalTime) {
             $trainingSessionId = $this->trainingSessionsRepository->create([
                 "name" => $request->name,
@@ -94,10 +95,13 @@ class TrainingSessionController extends Controller
                 "finish_at" => $request->finishAt
             ]);
 
-            $this->sessionsCoachesRepository->create([
-                "coach_id" => $request->coachId,
-                "session_id" => $trainingSessionId
-            ]);
+            foreach ($request->coaches as $coach) {
+                $this->sessionsCoachesRepository->create([
+                    "coach_id" => $coach,
+                    "session_id" => $trainingSessionId
+                ]);
+            }
+
             return to_route('show_trainingSessions');
         } else
             return view('trainingSessions.create', ['isOverlap' => true, 'coaches' => $coaches]);
