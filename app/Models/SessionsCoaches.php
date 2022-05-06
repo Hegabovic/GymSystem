@@ -14,4 +14,9 @@ class SessionsCoaches extends Model
     {
         return $this->belongsTo(Coach::class);
     }
+
+    protected $fillable = [
+        'coach_id',
+        'session_id',
+    ];
 }

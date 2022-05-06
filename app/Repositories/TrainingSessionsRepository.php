@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Contracts\TrainingSessionInterface;
+use App\Contracts\TrainingSessionsRepositoryInterface;
 use App\Models\Training_session;
 
-class TrainingSessionsRepository extends BaseRepository implements TrainingSessionInterface
+class TrainingSessionsRepository extends BaseRepository implements TrainingSessionsRepositoryInterface
 {
 
     public function __construct(Training_session $training_session)

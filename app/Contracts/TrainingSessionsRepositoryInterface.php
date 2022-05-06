@@ -2,7 +2,7 @@
 
 namespace App\Contracts;
 
-interface TrainingSessionInterface
+interface TrainingSessionsRepositoryInterface
 {
     function isLegal($startDate, $endDate): bool;
 }

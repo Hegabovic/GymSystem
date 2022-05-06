@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\AttendanceRepositoryInterface;
+use App\Contracts\SessionsCoachesRepositoryInterface;
+use App\Contracts\TrainingSessionsRepositoryInterface;
 use App\Http\Requests\StoreTrainingSessionRequest;
+use App\Repositories\CoachRepository;
 use App\Repositories\TrainingSessionsRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -13,13 +16,20 @@ use Illuminate\Http\Request;
 
 class TrainingSessionController extends Controller
 {
-    private TrainingSessionsRepository $trainingSessionsRepository;
+    private TrainingSessionsRepositoryInterface $trainingSessionsRepository;
     private AttendanceRepositoryInterface $attendanceRepository;
+    private SessionsCoachesRepositoryInterface $sessionsCoachesRepository;
+    private CoachRepository $coachRepository;
 
-    public function __construct(TrainingSessionsRepository $trainingSessionsRepository, AttendanceRepositoryInterface $attendanceRepository)
+    public function __construct(TrainingSessionsRepositoryInterface $trainingSessionsRepository,
+                                AttendanceRepositoryInterface       $attendanceRepository,
+                                SessionsCoachesRepositoryInterface  $sessionsCoachesRepository,
+                                CoachRepository                     $coachRepository)
     {
         $this->trainingSessionsRepository = $trainingSessionsRepository;
         $this->attendanceRepository = $attendanceRepository;
+        $this->sessionsCoachesRepository = $sessionsCoachesRepository;
+        $this->coachRepository = $coachRepository;
     }
 
     public function index(): Factory|View|Application
@@ -68,21 +78,28 @@ class TrainingSessionController extends Controller
 
     public function create(): Factory|View|Application
     {
-        return view('trainingSessions.create', ['isOverlap' => false]);
+        $coaches = $this->coachRepository->all();
+        return view('trainingSessions.create', ['isOverlap' => false, 'coaches' => $coaches]);
     }
 
     public function store(StoreTrainingSessionRequest $request): View|Factory|Application|RedirectResponse
     {
         $isLegalTime = $this->trainingSessionsRepository->isLegal($request->startAt, $request->finishAt);
+        $coaches = $this->coachRepository->all();
 
         if ($isLegalTime) {
-            $this->trainingSessionsRepository->create([
+            $trainingSessionId = $this->trainingSessionsRepository->create([
                 "name" => $request->name,
                 "start_at" => $request->startAt,
                 "finish_at" => $request->finishAt
             ]);
+
+            $this->sessionsCoachesRepository->create([
+                "coach_id" => $request->coachId,
+                "session_id" => $trainingSessionId
+            ]);
             return to_route('show_trainingSessions');
         } else
-            return view('trainingSessions.create', ['isOverlap' => true]);
+            return view('trainingSessions.create', ['isOverlap' => true, 'coaches' => $coaches]);
     }
 }
