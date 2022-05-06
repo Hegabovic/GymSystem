@@ -40,10 +40,14 @@ class PlanController extends Controller
 
     public function show(Plan $plan, Request $request): Factory|View|Application
     {
-        $data =  $this->customerRepository->all();
+        $customer =  $this->customerRepository->all();
+        $trainingSession = $this->trainingSessionsRepository->all();
+        $gym = $this->gymRepository->all();
         return view('plans.show_plan', [
             'plan' => $plan,
-            'data' => $data,
+            'customer' => $customer,
+            'trainingSession'=>$trainingSession,
+            'gym' => $gym,
         ]);
     }
 

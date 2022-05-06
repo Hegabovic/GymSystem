@@ -28,9 +28,30 @@
                                     <label class="me-2 flex-grow-0 form-label" for="created_by">
                                         Plan buyer
                                     </label>
-                                    <select class="form-select" id="created_by" name="created_by">
-                                        @foreach($data as $info)
+                                    <select class="form-select" id="created_by" name="customer_id">
+                                        @foreach($customer as $info)
                                             <option value="{{$info->user->id}}">{{$info->user->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="d-flex flex-wrap align-items-center mb-4 card-element">
+                                    <label class="me-2 flex-grow-0 form-label" for="created_by">
+                                        Training Sessions
+                                    </label>
+
+                                    <select class="form-select" id="created_by" name="training-session_id">
+                                        @foreach($trainingSession as $info)
+                                            <option value="{{$info->id}}">{{$info->name}}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <label class="me-2 flex-grow-0 form-label" for="created_by">
+                                        Gym
+                                    </label>
+                                    <select class="form-select" id="created_by" name="gym_id">
+                                        @foreach($gym as $info)
+                                            <option value="{{$info->id}}">{{$info->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

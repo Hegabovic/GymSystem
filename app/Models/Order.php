@@ -14,6 +14,12 @@ class Order extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable=[
+        'gym_id',
+        'customer_id',
+        'pkg_id',
+        'remaining_sessions',
+    ];
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
