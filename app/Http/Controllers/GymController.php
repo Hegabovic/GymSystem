@@ -78,9 +78,13 @@ class GymController extends Controller
 
     public function store(Request $request)
     {
+        $avatarPath = "";
+        if ($request->hasFile('cover_image')) {
+            $avatarPath = $request->file('cover_image')->store('public/gym images');
+        }
         $this->gymRepository->create([
             "name" => $request ['name'],
-            "cover_image" => $request['cover_image'],
+            "cover_image" => $avatarPath,
             "city_id" => $request ['city_id']
         ]);
 
