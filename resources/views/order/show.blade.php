@@ -54,25 +54,28 @@
                             <table id="example" class="table table-bordered" style="color: black">
                                 <thead>
                                 <tr>
-                                    <th>package ID</th>
-                                    <th>Customer Name</th>
-                                    <th>Gym</th>
-                                    <th>city</th>
-                                    <th>options</th>
+                                    <th style="text-align: center;">package ID</th>
+                                    <th style="text-align: center;">Customer Name</th>
+                                    <th style="text-align: center;">Gym</th>
+                                    <th style="text-align: center;">city</th>
+                                    <th style="text-align: center;">price</th>
+                                    <th style="text-align: center;">created_at</th>
+                                    <th style="text-align: center;">options</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
                                 @foreach ($items as $table)
                                     @if ( ! $table->trashed())
-{{--                                        @dd($table->gym->name)--}}
-                                        <tr>
-                                            <td>{{$table->id}}</td>
-                                            <td>{{$table->customer->user->name}}</td>
 
-                                            <td>{{$table->gym->name}}</td>
-                                            <td>{{$table->gym->city->name}}</td>
-                                            <td align="center">
+                                        <tr>
+                                            <td style="text-align: center;">{{$table->id}}</td>
+                                            <td style="text-align: center;">{{$table->customer->user->name}}</td>
+                                            <td style="text-align: center;">{{$table->gym->name}}</td>
+                                            <td style="text-align: center;">{{$table->gym->city->name}}</td>
+                                            <td style="text-align: center;">{{$table->paid_price }}</td>
+                                            <td style="text-align: center;">{{$table->created_at->format('H:i')}}</td>
+                                            <td style="text-align: center;">
                                                 <button class="btn btn-danger delete" id="{{$table->id}}"><i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </td>

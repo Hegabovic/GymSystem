@@ -13,7 +13,7 @@ use App\Http\Controllers\orderController;
 use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ChartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,7 +87,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/buy_package', [PlanController::class, 'show'])->name('show.plan');
     Route::post('/subscription', [SubscriptionController::class, 'create'])->name('subscription.create');
 
-
+    Route::get('/pie',[ChartController::class,'pieChart']);
 });
 
 Auth::routes();
