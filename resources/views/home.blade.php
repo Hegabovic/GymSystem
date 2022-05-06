@@ -14,7 +14,9 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">home</h1>
+                        <h1 class="m-0">
+
+                        </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -60,7 +62,7 @@
                     <!-- /.col -->
 
                     <!-- fix for small devices only -->
-                    <div class="clearfix hidden-md-up"></div>
+                  {{--  <div class="clearfix hidden-md-up"></div>
 
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="info-box mb-3">
@@ -87,7 +89,7 @@
                             <!-- /.info-box-content -->
                         </div>
                         <!-- /.info-box -->
-                    </div>
+                    </div>--}}
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -95,7 +97,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header">
+                            {{--<div class="card-header">
                                 <h5 class="card-title">Monthly Revenue Report</h5>
 
                                 <div class="card-tools">
@@ -119,6 +121,51 @@
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </div>
+                            </div>--}}
+
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-sm-3 col-6">
+                                        <div class="description-block border-right">
+                                        <span class="description-percentage text-success"><i
+                                                class="fas fa-caret-up"></i> 17%</span>
+                                            <h5 class="description-header">${{$revenue}}</h5>
+                                            <span class="description-text">TOTAL REVENUE</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-6">
+                                        <div class="description-block border-right">
+                                        <span class="description-percentage text-warning"><i
+                                                class="fas fa-caret-left"></i> 0%</span>
+                                            <h5 class="description-header">$10,390.90</h5>
+                                            <span class="description-text">TOTAL COST</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-6">
+                                        <div class="description-block border-right">
+                                        <span class="description-percentage text-success"><i
+                                                class="fas fa-caret-up"></i> 20%</span>
+                                            <h5 class="description-header">$24,813.53</h5>
+                                            <span class="description-text">TOTAL PROFIT</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-3 col-6">
+                                        <div class="description-block">
+                                        <span class="description-percentage text-danger"><i
+                                                class="fas fa-caret-down"></i> 18%</span>
+                                            <h5 class="description-header">1200</h5>
+                                            <span class="description-text">GOAL COMPLETIONS</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                </div>
+                                <!-- /.row -->
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -181,50 +228,7 @@
                                 <!-- /.row -->
                             </div>
                             <!-- ./card-body -->
-                            <div class="card-footer">
-                                <div class="row">
-                                    <div class="col-sm-3 col-6">
-                                        <div class="description-block border-right">
-                                        <span class="description-percentage text-success"><i
-                                                class="fas fa-caret-up"></i> 17%</span>
-                                            <h5 class="description-header">$35,210.43</h5>
-                                            <span class="description-text">TOTAL REVENUE</span>
-                                        </div>
-                                        <!-- /.description-block -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-3 col-6">
-                                        <div class="description-block border-right">
-                                        <span class="description-percentage text-warning"><i
-                                                class="fas fa-caret-left"></i> 0%</span>
-                                            <h5 class="description-header">$10,390.90</h5>
-                                            <span class="description-text">TOTAL COST</span>
-                                        </div>
-                                        <!-- /.description-block -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-3 col-6">
-                                        <div class="description-block border-right">
-                                        <span class="description-percentage text-success"><i
-                                                class="fas fa-caret-up"></i> 20%</span>
-                                            <h5 class="description-header">$24,813.53</h5>
-                                            <span class="description-text">TOTAL PROFIT</span>
-                                        </div>
-                                        <!-- /.description-block -->
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-sm-3 col-6">
-                                        <div class="description-block">
-                                        <span class="description-percentage text-danger"><i
-                                                class="fas fa-caret-down"></i> 18%</span>
-                                            <h5 class="description-header">1200</h5>
-                                            <span class="description-text">GOAL COMPLETIONS</span>
-                                        </div>
-                                        <!-- /.description-block -->
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </div>
+
                             <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->
