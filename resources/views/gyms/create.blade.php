@@ -22,7 +22,11 @@
             </select>
         </div>
 
-        <button class="btn btn-success">create</button>
+        @can('permission_create_Gym')
+         <button class="btn btn-success">create</button>
+         @endcan
+
 
     </form>
+                
 @endsection

@@ -41,15 +41,18 @@
                             </td>
                             <td>{{$gym->city->name}}</td>
                             <td>
-                                <a href="{{route('edit.gyms',$gym->id)}}" class="btn btn-primary m-1 d-inline-block"
-                                   data-id="">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <button class="delete  btn btn-danger m-1 d-inline-block" data-id="{{$gym->id}}">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </td>
-                        </tr>
+
+                        <a  href="{{route('edit.gyms',$gym->id)}}" class="btn btn-primary m-1 d-inline-block" data-id="">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                      
+
+                        @can('permission_delete_Gym')
+                        <button class="delete  btn btn-danger m-1 d-inline-block" data-id="{{$gym->id}}">
+                                                <i class="fas fa-trash-alt"></i>
+                        @endcan
+                     </button>
+                        </td>
                     @endforeach
                     <script>
                         function sendDeleteRequest() {
