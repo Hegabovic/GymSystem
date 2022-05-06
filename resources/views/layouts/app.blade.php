@@ -205,7 +205,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chess-knight"></i>
                             <p>
-                                Gym Mangers
+                                Gym Manger
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -220,7 +220,7 @@
                             @endcan
                             {{--@endcan--}}
                             <li class="nav-item">
-                                <a href="{{route('show_users')}}" class="nav-link">
+                                <a href="{{route('show_gymManagers')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>show</p>
                                 </a>

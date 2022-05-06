@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\BaseRepositoryInterface;
+use App\Contracts\GymRepositoryInterface;
 use App\Http\Requests\EditClerkRequest;
 use App\Http\Requests\StoreClerkRequest;
 use App\Models\User;
@@ -20,73 +21,86 @@ class UserController extends Controller
     private GymManagerRepository $gymManagerRepository;
     private CityManagerRepository $cityManagerRepository;
     private UserRepository $userRepository;
+    private GymRepositoryInterface $gymRepository;
 
-    public function __construct(UserRepository $userRepository,GymManagerRepository $gymManagerRepository,CityManagerRepository $cityManagerRepository)
+    public function __construct(UserRepository $userRepository, GymManagerRepository $gymManagerRepository, CityManagerRepository $cityManagerRepository, GymRepositoryInterface $gymRepository)
     {
-        $this->cityManagerRepository=$cityManagerRepository;
-        $this->gymManagerRepository=$gymManagerRepository;
-        $this->userRepository=$userRepository;
+        $this->cityManagerRepository = $cityManagerRepository;
+        $this->gymManagerRepository = $gymManagerRepository;
+        $this->userRepository = $userRepository;
+        $this->gymRepository = $gymRepository;
     }
+
     public function store(StoreClerkRequest $request)
     {
-        $input=$request->validated();
-        $avatarPath=env('DEFAULT_AVATAR');
-        if($request->hasFile('avatar')){
-            $avatarPath=$request->file('avatar')->store('public/photos');
+        $input = $request->validated();
+        $avatarPath = env('DEFAULT_AVATAR');
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('public/photos');
         }
-      
-        $user=$this->userRepository->create([
-            'name'=>$input['name'],
-            'email'=>$input['email'],
-            'password'=>Hash::make($input['password']),
-            'avatar_path'=>$avatarPath
+
+        $user = $this->userRepository->create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
+            'avatar_path' => $avatarPath
         ]);
 
-        if($request->clerk === 'city-manager') {
+        if ($request->clerk === 'city-manager') {
             $user->assignRole('CityManager');
 
             $this->cityManagerRepository->create([
-                'user_id'=>$user->id,
-                'n_id'=>$input['n_id'],
-                'city_id'=>$input['facility']
+                'user_id' => $user->id,
+                'n_id' => $input['n_id'],
+                'city_id' => $input['facility']
             ]);
-        }
-        elseif ($request->clerk==='gym-manager') {
+        } elseif ($request->clerk === 'gym-manager') {
             $user->assignRole('GymManager');
             $this->gymManagerRepository->create([
-                'user_id'=>$user->id,
-                'n_id'=>$input['n_id'],
-                'gym_id'=>$input['facility']
+                'user_id' => $user->id,
+                'n_id' => $input['n_id'],
+                'gym_id' => $input['facility']
             ]);
-            }
+
+            return to_route('show_gymManagers');
+        }
     }
-    
+
+    public function showGymManagers()
+    {
+        return view('gymManagers.show');
+    }
+
     public function showUsers()
     {
         return view('users.show_users');
     }
+
     public function createCityManager()
     {
         return view('users.create_city_manager');
     }
+
     public function createGymManager()
     {
-        return view('users.create_gym_manager');
+        $gyms = $this->gymRepository->all();
+        return view('gymManagers.create', ['gyms' => $gyms]);
     }
+
     public function edit()
     {
         return view('users.edit_profile');
     }
+
     public function update(EditClerkRequest $request)
     {
-        $input=$request->validated();
-        if($request->hasFile('avatar'))
-        {
-            $avatarPath=$request->file('avatar')->store('public/photos');
-            $this->userRepository->updateAvatar($request->user()->id,$avatarPath);
+        $input = $request->validated();
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('public/photos');
+            $this->userRepository->updateAvatar($request->user()->id, $avatarPath);
         }
-        if(isset($input['password'])) $input['password']=Hash::make($input['password']);
-        $this->userRepository->update($request->user()->id,$input);
+        if (isset($input['password'])) $input['password'] = Hash::make($input['password']);
+        $this->userRepository->update($request->user()->id, $input);
         return to_route('edit_profile');
     }
 }
