@@ -21,8 +21,8 @@ class CustomerController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $coaches = $this->customerRepository->all();
-        return view('customers.index');
+        $customers = $this->customerRepository->all();
+        return view('customers.index', ['customers' => $customers]);
     }
 
     public function create():Factory|View|Application{

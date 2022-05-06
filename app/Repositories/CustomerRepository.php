@@ -18,10 +18,10 @@ class CustomerRepository extends BaseRepository implements ClerkRepositoryInterf
     }
     public function updateavatar($id,$path)
     {
-        $gymManager=$this->gymManager->find($id);
-        $oldAvatarPath=$gymManager->avatar_path;
+        $customer=$this->customer->find($id);
+        $oldAvatarPath=$customer->avatar_path;
         File::delete(public_path( Storage::url($oldAvatarPath)));
-        $gymManager->update(['avatar_path'=>$path]);
+        $customer->update(['avatar_path'=>$path]);
 
     }
 }
