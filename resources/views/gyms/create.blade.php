@@ -24,9 +24,9 @@
 
         @can('permission_create_Gym')
          <button class="btn btn-success">create</button>
-         @endcan
+        @endcan
 
 
     </form>
-                
+
 @endsection
