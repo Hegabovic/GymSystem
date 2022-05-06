@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\OrderRepository;
+use App\Repositories\UserRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -12,9 +15,13 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    private UserRepository $userRepository;
+    private OrderRepository $orderRepository;
+    public function __construct(UserRepository $userRepository, OrderRepository $orderRepository)
     {
         $this->middleware('auth');
+        $this->userRepository = $userRepository;
+        $this->orderRepository = $orderRepository;
     }
 
     /**
@@ -24,6 +31,10 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
-        return view('home');
+        if(Auth::user()->hasRole('Admin'))
+            $revenue=$this->orderRepository->all()->sum('paid_price');
+        elseif (Auth::user()->hasRole('CityManager'))
+            $revenue=$this->orderRepository->join();
+        return view('home',['revenue'=>$revenue]);
     }
 }
