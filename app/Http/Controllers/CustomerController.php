@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Contracts\ClerkRepositoryInterface;
+use App\Repositories\UserRepository;
 use App\Http\Requests\StoreCustomerRequest;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Customer;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,10 +17,11 @@ class CustomerController extends Controller
 {
     //
     private ClerkRepositoryInterface $customerRepository;
-
-    public function __construct(ClerkRepositoryInterface $customerRepository)
+    private UserRepository $userRepository;
+    public function __construct(UserRepository $userRepository,ClerkRepositoryInterface $customerRepository)
     {
         $this->customerRepository = $customerRepository;
+        $this->userRepository=$userRepository;
     }
 
     public function index(): Factory|View|Application
@@ -32,12 +35,27 @@ class CustomerController extends Controller
     }
         public function store(StoreCustomerRequest $request): RedirectResponse
     {
-        $this->packageRepository->create([
-            "birth_date" => $request->birth_date,
-            "price" => $request->gender,
-            "avatar_path" => $request->avatar_path,
-            "user_id" => $request->user_id
+        $avatarPath=env('DEFAULT_AVATAR');
+        if($request->hasFile('avatar')){
+            $avatarPath=$request->file('avatar')->store('public/photos');
+        }
+       $user= $this->userRepository->create([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => $request->password,
+            "avatar" => $avatarPath
+           
+           
         ]);
+       
+        $this->customerRepository->create([
+            "user_id"=>$user->id,
+            "birth_date" => $request->birth_date,
+            "gender" => $request->gender,
+            
+           
+        ]);
+       
         return to_route('customers.index');
     }
     public function edit($customerId)
@@ -49,25 +67,10 @@ class CustomerController extends Controller
 
     public function update(StoreCustomerRequest $request)
     {
-        $formData = $request->all();
-        $updatedCustomer= [
-            "birth_date" => $formData["birth_data"],
-            "gender" => $formData["gender"],
-            "avatar_path" => $formData["number_of_sessions"],
-            "user_id" => $formData["user_id"]
-        ];
-        $this->customerRepository->update($request->id, $updatedCustomer);
-
-        return to_route('customers.index');
+        
     }
     public function delete()
     {
-        $customerId = request()->input('id');
-        $result = $this->customerRepository->delete($customerId);
-        if ($result > 0)
-            return ["success" => true,"count"=> $result];
-
-        else
-            return ["success" => false, "count"=> $result,"message" => "Delete hasn't completed successfully."];
+       
     }
 }

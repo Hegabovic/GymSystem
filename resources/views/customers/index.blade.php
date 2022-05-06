@@ -11,6 +11,8 @@
                             <table class="table table-bordered" style="color: black;" id="datatable">
                 <thead>
                     <tr>
+                        <th>Name</th>
+                        <th>Email</th>
                         <th>Id</th>
                         <th>Date of Birth</th>
                         <th>Gender</th>
@@ -24,7 +26,9 @@
                 @foreach ($customers as $customer)   
             
             <tr>
-              <td>{{$customer->id }}</td>
+              <td>{{ $customer->user->name}}</td>
+              <td>{{ $customer->user->email}}</td>
+              <td>{{ $customer->id }}</td>
               <td>{{ $customer->birth_date }}</td>
               <td>{{ $customer->gender }}</td>
               <td>{{ $customer->avatar_path}}</td>

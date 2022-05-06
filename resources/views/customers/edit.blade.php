@@ -25,10 +25,7 @@
           <label for="exampleFormControlInput1" class="form-label">Profile Image path</label>
             <input name="avatar_path" type="text" value="{{ $customer['avatar_path'] }}"  class="form-control" id="exampleFormControlInput1" placeholder="">
           </div>
-          <div class="form-group">
-          <label for="exampleFormControlInput1" class="form-label">User id</label>
-            <input name="user_id" type="number" value="{{ $customer['user_id'] }}" class="form-control" id="exampleFormControlInput1" placeholder="">
-          </div>
+         
 </div>
 <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Update</button>

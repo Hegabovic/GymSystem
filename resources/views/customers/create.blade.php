@@ -19,9 +19,21 @@
         <!-- /.content-header -->
 
 
-<form method="POST" action="{{ route('customers.store')}}">
+<form method="POST" action="{{ route('customers.store')}}"enctype="multipart/form-data">
 @csrf
 <div class="card-body">
+<div class="form-group">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="exampleFormControlInput1" placeholder="">
+          </div>
         <div class="form-group">
             <label for="exampleFormControlInput1" class="form-label">Date of Birth</label>
             <input name="birth_date" type="date" class="form-control" id="exampleFormControlInput1" placeholder="">
@@ -34,14 +46,19 @@
          </select>
           </div>
           <div class="form-group">
-          <label for="exampleFormControlInput1" class="form-label">Profile Image path</label>
-            <input name="avatar_path" type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-          </div>
-          <div class="form-group">
-          <label for="exampleFormControlInput1" class="form-label">User id</label>
-            <input name="user_id" type="number" class="form-control" id="exampleFormControlInput1" placeholder="">
-          </div>
-</div>
+        <label for="exampleInputFile">avatar image</label>
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file"  id="avatar_input" name="avatar">
+                <label class="custom-file-label" for="avatar_input">Choose file</label>
+            </div>
+            <div class="input-group-append">
+                <span class="input-group-text">Upload</span>
+            </div>
+        </div>
+    </div>
+
+          
 <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Create</button>
             </div>
