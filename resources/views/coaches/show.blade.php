@@ -9,7 +9,7 @@
                         <div class="panel-body">
                             <table class="table table-bordered" style="color: black;" id="datatable">
                                 <thead>
-                                <tr>
+                                <tr align="center">
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Phone</th>
@@ -19,7 +19,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($coaches as $coach)
-                                    <tr>
+                                    <tr align="center">
                                         <td>{{$coach->id}}</td>
                                         <td>{{$coach->name}}</td>
                                         <td>{{$coach->phone}}</td>
