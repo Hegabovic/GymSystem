@@ -53,49 +53,21 @@
                             <table id="example" class="table table-bordered" style="color: black">
                                 <thead>
                                 <tr align="center">
-                                    {{-- id 	avatar_path 	n_id 	user_id 	city_id --}}
-                                    {{-- email, name , password ,national_id, avatar_image --}}
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>National Id</th>
                                     <th>Options</th>
-                                    {{-- <th>Avatar Image</th> --}}
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach ($cityManagers as $cityManager)
 
                                     <tr align="center">
-                                        {{-- "id" => 1
-                                            "avatar_path" => "public/photos/zrePdxg6YlcRu5sKZ4JnkQJeYugeW5kWtIoluuxI.jpg"
-                                            "n_id" => 123456789012345
-                                            "user_id" => 103
-                                            "city_id" => 1
-                                            "created_at" => "2022-05-05 23:16:18"
-                                            "updated_at" => "2022-05-05 23:16:18" --}}
                                         <td>{{$cityManager->id}}</td>
                                         <td>{{$cityManager->user->name}}</td>
                                         <td>{{$cityManager->user->email}}</td>
                                         <td>{{$cityManager->n_id}}</td>
-                                        {{-- #### next line may be useful --}}
-                                        {{-- <td><img src="{{public_path($cityManager->avatar_path)}}" alt=""></td> --}}
-
-                                        {{-- @if($cityManager->created_at)
-                                            <td>{{$cityManager->created_at->toDateString() }}</td>
-                                        @endif
-
-                                        @if($cityManager->created_at)
-                                            <td>{{$cityManager->created_at->format('H:i')}}</td>
-                                        @endif
-
-                                        @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
-                                        <td>{{$cityManager->gym->name}}</td>
-                                        @endif
-
-                                        @if ( request()->user()->hasrole('Admin'))
-                                        <td>{{$cityManager->gym->city->name}}</td>
-                                        @endif --}}
 
                                         <td>
                                             <button class="btn btn-danger delete" id="{{$cityManager->id}}"><i class="fas fa-trash-alt"></i></button>

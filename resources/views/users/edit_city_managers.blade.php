@@ -48,60 +48,27 @@
                                         <i class="fas fa-times"></i>
                                     </button>
                                 </div>
-                            </div>
-                            {{-- "id" => 1
-                                "avatar_path" => "public/photos/zrePdxg6YlcRu5sKZ4JnkQJeYugeW5kWtIoluuxI.jpg"
-                                "n_id" => 123456789012345
-                                "user_id" => 103
-                                "city_id" => 1
-                                "created_at" => "2022-05-05 23:16:18"
-                                "updated_at" => "2022-05-05 23:16:18" --}}
-                                {{-- form --}}
-{{-- @dd($cityManager) --}}
-<form method="POST" action="{{route('update-city-managers')}}" enctype="multipart/form-data">
-    @csrf
-    @method('PUT')
-    <div class="form-group">
-        <label for="exampleInputEmail1">name</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" name="name" value="{{$cityManager->user->name}}">
-    </div>
 
-    <div class="form-group">
-        <label for="exampleInputEmail1">national Id</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter National ID" name="n_id" pattern="[0-9]{16}" value="{{$cityManager->n_id}}">
-    </div>
+                            <form method="POST" action="{{route('update-city-managers')}}" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">name</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" name="name" value="{{$cityManager->user->name}}">
+                                    </div>
 
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email" value="{{$cityManager->user->email}}">
-    </div>
-    <button  class="btn btn-primary btn-lg w-25">Update</button>
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">national Id</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter National ID" name="n_id" pattern="[0-9]{16}" value="{{$cityManager->n_id}}">
+                                    </div>
 
-    {{-- <div class="form-group">
-        <label for="exampleInputFile">avatar image</label>
-        
-        <div class="input-group">
+                                    <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email" value="{{$cityManager->user->email}}">
+                                    </div>
+                                <button  class="btn btn-primary btn-lg w-25">Update</button>
 
-            <div class="custom-file">
-                <input type="file"  id="avatar_input" name="avatar">
-                <label class="custom-file-label" for="avatar_input">Choose file</label>
-            </div>
-            <div class="input-group-append">
-                <span class="input-group-text">Upload</span>
-            </div>
-        </div>
-        </div>
-    --}}
-         
-
-    </form>
-    
-
-   
-
-
-
-
+                                </form>
                                 {{-- form done --}}
 
                     </div>

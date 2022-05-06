@@ -62,15 +62,7 @@ class UserController extends Controller
             ]);
             }
     }
-    /*public function storeGymManager()
-    {
-        //
-    }
-
-    public function storeCityManager()
-    {
-        //
-    }*/
+  
     public function showUsers()
     {
         return view('users.show_users');
@@ -140,22 +132,7 @@ class UserController extends Controller
             "name" => $data['name'],
             "email" => $data['email'],
         ]);
-        // $input=$request->validated();
-        //  if($request->hasFile('avatar'))
-        //  {
-        //      $avatarPath=$request->file('avatar')->store('public/photos');
-        //      if($request->user()->hasrole('GymManager'))
-        //      {
-        //          $this->gymManagerRepository->updateavatar($request->user()->gymManager->id,$avatarPath);
-        //      }
-        //      if($request->user()->hasrole('CityManager'))
-        //      {
-        //          $this->cityManagerRepository->updateavatar($request->user()->cityManager->id,$avatarPath);
-        //      }
-        //  }
-        //  if(isset($input['password'])) $input['password']=Hash::make($input['password']);
-        //  $this->userRepository->update($request->user()->id,$input);
-         
+                
         return to_route('show_city_managers');
 
     }

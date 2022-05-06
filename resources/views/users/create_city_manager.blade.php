@@ -53,12 +53,6 @@
                             <div class="form-group">
                                 <label for="city-input">city</label>
                                 <select name="facility" id="cityId" class="form-control" >
-
-                                  
-                                   {{-- @foreach ($cities as $city)
-                                    <option value="{{$city->id}}">{{$city->name}}</option>
-                                    @endforeach --}}
-
                                     <option value="1">city-1</option>
                                     <option value="2">city-2</option>
                                 </select>
