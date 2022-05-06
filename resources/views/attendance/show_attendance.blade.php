@@ -53,7 +53,7 @@
                             <table id="example" class="table table-bordered" style="color: black">
                                 <thead>
                                 <tr>
-                                    <th style="text-align: center;">Id</th>
+                                    <th style="text-align: center;">id</th>
                                     <th style="text-align: center;">user name</th>
                                     <th style="text-align: center;">email</th>
                                     <th style="text-align: center;">training session name</th>
@@ -108,17 +108,17 @@
                                     $(document).on('click', '.delete', function () {
                                         let attend = confirm('Are you sure you want to delete ?');
                                         if (attend) {
-                                            let myThis = $(this).parent().parent()
+                                            let row = $(this).parent().parent()
                                             $(this).parent().parent().css("background-color", "grey");
 
-                                            let Attendance_id = this.id;
+                                            let attendanceId = this.id;
                                             $.ajax({
-                                                url: "{{route('delete.attendances')}}" + `?id=${Attendance_id}`,
+                                                url: "{{route('delete.attendances')}}" + `?id=${attendanceId}`,
                                                 type: 'DELETE',
                                                 contentType: 'application/json',
-                                                data: `{"id":"${Attendance_id}"}`,
+                                                data: `{"id":"${attendanceId}"}`,
                                                 success: function (result) {
-                                                    myThis.remove();
+                                                    row.remove();
                                                 }
                                             });
                                         }
