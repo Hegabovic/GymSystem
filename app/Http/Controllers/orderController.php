@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use App\Repositories\GymRepository;
 use App\Repositories\OrderRepository;
 use Illuminate\Contracts\View\Factory;
