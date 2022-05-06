@@ -53,7 +53,7 @@
                             <!-- ./card-body -->
                             <table id="example" class="table table-bordered" style="color: black">
                                 <thead>
-                                <tr>
+                                <tr align="center">
                                     <th>package ID</th>
                                     <th>Customer Name</th>
                                     <th>Gym</th>
@@ -65,7 +65,7 @@
                                 @foreach ($items as $table)
                                     @if ( ! $table->trashed())
 
-                                        <tr>
+                                        <tr align="center">
                                             <td>{{$table->id}}</td>
                                             <td>{{$table->customer->user->name}}</td>
 
