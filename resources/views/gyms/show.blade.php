@@ -36,7 +36,8 @@
                             <td>{{ $gym->id }}</td>
                             <td>{{ $gym->name }}</td>
                             <td>
-                                <img class="img-circle img-fluid" src="{{$gym->cover_image}}">
+                                <img class="img-fluid" style="max-height: 100px; max-width: 120px"
+                                     src="{{Storage::url($gym->cover_image)}}" alt="Gym_Cover_Image">
                             </td>
                             <td>{{$gym->city->name}}</td>
                             <td>
