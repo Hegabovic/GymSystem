@@ -17,16 +17,16 @@ class PlanController extends Controller
 {
     private PlanRepositoryInterface $planRepository;
     private CustomerRepository $customerRepository;
-    private TrainingSessionsRepository $trainingSessionsRepository;
+    private PackageRepository $packageRepository;
     private GymRepository $gymRepository;
 
 
-    public function __construct(PlanRepositoryInterface $planRepository,CustomerRepository $customerRepository,TrainingSessionsRepository $trainingSessionRepository,GymRepository $gymRepository)
+    public function __construct(PlanRepositoryInterface $planRepository,CustomerRepository $customerRepository,PackageRepository $packageRepository,GymRepository $gymRepository)
     {
 
         $this->planRepository = $planRepository;
         $this->customerRepository = $customerRepository;
-        $this->trainingSessionsRepository = $trainingSessionRepository;
+        $this->packageRepository = $packageRepository;
         $this->gymRepository = $gymRepository;
     }
 
@@ -41,12 +41,12 @@ class PlanController extends Controller
     public function show(Plan $plan, Request $request): Factory|View|Application
     {
         $customer =  $this->customerRepository->all();
-        $trainingSession = $this->trainingSessionsRepository->all();
+        $package = $this->packageRepository->all();
         $gym = $this->gymRepository->all();
         return view('plans.show_plan', [
             'plan' => $plan,
             'customer' => $customer,
-            'trainingSession'=>$trainingSession,
+            'package'=>$package,
             'gym' => $gym,
         ]);
     }

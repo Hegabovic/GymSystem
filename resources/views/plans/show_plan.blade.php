@@ -37,11 +37,11 @@
 
                                 <div class="d-flex flex-wrap align-items-center mb-4 card-element">
                                     <label class="me-2 flex-grow-0 form-label" for="created_by">
-                                        Training Sessions
+                                        Package
                                     </label>
 
-                                    <select class="form-select" id="created_by" name="training-session_id">
-                                        @foreach($trainingSession as $info)
+                                    <select class="form-select" id="created_by" name="package_id">
+                                        @foreach($package as $info)
                                             <option value="{{$info->id}}">{{$info->name}}</option>
                                         @endforeach
                                     </select>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\OrderRepositoryInterface;
+use App\Models\Order;
+use App\Models\Package;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -19,6 +21,8 @@ class SubscriptionController extends Controller
 
     public function create(Request $request, Plan $plan): RedirectResponse
     {
+        $remaining_sessions = Order::find($request->package_id)->value("remaining_sessions");
+
         $plan = Plan::findOrFail($request->get('plan'));
         Stripe\Stripe::setApiKey(env("STRIPE_SECRET_KEY"));
 
@@ -31,8 +35,9 @@ class SubscriptionController extends Controller
 
         $this->orderRepository->create([
             'customer_id' => $request['customer_id'],
-            'pkg_id' => $request['training-session_id'],
+            'pkg_id' => $request['package_id'],
             'gym_id' => $request['gym_id'],
+            'remaining_sessions' => $remaining_sessions,
         ]);
 
         return back();
