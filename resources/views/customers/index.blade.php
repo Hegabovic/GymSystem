@@ -56,6 +56,34 @@
         $(document).ready(function () {
             $('#datatable').DataTable();
         });
+        sendDeleteRequest();
+
+        function sendDeleteRequest() {
+            $(document).on('click', '.delete', function (event) {
+                event.preventDefault();
+                let packageId = this.getAttribute('data-id');
+                let url = "{{route('customers.delete')}}" + `?id=${customerId}`;
+
+                let result = confirm('Are you sure you want to delete ?');
+                console.log(url);
+                if (result) {
+                    let row = $(this).parent().parent();
+                    $.ajax({
+                        url: url,
+                        type: 'DELETE',
+                        success: function (result) {
+                            
+                            if (result.success) {
+                                row.remove();
+                                console.log(result.count);
+                            }
+                                alert(result.message);
+                        }
+                    });
+                }
+            });
+            
+        }
         
     </script>
             @endsection

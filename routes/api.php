@@ -51,3 +51,4 @@ Route::delete('/order-delete', 'App\Http\Controllers\orderController@delete')->n
 
 Route::delete('/trainingSession-delete', [TrainingSessionController::class, 'delete'])->name('trainingSession.delete');
 Route::delete('/packages-delete','App\Http\Controllers\PackageController@delete')->name('packages.delete');
+Route::delete('/customers-delete','App\Http\Controllers\CustomerController@delete')->name('customers.delete');

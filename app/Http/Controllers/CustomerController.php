@@ -60,5 +60,14 @@ class CustomerController extends Controller
 
         return to_route('customers.index');
     }
-    
+    public function delete()
+    {
+        $customerId = request()->input('id');
+        $result = $this->customerRepository->delete($customerId);
+        if ($result > 0)
+            return ["success" => true,"count"=> $result];
+
+        else
+            return ["success" => false, "count"=> $result,"message" => "Delete hasn't completed successfully."];
+    }
 }
