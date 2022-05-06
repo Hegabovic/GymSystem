@@ -31,14 +31,14 @@
               <td>{{ $customer->user_id}}</td>
               <td>{{ $customer->getLastLoginAtAttribute()}}</td>
               <td> 
-              <a role="button" href="#"
+              <a role="button" href="{{route('customers.edit',[$customer->id])}}"
                                                class="btn btn-primary m-1 d-inline-block"
-                                               data-id="#">
+                                               data-id="{{$customer->id}}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             
                                             <a role="button" class="btn btn-danger m-1 d-inline-block delete"
-                                               data-id="#">
+                                               data-id="{{$customer->id}}">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a> 
               </td>

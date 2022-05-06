@@ -40,6 +40,25 @@ class CustomerController extends Controller
         ]);
         return to_route('customers.index');
     }
+    public function edit($customerId)
+    {
+        $selectedCustomer = $this->customerRepository->findById($customerId);
+        return view('customers.edit', ['customer' => $selectedCustomer]);
+    }
   
 
+    public function update(StoreCustomerRequest $request)
+    {
+        $formData = $request->all();
+        $updatedCustomer= [
+            "birth_date" => $formData["birth_data"],
+            "gender" => $formData["gender"],
+            "avatar_path" => $formData["number_of_sessions"],
+            "user_id" => $formData["user_id"]
+        ];
+        $this->customerRepository->update($request->id, $updatedCustomer);
+
+        return to_route('customers.index');
+    }
+    
 }
