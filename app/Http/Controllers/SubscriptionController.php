@@ -43,11 +43,8 @@ class SubscriptionController extends Controller
             'remaining_sessions' => $remaining_sessions,
             'paid_price'=> $order_cost,
         ]);
+
     return view("home");
-//        return view('order.show',[
-//            'items' => $tableData,
-//            'userData' => request()->user(),
-//        ]);
     }
 
 
