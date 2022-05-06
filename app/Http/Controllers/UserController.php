@@ -6,6 +6,7 @@ use App\Contracts\BaseRepositoryInterface;
 use App\Http\Requests\EditClerkRequest;
 use App\Http\Requests\StoreClerkRequest;
 use App\Models\User;
+use App\Models\CityManager;
 use App\Repositories\CityManagerRepository;
 use App\Repositories\GymManagerRepository;
 use App\Repositories\UserRepository;
@@ -104,5 +105,75 @@ class UserController extends Controller
         if(isset($input['password'])) $input['password']=Hash::make($input['password']);
         $this->userRepository->update($request->user()->id,$input);
         return to_route('edit_profile');
+    }
+
+    public function showCityManagers()
+    {
+        $cityManagers=CityManager::All();
+        return view('users.show_city_managers',['cityManagers'=>$cityManagers]);
+    }
+
+    public function editCityManagers($id)
+    {
+        $cityManagers=CityManager::All();
+        $cityManager=CityManager::find($id);
+
+       return view('users/edit_city_managers',['cityManagers'=>$cityManagers,'cityManager'=>$cityManager]);
+    }
+
+    public function updateCityManagers(Request $request)
+    {
+
+        $data=$request->all(); 
+        // dd($data);
+        $cityManagerId=$request->user()->id;
+
+        $cityManager = CityManager::find($cityManagerId);
+        $UserCityManagerId=$cityManager->user_id;
+        $cityManager->update([
+            "n_id" => $data['n_id'],
+        ]);
+
+        $UserCityManager = User::find($UserCityManagerId);
+        $UserCityManager->update([
+            "name" => $data['name'],
+            "email" => $data['email'],
+        ]);
+        // $input=$request->validated();
+        //  if($request->hasFile('avatar'))
+        //  {
+        //      $avatarPath=$request->file('avatar')->store('public/photos');
+        //      if($request->user()->hasrole('GymManager'))
+        //      {
+        //          $this->gymManagerRepository->updateavatar($request->user()->gymManager->id,$avatarPath);
+        //      }
+        //      if($request->user()->hasrole('CityManager'))
+        //      {
+        //          $this->cityManagerRepository->updateavatar($request->user()->cityManager->id,$avatarPath);
+        //      }
+        //  }
+        //  if(isset($input['password'])) $input['password']=Hash::make($input['password']);
+        //  $this->userRepository->update($request->user()->id,$input);
+         
+        return to_route('show_city_managers');
+
+    }
+
+    public function deleteCityManagers()
+    {
+        $isDeleted=false;
+        $id=request()->input('id'); 
+        // dd(request()->all());
+        $record=CityManager::find($id);
+        if($record)
+        {
+            $isDeleted=$record->delete();
+        }
+        if($isDeleted)
+        {
+            return ['success' =>'true'];
+        }else{
+            return ['success' =>'false'];
+        }
     }
 }
