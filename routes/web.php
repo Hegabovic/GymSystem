@@ -81,10 +81,6 @@ Route::group(['middleware'=>'auth'],function (){
     Route::get('/plans/{plan}', [PlanController::class, 'show'])->name('show.plan');
     Route::post('/subscription', [SubscriptionController::class, 'create'])->name('subscription.create');
 
-    Route::get('/stripe-payment', [SubscriptionController::class, 'handleGet']);
-    Route::post('/stripe-payment', [SubscriptionController::class, 'handlePost'])->name('stripe.payment');
-
-
 });
 
 Auth::routes();

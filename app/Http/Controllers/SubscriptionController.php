@@ -19,11 +19,12 @@ class SubscriptionController extends Controller
     $this->orderRepository = $orderRepository;
 }
 
-    public function create(Request $request, Plan $plan): RedirectResponse
+    public function create(Request $request, Plan $plan): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         $remaining_sessions = Order::find($request->package_id)->value("remaining_sessions");
 
         $plan = Plan::findOrFail($request->get('plan'));
+        $tableData = Order::withTrashed()->get();
         Stripe\Stripe::setApiKey(env("STRIPE_SECRET_KEY"));
 
         Stripe\Charge::create ([
@@ -40,7 +41,10 @@ class SubscriptionController extends Controller
             'remaining_sessions' => $remaining_sessions,
         ]);
 
-        return back();
+        return view('order.show',[
+            'items' => $tableData,
+            'userData' => request()->user()
+        ]);
     }
 
 
