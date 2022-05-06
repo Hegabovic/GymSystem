@@ -32,10 +32,12 @@
 
                                         <select class="form-select form-control" id="created_by" name="package_id">
                                             @foreach($package as $info)
-                                                <option value="{{$info->id}}">{{$info->name}}</option>
+                                                <option value="{{$info->id}}">{{$info->name}}, price: {{ number_format(($info->price)/100, 3)}}$</option>
                                             @endforeach
                                         </select>
                                     </div>
+
+
                                     <div>
                                         <label class="me-2 flex-grow-0 form-label" for="created_by">
                                             Gym

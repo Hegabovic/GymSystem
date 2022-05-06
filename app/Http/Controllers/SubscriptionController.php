@@ -19,9 +19,10 @@ class SubscriptionController extends Controller
     $this->orderRepository = $orderRepository;
 }
 
-    public function create(Request $request, Plan $plan): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    public function create(Request $request, Plan $plan)
     {
         $remaining_sessions = Order::find($request->package_id)->value("remaining_sessions");
+        $order_cost = Package::find($request->package_id)->value("price");
 
         $plan = Plan::findOrFail($request->get('plan'));
         $tableData = Order::withTrashed()->get();
@@ -39,11 +40,12 @@ class SubscriptionController extends Controller
             'pkg_id' => $request['package_id'],
             'gym_id' => $request['gym_id'],
             'remaining_sessions' => $remaining_sessions,
+            'paid_price'=> $order_cost,
         ]);
-
+//    return back();
         return view('order.show',[
             'items' => $tableData,
-            'userData' => request()->user()
+            'userData' => request()->user(),
         ]);
     }
 
