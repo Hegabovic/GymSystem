@@ -11,32 +11,32 @@
                             <table class="table table-bordered" style="color: black;" id="datatable">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Number of sessions</th>
-                        <th>Action</th>
+                        <th style="text-align: center;">Id</th>
+                        <th style="text-align: center;">Name</th>
+                        <th style="text-align: center;">Price</th>
+                        <th style="text-align: center;">Number of sessions</th>
+                        <th style="text-align: center;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($packages as $package)   
-            
+                @foreach ($packages as $package)
+
             <tr>
-                <td>{{$package->id }} </td>
-              <td>{{ $package->name }}</th>
-              <td>{{ $package->toDollar()}}</td>
-              <td>{{ $package->number_of_sessions}}</td>
-              <td>
+              <td style="text-align: center;">{{ $package->id }} </td>
+              <td style="text-align: center;">{{ $package->name }}</th>
+              <td style="text-align: center;">{{ $package->toDollar()}} USD</td>
+              <td style="text-align: center;">{{ $package->number_of_sessions }}</td>
+              <td style="text-align: center;">
                                             <a role="button" href="{{route('packages.edit',[$package->id])}}"
                                                class="btn btn-primary m-1 d-inline-block"
                                                data-id="{{$package->id}}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            
+
                                             <a role="button" class="btn btn-danger m-1 d-inline-block delete"
                                                data-id="{{$package->id}}">
                                                 <i class="fas fa-trash-alt"></i>
-                                            </a> 
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -69,7 +69,7 @@
                         url: url,
                         type: 'DELETE',
                         success: function (result) {
-                            
+
                             if (result.success) {
                                 row.remove();
                                 console.log(result.count);
@@ -79,9 +79,8 @@
                     });
                 }
             });
-            
+
         }
 
     </script>
             @endsection
-            
