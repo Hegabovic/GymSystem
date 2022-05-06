@@ -25,7 +25,7 @@
               <td style="text-align: center;">{{ $package->id }} </td>
               <td style="text-align: center;">{{ $package->name }}</th>
               <td style="text-align: center;">{{ $package->toDollar()}} USD</td>
-              <td style="text-align: center;">{{ $package->number_of_sessions}}</td>
+              <td style="text-align: center;">{{ $package->number_of_sessions }}</td>
               <td style="text-align: center;">
                                             <a role="button" href="{{route('packages.edit',[$package->id])}}"
                                                class="btn btn-primary m-1 d-inline-block"
