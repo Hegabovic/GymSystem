@@ -376,6 +376,7 @@
                         </ul>
                     </li>
 
+                @if(request()->user()->hasrole('GymManager'))
 
                     <li class="nav-item">
                         <a href="#" class="nav-link">
@@ -412,7 +413,7 @@
                         </a>
                     </li>
 
-
+                    @endif
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
