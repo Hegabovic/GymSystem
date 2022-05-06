@@ -9,7 +9,7 @@
                         <div class="panel-body">
                             <table class="table table-bordered" style="color: black;" id="datatable">
                                 <thead>
-                                <tr>
+                                <tr align="center">
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Start at</th>
@@ -21,7 +21,7 @@
                                 <tbody>
 
                                 @foreach($trainingSessions as $trainingSession)
-                                    <tr>
+                                    <tr align="center">
                                         <td>{{$trainingSession->id}}</td>
                                         <td>{{$trainingSession->name}}</td>
                                         <td>{{$trainingSession->start_at->format('d-m-Y h:iA')}}</td>
