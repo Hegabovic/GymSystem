@@ -38,6 +38,7 @@ class PermissionSeeder extends Seeder
             'permission_update_couch',
             'permission_select_couch',
             'permission_buy_package',
+            'permission_edit_package_price',
             'user_register',
             'user_login',
             'user_update',
