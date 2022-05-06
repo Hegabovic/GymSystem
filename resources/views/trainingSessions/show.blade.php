@@ -14,7 +14,7 @@
                                     <th>Name</th>
                                     <th>Start at</th>
                                     <th>Finish At</th>
-                                    <th>Coach</th>
+                                    <th>Coaches</th>
                                     <th>Options</th>
                                 </tr>
                                 </thead>
@@ -28,13 +28,15 @@
                                         <td>{{$trainingSession->finish_at->format('d-m-Y h:iA')}}</td>
                                         <td>
                                             <div class="mb-3">
-                                                <label for="coach" class="form-label">Coach</label>
-                                                <select id="coach" name="coach_id" class="form-control">
-                                                    @foreach ($trainingSession->sessionsCoaches as $sessionCoach)
-                                                        <option
-                                                            value="{{ $sessionCoach->coach_id }}"> {{ \App\Models\Coach::find($sessionCoach->coach_id)->name }} </option>
-                                                    @endforeach
-                                                </select>
+                                                @if(count($trainingSession->sessionsCoaches) > 0)
+                                                    <select id="coach" name="coach_id" class="form-control"
+                                                            multiple="multiple">
+                                                        @foreach ($trainingSession->sessionsCoaches as $sessionCoach)
+                                                            <option
+                                                                value="{{ $sessionCoach->coach_id }}"> {{ \App\Models\Coach::find($sessionCoach->coach_id)->name }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                @endif
                                             </div>
                                         </td>
                                         <td>
