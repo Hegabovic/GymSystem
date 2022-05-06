@@ -46,10 +46,12 @@
                                                data-id="{{$trainingSession->id}}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
+                                            @can('permission_delete_trainingSession')
                                             <a role="button" class="btn btn-danger m-1 d-inline-block delete"
                                                data-id="{{$trainingSession->id}}">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
