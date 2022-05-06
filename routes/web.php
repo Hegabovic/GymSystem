@@ -9,11 +9,8 @@ use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TrainingSessionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GymController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\PackageController;
-use App\Http\Controllers\TrainingSessionController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
