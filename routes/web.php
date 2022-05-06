@@ -9,6 +9,7 @@ use App\Http\Controllers\GymController;
 use App\Http\Controllers\attendanceController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Contracts\Role;
@@ -74,6 +75,9 @@ Route::group(['middleware'=>'auth'],function (){
     Route::post ('/packages',[PackageController::class,'store'])->name('packages.store');
     Route::get('/packages-edit/{id}',[PackageController::class, 'edit'])->name('packages.edit');
     Route::put('/packages-update/{id}',[PackageController::class, 'update'])->name('packages.update');
+
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+    Route::get('/customers-create', [CustomerController::class, 'create'])->name('customers.create');
    
 });
 
