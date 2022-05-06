@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Contracts\ClerkRepositoryInterface;
-use App\Repositories\UserRepository;
+use App\Contracts\UserRepositoryInterface;
+use App\Repositories\CustomerRepository;
 use App\Http\Requests\StoreCustomerRequest;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Customer;
@@ -16,9 +16,9 @@ use Illuminate\Contracts\View\View;
 class CustomerController extends Controller
 {
     //
-    private ClerkRepositoryInterface $customerRepository;
-    private UserRepository $userRepository;
-    public function __construct(UserRepository $userRepository,ClerkRepositoryInterface $customerRepository)
+    private UserRepositoryInterface $customerRepository;
+    private CustomerRepository $userRepository;
+    public function __construct(CustomerRepository $userRepository,UserRepositoryInterface $customerRepository)
     {
         $this->customerRepository = $customerRepository;
         $this->userRepository=$userRepository;
@@ -26,7 +26,7 @@ class CustomerController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $customers = $this->customerRepository->all();
+        $customers = $this->userRepository->all();
         return view('customers.index', ['customers' => $customers]);
     }
 
