@@ -33,18 +33,18 @@ class AuthController extends Controller
     public function register(CustomerRegisterRequest $request): \Illuminate\Http\JsonResponse
     {
         $input=$request->validated();
-
-        $user=$this->userRepository->create([
+        $avatarPath=$request->file('photo')->store('public/customers_avatars');
+        $userid=$this->userRepository->create([
             'name'=>$input['name'],
             'email'=>$input['email'],
+            'avatar_path'=>$avatarPath,
             'password'=>Hash::make($input['password']),
         ]);
 
-        $avatarPath=$request->file('photo')->store('public/customers_avatars');
+        $user=$this->userRepository->findById($userid);
 
         $this->customerRepository->create([
             'user_id'=>$user->id,
-            'avatar_path'=>$avatarPath,
             'gender'=>$input['gender'],
             'birth_date'=>$input['birth_date']
         ]);

@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('avatar_path');
+
             $table->unsignedBigInteger('n_id');
             $table->unsignedBigInteger('user_id');
             // $table->unsignedBigInteger('id')->unique();
             $table->date('birth_date');
             $table->enum('gender',['male','female']);
-            
+
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
