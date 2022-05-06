@@ -57,12 +57,18 @@
                                     <th style="text-align: center;">package ID</th>
                                     <th style="text-align: center;">Customer Name</th>
                                     <th style="text-align: center;">Gym</th>
+                                    @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
                                     <th style="text-align: center;">city</th>
+                                    @endif
                                     <th style="text-align: center;">price</th>
-                                    <th style="text-align: center;">created_at</th>
+                                    @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
+                                        <th style="text-align: center;">created_at</th>
+                                    @endif
+
                                     <th style="text-align: center;">options</th>
                                 </tr>
                                 </thead>
+
                                 <tbody>
 
                                 @foreach ($items as $table)
@@ -72,9 +78,13 @@
                                             <td style="text-align: center;">{{$table->id}}</td>
                                             <td style="text-align: center;">{{$table->customer->user->name}}</td>
                                             <td style="text-align: center;">{{$table->gym->name}}</td>
+                                            @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
                                             <td style="text-align: center;">{{$table->gym->city->name}}</td>
+                                            @endif
                                             <td style="text-align: center;">{{$table->paid_price }}</td>
+                                            @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
                                             <td style="text-align: center;">{{$table->created_at->format('H:i')}}</td>
+                                            @endif
                                             <td style="text-align: center;">
                                                 <button class="btn btn-danger delete" id="{{$table->id}}"><i class="fas fa-trash-alt"></i>
                                                 </button>

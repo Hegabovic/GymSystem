@@ -3,19 +3,46 @@
 namespace App\Http\Controllers;
 
 
+use App\Repositories\GymRepository;
+use App\Repositories\OrderRepository;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
 use App\Models\Order;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use JetBrains\PhpStorm\ArrayShape;
 
 class orderController extends Controller
 {
+    private OrderRepository $orderRepository;
+    private GymRepository $gymRepository;
+
+    public function __construct(OrderRepository $orderRepository, GymRepository $gymRepository)
+    {
+        $this->orderRepository = $orderRepository;
+        $this->gymRepository = $gymRepository;
+
+    }
+
     public function show(): Factory|View|Application
     {
-        $tableData = Order::withTrashed()->get();
+//        $tableData = Order::withTrashed()->get();
+        if(Auth::user()->hasRole('Admin'))
+            $tableData=$this->orderRepository->all();
+        elseif (Auth::user()->hasRole('CityManager')){
+            $gyms=$this->gymRepository->all()->where('city_id',Auth::user()->cityManager->id);
+            foreach ($gyms as $gym)
+            {
+                $revenue+=$gym->order->sum('paid_price');
+            }
+            // dd($gym->order->sum('paid_price'));
+        }
+        elseif (Auth::user()->hasRole('GymManager')) {
+            $tableData = $this->orderRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
+        }
+
         return view('order.show', [
             'items' => $tableData,
             'userData' => request()->user()
