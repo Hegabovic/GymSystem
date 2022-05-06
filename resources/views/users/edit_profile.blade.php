@@ -24,7 +24,7 @@
                     @elseif(Auth::user()->hasRole('CityManager'))
                         <img src="{{Storage::url(Auth::user()->cityManager->avatar_path)}}" class="rounded-circle mt-5" alt="User Image" style="width: 200px;height: 200px">
                     @else
-                        <img src="{{Storage::url(Auth::user()->cityManager->avatar_path)}}" class="rounded-circle mt-5" alt="User Image"  style="width: 200px;height: 200px">
+                        <img src="{{Storage::url(env('DEFAULT_AVATAR'))}}" class="rounded-circle mt-5" alt="User Image"  style="width: 200px;height: 200px">
                     @endif
                     <span class="font-weight-bold">{{Auth::user()->name}}</span>
                     <span class="text-black-50">{{Auth::user()->email}}</span>
