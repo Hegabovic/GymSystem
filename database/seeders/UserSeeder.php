@@ -19,7 +19,9 @@ class UserSeeder extends Seeder
        $admin= User::UpdateOrCreate(['email'=>'admin@admin.com'],[
             'name'=>'admin',
             'email'=>'admin@admin.com',
-            'password'=>Hash::make('123456')
+            'password'=>Hash::make('123456'),
+           'avatar_path'=>env('DEFAULT_AVATAR')
+
         ]);
        $admin->assignRole('Admin');
        User::factory()->times(100)->create();

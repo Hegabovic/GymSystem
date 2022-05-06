@@ -16,7 +16,7 @@ class CityManagerRepository extends BaseRepository implements ClerkRepositoryInt
         parent::__construct($cityManager);
         $this->cityManager=$cityManager;
     }
-    public function updateavatar($id,$path)
+    public function updateAvatar($id,$path)
     {
         $gymManager=$this->cityManager->find($id);
         $oldAvatarPath=$gymManager->avatar_path;
