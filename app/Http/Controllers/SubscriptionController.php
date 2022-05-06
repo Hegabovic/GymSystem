@@ -22,15 +22,16 @@ class SubscriptionController extends Controller
     public function create(Request $request, Plan $plan)
     {
         $remaining_sessions = Order::find($request->package_id)->value("remaining_sessions");
-        $order_cost = Package::find($request->package_id)->value("price");
+        $order_cost = Package::select('price')->where('id',$request->package_id)->first()->price;
+
 
         $plan = Plan::findOrFail($request->get('plan'));
         $tableData = Order::withTrashed()->get();
         Stripe\Stripe::setApiKey(env("STRIPE_SECRET_KEY"));
 
         Stripe\Charge::create ([
-            "amount" => 100 * 150,
-            "currency" => "inr",
+            "amount" => 100 * $order_cost,
+            "currency" => "usd",
             "source" => $request->stripeToken,
         ]);
         Session::flash('success', 'Payment has been successfully processed.');
