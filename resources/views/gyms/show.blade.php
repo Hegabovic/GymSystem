@@ -49,8 +49,11 @@
                                                 <i class="fas fa-edit"></i>
                                             </a>
                         @endcan
+                        
+                        @can('permission_delete_Gym')
                         <button class="delete  btn btn-danger m-1 d-inline-block" data-id="{{$gym->id}}">
                                                 <i class="fas fa-trash-alt"></i>
+                        @endcan
                      </button>
                         </td>
 
