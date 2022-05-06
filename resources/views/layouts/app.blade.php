@@ -152,7 +152,7 @@
                         {{-- data-post-id="{{$post->id}}" --}}
                         {{--<i data-post-id="{{$post->id}}" ></i>--}}
                         {{--                        <a href="{{route('', [])}}" class="nav-link">--}}
-                        <a href="{{ route('plans.show') }}" class="nav-link">
+                        <a href="{{ route('show.plan') }}" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Buy package

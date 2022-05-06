@@ -19,13 +19,11 @@ class SubscriptionController extends Controller
     $this->orderRepository = $orderRepository;
 }
 
-    public function create(Request $request, Plan $plan)
+    public function create(Request $request)
     {
         $remaining_sessions = Order::find($request->package_id)->value("remaining_sessions");
         $order_cost = Package::select('price')->where('id',$request->package_id)->first()->price;
 
-
-        $plan = Plan::findOrFail($request->get('plan'));
         $tableData = Order::withTrashed()->get();
         Stripe\Stripe::setApiKey(env("STRIPE_SECRET"));
 
