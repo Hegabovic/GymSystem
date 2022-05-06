@@ -27,8 +27,8 @@ class UserLoginAt
      */
     public function handle(Login $event)
     {
-//
-            $event->user->customer->update(['last_login'=>Carbon::now()]);
+//          if\
+        if( $event->user->customer != null) $event->user->customer->update(['last_login'=>Carbon::now()]);
 //
     }
 }
