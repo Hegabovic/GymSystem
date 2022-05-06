@@ -19,8 +19,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach ($packages as $package)   
-            
+                @foreach ($packages as $package)
+
             <tr>
                 <td>{{$package->id }} </td>
               <td>{{ $package->name }}</th>
@@ -32,11 +32,12 @@
                                                data-id="{{$package->id}}">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            
+                                            @can('permission_delete_package',)
                                             <a role="button" class="btn btn-danger m-1 d-inline-block delete"
                                                data-id="{{$package->id}}">
                                                 <i class="fas fa-trash-alt"></i>
-                                            </a> 
+                                            </a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @endforeach
@@ -69,7 +70,7 @@
                         url: url,
                         type: 'DELETE',
                         success: function (result) {
-                            
+
                             if (result.success) {
                                 row.remove();
                                 console.log(result.count);
@@ -79,9 +80,8 @@
                     });
                 }
             });
-            
+
         }
 
     </script>
             @endsection
-            

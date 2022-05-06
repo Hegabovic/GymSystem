@@ -39,6 +39,7 @@ class PermissionSeeder extends Seeder
             'permission_select_couch',
             'permission_buy_package',
             'permission_edit_package_price',
+            'permission_create_package_price',
             'user_register',
             'user_login',
             'user_update',
@@ -74,6 +75,8 @@ class PermissionSeeder extends Seeder
             'permission_update_couch',
             'permission_select_couch',
             'permission_buy_package',
+            'permission_create_package_price',
+            'permission_delete_package',
             ...$userPermissions
         ];
 
@@ -86,6 +89,9 @@ class PermissionSeeder extends Seeder
             'permission_delete_GymManager',
             'permission_update_GymManager',
             'permission_show_GymManager',
+            'permission_create_package_price',
+            'permission_buy_package',
+            'permission_delete_package',
             ...$gymMangerPermissions
         ];
 
