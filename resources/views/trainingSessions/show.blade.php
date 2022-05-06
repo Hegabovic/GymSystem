@@ -19,6 +19,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 @foreach($trainingSessions as $trainingSession)
                                     <tr>
                                         <td>{{$trainingSession->id}}</td>
@@ -27,10 +28,11 @@
                                         <td>{{$trainingSession->finish_at->format('d-m-Y h:iA')}}</td>
                                         <td>
                                             <div class="mb-3">
-                                                <label for="coach" class="form-label">city</label>
+                                                <label for="coach" class="form-label">Coach</label>
                                                 <select id="coach" name="coach_id" class="form-control">
-                                                    @foreach ($coaches as $coach)
-                                                        <option value="{{ $coach->id }}"> {{ $coach->name }} </option>
+                                                    @foreach ($trainingSession->sessionsCoaches as $sessionCoach)
+                                                        <option
+                                                            value="{{ $sessionCoach->coach_id }}"> {{ \App\Models\Coach::find($sessionCoach->coach_id)->name }} </option>
                                                     @endforeach
                                                 </select>
                                             </div>

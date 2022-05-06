@@ -7,6 +7,7 @@ use App\Contracts\SessionsCoachesRepositoryInterface;
 use App\Contracts\TrainingSessionsRepositoryInterface;
 use App\Http\Requests\StoreTrainingSessionRequest;
 use App\Models\Coach;
+use App\Models\Training_session;
 use App\Repositories\CoachRepository;
 use App\Repositories\TrainingSessionsRepository;
 use Illuminate\Contracts\Foundation\Application;
@@ -35,7 +36,8 @@ class TrainingSessionController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $trainingSessions = $this->trainingSessionsRepository->all();
+//        $trainingSessions = $this->trainingSessionsRepository->all();
+        $trainingSessions = Training_session::with("sessionsCoaches")->get();
         return view('trainingSessions.show', ['trainingSessions' => $trainingSessions]);
     }
 
@@ -98,7 +100,7 @@ class TrainingSessionController extends Controller
             foreach ($request->coaches as $coach) {
                 $this->sessionsCoachesRepository->create([
                     "coach_id" => $coach,
-                    "session_id" => $trainingSessionId
+                    "training_session_id" => $trainingSessionId
                 ]);
             }
 

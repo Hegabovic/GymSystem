@@ -35,9 +35,4 @@ class Training_session extends Model
         'finish_at' => 'datetime'
     ];
 
-    public function sessionCoaches(): HasMany
-    {
-        return $this->hasMany(SessionsCoaches::class, 'session_id', 'id');
-    }
-
 }
