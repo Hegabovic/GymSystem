@@ -152,7 +152,7 @@
                         {{-- data-post-id="{{$post->id}}" --}}
                         {{--<i data-post-id="{{$post->id}}" ></i>--}}
                         {{--                        <a href="{{route('', [])}}" class="nav-link">--}}
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('plans.show') }}" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Buy package
@@ -435,5 +435,5 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
-
+@yield("scripts")
 </html>

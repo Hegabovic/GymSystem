@@ -3,6 +3,11 @@
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoachController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\TrainingSessionController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\GymController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\orderController;
@@ -59,6 +64,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit/{id}', [CityController::class, 'edit'])->name('city.edit');
     Route::put('/update/{id}', [CityController::class, 'update'])->name('city.update');
 
+
+    Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendances');
+    Route::get('/attendance-create', [attendanceController::class, 'create'])->name('create.attendances');
+    Route::post('/attendance-store', [attendanceController::class, 'store'])->name('store.attendances');
+    Route::get('/attendance-edit/{id}', [attendanceController::class, 'edit'])->name('edit.attendances');
+    Route::put('/attendance-update/{id}', [attendanceController::class, 'update'])->name('update.attendances');
+
     Route::get('/attendance', [AttendanceController::class, 'show'])->name('show.attendances');
     Route::get('/attendance-create', [AttendanceController::class, 'create'])->name('create.attendances');
     Route::post('/attendance-store', [AttendanceController::class, 'store'])->name('store.attendances');
@@ -70,9 +82,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
     Route::get('/packages-create', [PackageController::class, 'create'])->name('packages.create');
-    Route::post('/packages', [PackageController::class, 'store'])->name('packages.store');
-    Route::get('/packages-edit/{id}', [PackageController::class, 'edit'])->name('packages.edit');
-    Route::put('/packages-update/{id}', [PackageController::class, 'update'])->name('packages.update');
+    Route::post ('/packages',[PackageController::class,'store'])->name('packages.store');
+    Route::get('/packages-edit/{id}',[PackageController::class, 'edit'])->name('packages.edit');
+    Route::put('/packages-update/{id}',[PackageController::class, 'update'])->name('packages.update');
+
+    Route::get('/plans' , [PlanController::class, 'index'])->name('plans.show');
+    Route::get('/plans/{plan}', [PlanController::class, 'show'])->name('show.plan');
+    Route::post('/subscription', [SubscriptionController::class, 'create'])->name('subscription.create');
+
 
 });
 
