@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\EmailVerificationController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CityController;
 
 use App\Http\Controllers\ApiUserController;
@@ -29,25 +30,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware'=>['auth:sanctum','verified']],function (){
-    Route::get('/training-sessions/{id}/attend',[ApiUserController::class,'attend']);
-    Route::get('/attendance-history',[ApiUserController::class,'getAttendedSessions']);
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+    Route::get('/training-sessions/{id}/attend', [ApiUserController::class, 'attend']);
+    Route::get('/attendance-history', [ApiUserController::class, 'getAttendedSessions']);
 });
-Route::post('/customer/register',[AuthController::class,'register'])->name('customer-register');
-Route::post('/login',[AuthController::class,'login'])->name('customer-login');
+Route::post('/customer/register', [AuthController::class, 'register'])->name('customer-register');
+Route::post('/login', [AuthController::class, 'login'])->name('customer-login');
 Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
 Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
 
 
-Route::delete('/attendance-delete', 'App\Http\Controllers\attendanceController@delete')->name('delete.attendances');
+Route::delete('/attendance-delete', [AttendanceController::class, 'delete'])->name('delete.attendances');
 Route::delete('/gym-delete', [GymController::class, 'delete'])->name('gym.delete');
-
-
-
 Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete.city');
 Route::delete('/coach-delete', [CoachController::class, 'delete'])->name('coach.delete');
-
 Route::delete('/order-delete', 'App\Http\Controllers\orderController@delete')->name('delete.orders');
-
 Route::delete('/trainingSession-delete', [TrainingSessionController::class, 'delete'])->name('trainingSession.delete');
-Route::delete('/packages-delete','App\Http\Controllers\PackageController@delete')->name('packages.delete');
+Route::delete('/packages-delete', 'App\Http\Controllers\PackageController@delete')->name('packages.delete');

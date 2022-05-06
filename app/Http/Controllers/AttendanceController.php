@@ -6,7 +6,7 @@ use App\Contracts\AttendanceRepositoryInterface;
 use App\Contracts\TrainingSessionsRepositoryInterface;
 use Illuminate\Http\Request;
 
-class attendanceController extends Controller
+class AttendanceController extends Controller
 {
 
     private AttendanceRepositoryInterface $attendanceRepository;
