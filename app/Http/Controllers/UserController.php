@@ -41,6 +41,7 @@ class UserController extends Controller
         if($request->hasFile('avatar')){
             $avatarPath=$request->file('avatar')->store('public/photos');
         }
+
         if($request->clerk === 'city-manager') {
             $user->assignRole('CityManager');
 
