@@ -2,28 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Attendance;
-use App\Models\City;
-use App\Models\Gym;
-use GrahamCampbell\ResultType\Success;
+use App\Contracts\AttendanceRepositoryInterface;
+use App\Contracts\CityRepositoryInterface;
+use App\Contracts\GymRepositoryInterface;
 use Illuminate\Http\Request;
 
 class GymController extends Controller
 {
+
+
+    private GymRepositoryInterface $gymRepository;
+    private CityRepositoryInterface $cityRepository;
+    private AttendanceRepositoryInterface $attendanceRepository;
+
+    public function __construct(GymRepositoryInterface $gymRepository, CityRepositoryInterface $cityRepository, AttendanceRepositoryInterface $attendanceRepository)
+    {
+        $this->gymRepository = $gymRepository;
+        $this->cityRepository = $cityRepository;
+        $this->attendanceRepository = $attendanceRepository;
+    }
+
     public function show()
     {
-        $gyms = Gym::all();
+        $gyms = $this->gymRepository->all();
         return view('gyms.show', ['gyms' => $gyms]);
     }
 
 
-    public function create () {
+    public function create()
+    {
 
-        $cities= City::All();
-
-        return view  ('gyms.create',[
-            'cities'=>$cities,
-
+        $cities = $this->cityRepository->all();
+        return view('gyms.create', [
+            'cities' => $cities,
         ]);
 
     }
@@ -31,49 +42,43 @@ class GymController extends Controller
     public function delete()
 
     {
-        $gymid=request()->input('id');
-        $record=Gym::find($gymid);
-        $NumberOfTrainingSession =Attendance::select([ 'training_session_id'])->where('gym_id',$gymid)->count();
-        if ($record) {
-
-            if ($NumberOfTrainingSession>0) {
-                return ["success" => false , "messege"=>"there is a training session in the gym"];
+        $gymId = request()->input('id');
+        $selectedGym = $this->gymRepository->findById($gymId);
+        $NumberOfTrainingSession = $this->attendanceRepository->select(['training_session_id'])->where('gym_id', $gymId)->count();
+        if ($selectedGym) {
+            if ($NumberOfTrainingSession > 0) {
+                return ["success" => false, "message" => "There is a training session in the gym"];
             } else {
-
-                $isDeleted=$record->delete();
-                return ["success"=>true , "messege"=>"record has been deleted" ];
+                $isDeleted = $selectedGym->delete();
+                return ["success" => true, "message" => "Record has been deleted"];
             }
         }
+        return ["success" => false, "message" => "Couldn't find selected Gym"];
     }
 
-    public function edit(Request $request,$id)
+    public function edit(Request $request, $id)
     {
-     $gym=Gym::find($id);
-
-    //  $gyms->name = $request->input('name');
-    //  $gyms->created_at = $request->input('created at');
-    //  $gyms->cover_image = $request->input('cover_image');
-
-
-     return view('gyms.edit',['gym' => $gym]);
+        $gym = $this->gymRepository->findById($id);
+        $cities = $this->cityRepository->all();
+        return view('gyms.edit', ['gym' => $gym, 'cities' => $cities]);
     }
 
 
-    public function storeUpdate (Request $request,$gymId){
+    public function storeUpdate(Request $request, $gymId)
+    {
 
-        $gym=Gym::find($gymId);
-        $gym->update([
-                          "name"=> $request["name"],
-                          "created at"=>$request["created_at"],
-                          "cover image"=>$request["cover_image"],
-
+        $this->gymRepository->update($gymId, [
+            "name" => $request["name"],
+            "cover_image" => $request["cover_image"],
+            "city_id" => $request["city_id"]
         ]);
-        return to_route('show_gyms',['gym' => $gym]);
 
+        return to_route('show_gyms');
     }
+
     public function store(Request $request)
     {
-        Gym::create([
+        $this->gymRepository->create([
             "name" => $request ['name'],
             "cover_image" => $request['cover_image'],
             "city_id" => $request ['city_id']

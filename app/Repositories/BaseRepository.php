@@ -48,4 +48,9 @@ class BaseRepository implements BaseRepositoryInterface
             return 0;
         return $selectedModel->delete();
     }
+
+    public function select($columns)
+    {
+        return $this->model->select($columns)->get();
+    }
 }
