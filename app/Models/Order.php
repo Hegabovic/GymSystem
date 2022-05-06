@@ -39,8 +39,9 @@ class Order extends Model
     {
         return $this->hasMany(Order::class, 'created_by', 'pkg_id');
     }
+
     public function ordersCount(): int
     {
-        return $this->hasMany(Order::class, 'created_by', 'pkg_id')->count();
+        return $this->hasMany(Order::class)->count();
     }
 }

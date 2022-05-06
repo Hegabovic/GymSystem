@@ -29,4 +29,10 @@ class Training_session extends Model
         'finish_at'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime',
+        'start_at' => 'datetime',
+        'finish_at' => 'datetime'
+    ];
+
 }

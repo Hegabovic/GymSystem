@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Contracts\AttendanceRepositoryInterface;
 use App\Contracts\BaseRepositoryInterface;
 use App\Contracts\ClerkRepositoryInterface;
 use App\Contracts\CityRepositoryInterface;
@@ -9,7 +10,11 @@ use App\Contracts\CoachRepositoryInterface;
 use App\Contracts\OrderRepositoryInterface;
 use App\Contracts\PlanRepositoryInterface;
 use App\Contracts\TrainingSessionInterface;
+use App\Contracts\SessionsCoachesRepositoryInterface;
+use App\Contracts\TrainingSessionsRepositoryInterface;
 use App\Contracts\PackageRepositoryInterface;
+use App\Models\SessionsCoaches;
+use App\Repositories\AttendanceRepository;
 use App\Repositories\BaseRepository;
 use App\Repositories\CityManagerRepository;
 use App\Repositories\CityRepository;
@@ -17,6 +22,7 @@ use App\Repositories\CoachRepository;
 use App\Repositories\CustomerRepository;
 use App\Repositories\GymManagerRepository;
 use App\Repositories\PlanRepository;
+use App\Repositories\SessionsCoachesRepository;
 use App\Repositories\TrainingSessionsRepository;
 use App\Repositories\UserRepository;
 use App\Repositories\OrderRepository;
@@ -46,7 +52,7 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(CoachRepositoryInterface::class, CoachRepository::class);
         $this->app->bind(CityRepositoryInterface::class, CityRepository::class);
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
-        $this->app->bind(TrainingSessionInterface::class, TrainingSessionsRepository::class);
+        $this->app->bind(TrainingSessionsRepositoryInterface::class, TrainingSessionsRepository::class);
         $this->app->bind(PackageRepositoryInterface::class, PackageRepository::class);
         $this->app->bind(BaseRepositoryInterface::class, UserRepository::class);
         $this->app->bind(BaseRepositoryInterface::class, CityManagerRepository::class);
@@ -55,6 +61,7 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(ClerkRepositoryInterface::class, CityManagerRepository::class);
         $this->app->bind(BaseRepositoryInterface::class, CustomerRepository::class);
         $this->app->bind(planRepositoryInterface::class, PlanRepository::class);
-
+        $this->app->bind(AttendanceRepositoryInterface::class, AttendanceRepository::class);
+        $this->app->bind(SessionsCoachesRepositoryInterface::class, SessionsCoachesRepository::class);
     }
 }

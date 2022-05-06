@@ -14,16 +14,31 @@
                                     <th>Name</th>
                                     <th>Start at</th>
                                     <th>Finish At</th>
+                                    <th>Coaches</th>
                                     <th>Options</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 @foreach($trainingSessions as $trainingSession)
                                     <tr>
                                         <td>{{$trainingSession->id}}</td>
                                         <td>{{$trainingSession->name}}</td>
-                                        <td>{{$trainingSession->start_at}}</td>
-                                        <td>{{$trainingSession->finish_at}}</td>
+                                        <td>{{$trainingSession->start_at->format('d-m-Y h:iA')}}</td>
+                                        <td>{{$trainingSession->finish_at->format('d-m-Y h:iA')}}</td>
+                                        <td>
+                                            <div class="mb-3">
+                                                @if(count($trainingSession->sessionsCoaches) > 0)
+                                                    <select id="coach" name="coach_id" class="form-control"
+                                                            multiple="multiple">
+                                                        @foreach ($trainingSession->sessionsCoaches as $sessionCoach)
+                                                            <option
+                                                                value="{{ $sessionCoach->coach_id }}"> {{ \App\Models\Coach::find($sessionCoach->coach_id)->name }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                @endif
+                                            </div>
+                                        </td>
                                         <td>
                                             <a role="button"
                                                href="{{route('update_trainingSession',[$trainingSession->id])}}"
