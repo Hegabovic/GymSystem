@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Contracts\ClerkRepositoryInterface;
+use App\Contracts\UserRepositoryInterface;
 use App\Models\CityManager;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
-class CityManagerRepository extends BaseRepository implements ClerkRepositoryInterface
+class CityManagerRepository extends BaseRepository implements UserRepositoryInterface
 {
     private CityManager $cityManager;
     public function __construct(CityManager $cityManager)
@@ -16,12 +16,12 @@ class CityManagerRepository extends BaseRepository implements ClerkRepositoryInt
         parent::__construct($cityManager);
         $this->cityManager=$cityManager;
     }
-    public function updateavatar($id,$path)
+    public function updateAvatar($id,$path)
     {
-        $gymManager=$this->cityManager->find($id);
-        $oldAvatarPath=$gymManager->avatar_path;
+        $cityManager=$this->cityManager->find($id);
+        $oldAvatarPath=$cityManager->avatar_path;
         File::delete(public_path( Storage::url($oldAvatarPath)));
-        $gymManager->update(['avatar_path'=>$path]);
+        $cityManager->update(['avatar_path'=>$path]);
 
     }
 }

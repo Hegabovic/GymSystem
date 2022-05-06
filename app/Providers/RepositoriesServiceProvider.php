@@ -15,6 +15,7 @@ use App\Contracts\PackageRepositoryInterface;
 
 use App\Contracts\SessionsCoachesRepositoryInterface;
 use App\Contracts\TrainingSessionsRepositoryInterface;
+use App\Contracts\UserRepositoryInterface;
 use App\Repositories\AttendanceRepository;
 use App\Repositories\BaseRepository;
 use App\Repositories\CityManagerRepository;
@@ -61,8 +62,8 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(BaseRepositoryInterface::class, UserRepository::class);
         $this->app->bind(BaseRepositoryInterface::class, CityManagerRepository::class);
         $this->app->bind(BaseRepositoryInterface::class, GymManagerRepository::class);
-        $this->app->bind(ClerkRepositoryInterface::class, GymManagerRepository::class);
-        $this->app->bind(ClerkRepositoryInterface::class, CityManagerRepository::class);
+        $this->app->bind(UserRepositoryInterface::class, GymManagerRepository::class);
+        $this->app->bind(UserRepositoryInterface::class, CityManagerRepository::class);
         $this->app->bind(BaseRepositoryInterface::class, CustomerRepository::class);
         $this->app->bind(planRepositoryInterface::class, PlanRepository::class);
         $this->app->bind(AttendanceRepositoryInterface::class, AttendanceRepository::class);

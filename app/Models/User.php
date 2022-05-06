@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -26,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'avatar_path'
     ];
 
     /**
@@ -43,6 +45,11 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<string, string>
      */
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value);
+    }
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];

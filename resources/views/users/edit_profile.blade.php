@@ -19,13 +19,12 @@
         <div class="row">
             <div class="col-md-4 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                    @if(Auth::user()->hasRole('GymManager'))
-                        <img src="{{Storage::url(Auth::user()->gymManager->avatar_path)}}" class="rounded-circle mt-5" alt="User Image" style="width: 200px;height: 200px">
-                    @elseif(Auth::user()->hasRole('CityManager'))
-                        <img src="{{Storage::url(Auth::user()->cityManager->avatar_path)}}" class="rounded-circle mt-5" alt="User Image" style="width: 200px;height: 200px">
-                    @else
-                        <img src="{{Storage::url(Auth::user()->cityManager->avatar_path)}}" class="rounded-circle mt-5" alt="User Image"  style="width: 200px;height: 200px">
-                    @endif
+
+
+
+                        <img src="{{Storage::url(Auth::user()->avatar_path)}}" class="rounded-circle mt-5" alt="User Image" style="width: 200px;height: 200px">
+
+
                     <span class="font-weight-bold">{{Auth::user()->name}}</span>
                     <span class="text-black-50">{{Auth::user()->email}}</span>
                 </div>

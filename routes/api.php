@@ -28,10 +28,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-    Route::get('/training-sessions/{id}/attend', [ApiUserController::class, 'attend']);
-    Route::get('/attendance-history', [ApiUserController::class, 'getAttendedSessions']);
+Route::group(['middleware'=>['auth:sanctum','verified']],function (){
+    Route::get('/training-sessions/{id}/attend',[ApiUserController::class,'attend']);
+    Route::get('/attendance-history',[ApiUserController::class,'getAttendedSessions']);
+    Route::post('/customer/update-profile',[ApiUserController::class,'update']);
 });
+
 Route::post('/customer/register', [AuthController::class, 'register'])->name('customer-register');
 Route::post('/login', [AuthController::class, 'login'])->name('customer-login');
 Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
