@@ -152,4 +152,21 @@ class UserController extends Controller
         return ["success" => false, "message" => "Delete hasn't completed successfully."];
 
     }
+
+    public function restoreGymManager()
+    {
+        $selectedManager = $this->gymManagerRepository->allWithTrashed()->where('id', request()->input('id'))->first();
+        $selectedUser = $this->userRepository->allWithTrashed()->where('id', $selectedManager->user_id)->first();
+        $userResult = $selectedUser->restore();
+        $managerResult = $selectedManager->restore();
+
+        if ($userResult > 0) {
+            $response = [
+                "n_id" => $selectedManager->n_id,
+                "name" => $selectedUser->name,
+            ];
+            return ["success" => true, 'manager' => $response];
+        }
+        return ["success" => false, "message" => "Delete hasn't completed successfully."];
+    }
 }

@@ -11,8 +11,8 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
+                                    <th>Name</th>
                                     <th>National ID</th>
-                                    <th>Gym</th>
                                     <th>Options</th>
                                 </tr>
                                 </thead>
@@ -22,7 +22,7 @@
                                         <tr>
                                             <td>{{$manager->user_id}}</td>
                                             <td>{{$manager->user->name}}</td>
-                                            <td>{{$manager->gym->name}}</td>
+                                            <td>{{$manager->n_id}}</td>
                                             <td>
                                                 <a role="button" href="{{route('edit_gymManger',[$manager->id])}}"
                                                    class="btn btn-primary m-1 d-inline-block"
@@ -67,7 +67,7 @@
                 event.preventDefault();
                 let gymMangerId = this.getAttribute('data-id');
                 let url = "{{route('gymManger.delete')}}" + `?id=${gymMangerId}`;
-                let result = confirm('Are you sure you want to delete ?');
+                let result = confirm('Are you sure you want to ban ?');
                 if (result) {
                     let row = $(this).parent().parent();
                     $.ajax({
@@ -95,6 +95,50 @@
             });
         }
 
+        sendRestoreRequest();
+
+        function sendRestoreRequest() {
+            $(document).on('click', '.restore', function (event) {
+                event.preventDefault();
+                let gymMangerId = this.getAttribute('data-id');
+                let url = "{{route('gymManger.restore')}}" + `?id=${gymMangerId}`;
+                let deleteUrl = "{{route('gymManger.delete')}}" + `?id=${gymMangerId}`;
+                let result = confirm('Are you sure you want to unban ?');
+
+                if (result) {
+                    let row = $(this).parent().parent();
+                    $.ajax({
+                        url: url,
+                        type: 'DELETE',
+                        success: function (result) {
+                            if (result.success) {
+                                console.log(result);
+                                let newRow = `
+                                        <tr>
+                                            <td>${gymMangerId}</td>
+                                            <td>${result.manager.name}</td>
+                                            <td>${result.manager.n_id}</td>
+                                            <td>
+                                                <a role="button" href="${deleteUrl}"
+                                                   class="btn btn-primary m-1 d-inline-block"
+                                                   data-id="${gymMangerId}">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a role="button" class="btn btn-danger m-1 d-inline-block delete"
+                                                   data-id="${gymMangerId}">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>`
+                                row.remove();
+                                $("tbody").append(newRow);
+                            } else
+                                alert(result.message);
+                        }
+                    });
+                }
+            });
+        }
     </script>
 @endsection
 

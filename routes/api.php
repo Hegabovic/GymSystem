@@ -49,4 +49,5 @@ Route::delete('/coach-delete', [CoachController::class, 'delete'])->name('coach.
 Route::delete('/order-delete', 'App\Http\Controllers\orderController@delete')->name('delete.orders');
 Route::delete('/trainingSession-delete', [TrainingSessionController::class, 'delete'])->name('trainingSession.delete');
 Route::delete('/gymManger-delete', [UserController::class, 'deleteGymManager'])->name('gymManger.delete');
+Route::delete('/gymManger-restore', [UserController::class, 'restoreGymManager'])->name('gymManger.restore');
 Route::delete('/packages-delete', 'App\Http\Controllers\PackageController@delete')->name('packages.delete');
