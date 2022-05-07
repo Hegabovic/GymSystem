@@ -14,6 +14,10 @@ class CityManager extends Model
         'avatar_path',
         'city_id'
     ];
+    public function city()
+    {
+        return $this->belongsTo(City::class,'city_id');
+    }
     public function user()
     {
         return $this->belongsTo(User::class,'user_id');
