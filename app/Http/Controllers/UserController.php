@@ -85,18 +85,11 @@ class UserController extends Controller
     public function update(EditClerkRequest $request)
     {
         $input=$request->validated();
-       //dd($input);
+
         if($request->hasFile('avatar'))
         {
             $avatarPath=$request->file('avatar')->store('public/photos');
-           /* if($request->user()->hasrole('GymManager'))
-            {
-                $this->gymManagerRepository->updateavatar($request->user()->gymManager->id,$avatarPath);
-            }
-            if($request->user()->hasrole('CityManager'))
-            {
-                $this->cityManagerRepository->updateavatar($request->user()->cityManager->id,$avatarPath);
-            }*/
+
             $this->userRepository->updateAvatar($request->user()->id,$avatarPath);
         }
         if(isset($input['password'])) $input['password']=Hash::make($input['password']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\AttendanceRepository;
 use App\Repositories\GymManagerRepository;
 use App\Repositories\GymRepository;
 use App\Repositories\OrderRepository;
@@ -20,12 +21,14 @@ class HomeController extends Controller
     private UserRepository $userRepository;
     private OrderRepository $orderRepository;
     private GymRepository $gymRepository;
-    public function __construct(UserRepository $userRepository, OrderRepository $orderRepository, GymRepository $gymManagerRepository)
+    private AttendanceRepository $attendanceRepository;
+    public function __construct(UserRepository $userRepository, OrderRepository $orderRepository, GymRepository $gymManagerRepository, AttendanceRepository $attendanceRepository)
     {
         $this->middleware('auth');
         $this->userRepository = $userRepository;
         $this->orderRepository = $orderRepository;
         $this->gymRepository = $gymManagerRepository;
+        $this->attendanceRepository = $attendanceRepository;
     }
 
     /**
@@ -37,18 +40,22 @@ class HomeController extends Controller
     {
         $revenue=0;
         $ordersCount=0;
+        $attendanceCount=0;
         if(Auth::user()->hasRole('Admin')) {
             $revenue = $this->orderRepository->all()->sum('paid_price');
-            $orders=$this->orderRepository->all()->count();
+            $ordersCount=$this->orderRepository->all()->count();
+            $attendanceCount=$this->attendanceRepository->all()->count();
         }
         elseif (Auth::user()->hasRole('CityManager')){
-            $gyms=$this->gymRepository->all()->where('city_id',Auth::user()->cityManager->id);
+            $gyms=$this->gymRepository->all()->where('city_id',Auth::user()->cityManager->city->id);
            foreach ($gyms as $gym)
            {
 
                $ordersCount+=$gym->order->count();
                $revenue+=$gym->order->sum('paid_price');
-
+               $attendanceCount+=$gym->attendance->count();
+            //   dd(Auth::user()->cityManager->city->id);
+             //  dd($gym->attendance->count());
            }
 
         }
@@ -56,12 +63,15 @@ class HomeController extends Controller
             $orders=$this->orderRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
             $ordersCount=$orders->count();
             $revenue = $orders->sum('paid_price');
+            $attendanceCount=$this->attendanceRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
 
         }
         return view('home',[
             'revenue'=>$revenue,
-            'orders'=>$ordersCount
-                                ]);
+            'orders'=>$ordersCount,
+            'attendance'=>$attendanceCount
+
+        ]);
     }
 }
 //Gym::with('city')->

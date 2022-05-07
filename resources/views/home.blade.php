@@ -153,8 +153,8 @@
                                         <div class="description-block border-right">
                                         <span class="description-percentage text-success"><i
                                                 class="fas fa-caret-up"></i> 20%</span>
-                                            <h5 class="description-header">$24,813.53</h5>
-                                            <span class="description-text">TOTAL PROFIT</span>
+                                            <h5 class="description-header">{{$attendance}}</h5>
+                                            <span class="description-text">Total Attended Sessions</span>
                                         </div>
                                         <!-- /.description-block -->
                                     </div>
