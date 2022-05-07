@@ -11,7 +11,6 @@ class Customer extends Model
     use HasFactory;
     protected $fillable=[
         'user_id',
-        'avatar_path',
         'birth_date',
         'gender',
         'last_login'

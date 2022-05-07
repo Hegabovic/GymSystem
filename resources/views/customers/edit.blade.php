@@ -4,31 +4,64 @@
 
      
 
-    
+        <!-- Content Wrapper. Contains page content -->
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Create a new Customer</h1>
+                    </div><!-- /.col -->
+                   
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
 
-<form method="POST" action="{{route('customers.update',$customer->id)}}">
+
+<form method="POST" action="{{route('customers.update',$customer->id)}}"enctype="multipart/form-data">
 @csrf
 @method('put')
 <div class="card-body">
+<div class="form-group">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input name="name" type="text" value="{{$customer->user->name}}" class="form-control" id="exampleFormControlInput1" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            <input name="email" type="email" value="{{$customer->user->email}}" class="form-control" id="exampleFormControlInput1" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlInput1" class="form-label">Password</label>
+            <input name="password" type="password" value="{{$customer->user->password}}" class="form-control" id="exampleFormControlInput1" placeholder="">
+          </div>
         <div class="form-group">
             <label for="exampleFormControlInput1" class="form-label">Date of Birth</label>
-            <input name="birth_date" type="date" value="{{ $customer['birth_date'] }}"  class="form-control" id="exampleFormControlInput1" placeholder="">
+            <input name="birth_date" value="{{$customer->birth_date}}"type="date" class="form-control" id="exampleFormControlInput1" placeholder="">
           </div>
           <div class="form-group">
           <label for="exampleFormControlInput1" class="form-label">Gender</label>
-          <select  name="gender"class="form-select" value="{{ $customer['gender'] }}" aria-label="Default select example">
+          <select  name="gender" value="{{$customer->gender}}"class="form-select" aria-label="Default select example">
           <option value="male">Male</option>
           <option value="female">Female</option>
          </select>
           </div>
           <div class="form-group">
-          <label for="exampleFormControlInput1" class="form-label">Profile Image path</label>
-            <input name="avatar_path" type="text" value="{{ $customer['avatar_path'] }}"  class="form-control" id="exampleFormControlInput1" placeholder="">
-          </div>
-         
-</div>
+        <label for="exampleInputFile">avatar image</label>
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file"  id="avatar_input" name="avatar" value="{{$customer->user->avatar_path}}">
+                <label class="custom-file-label" for="avatar_input">Choose file</label>
+            </div>
+            <div class="input-group-append">
+                <span class="input-group-text">Upload</span>
+            </div>
+        </div>
+    </div>
+
+          
 <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Create</button>
             </div>
           
 
