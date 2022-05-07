@@ -30,7 +30,9 @@
             </div>
 
             <div class="card-footer">
+                @can('permission_create_trainingSession')
                 <button type="submit" class="btn btn-primary">Submit</button>
+                @endcan
             </div>
         </form>
     </div>

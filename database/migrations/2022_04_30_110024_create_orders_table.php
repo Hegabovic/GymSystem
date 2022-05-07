@@ -22,19 +22,9 @@ return new class extends Migration
             $table->foreign('pkg_id')->references('id')->on('packages');
             $table->foreign('customer_id')->references('id')->on('users');
             $table->foreign('gym_id')->references('id')->on('gyms');
-
+            $table->unsignedBigInteger('paid_price')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    // public function down()
-    // {
-    //     Schema::dropIfExists('orders');
-    // }
 };

@@ -5,7 +5,7 @@
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">national Id</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter National ID" name="n_id" pattern="[0-9]{16}">
+        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter National ID" name="n_id" pattern="[0-9]{14}">
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
