@@ -34,17 +34,18 @@
           <label for="exampleFormControlInput1" class="form-label">Number of sessions</label>
             <input name="number_of_sessions" type="number" class="form-control" id="exampleFormControlInput1" placeholder="">
           </div>
+
 </div>
-<div class="card-footer">
-                <button type="submit" class="btn btn-primary">Create</button>
-            </div>
-          
 
+    <div class="card-footer">
+              @can('permission_create_package_price')
+                <button class="btn btn-success">Create</button>
+              @endcan
+    </div>
 
-         
 </form>
 
-                    
+
     </div>
     @if($errors->any())
         <div class="m-auto text-center">

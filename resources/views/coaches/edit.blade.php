@@ -19,7 +19,9 @@
         </div>
 
         <div class="card-footer">
+            @can('permission_update_couch')
             <button type="submit" class="btn btn-primary">Submit</button>
+            @endcan
         </div>
     </form>
 

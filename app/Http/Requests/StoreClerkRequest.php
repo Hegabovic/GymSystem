@@ -28,7 +28,7 @@ class StoreClerkRequest extends FormRequest
         $validationRules=['name'=>['required','max:50'],
             'email'=>['required','unique:users'],
             'password'=>['required','min:8','confirmed'],
-            'n_id'=>['required','digits:16', 'unique:city_managers','unique:gym_managers'],
+            'n_id'=>['required','digits:14', 'unique:city_managers','unique:gym_managers'],
             'avatar'=>['mimetypes:image/jpg,image/png,image/jpeg']];
         if($this->clerk==='city-manager') $validationRules['facility']=['required','exists:cities,id'];
         elseif ($this->clerk==='gym-manager') $validationRules['facility']=['required','exists:gyms,id'];

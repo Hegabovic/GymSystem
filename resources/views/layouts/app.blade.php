@@ -31,7 +31,7 @@
           crossorigin="anonymous"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('third_party_stylesheets')
 
     @stack('page_css')
@@ -123,7 +123,8 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{Storage::url(Auth::user()->avatar_path)}}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{Storage::url(Auth::user()->avatar_path)}}" class="img-circle elevation-2"
+                         alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block"> {{ Auth::user()->name }} </a>
@@ -153,7 +154,7 @@
                         {{-- data-post-id="{{$post->id}}" --}}
                         {{--<i data-post-id="{{$post->id}}" ></i>--}}
                         {{--                        <a href="{{route('', [])}}" class="nav-link">--}}
-                        <a href="{{ route('plans.show') }}" class="nav-link">
+                        <a href="{{ route('show.plan') }}" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Buy package
@@ -194,6 +195,33 @@
                             {{--@endcan--}}
                             <li class="nav-item">
                                 <a href="{{route('show_users')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>show</p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chess-knight"></i>
+                            <p>
+                                Gym Manger
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('permission_create_GymManager')
+                                <li class="nav-item">
+                                    <a href="{{route('create_gym_manager')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Create</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            {{--@endcan--}}
+                            <li class="nav-item">
+                                <a href="{{route('show_gymManagers')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>show</p>
                                 </a>
@@ -284,13 +312,6 @@
                                 <a href="{{route("show.order")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Show</p>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="{{route("create.order")}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create</p>
                                 </a>
                             </li>
                         </ul>

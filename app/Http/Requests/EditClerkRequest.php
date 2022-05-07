@@ -25,14 +25,14 @@ class EditClerkRequest extends FormRequest
     public function rules()
     {
         //dd($this);
-        $validationRules=[
-            'name'=>['max:50'],
-            'email'=>[
-                Rule::unique('users')->ignore($this->user()->id)],
+        $validationRules = [
+            'name' => ['max:50'],
+            'email' => [
+                Rule::unique('users')->ignore($this->id)],
 
-            'avatar'=>['mimetypes:image/jpg,image/png,image/jpeg']
+            'avatar' => ['mimetypes:image/jpg,image/png,image/jpeg']
         ];
-        if($this['password'] !=null) $validationRules['password']=['min:8','confirmed'];
+        if ($this['password'] != null) $validationRules['password'] = ['min:8', 'confirmed'];
         return $validationRules;
     }
 }

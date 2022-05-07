@@ -76,6 +76,7 @@
                                         @endif
 
                                         <td>
+                                            
                                             <button class="btn btn-danger delete" id="{{$city->id}}"><i class="fas fa-trash-alt"></i>
                                             </button>
                                             <a href="{{ route('city.edit',  $city->id) }}" class="btn btn-primary edit"><i class="fas fa-edit"></i>
