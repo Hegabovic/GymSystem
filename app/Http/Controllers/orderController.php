@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
 use App\Models\Order;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,10 +31,11 @@ class orderController extends Controller
         if(Auth::user()->hasRole('Admin'))
             $tableData=$this->orderRepository->all();
         elseif (Auth::user()->hasRole('CityManager')){
-            $gyms=$this->gymRepository->all()->where('city_id',Auth::user()->cityManager->id);
+            $gyms=$this->gymRepository->all()->where('city_id',Auth::user()->cityManager->city->id);
+            $tableData=new Collection();
             foreach ($gyms as $gym)
             {
-                $revenue+=$gym->order->sum('paid_price');
+                $tableData=$tableData->merge($gym->order);
             }
             // dd($gym->order->sum('paid_price'));
         }
