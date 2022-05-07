@@ -66,6 +66,7 @@ class UserController extends Controller
                 'n_id' => $input['n_id'],
                 'city_id' => $input['facility']
             ]);
+            return to_route('show_city_managers');
         } elseif ($request->clerk === 'gym-manager') {
             $user->assignRole('GymManager');
             $this->gymManagerRepository->create([

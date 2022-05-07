@@ -25,8 +25,7 @@ class SubscriptionController extends Controller
         $order_cost = Package::select('price')->where('id',$request->package_id)->first()->price;
 
         $tableData = Order::withTrashed()->get();
-        Stripe\Stripe::setApiKey(env("STRIPE_SECRET"));
-
+        Stripe\Stripe::setApiKey(env("STRIPE_SECRET_KEY"));
         Stripe\Charge::create ([
             "amount" => 100 * $order_cost,
             "currency" => "usd",
