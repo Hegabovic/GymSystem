@@ -53,6 +53,7 @@
                             <!-- ./card-body -->
                             <table id="example" class="table table-bordered" style="color: black">
                                 <thead>
+
                                 <tr>
                                     <th style="text-align: center;">package ID</th>
                                     <th style="text-align: center;">Customer Name</th>

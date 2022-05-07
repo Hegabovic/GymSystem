@@ -9,6 +9,7 @@
                         <div class="panel-body">
                             <table  class="table table-bordered" style="color: black" id="datatable">
                                 <thead>
+
                                 <tr>
                                     <th style="text-align: center;">ID</th>
                                     <th style="text-align: center;">Name</th>

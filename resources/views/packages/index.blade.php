@@ -20,7 +20,6 @@
                 </thead>
                 <tbody>
                 @foreach ($packages as $package)
-
             <tr>
               <td style="text-align: center;">{{ $package->id }} </td>
               <td style="text-align: center;">{{ $package->name }}</th>
@@ -38,8 +37,8 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>
-                                    </tr>
-                                @endforeach
+                  </tr>
+              @endforeach
                 </tbody>
             </table>
             </div>

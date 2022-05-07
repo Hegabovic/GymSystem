@@ -16,40 +16,41 @@
         <!-- /.card-header -->
 
 
-        <div class="card-body p-0">
-            <div class="table-responsive">
-                <table class="table m-0" id="datatable" style="color: black;">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Cover Image</th>
-                        <th>City</th>
-                        <th>Options</th>
-                        <!-- <th>city manger name</th> -->
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table m-0" id="datatable" style="color: black;">
+                <thead>
+                    <tr align="center">
+                        <th>id</th>
+                        <th>name</th>
+                        <th>created at</th>
+                        <th>cover image</th>
+                        <th>options</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($gyms as $gym)
-                        <tr>
-                            <!-- <td><a href="pages/examples/invoice.html">OR9842</a></td> -->
-                            <td>{{ $gym->id }}</td>
-                            <td>{{ $gym->name }}</td>
-                            <td>
-                                <img class="img-fluid" style="max-height: 100px; max-width: 120px"
-                                     src="{{Storage::url($gym->cover_image)}}" alt="Gym_Cover_Image">
-                            </td>
-                            <td>{{$gym->city->name}}</td>
-                            <td>
-                                <a href="{{route('edit.gyms',$gym->id)}}" class="btn btn-primary m-1 d-inline-block"
-                                   data-id="">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                                <button class="delete  btn btn-danger m-1 d-inline-block" data-id="{{$gym->id}}">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </td>
-                        </tr>
+                    <tr align="center">
+                        <!-- <td><a href="pages/examples/invoice.html">OR9842</a></td> -->
+                        <td value="{{$gym->id}}">{{ $gym->id }}</td>
+                        <td value="{{$gym->id}}">{{ $gym->name }}</td>
+                        <td value="{{$gym->id}}"><span class=" badge badge-success ">{{ $gym->created_at}}</span></td>
+                        <td>
+                            <div value="{{$gym->id}}" class="sparkbar " data-color="#00a65a " data-height="20 ">
+                                {{ $gym->cover_image }}
+                            </div>
+                        </td>
+
+
+                        <td>
+                        <a  href="{{route('edit.gyms',$gym->id)}}" class="btn btn-primary m-1 d-inline-block" data-id="">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                        <button class="delete  btn btn-danger m-1 d-inline-block" data-id="{{$gym->id}}">
+                                                <i class="fas fa-trash-alt"></i>
+                     </button>
+                        </td>
+                    </tr>
                     @endforeach
                     <script>
                         function sendDeleteRequest() {
