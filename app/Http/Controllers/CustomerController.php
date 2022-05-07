@@ -16,15 +16,17 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+
 class CustomerController extends Controller
 {
     //
     private UserRepository $userRepository;
     private CustomerRepository $customerRepository;
+
     public function __construct(CustomerRepository $customerRepository, UserRepository $userRepository)
     {
         $this->customerRepository = $customerRepository;
-        $this->userRepository=$userRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function index(): Factory|View|Application
@@ -33,32 +35,32 @@ class CustomerController extends Controller
         return view('customers.index', ['customers' => $customers]);
     }
 
-    public function create():Factory|View|Application
+    public function create(): Factory|View|Application
     {
         return view('customers.create');
     }
 
     public function store(StoreCustomerRequest $request)
     {
-        $avatarPath=env('DEFAULT_AVATAR');
+        $avatarPath = env('DEFAULT_AVATAR');
         if ($request->hasFile('avatar')) {
-            $avatarPath=$request->file('avatar')->store('public/photos');
+            $avatarPath = $request->file('avatar')->store('public/photos');
         }
-        
-        $user=$this->userRepository->create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'password'=>Hash::make($request->password),
-            'avatar_path'=>$avatarPath
+
+        $user = $this->userRepository->create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'avatar_path' => $avatarPath
         ]);
         $this->customerRepository->create([
-            "user_id"=>$user->id,
+            "user_id" => $user->id,
             "birth_date" => $request->birth_date,
             "gender" => $request->gender,
-            
-           
+
+
         ]);
-       
+
         return to_route('customers.index');
     }
 
@@ -85,11 +87,9 @@ class CustomerController extends Controller
         $this->userRepository->update($request->id, $updatedUser);
         $this->customerRepository->update($selectedUser->customer->id, $updatedCustomer);
 
-        
 
         return to_route('customers.index');
     }
-
 
 
     public function delete()
@@ -97,7 +97,7 @@ class CustomerController extends Controller
         $selectedUserId = $this->customerRepository->findById(request()->input('id'))->user_id;
         $customerResult = $this->customerRepository->delete(request()->input('id'));
         $userResult = $this->userRepository->delete($selectedUserId);
-        
+
 
         if ($userResult > 0) {
             return ["success" => true];
