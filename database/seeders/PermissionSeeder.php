@@ -40,10 +40,12 @@ class PermissionSeeder extends Seeder
             'permission_buy_package',
             'permission_edit_package_price',
             'permission_create_package_price',
+            'permission_delete_package',
             'user_register',
             'user_login',
             'user_update',
             'user_remaining_sessions'
+
         ];
 
         foreach ($permissions as $permission) {

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoachController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SubscriptionController;
@@ -30,6 +31,7 @@ use App\Http\Controllers\ChartController;
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 
     Route::get('/create-city-manager', [UserController::class, 'createCityManager'])->name('create_city_manager');
     Route::get('/create-gym-manager', [UserController::class, 'createGymManager'])->name('create_gym_manager');

@@ -56,9 +56,20 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('home') }}" class="nav-link">Home</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
+
+            <li class="nav-item">
+                <a href="{{route('edit_profile')}}" class="nav-link">
+                    <p>
+                        Profile
+                    </p>
+                </a>
             </li>
+
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{ route('contact') }}" class="nav-link">Contact</a>
+            </li>
+
+
         </ul>
 
         <!-- Right navbar links -->
@@ -113,7 +124,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('home') }}" class="brand-link">
-            <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            <img src="{{Storage::url(Auth::user()->avatar_path)}}" alt="admin image" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">Gym Jutsu</span>
         </a>
@@ -261,17 +272,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>create</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{route('show_cities')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>show</p>
                                 </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="{{route('create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>create</p>
+                                </a>
+                            </li>
+
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -350,18 +363,22 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('create_trainingSession')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create</p>
-                                </a>
-                            </li>
+
                             <li class="nav-item">
                                 <a href="{{route('show_trainingSessions')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Show</p>
                                 </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="{{route('create_trainingSession')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+
+
                         </ul>
                     </li>
                     </li>
@@ -375,17 +392,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('create_coach')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{route('show_coaches')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Show</p>
                                 </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="{{route('create_coach')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -422,8 +441,6 @@
                             </p>
                         </a>
                     </li>
-
-
                 </ul>
                 
                 
