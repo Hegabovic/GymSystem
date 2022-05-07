@@ -270,17 +270,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>create</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="{{route('show_cities')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>show</p>
                                 </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="{{route('create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>create</p>
+                                </a>
+                            </li>
+
                         </ul>
                     </li>
                     <li class="nav-item">
