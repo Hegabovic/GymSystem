@@ -9,6 +9,7 @@ use App\Http\Requests\StoreClerkRequest;
 use App\Models\GymManager;
 use App\Models\User;
 use App\Repositories\CityManagerRepository;
+use App\Repositories\CityRepository;
 use App\Repositories\GymManagerRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -22,14 +23,17 @@ class UserController extends Controller
     private GymManagerRepository $gymManagerRepository;
     private CityManagerRepository $cityManagerRepository;
     private UserRepository $userRepository;
-    private GymRepositoryInterface $gymRepository;
 
-    public function __construct(UserRepository $userRepository, GymManagerRepository $gymManagerRepository, CityManagerRepository $cityManagerRepository, GymRepositoryInterface $gymRepository)
+    private GymRepositoryInterface $gymRepository;
+    private CityRepository $cityRepository;
+
+    public function __construct(UserRepository $userRepository, GymManagerRepository $gymManagerRepository, CityManagerRepository $cityManagerRepository, GymRepositoryInterface $gymRepository, CityRepository $cityRepository)
     {
         $this->cityManagerRepository = $cityManagerRepository;
         $this->gymManagerRepository = $gymManagerRepository;
         $this->userRepository = $userRepository;
         $this->gymRepository = $gymRepository;
+        $this->cityRepository = $cityRepository;
     }
 
     public function store(StoreClerkRequest $request)
@@ -50,24 +54,23 @@ class UserController extends Controller
 
 
         if ($request->clerk === 'city-manager') {
-            $user->assignRole('CityManager');
+              $user->assignRole('CityManager');
 
-            $this->cityManagerRepository->create([
-                'user_id' => $user->id,
-                'n_id' => $input['n_id'],
-                'city_id' => $input['facility']
-            ]);
-        } elseif ($request->clerk === 'gym-manager') {
-            $user->assignRole('GymManager');
-            $this->gymManagerRepository->create([
-                'user_id' => $user->id,
-                'n_id' => $input['n_id'],
-                'gym_id' => $input['facility']
-            ]);
+              $this->cityManagerRepository->create([
+                  'user_id' => $user->id,
+                  'n_id' => $input['n_id'],
+                  'city_id' => $input['facility']
+              ]);
+          } elseif ($request->clerk === 'gym-manager') {
+              $user->assignRole('GymManager');
+              $this->gymManagerRepository->create([
+                  'user_id' => $user->id,
+                  'n_id' => $input['n_id'],
+                  'gym_id' => $input['facility']
+              ]);
 
-            return to_route('show_gymManagers');
-        }
-
+              return to_route('show_gymManagers');
+          }
 
         return to_route('show_users');
     }
@@ -85,7 +88,8 @@ class UserController extends Controller
 
     public function createCityManager()
     {
-        return view('users.create_city_manager');
+        $cities=$this->cityRepository->all();
+        return view('users.create_city_manager',['cities'=>$cities]);
     }
 
     public function createGymManager()
@@ -105,6 +109,7 @@ class UserController extends Controller
         if ($request->hasFile('avatar')) {
             $avatarPath = $request->file('avatar')->store('public/photos');
             $this->userRepository->updateAvatar($request->user()->id, $avatarPath);
+
         }
         if (isset($input['password'])) $input['password'] = Hash::make($input['password']);
         $this->userRepository->update($request->user()->id, $input);

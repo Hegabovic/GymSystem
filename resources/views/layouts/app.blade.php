@@ -31,7 +31,7 @@
           crossorigin="anonymous"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('third_party_stylesheets')
 
     @stack('page_css')
@@ -43,6 +43,7 @@
     <div class="flex-column justify-content-center align-items-center">
         <img class="animation__wobble" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
+
 
 
     <!-- Navbar -->
@@ -406,19 +407,43 @@
 
                         </ul>
                     </li>
-{{--                    <li class="nav-header">SETTINGS</li>--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a href="{{route('edit_profile')}}" class="nav-link">--}}
-{{--                            <i class="nav-icon fas fa-calendar-alt"></i>--}}
-{{--                            <p>--}}
-{{--                                Edit Profile--}}
-{{--                                <span class="badge badge-info right">2</span>--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-
-
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Customers
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('customers.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Show</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('customers.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-header">SETTINGS</li>
+                    <li class="nav-item">
+                        <a href="{{route('edit_profile')}}" class="nav-link">
+                            <i class="nav-icon fas fa-calendar-alt"></i>
+                            <p>
+                                Edit Profile
+                                <span class="badge badge-info right">2</span>
+                            </p>
+                        </a>
+                    </li>
                 </ul>
+                
+                
             </nav>
             <!-- /.sidebar-menu -->
         </div>

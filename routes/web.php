@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GymController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChartController;
@@ -67,7 +68,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit/{id}', [CityController::class, 'edit'])->name('city.edit');
     Route::put('/update/{id}', [CityController::class, 'update'])->name('city.update');
 
-
     Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendances');
     Route::get('/attendance-create', [attendanceController::class, 'create'])->name('create.attendances');
     Route::post('/attendance-store', [attendanceController::class, 'store'])->name('store.attendances');
@@ -85,12 +85,21 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
     Route::get('/packages-create', [PackageController::class, 'create'])->name('packages.create');
+
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+    Route::get('/customers-create', [CustomerController::class, 'create'])->name('customers.create');
+    Route::post('/customers', [CustomerController::class,'store'])->name('customers.store');
+    Route::get('/customers-edit/{id}', [CustomerController::class, 'edit'])->name('customers.edit');
+    Route::put('/customers-update/{id}', [CustomerController::class, 'update'])->name('customers.update');
+  
     Route::post('/packages', [PackageController::class, 'store'])->name('packages.store');
     Route::get('/packages-edit/{id}', [PackageController::class, 'edit'])->name('packages.edit');
     Route::put('/packages-update/{id}', [PackageController::class, 'update'])->name('packages.update');
+  
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.show');
     Route::get('/buy_package', [PlanController::class, 'show'])->name('show.plan');
     Route::post('/subscription', [SubscriptionController::class, 'create'])->name('subscription.create');
+
 });
 
 Auth::routes();

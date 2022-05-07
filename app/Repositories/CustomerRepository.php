@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
+
 use App\Contracts\UserRepositoryInterface;
+
 use App\Models\Customer;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;

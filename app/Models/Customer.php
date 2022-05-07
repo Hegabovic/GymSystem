@@ -11,15 +11,13 @@ class Customer extends Model
     use HasFactory;
     protected $fillable=[
         'user_id',
-        'national_id',
-        'avatar_path',
         'birth_date',
         'gender',
         'last_login'
     ];
-    public function getLastLoginAtAttribute($value)
+    public function getLastLoginAtAttribute()
     {
-        return Carbon::parse($value);
+        return Carbon::parse($this->last_login);
     }
     public function user()
     {

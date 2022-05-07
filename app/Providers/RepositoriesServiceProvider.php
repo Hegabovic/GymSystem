@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Contracts\AttendanceRepositoryInterface;
 use App\Contracts\BaseRepositoryInterface;
 use App\Contracts\CityRepositoryInterface;
-use App\Contracts\ClerkRepositoryInterface;
 use App\Contracts\CoachRepositoryInterface;
 use App\Contracts\GymRepositoryInterface;
 use App\Contracts\OrderRepositoryInterface;
@@ -21,7 +20,6 @@ use App\Repositories\BaseRepository;
 use App\Repositories\CityManagerRepository;
 use App\Repositories\CityRepository;
 use App\Repositories\CoachRepository;
-use App\Repositories\CustomerRepository;
 use App\Repositories\GymManagerRepository;
 use App\Repositories\PlanRepository;
 
@@ -69,5 +67,6 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(AttendanceRepositoryInterface::class, AttendanceRepository::class);
         $this->app->bind(SessionsCoachesRepositoryInterface::class, SessionsCoachesRepository::class);
         $this->app->bind(GymRepositoryInterface::class, GymRepository::class);
+        
     }
 }
