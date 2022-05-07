@@ -15,7 +15,11 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">
-
+                            @if(Auth::user()->hasRole('CityManager'))
+                                Statistics of {{Auth::user()->cityManager->city->name}} City
+                            @elseif(Auth::user()->hasRole('GymManager'))
+                                Statistics of {{Auth::user()->gymManager->gym->name}} Gym
+                            @endif
                         </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
@@ -139,8 +143,8 @@
                                         <div class="description-block border-right">
                                         <span class="description-percentage text-warning"><i
                                                 class="fas fa-caret-left"></i> 0%</span>
-                                            <h5 class="description-header">$10,390.90</h5>
-                                            <span class="description-text">TOTAL COST</span>
+                                            <h5 class="description-header">{{$orders}}</h5>
+                                            <span class="description-text">Number of Orders</span>
                                         </div>
                                         <!-- /.description-block -->
                                     </div>

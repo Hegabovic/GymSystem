@@ -36,20 +36,32 @@ class HomeController extends Controller
     public function index(): Renderable
     {
         $revenue=0;
-        if(Auth::user()->hasRole('Admin'))
-            $revenue=$this->orderRepository->all()->sum('paid_price');
+        $ordersCount=0;
+        if(Auth::user()->hasRole('Admin')) {
+            $revenue = $this->orderRepository->all()->sum('paid_price');
+            $orders=$this->orderRepository->all()->count();
+        }
         elseif (Auth::user()->hasRole('CityManager')){
             $gyms=$this->gymRepository->all()->where('city_id',Auth::user()->cityManager->id);
            foreach ($gyms as $gym)
            {
+
+               $ordersCount+=$gym->order->count();
                $revenue+=$gym->order->sum('paid_price');
+
            }
-          // dd($gym->order->sum('paid_price'));
+
         }
         elseif (Auth::user()->hasRole('GymManager')) {
-            $revenue = $this->orderRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id)->sum('paid_price');
+            $orders=$this->orderRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
+            $ordersCount=$orders->count();
+            $revenue = $orders->sum('paid_price');
+
         }
-        return view('home',['revenue'=>$revenue]);
+        return view('home',[
+            'revenue'=>$revenue,
+            'orders'=>$ordersCount
+                                ]);
     }
 }
 //Gym::with('city')->
