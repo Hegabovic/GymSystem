@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -15,8 +16,7 @@ use Laravel\Cashier\Billable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
-    use Billable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, Billable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -53,16 +53,18 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function CityManager(): HasOne
+
+    public function cityManger(): HasOne
     {
         return $this->hasOne(CityManager::class);
     }
 
-    public function GymManager(): HasOne
+    public function gymManger(): HasOne
     {
         return $this->hasOne(GymManager::class);
     }
-    public function Customer(): HasOne
+
+    public function customer(): HasOne
     {
         return $this->hasOne(Customer::class);
     }

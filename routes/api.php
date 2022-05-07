@@ -9,6 +9,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\GymController;
 use App\Http\Controllers\TrainingSessionController;
+use App\Models\GymManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,4 +47,5 @@ Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete.c
 Route::delete('/coach-delete', [CoachController::class, 'delete'])->name('coach.delete');
 Route::delete('/order-delete', 'App\Http\Controllers\orderController@delete')->name('delete.orders');
 Route::delete('/trainingSession-delete', [TrainingSessionController::class, 'delete'])->name('trainingSession.delete');
+Route::delete('/gymManger-delete', [GymManager::class, 'delete'])->name('gymManger.delete');
 Route::delete('/packages-delete', 'App\Http\Controllers\PackageController@delete')->name('packages.delete');

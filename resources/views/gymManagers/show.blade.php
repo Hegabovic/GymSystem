@@ -23,7 +23,7 @@
                                         <td>{{$manager->user->name}}</td>
                                         <td>{{$manager->gym->name}}</td>
                                         <td>
-                                            <a role="button" href="{{route('update_coach',[$manager->id])}}"
+                                            <a role="button" href="{{route('edit_gymManger',[$manager->id])}}"
                                                class="btn btn-primary m-1 d-inline-block"
                                                data-id="{{$manager->id}}">
                                                 <i class="fas fa-edit"></i>
@@ -54,7 +54,7 @@
             $(document).on('click', '.delete', function (event) {
                 event.preventDefault();
                 let gymMangerId = this.getAttribute('data-id');
-                let url = "{{route('coach.delete')}}" + `?id=${gymMangerId}`;
+                let url = "{{route('gymManger.delete')}}" + `?id=${gymMangerId}`;
                 let result = confirm('Are you sure you want to delete ?');
                 if (result) {
                     let row = $(this).parent().parent();

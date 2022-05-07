@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit-profile', [UserController::class, 'edit'])->name('edit_profile');
     Route::put('/edit-profile', [UserController::class, 'update'])->name('edit_profile');
     Route::get('/gym-managers', [UserController::class, 'showGymManagers'])->name('show_gymManagers');
+    Route::get('/gym-manager-edit/{id}', [UserController::class, 'editGymManger'])->name('edit_gymManger');
+    Route::put('/gym-manager-update/{id}', [UserController::class, 'storeEditGymManger'])->name('store_updated_gymManger');
 
     Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
     Route::get('/gyms/edit/{id}', [GymController::class, 'edit'])->name('edit.gyms');

@@ -109,4 +109,33 @@ class UserController extends Controller
         $this->userRepository->update($request->user()->id, $input);
         return to_route('edit_profile');
     }
+
+    public function editGymManger($id)
+    {
+        $selectedGymManger = $this->gymManagerRepository->findById($id);
+        $gyms = $this->gymRepository->all();
+        return view('gymManagers.edit', ['manger' => $selectedGymManger, 'gyms' => $gyms]);
+    }
+
+    public function storeEditGymManger(EditClerkRequest $request)
+    {
+        $formData = $request->all();
+
+        $selectedUser = $this->userRepository->findById($request->id);
+
+        $updatedGymManager = [
+            "n_id" => $formData["n_id"],
+            "gym_id" => $formData["gym_id"]
+        ];
+
+        $updatedUser = [
+            "name" => $formData["name"],
+            "email" => $formData["email"],
+            "avatar_path" => $request->hasFile('avatar') ? $formData["avatar"]->store('public/avatars') : $selectedUser->avatar_path
+        ];
+        $this->userRepository->update($request->id, $updatedUser);
+        $this->gymManagerRepository->update($selectedUser->gymManger->id, $updatedGymManager);
+
+        return to_route('show_gymManagers');
+    }
 }
