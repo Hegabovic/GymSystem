@@ -26,7 +26,10 @@
             </select>
         </div>
 
-        <button class="btn btn-success">Update</button>
+
+       @can('permission_Update_Gym')
+         <button class="btn btn-success">Update</button>
+       @endcan
 
     </form>
 @endsection

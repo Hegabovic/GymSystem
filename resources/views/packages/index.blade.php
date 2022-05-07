@@ -32,10 +32,12 @@
                                                 <i class="fas fa-edit"></i>
                                             </a>
 
-                                            <a role="button" class="btn btn-danger m-1 d-inline-block delete"
-                                               data-id="{{$package->id}}">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
+                                            @can('permission_delete_package',)
+                                              <a role="button" class="btn btn-danger m-1 d-inline-block delete"
+                                                 data-id="{{$package->id}}">
+                                                  <i class="fas fa-trash-alt"></i>
+                                              </a>
+                                            @endcan
                                         </td>
                   </tr>
               @endforeach

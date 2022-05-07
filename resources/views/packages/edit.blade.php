@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    
+
         <form method="post" action="{{route('packages.update',$package->id)}}">
         @csrf
         @method('put')
@@ -16,12 +16,13 @@
           <label for="exampleFormControlInput1" class="form-label">Number of sessions</label>
             <input name="number_of_sessions" value="{{ $package['number_of_sessions'] }}" type="number" class="form-control" id="exampleFormControlInput1" placeholder="">
           </div>
-          
 
 
+           @can('permission_edit_package_price')
           <button class="btn btn-success">Update</button>
+          @endcan
         </form>
-                       
+
     </div>
 
     @if($errors->any())
