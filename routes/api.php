@@ -9,6 +9,8 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\GymController;
 use App\Http\Controllers\TrainingSessionController;
+use App\Http\Controllers\UserController;
+use App\Models\GymManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,10 +30,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware'=>['auth:sanctum','verified']],function (){
-    Route::get('/training-sessions/{id}/attend',[ApiUserController::class,'attend']);
-    Route::get('/attendance-history',[ApiUserController::class,'getAttendedSessions']);
-    Route::post('/customer/update-profile',[ApiUserController::class,'update']);
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
+    Route::get('/training-sessions/{id}/attend', [ApiUserController::class, 'attend']);
+    Route::get('/attendance-history', [ApiUserController::class, 'getAttendedSessions']);
+    Route::post('/customer/update-profile', [ApiUserController::class, 'update']);
 });
 
 Route::post('/customer/register', [AuthController::class, 'register'])->name('customer-register');
@@ -46,4 +48,6 @@ Route::delete('/city-delete', [CityController::class, 'delete'])->name('delete.c
 Route::delete('/coach-delete', [CoachController::class, 'delete'])->name('coach.delete');
 Route::delete('/order-delete', 'App\Http\Controllers\orderController@delete')->name('delete.orders');
 Route::delete('/trainingSession-delete', [TrainingSessionController::class, 'delete'])->name('trainingSession.delete');
+Route::delete('/gymManger-delete', [UserController::class, 'deleteGymManager'])->name('gymManger.delete');
+Route::delete('/gymManger-restore', [UserController::class, 'restoreGymManager'])->name('gymManger.restore');
 Route::delete('/packages-delete', 'App\Http\Controllers\PackageController@delete')->name('packages.delete');

@@ -14,6 +14,7 @@ use App\Http\Controllers\PackageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChartController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/show-users', [UserController::class, 'showUsers'])->name('show_users');
     Route::get('/edit-profile', [UserController::class, 'edit'])->name('edit_profile');
     Route::put('/edit-profile', [UserController::class, 'update'])->name('edit_profile');
+    Route::get('/gym-managers', [UserController::class, 'showGymManagers'])->name('show_gymManagers');
+    Route::get('/gym-manager-edit/{id}', [UserController::class, 'editGymManger'])->name('edit_gymManger');
+    Route::put('/gym-manager-update/{id}', [UserController::class, 'storeEditGymManger'])->name('store_updated_gymManger');
 
     Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
     Route::get('/gyms/edit/{id}', [GymController::class, 'edit'])->name('edit.gyms');
@@ -79,15 +83,12 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
     Route::get('/packages-create', [PackageController::class, 'create'])->name('packages.create');
-    Route::post ('/packages',[PackageController::class,'store'])->name('packages.store');
-    Route::get('/packages-edit/{id}',[PackageController::class, 'edit'])->name('packages.edit');
-    Route::put('/packages-update/{id}',[PackageController::class, 'update'])->name('packages.update');
-
-    Route::get('/plans' , [PlanController::class, 'index'])->name('plans.show');
+    Route::post('/packages', [PackageController::class, 'store'])->name('packages.store');
+    Route::get('/packages-edit/{id}', [PackageController::class, 'edit'])->name('packages.edit');
+    Route::put('/packages-update/{id}', [PackageController::class, 'update'])->name('packages.update');
+    Route::get('/plans', [PlanController::class, 'index'])->name('plans.show');
     Route::get('/buy_package', [PlanController::class, 'show'])->name('show.plan');
     Route::post('/subscription', [SubscriptionController::class, 'create'])->name('subscription.create');
-
-    Route::get('/pie',[ChartController::class,'pieChart']);
 });
 
 Auth::routes();
