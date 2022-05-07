@@ -129,7 +129,7 @@
 
                             <div class="card-footer">
                                 <div class="row">
-                                    <div class="col-sm-3 col-6">
+                                    <div class="col-sm-4 col-6">
                                         <div class="description-block border-right">
                                         <span class="description-percentage text-success"><i
                                                 class="fas fa-caret-up"></i> 17%</span>
@@ -139,7 +139,7 @@
                                         <!-- /.description-block -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-sm-3 col-6">
+                                    <div class="col-sm-4 col-6">
                                         <div class="description-block border-right">
                                         <span class="description-percentage text-warning"><i
                                                 class="fas fa-caret-left"></i> 0%</span>
@@ -149,8 +149,8 @@
                                         <!-- /.description-block -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-sm-3 col-6">
-                                        <div class="description-block border-right">
+                                    <div class="col-sm-4 col-6">
+                                        <div class="description-block ">
                                         <span class="description-percentage text-success"><i
                                                 class="fas fa-caret-up"></i> 20%</span>
                                             <h5 class="description-header">{{$attendance}}</h5>
@@ -159,15 +159,7 @@
                                         <!-- /.description-block -->
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-sm-3 col-6">
-                                        <div class="description-block">
-                                        <span class="description-percentage text-danger"><i
-                                                class="fas fa-caret-down"></i> 18%</span>
-                                            <h5 class="description-header">1200</h5>
-                                            <span class="description-text">GOAL COMPLETIONS</span>
-                                        </div>
-                                        <!-- /.description-block -->
-                                    </div>
+
                                 </div>
                                 <!-- /.row -->
                             </div>
@@ -247,6 +239,55 @@
             </div><!--/. container-fluid -->
         </section>
     </div>
+    <div class="card card-danger col-sm-4 ">
+        <div class="card-header">
+            <h3 class="card-title">Donut Chart</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body" style="display: block;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+            <canvas id="myChart" style="height: 30px; width:30px"></canvas>
+        </div>
+        <!-- /.card-body -->
+    </div>
 
 
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['males', 'females'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [{{$males}}, {{$females}}],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    },
+                },
+                size:{width:100}
+            }
+        });
+    </script>
 @endsection
