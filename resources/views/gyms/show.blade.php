@@ -1,4 +1,5 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app')
+@section('content')
 
     <div class="card">
         <div class="card-header border-transparent">
@@ -16,44 +17,48 @@
         <!-- /.card-header -->
 
 
-    <div class="card-body p-0">
-        <div class="table-responsive">
-            <table class="table m-0" id="datatable" style="color: black;">
-                <thead>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table m-0" id="datatable" style="color: black;">
+                    <thead>
                     <tr align="center">
                         <th>id</th>
                         <th>name</th>
                         <th>created at</th>
                         <th>cover image</th>
+                        <th>City Manger</th>
                         <th>options</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach($gyms as $gym)
-                    <tr align="center">
-                        <!-- <td><a href="pages/examples/invoice.html">OR9842</a></td> -->
-                        <td value="{{$gym->id}}">{{ $gym->id }}</td>
-                        <td value="{{$gym->id}}">{{ $gym->name }}</td>
-                        <td value="{{$gym->id}}"><span class=" badge badge-success ">{{ $gym->created_at}}</span></td>
-                        <td>
-                            <div value="{{$gym->id}}" class="sparkbar " data-color="#00a65a " data-height="20 ">
-                                {{ $gym->cover_image }}
-                            </div>
-                        </td>
+                        <tr align="center">
+                            <td>{{ $gym->id }}</td>
+                            <td>{{ $gym->name }}</td>
+                            <td><span class=" badge badge-success ">{{ $gym->created_at}}</span>
+                            </td>
+                            <td>
+                                <img src="{{Storage::url($gym->cover_image)}}" alt="Cover image" class="img-fluid"
+                                     width="120px" height="100px">
+                            </td>
 
+                            <td>
+                                {{App\Models\CityManager::where('city_id',$gym->city->id)->first()->user->name}}
+                            </td>
 
-                        <td>
-                        <a  href="{{route('edit.gyms',$gym->id)}}" class="btn btn-primary m-1 d-inline-block" data-id="">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                        @can('permission_delete_Gym')
-                        <button class="delete  btn btn-danger m-1 d-inline-block" data-id="{{$gym->id}}">
-                                                <i class="fas fa-trash-alt"></i>
-                     </button>
-                       @endcan
+                            <td>
+                                <a href="{{route('edit.gyms',$gym->id)}}" class="btn btn-primary m-1 d-inline-block"
+                                   data-id="">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                @can('permission_delete_Gym')
+                                    <button class="delete  btn btn-danger m-1 d-inline-block" data-id="{{$gym->id}}">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                @endcan
 
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
                     @endforeach
                     <script>
                         function sendDeleteRequest() {
@@ -76,7 +81,6 @@
                                             } else {
                                                 alert(result.message);
                                             }
-
                                         }
                                     });
                                 }

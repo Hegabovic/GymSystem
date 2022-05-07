@@ -31,7 +31,9 @@
           crossorigin="anonymous"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"
+            integrity="sha512-QSkVNOCYLtj73J4hbmVoOV6KVZuMluZlioC+trLpewV8qMjsWqlIQvkn1KGX2StWvPMdWGBqim1xlC8krl1EKQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('third_party_stylesheets')
 
     @stack('page_css')
@@ -121,7 +123,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('home') }}" class="brand-link">
-            <img src="{{Storage::url(Auth::user()->avatar_path)}}" alt="admin image" class="brand-image img-circle elevation-3"
+            <img src="{{Storage::url(Auth::user()->avatar_path)}}" alt="admin image"
+                 class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">Gym Jutsu</span>
         </a>
@@ -173,43 +176,32 @@
                         </a>
 
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
-                            <p>
-                                users
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            {{--@can('permission_create_CityManager')--}}
 
-                            @can('permission_create_CityManager')
+                    @if(request()->user()->hasrole('Admin'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-dumbbell"></i>
+                                <p>
+                                    City managers
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('create_city_manager')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Create City manager</p>
+                                        <p>Create</p>
                                     </a>
                                 </li>
-                            @endcan
-                            @can('permission_create_GymManager')
                                 <li class="nav-item">
-                                    <a href="{{route('create_gym_manager')}}" class="nav-link">
+                                    <a href="{{route('show_city_managers')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Create Gym manager</p>
+                                        <p>Show</p>
                                     </a>
                                 </li>
-                            @endcan
-                            {{--@endcan--}}
-                            <li class="nav-item">
-                                <a href="{{route('show_users')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>show</p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-chess-knight"></i>
@@ -237,6 +229,30 @@
 
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Customers
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('customers.index')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Show</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('customers.create')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tree"></i>
@@ -392,69 +408,6 @@
 
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
-                            <p>
-                                Customers
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('customers.index')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Show</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('customers.create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-
-                @if(request()->user()->hasrole('GymManager'))
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-dumbbell"></i>
-                            <p>
-                                City managers
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('create_city_manager')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('show_city_managers')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Show</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-header">SETTINGS</li>
-                    <li class="nav-item">
-                        <a href="{{route('edit_profile')}}" class="nav-link">
-                            <i class="nav-icon fas fa-calendar-alt"></i>
-                            <p>
-                                Edit Profile
-                                <span class="badge badge-info right">2</span>
-                            </p>
-                        </a>
-                    </li>
-
-                    @endif
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

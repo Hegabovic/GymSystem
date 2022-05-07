@@ -97,6 +97,7 @@ class TrainingSessionController extends Controller
                 "finish_at" => $request->finishAt
             ])->id;
 
+
             foreach ($request->coaches as $coach) {
                 $this->sessionsCoachesRepository->create([
                     "coach_id" => $coach,

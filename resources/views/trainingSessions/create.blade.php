@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="wrapper">
-        <form method="post"  action="{{route("store_trainingSession")}}">
+        <form method="post" action="{{route("store_trainingSession")}}">
             @csrf
             <div class="card-body">
                 <div class="form-group">
@@ -31,7 +31,7 @@
 
             <div class="card-footer">
                 @can('permission_create_trainingSession')
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 @endcan
             </div>
         </form>

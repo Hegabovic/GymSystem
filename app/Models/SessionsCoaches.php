@@ -22,7 +22,7 @@ class SessionsCoaches extends Model
 
     protected $fillable = [
         'coach_id',
-        'session_id',
+        'training_session_id',
     ];
 
 

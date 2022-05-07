@@ -30,7 +30,7 @@
                                             <table class="table">
                                                 <tr align="center">
                                                     <td style="vertical-align: middle">
-                                                        @if(count($trainingSession->sessionsCoaches) > 0)
+                                                        @if($trainingSession->sessionsCoaches->count() > 0)
                                                             @foreach ($trainingSession->sessionsCoaches as $sessionCoach)
                                                                 <option
                                                                     value="{{ $sessionCoach->coach_id }}"> {{ \App\Models\Coach::find($sessionCoach->coach_id)->name }}
@@ -51,10 +51,10 @@
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             @can('permission_delete_trainingSession')
-                                            <a role="button" class="btn btn-danger m-1 d-inline-block delete"
-                                               data-id="{{$trainingSession->id}}">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
+                                                <a role="button" class="btn btn-danger m-1 d-inline-block delete"
+                                                   data-id="{{$trainingSession->id}}">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
                                             @endcan
                                         </td>
                                     </tr>
@@ -100,6 +100,3 @@
 
     </script>
 @endsection
-
-
-

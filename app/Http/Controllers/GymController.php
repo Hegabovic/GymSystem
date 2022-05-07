@@ -32,6 +32,7 @@ class GymController extends Controller
     public function create()
     {
 
+
         $cities = $this->cityRepository->all();
         return view('gyms.create', [
             'cities' => $cities,
@@ -63,13 +64,18 @@ class GymController extends Controller
         return view('gyms.edit', ['gym' => $gym, 'cities' => $cities]);
     }
 
-
     public function storeUpdate(Request $request, $gymId)
     {
+        $avatarPath = "";
+        if ($request->hasFile('cover_image')) {
+            $avatarPath = $request->file('cover_image')->store('public/gym images');
+        } else {
+            $avatarPath = $this->gymRepository->findById($gymId)->cover_image;
+        }
 
         $this->gymRepository->update($gymId, [
             "name" => $request["name"],
-            "cover_image" => $request["cover_image"],
+            "cover_image" => $avatarPath,
             "city_id" => $request["city_id"]
         ]);
 
@@ -82,6 +88,7 @@ class GymController extends Controller
         if ($request->hasFile('cover_image')) {
             $avatarPath = $request->file('cover_image')->store('public/gym images');
         }
+
         $this->gymRepository->create([
             "name" => $request ['name'],
             "cover_image" => $avatarPath,

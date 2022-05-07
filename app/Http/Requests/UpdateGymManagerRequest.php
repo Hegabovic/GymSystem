@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class EditClerkRequest extends FormRequest
+class UpdateGymManagerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,10 @@ class EditClerkRequest extends FormRequest
      */
     public function rules()
     {
-        //dd($this);
         $validationRules = [
             'name' => ['max:50'],
             'email' => [
-                Rule::unique('users')->ignore($this->user()->id)],
+                Rule::unique('users')->ignore($this->id)],
 
             'avatar' => ['mimetypes:image/jpg,image/png,image/jpeg']
         ];

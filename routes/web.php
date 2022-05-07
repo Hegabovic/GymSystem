@@ -1,21 +1,21 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\ChartController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GymController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\orderController;
+use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TrainingSessionController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\GymController;
-use App\Http\Controllers\orderController;
-use App\Http\Controllers\PackageController;
-use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
     Route::get('/gyms/edit/{id}', [GymController::class, 'edit'])->name('edit.gyms');
-    Route::get('/gym-store/{id}', [GymController::class, 'storeUpdate'])->name('store_gyms');
+    Route::put('/gym-store/{id}', [GymController::class, 'storeUpdate'])->name('store_gyms');
     Route::get('/create-gym', [GymController::class, 'create'])->name('create_gyms');
     Route::post('/create-store', [GymController::class, 'store'])->name('store_gym');
 
@@ -93,14 +93,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
     Route::get('/customers-create', [CustomerController::class, 'create'])->name('customers.create');
-    Route::post('/customers', [CustomerController::class,'store'])->name('customers.store');
+    Route::post('/customers', [CustomerController::class, 'store'])->name('customers.store');
     Route::get('/customers-edit/{id}', [CustomerController::class, 'edit'])->name('customers.edit');
     Route::put('/customers-update/{id}', [CustomerController::class, 'update'])->name('customers.update');
-  
+
     Route::post('/packages', [PackageController::class, 'store'])->name('packages.store');
     Route::get('/packages-edit/{id}', [PackageController::class, 'edit'])->name('packages.edit');
     Route::put('/packages-update/{id}', [PackageController::class, 'update'])->name('packages.update');
-  
+
     Route::get('/plans', [PlanController::class, 'index'])->name('plans.show');
     Route::get('/buy_package', [PlanController::class, 'show'])->name('show.plan');
     Route::post('/subscription', [SubscriptionController::class, 'create'])->name('subscription.create');
