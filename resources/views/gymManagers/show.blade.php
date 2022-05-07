@@ -18,22 +18,34 @@
                                 </thead>
                                 <tbody>
                                 @foreach($managers as $manager)
-                                    <tr>
-                                        <td>{{$manager->user_id}}</td>
-                                        <td>{{$manager->user->name}}</td>
-                                        <td>{{$manager->gym->name}}</td>
-                                        <td>
-                                            <a role="button" href="{{route('edit_gymManger',[$manager->id])}}"
-                                               class="btn btn-primary m-1 d-inline-block"
-                                               data-id="{{$manager->id}}">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a role="button" class="btn btn-danger m-1 d-inline-block delete"
-                                               data-id="{{$manager->id}}">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @if(!$manager->trashed())
+                                        <tr>
+                                            <td>{{$manager->user_id}}</td>
+                                            <td>{{$manager->user->name}}</td>
+                                            <td>{{$manager->gym->name}}</td>
+                                            <td>
+                                                <a role="button" href="{{route('edit_gymManger',[$manager->id])}}"
+                                                   class="btn btn-primary m-1 d-inline-block"
+                                                   data-id="{{$manager->id}}">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a role="button" class="btn btn-danger m-1 d-inline-block delete"
+                                                   data-id="{{$manager->id}}">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td colspan="5" class="text-center">
+                                                <a role="button"
+                                                   class="btn btn-warning m-1 d-inline-block restore"
+                                                   data-id="{{$manager->id}}">
+                                                    <i class="fas fa-redo"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>
@@ -63,9 +75,18 @@
                         type: 'DELETE',
                         success: function (result) {
                             if (result.success) {
-                                console.log(result.userResult);
-                                console.log(result.managerResult);
+                                console.log(row);
+                                let newRow = `<tr>
+                                            <td colspan="5" class="text-center">
+                                                <a role="button"
+                                                   class="btn btn-warning m-1 d-inline-block restore"
+                                                   data-id="${gymMangerId}">
+                                                    <i class="fas fa-redo"></i>
+                                                </a>
+                                            </td>
+                                        </tr>`
                                 row.remove();
+                                $("tbody").append(newRow);
                             } else
                                 alert(result.message);
                         }

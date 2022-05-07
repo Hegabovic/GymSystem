@@ -145,12 +145,11 @@ class UserController extends Controller
         $selectedUserId = $this->gymManagerRepository->findById(request()->input('id'))->user_id;
         $userResult = $this->userRepository->delete($selectedUserId);
         $managerResult = $this->gymManagerRepository->delete(request()->input('id'));
-//        if ($userResult > 0)
-//            return ["success" => true];
-//
-//        else
-//            return ["success" => false, "message" => "Delete hasn't completed successfully."];
 
-        return ["success" => true, "userResult" => $userResult, "managerResult" => $managerResult];
+        if ($userResult > 0)
+            return ["success" => true];
+
+        return ["success" => false, "message" => "Delete hasn't completed successfully."];
+
     }
 }
