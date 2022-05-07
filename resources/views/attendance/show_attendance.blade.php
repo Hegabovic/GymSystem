@@ -52,20 +52,20 @@
 
                             <table id="example" class="table table-bordered" style="color: black">
                                 <thead>
-                                <tr align="center">
-                                    <th>Id</th>
-                                    <th>user name</th>
-                                    <th>email</th>
-                                    <th>training session name</th>
-                                    <th>attendance date</th>
-                                    <th>attendance time</th>
+                                <tr>
+                                    <th style="text-align: center;">id</th>
+                                    <th style="text-align: center;">user name</th>
+                                    <th style="text-align: center;">email</th>
+                                    <th style="text-align: center;">training session name</th>
+                                    <th style="text-align: center;">attendance date</th>
+                                    <th style="text-align: center;">attendance time</th>
                                     @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
-                                    <th>Gym</th>
+                                    <th style="text-align: center;">Gym</th>
                                     @endif
                                     @if (request()->user()->hasrole('Admin'))
-                                    <th>City</th>
+                                    <th style="text-align: center;">City</th>
                                     @endif
-                                    <th>options</th>
+                                    <th style="text-align: center;">options</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -73,28 +73,28 @@
                                      @if ( ! $table->trashed())
 
                                     <tr align="center">
-                                        <td>{{$table->id}}</td>
-                                        <td>{{$table->customer->user->name}}</td>
-                                        <td>{{$table->customer->user->email}}</td>
-                                        <td>{{$table->training_session->name}}</td>
+                                        <td style="text-align: center;">{{$table->id}}</td>
+                                        <td style="text-align: center;">{{$table->customer->user->name}}</td>
+                                        <td style="text-align: center;">{{$table->customer->user->email}}</td>
+                                        <td style="text-align: center;">{{$table->training_session->name}}</td>
 
                                         @if($table->created_at)
-                                            <td>{{$table->created_at->toDateString() }}</td>
+                                            <td style="text-align: center;">{{$table->created_at->toDateString() }}</td>
                                         @endif
 
                                         @if($table->created_at)
-                                            <td>{{$table->created_at->format('H:i')}}</td>
+                                            <td style="text-align: center;">{{$table->created_at->format('H:i')}}</td>
                                         @endif
 
                                         @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
-                                        <td>{{$table->gym->name}}</td>
+                                        <td style="text-align: center;">{{$table->gym->name}}</td>
                                         @endif
 
                                         @if ( request()->user()->hasrole('Admin'))
-                                        <td>{{$table->gym->city->name}}</td>
+                                        <td style="text-align: center;">{{$table->gym->city->name}}</td>
                                         @endif
 
-                                        <td>
+                                        <td style="text-align: center;">
                                             <button class="btn btn-danger delete" id="{{$table->id}}"><i class="fas fa-trash-alt"></i></button>
                                             <a href="{{ route('edit.attendances',  $table->id) }}" class="btn btn-primary edit"><i class="fas fa-edit"></i>
                                             </a>
@@ -108,17 +108,17 @@
                                     $(document).on('click', '.delete', function () {
                                         let attend = confirm('Are you sure you want to delete ?');
                                         if (attend) {
-                                            let myThis = $(this).parent().parent()
+                                            let row = $(this).parent().parent()
                                             $(this).parent().parent().css("background-color", "grey");
 
-                                            let Attendance_id = this.id;
+                                            let attendanceId = this.id;
                                             $.ajax({
-                                                url: "{{route('delete.attendances')}}" + `?id=${Attendance_id}`,
+                                                url: "{{route('delete.attendances')}}" + `?id=${attendanceId}`,
                                                 type: 'DELETE',
                                                 contentType: 'application/json',
-                                                data: `{"id":"${Attendance_id}"}`,
+                                                data: `{"id":"${attendanceId}"}`,
                                                 success: function (result) {
-                                                    myThis.remove();
+                                                    row.remove();
                                                 }
                                             });
                                         }

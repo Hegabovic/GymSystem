@@ -152,7 +152,7 @@
                         {{-- data-post-id="{{$post->id}}" --}}
                         {{--<i data-post-id="{{$post->id}}" ></i>--}}
                         {{--                        <a href="{{route('', [])}}" class="nav-link">--}}
-                        <a href="{{ route('plans.show') }}" class="nav-link">
+                        <a href="{{ route('show.plan') }}" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Buy package
@@ -283,13 +283,6 @@
                                 <a href="{{route("show.order")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Show</p>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="{{route("create.order")}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create</p>
                                 </a>
                             </li>
                         </ul>

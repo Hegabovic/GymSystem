@@ -18,7 +18,7 @@ class BaseRepository implements BaseRepositoryInterface
 
     public function create($entity)
     {
-        return $this->model->insertGetId($entity);
+        return $this->model->create($entity);
     }
 
     public function all()
