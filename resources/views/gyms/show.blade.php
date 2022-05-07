@@ -31,7 +31,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($gyms as $gym)
+{{--                    @foreach($gyms as $gym)--}}
                         <tr align="center">
                             <td>{{ $gym->id }}</td>
                             <td>{{ $gym->name }}</td>
@@ -43,7 +43,9 @@
                             </td>
 
                             <td>
-                                {{App\Models\CityManager::where('city_id',$gym->city->id)->first()->user->name}}
+                                {{--                                {{App\Models\CityManager::where('city_id',$gym->city->id)->first()->user->name}}--}}
+                                @dd(\App\Models\CityManager::all())
+                                                                {{$gym->city->id}}
                             </td>
 
                             <td>

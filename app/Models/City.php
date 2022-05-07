@@ -11,7 +11,12 @@ class City extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable=[
+    protected $fillable = [
         'name',
     ];
+
+    public function cityManager()
+    {
+        return $this->hasOne(CityManager::class);
+    }
 }

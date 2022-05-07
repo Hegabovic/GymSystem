@@ -15,6 +15,6 @@ class TrainingSessionSeeder extends Seeder
      */
     public function run()
     {
-        Training_session::factory()->times(5)->create();
+        Training_session::factory()->times(500)->create();
     }
 }
