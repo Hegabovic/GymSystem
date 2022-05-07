@@ -21,11 +21,11 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
           integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
           crossorigin="anonymous"/>
@@ -39,11 +39,10 @@
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
-  <!-- Preloader -->
+    <!-- Preloader -->
     <div class="flex-column justify-content-center align-items-center">
-        <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__wobble" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
     </div>
-
 
 
     <!-- Navbar -->
@@ -66,7 +65,7 @@
             <!-- Navbar Search -->
             <li class="nav-item">
                 <button class="btn btn-danger" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
+                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
                 </button>
@@ -113,7 +112,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="{{ route('home') }}" class="brand-link">
-            <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+            <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">Gym Jutsu</span>
         </a>
@@ -123,13 +122,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    @if(Auth::user()->hasRole('GymManager'))
-                    <img src="{{Storage::url(Auth::user()->gymManager->avatar_path)}}" class="img-circle elevation-2" alt="User Image">
-                    @elseif(Auth::user()->hasRole('CityManager'))
-                        <img src="{{Storage::url(Auth::user()->cityManager->avatar_path)}}" class="img-circle elevation-2" alt="User Image">
-                    @else
-                        <img src="{{Storage::url(env('DEFAULT_AVATAR'))}}" class="img-circle elevation-2" alt="User Image">
-                    @endif
+                    <img src="{{Storage::url(Auth::user()->avatar_path)}}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block"> {{ Auth::user()->name }} </a>
@@ -159,7 +152,7 @@
                         {{-- data-post-id="{{$post->id}}" --}}
                         {{--<i data-post-id="{{$post->id}}" ></i>--}}
                         {{--                        <a href="{{route('', [])}}" class="nav-link">--}}
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('show.plan') }}" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Buy package
@@ -292,13 +285,6 @@
                                     <p>Show</p>
                                 </a>
                             </li>
-
-                            <li class="nav-item">
-                                <a href="{{route("create.order")}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create</p>
-                                </a>
-                            </li>
                         </ul>
                     </li>
 
@@ -417,30 +403,30 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="/dist/js/adminlte.js"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="plugins/raphael/raphael.min.js"></script>
-<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<script src="/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="/plugins/raphael/raphael.min.js"></script>
+<script src="/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="/plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="/plugins/chart.js/Chart.min.js"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<script src="/dist/js/pages/dashboard2.js"></script>
 
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
-
+@yield("scripts")
 </html>

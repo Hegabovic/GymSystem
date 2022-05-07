@@ -1,19 +1,19 @@
 @extends('layouts.app') @section('content')
 
-<div class="card">
-    <div class="card-header border-transparent">
-        <h3 class="card-title">Latest Orders</h3>
+    <div class="card">
+        <div class="card-header border-transparent">
+            <h3 class="card-title">Latest Orders</h3>
 
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove">
-                <i class="fas fa-times"></i>
-            </button>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
         </div>
-    </div>
-    <!-- /.card-header -->
+        <!-- /.card-header -->
 
 
     <div class="card-body p-0">
@@ -26,10 +26,9 @@
                         <th>created at</th>
                         <th>cover image</th>
                         <th>options</th>
-                        <!-- <th>city manger name</th> -->
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     @foreach($gyms as $gym)
                     <tr align="center">
                         <!-- <td><a href="pages/examples/invoice.html">OR9842</a></td> -->
@@ -51,52 +50,46 @@
                                                 <i class="fas fa-trash-alt"></i>
                      </button>
                         </td>
-
-
-
                     </tr>
                     @endforeach
-                    <script >
-                         function sendDeleteRequest() {
-                              $(document).on('click', '.delete', function () {
+                    <script>
+                        function sendDeleteRequest() {
+                            $(document).on('click', '.delete', function () {
                                 let gymId = this.getAttribute('data-id');
-                             let url = "{{route('gym.delete')}}" + `?id=${gymId}`;
+                                let url = "{{route('gym.delete')}}" + `?id=${gymId}`;
 
-                let result = confirm('Are you sure you want to delete ?');
-                if (result) {
-                    let row = $(this).parent().parent();
-                    $(this).parent().parent().css("background-color", "grey");
+                                let result = confirm('Are you sure you want to delete ?');
+                                if (result) {
+                                    let row = $(this).parent().parent();
+                                    $(this).parent().parent().css("background-color", "grey");
 
-                    $.ajax({
-                        url: url,
-                        type: 'DELETE',
-                        contentType: 'application/json',
-                        success:  function (result) {
-                          if(result.success ){
-                            alert(result.messege);
-                                row.remove();
+                                    $.ajax({
+                                        url: url,
+                                        type: 'DELETE',
+                                        contentType: 'application/json',
+                                        success: function (result) {
+                                            if (result.success) {
+                                                row.remove();
+                                            } else {
+                                                alert(result.message);
+                                            }
 
-                          }
-                          else{
-                            alert (result.messege);
-                          }
-
+                                        }
+                                    });
+                                }
+                            });
                         }
-                    });
-                }
-            });
-        }
 
-                sendDeleteRequest();
+                        sendDeleteRequest();
                     </script>
-                </tbody>
+                    </tbody>
 
-            </table>
+                </table>
 
-            <script>
-                $(document).ready(function() {
-                      $('#datatable').DataTable();
-                 } );
-            </script>
+                <script>
+                    $(document).ready(function () {
+                        $('#datatable').DataTable();
+                    });
+                </script>
 
-            @endsection
+@endsection

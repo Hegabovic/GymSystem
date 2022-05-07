@@ -30,23 +30,24 @@ class UserController extends Controller
     public function store(StoreClerkRequest $request)
     {
         $input=$request->validated();
-
-        $user=$this->userRepository->create([
-            'name'=>$input['name'],
-            'email'=>$input['email'],
-            'password'=>Hash::make($input['password']),
-        ]);
         $avatarPath=env('DEFAULT_AVATAR');
         if($request->hasFile('avatar')){
             $avatarPath=$request->file('avatar')->store('public/photos');
         }
+      
+        $user=$this->userRepository->create([
+            'name'=>$input['name'],
+            'email'=>$input['email'],
+            'password'=>Hash::make($input['password']),
+            'avatar_path'=>$avatarPath
+        ]);
+
         if($request->clerk === 'city-manager') {
             $user->assignRole('CityManager');
 
             $this->cityManagerRepository->create([
                 'user_id'=>$user->id,
                 'n_id'=>$input['n_id'],
-                'avatar_path'=>$avatarPath,
                 'city_id'=>$input['facility']
             ]);
         }
@@ -55,20 +56,11 @@ class UserController extends Controller
             $this->gymManagerRepository->create([
                 'user_id'=>$user->id,
                 'n_id'=>$input['n_id'],
-                'avatar_path'=>$avatarPath,
                 'gym_id'=>$input['facility']
             ]);
             }
     }
-    /*public function storeGymManager()
-    {
-        //
-    }
-
-    public function storeCityManager()
-    {
-        //
-    }*/
+    
     public function showUsers()
     {
         return view('users.show_users');
@@ -88,18 +80,10 @@ class UserController extends Controller
     public function update(EditClerkRequest $request)
     {
         $input=$request->validated();
-       //dd($input);
         if($request->hasFile('avatar'))
         {
             $avatarPath=$request->file('avatar')->store('public/photos');
-            if($request->user()->hasrole('GymManager'))
-            {
-                $this->gymManagerRepository->updateavatar($request->user()->gymManager->id,$avatarPath);
-            }
-            if($request->user()->hasrole('CityManager'))
-            {
-                $this->cityManagerRepository->updateavatar($request->user()->cityManager->id,$avatarPath);
-            }
+            $this->userRepository->updateAvatar($request->user()->id,$avatarPath);
         }
         if(isset($input['password'])) $input['password']=Hash::make($input['password']);
         $this->userRepository->update($request->user()->id,$input);

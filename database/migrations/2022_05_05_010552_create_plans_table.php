@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('city_managers', function (Blueprint $table) {
+        Schema::create('plans', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('n_id');
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->unsignedBigInteger('city_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('city_id')->references('id')->on('cities');
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('stripe_plan');
+            $table->float('cost');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('city_managers');
+        Schema::dropIfExists('plans');
     }
 };

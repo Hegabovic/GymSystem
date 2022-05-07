@@ -5,21 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Order extends Model
+class Plan extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
-    protected $fillable=[
-        'gym_id',
-        'customer_id',
-        'pkg_id',
-        'remaining_sessions',
+    protected $fillable = [
+        'name',
+        'slug',
+        'stripe_plan',
+        'cost'
     ];
+
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
@@ -35,13 +32,13 @@ class Order extends Model
         return $this->belongsTo(Package::class);
     }
 
-    public function orders(): HasMany
+    public function trainingSessions(): BelongsTo
     {
-        return $this->hasMany(Order::class, 'created_by', 'pkg_id');
+        return $this->belongsTo(Training_session::class);
     }
 
-    public function ordersCount(): int
+    public function getRouteKeyName(): string
     {
-        return $this->hasMany(Order::class)->count();
+        return 'slug';
     }
 }

@@ -15,4 +15,6 @@ interface BaseRepositoryInterface
     public function update($id, $entity): bool|null;
 
     public function delete($id): int;
+
+    public function select($columns);
 }

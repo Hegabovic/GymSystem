@@ -18,7 +18,7 @@ class BaseRepository implements BaseRepositoryInterface
 
     public function create($entity)
     {
-        return $this->model->insertGetId($entity);
+        return $this->model->create($entity);
     }
 
     public function all()
@@ -47,5 +47,10 @@ class BaseRepository implements BaseRepositoryInterface
         if ($selectedModel == null)
             return 0;
         return $selectedModel->delete();
+    }
+
+    public function select($columns)
+    {
+        return $this->model->select($columns)->get();
     }
 }

@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('gym_managers', function (Blueprint $table) {
             $table->id();
-            $table->string('avatar_path');
             $table->unsignedBigInteger('n_id');
             $table->unsignedBigInteger('user_id')->unique();
             $table->unsignedBigInteger('gym_id');
