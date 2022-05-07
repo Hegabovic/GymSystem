@@ -30,7 +30,6 @@
                                             <table class="table">
                                                 <tr align="center">
                                                     <td style="vertical-align: middle">
-                                                        @dd($trainingSession)
                                                         @if($trainingSession->sessionsCoaches->count() > 0)
                                                             @foreach ($trainingSession->sessionsCoaches as $sessionCoach)
                                                                 <option
