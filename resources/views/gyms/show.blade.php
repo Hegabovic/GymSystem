@@ -31,7 +31,10 @@
                     </tr>
                     </thead>
                     <tbody>
-{{--                    @foreach($gyms as $gym)--}}
+
+                    {{$gyms->find(10)->city->CityManager->user->name}}
+
+                    @foreach($gyms as $gym)
                         <tr align="center">
                             <td>{{ $gym->id }}</td>
                             <td>{{ $gym->name }}</td>
@@ -43,9 +46,13 @@
                             </td>
 
                             <td>
-                                {{--                                {{App\Models\CityManager::where('city_id',$gym->city->id)->first()->user->name}}--}}
-                                @dd(\App\Models\CityManager::all())
-                                                                {{$gym->city->id}}
+                                @if($gym->city->cityManager && $gym->city)
+                                    {{$gym->city->CityManager->user->name}}
+                                @else
+                                    {{"Tanjero"}}
+                                @endif
+                                {{--                                {{$gym->city->CityManager["user_id"]}}--}}
+
                             </td>
 
                             <td>
