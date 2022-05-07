@@ -9,7 +9,7 @@
                         <div class="panel-body">
                             <table class="table table-bordered" style="color: black;" id="datatable">
                                 <thead>
-                                <tr>
+                                <tr align="center">
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Start at</th>
@@ -21,25 +21,29 @@
                                 <tbody>
 
                                 @foreach($trainingSessions as $trainingSession)
-                                    <tr>
-                                        <td>{{$trainingSession->id}}</td>
-                                        <td>{{$trainingSession->name}}</td>
-                                        <td>{{$trainingSession->start_at->format('d-m-Y h:iA')}}</td>
-                                        <td>{{$trainingSession->finish_at->format('d-m-Y h:iA')}}</td>
-                                        <td>
-                                            <div class="mb-3">
-                                                @if(count($trainingSession->sessionsCoaches) > 0)
-                                                    <select id="coach" name="coach_id" class="form-control"
-                                                            multiple="multiple">
-                                                        @foreach ($trainingSession->sessionsCoaches as $sessionCoach)
-                                                            <option
-                                                                value="{{ $sessionCoach->coach_id }}"> {{ \App\Models\Coach::find($sessionCoach->coach_id)->name }} </option>
-                                                        @endforeach
-                                                    </select>
-                                                @endif
-                                            </div>
+                                    <tr align="center">
+                                        <td style="vertical-align: middle">{{$trainingSession->id}}</td>
+                                        <td style="vertical-align: middle">{{$trainingSession->name}}</td>
+                                        <td style="vertical-align: middle">{{$trainingSession->start_at->format('d-m-Y h:iA')}}</td>
+                                        <td style="vertical-align: middle">{{$trainingSession->finish_at->format('d-m-Y h:iA')}}</td>
+                                        <td style="vertical-align: middle">
+                                            <table class="table">
+                                                <tr align="center">
+                                                    <td style="vertical-align: middle">
+                                                        @if(count($trainingSession->sessionsCoaches) > 0)
+                                                            @foreach ($trainingSession->sessionsCoaches as $sessionCoach)
+                                                                <option
+                                                                    value="{{ $sessionCoach->coach_id }}"> {{ \App\Models\Coach::find($sessionCoach->coach_id)->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        @else
+                                                            ------------
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
-                                        <td>
+                                        <td style="vertical-align: middle">
                                             <a role="button"
                                                href="{{route('update_trainingSession',[$trainingSession->id])}}"
                                                class="btn btn-primary m-1 d-inline-block"
