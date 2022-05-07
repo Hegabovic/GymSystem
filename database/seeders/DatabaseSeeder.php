@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CoachSeeder::class);
         $this->call(PackageSeeder::class);
         $this->call(OrderSeeder::class);
+        $this->call(CityManagerSeeder::class);
     }
 }
