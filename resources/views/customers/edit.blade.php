@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Create a new Customer</h1>
+                        <h1 class="m-0">Edit Customer</h1>
                     </div><!-- /.col -->
                    
                 </div><!-- /.row -->
@@ -19,7 +19,7 @@
         <!-- /.content-header -->
 
 
-<form method="POST" action="{{route('customers.update',$customer->id)}}"enctype="multipart/form-data">
+<form method="POST" action="{{route('customers.update',$customer->user_id)}}"enctype="multipart/form-data">
 @csrf
 @method('put')
 <div class="card-body">
@@ -31,10 +31,7 @@
             <label for="exampleFormControlInput1" class="form-label">Email</label>
             <input name="email" type="email" value="{{$customer->user->email}}" class="form-control" id="exampleFormControlInput1" placeholder="">
           </div>
-          <div class="form-group">
-            <label for="exampleFormControlInput1" class="form-label">Password</label>
-            <input name="password" type="password" value="{{$customer->user->password}}" class="form-control" id="exampleFormControlInput1" placeholder="">
-          </div>
+          
         <div class="form-group">
             <label for="exampleFormControlInput1" class="form-label">Date of Birth</label>
             <input name="birth_date" value="{{$customer->birth_date}}"type="date" class="form-control" id="exampleFormControlInput1" placeholder="">
@@ -61,7 +58,7 @@
 
           
 <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Update</button>
             </div>
           
 

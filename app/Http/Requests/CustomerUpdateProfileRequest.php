@@ -24,14 +24,16 @@ class CustomerUpdateProfileRequest extends FormRequest
      */
     public function rules()
     {
-
+          
         $validationRules=[
             'name'=>['max:50'],
-            'email'=> Rule::unique('users')->ignore($this->user()->id),
-            'photo'=>['mimetypes:image/jpg,image/png,image/jpeg']
+            'email'=> Rule::unique('users')->ignore($this->id),
+            'avatar'=>['mimetypes:image/jpg,image/png,image/jpeg'],
+            'birth_date'=>'required',
+            'gender'=>'required',
+           
         ];
-        if($this['password'] !=null) $validationRules['password']=['min:8','confirmed'];
-
+       
         return $validationRules;
     }
 }
