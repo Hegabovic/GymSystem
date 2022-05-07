@@ -45,7 +45,6 @@
     </div>
 
 
-
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-dark">
         <!-- Left navbar links -->
@@ -68,8 +67,6 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('contact') }}" class="nav-link">Contact</a>
             </li>
-
-
         </ul>
 
         <!-- Right navbar links -->
@@ -277,14 +274,12 @@
                                     <p>show</p>
                                 </a>
                             </li>
-
                             <li class="nav-item">
                                 <a href="{{route('create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>create</p>
                                 </a>
                             </li>
-
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -300,12 +295,6 @@
                                 <a href="{{route("show.attendances")}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>show</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route("create.attendances")}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>create</p>
                                 </a>
                             </li>
                         </ul>
@@ -363,22 +352,18 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-
                             <li class="nav-item">
                                 <a href="{{route('show_trainingSessions')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Show</p>
                                 </a>
                             </li>
-
                             <li class="nav-item">
                                 <a href="{{route('create_trainingSession')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create</p>
                                 </a>
                             </li>
-
-
                         </ul>
                     </li>
                     </li>
@@ -430,7 +415,34 @@
                             </li>
                         </ul>
                     </li>
-                    
+
+
+                @if(request()->user()->hasrole('GymManager'))
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-dumbbell"></i>
+                            <p>
+                                City managers
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('create_city_manager')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('show_city_managers')}}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Show</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="nav-header">SETTINGS</li>
                     <li class="nav-item">
                         <a href="{{route('edit_profile')}}" class="nav-link">
@@ -441,9 +453,9 @@
                             </p>
                         </a>
                     </li>
+
+                    @endif
                 </ul>
-                
-                
             </nav>
             <!-- /.sidebar-menu -->
         </div>
@@ -500,5 +512,5 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 
-@yield("scripts")
+
 </html>
