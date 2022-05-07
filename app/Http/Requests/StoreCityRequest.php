@@ -25,7 +25,6 @@ class StoreCityRequest extends FormRequest
     {
         return [
             'name' => ['required','unique:cities'],
-
         ];
     }
 }

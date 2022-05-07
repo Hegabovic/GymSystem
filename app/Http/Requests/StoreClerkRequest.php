@@ -13,7 +13,7 @@ class StoreClerkRequest extends FormRequest
      */
     public function authorize()
     {
-        if($this->clerk === 'city-manager' && $this->user()->can('permission_create_CityManager')) return true;
+        if ($this->clerk === 'city-manager' && $this->user()->can('permission_create_CityManager')) return true;
         elseif ($this->clerk === 'gym-manager' && $this->user()->can('permission_create_GymManager')) return true;
         return false;
     }
@@ -25,21 +25,22 @@ class StoreClerkRequest extends FormRequest
      */
     public function rules()
     {
-        $validationRules=['name'=>['required','max:50'],
-            'email'=>['required','unique:users'],
-            'password'=>['required','min:8','confirmed'],
-            'n_id'=>['required','digits:14', 'unique:city_managers','unique:gym_managers'],
-            'avatar'=>['mimetypes:image/jpg,image/png,image/jpeg']];
-        if($this->clerk==='city-manager') $validationRules['facility']=['required','exists:cities,id'];
-        elseif ($this->clerk==='gym-manager') $validationRules['facility']=['required','exists:gyms,id'];
+        $validationRules = ['name' => ['required', 'max:50'],
+            'email' => ['required', 'unique:users'],
+            'password' => ['required', 'min:8', 'confirmed'],
+            'n_id' => ['required', 'digits:14', 'unique:city_managers', 'unique:gym_managers'],
+            'avatar' => ['mimetypes:image/jpg,image/png,image/jpeg']];
+        if ($this->clerk === 'city-manager') $validationRules['facility'] = ['required', 'exists:cities,id'];
+        elseif ($this->clerk === 'gym-manager') $validationRules['facility'] = ['required', 'exists:gyms,id'];
         return $validationRules;
     }
+
     public function messages()
     {
         return [
             'name.required' => 'A name is required',
-            'email.unique'=>'There is already post with the same name',
-            'name.max' => 'Title cannot exceed 20 letters',
+            'email.unique' => 'Email already used',
+            'name.max' => 'name length max 50',
         ];
     }
 }
