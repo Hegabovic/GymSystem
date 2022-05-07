@@ -54,12 +54,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function cityManger(): HasOne
+    public function cityManager(): HasOne
     {
         return $this->hasOne(CityManager::class);
     }
 
-    public function gymManger(): HasOne
+    public function GymManger(): HasOne
     {
         return $this->hasOne(GymManager::class);
     }

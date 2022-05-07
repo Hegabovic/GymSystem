@@ -55,7 +55,9 @@ class HomeController extends Controller
 
         }
         elseif (Auth::user()->hasRole('CityManager')){
+            //dd(Auth::user()->cityManager->id);
             $gyms=$this->gymRepository->all()->where('city_id',Auth::user()->cityManager->city->id);
+
            foreach ($gyms as $gym)
            {
 
