@@ -6,6 +6,7 @@ use App\Contracts\BaseRepositoryInterface;
 use App\Contracts\GymRepositoryInterface;
 use App\Http\Requests\EditClerkRequest;
 use App\Http\Requests\StoreClerkRequest;
+use App\Http\Requests\UpdateGymManagerRequest;
 use App\Models\GymManager;
 use App\Models\User;
 use App\Models\CityManager;
@@ -36,6 +37,7 @@ class UserController extends Controller
         $this->gymRepository = $gymRepository;
         $this->cityRepository = $cityRepository;
     }
+
     public function store(StoreClerkRequest $request)
     {
         $input = $request->validated();
@@ -51,29 +53,29 @@ class UserController extends Controller
             'password' => Hash::make($input['password']),
             'avatar_path' => $avatarPath
         ]);
-        $avatarPath=env('DEFAULT_AVATAR');
-        if($request->hasFile('avatar')){
-            $avatarPath=$request->file('avatar')->store('public/photos');
+        $avatarPath = env('DEFAULT_AVATAR');
+        if ($request->hasFile('avatar')) {
+            $avatarPath = $request->file('avatar')->store('public/photos');
         }
 
         if ($request->clerk === 'city-manager') {
-              $user->assignRole('CityManager');
+            $user->assignRole('CityManager');
 
-              $this->cityManagerRepository->create([
-                  'user_id' => $user->id,
-                  'n_id' => $input['n_id'],
-                  'city_id' => $input['facility']
-              ]);
-          } elseif ($request->clerk === 'gym-manager') {
-              $user->assignRole('GymManager');
-              $this->gymManagerRepository->create([
-                  'user_id' => $user->id,
-                  'n_id' => $input['n_id'],
-                  'gym_id' => $input['facility']
-              ]);
+            $this->cityManagerRepository->create([
+                'user_id' => $user->id,
+                'n_id' => $input['n_id'],
+                'city_id' => $input['facility']
+            ]);
+        } elseif ($request->clerk === 'gym-manager') {
+            $user->assignRole('GymManager');
+            $this->gymManagerRepository->create([
+                'user_id' => $user->id,
+                'n_id' => $input['n_id'],
+                'gym_id' => $input['facility']
+            ]);
 
-              return to_route('show_gymManagers');
-          }
+            return to_route('show_gymManagers');
+        }
 
         return to_route('show_users');
     }
@@ -88,20 +90,24 @@ class UserController extends Controller
     {
         return view('users.show_users');
     }
+
     public function createCityManager()
     {
-        $cities=$this->cityRepository->all();
-        return view('users.create_city_manager',['cities'=>$cities]);
+        $cities = $this->cityRepository->all();
+        return view('users.create_city_manager', ['cities' => $cities]);
     }
+
     public function createGymManager()
     {
         $gyms = $this->gymRepository->all();
         return view('gymManagers.create', ['gyms' => $gyms]);
     }
+
     public function edit()
     {
         return view('users.edit_profile');
     }
+
     public function update(EditClerkRequest $request)
     {
         $input = $request->validated();
@@ -122,7 +128,7 @@ class UserController extends Controller
         return view('gymManagers.edit', ['manger' => $selectedGymManger, 'gyms' => $gyms]);
     }
 
-    public function storeEditGymManger(EditClerkRequest $request)
+    public function storeEditGymManger(UpdateGymManagerRequest $request)
     {
         $formData = $request->all();
 
@@ -176,27 +182,27 @@ class UserController extends Controller
 
     public function showCityManagers()
     {
-        $cityManagers=CityManager::All();
-        return view('users.show_city_managers',['cityManagers'=>$cityManagers]);
+        $cityManagers = CityManager::All();
+        return view('users.show_city_managers', ['cityManagers' => $cityManagers]);
     }
 
     public function editCityManagers($id)
     {
-        $cityManagers=CityManager::All();
-        $cityManager=CityManager::find($id);
+        $cityManagers = CityManager::All();
+        $cityManager = CityManager::find($id);
 
-       return view('users/edit_city_managers',['cityManagers'=>$cityManagers,'cityManager'=>$cityManager]);
+        return view('users/edit_city_managers', ['cityManagers' => $cityManagers, 'cityManager' => $cityManager]);
     }
 
     public function updateCityManagers(Request $request)
     {
 
-        $data=$request->all();
+        $data = $request->all();
         // dd($data);
-        $cityManagerId=$request->user()->id;
+        $cityManagerId = $request->user()->id;
 
         $cityManager = CityManager::find($cityManagerId);
-        $UserCityManagerId=$cityManager->user_id;
+        $UserCityManagerId = $cityManager->user_id;
         $cityManager->update([
             "n_id" => $data['n_id'],
         ]);
@@ -213,19 +219,17 @@ class UserController extends Controller
 
     public function deleteCityManagers()
     {
-        $isDeleted=false;
-        $id=request()->input('id');
+        $isDeleted = false;
+        $id = request()->input('id');
         // dd(request()->all());
-        $record=CityManager::find($id);
-        if($record)
-        {
-            $isDeleted=$record->delete();
+        $record = CityManager::find($id);
+        if ($record) {
+            $isDeleted = $record->delete();
         }
-        if($isDeleted)
-        {
-            return ['success' =>'true'];
-        }else{
-            return ['success' =>'false'];
+        if ($isDeleted) {
+            return ['success' => 'true'];
+        } else {
+            return ['success' => 'false'];
         }
     }
 }
