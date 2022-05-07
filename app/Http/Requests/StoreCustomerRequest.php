@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class CustomerUpdateProfileRequest extends FormRequest
+class StoreCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +23,14 @@ class CustomerUpdateProfileRequest extends FormRequest
      */
     public function rules()
     {
-          
-        $validationRules=[
-            'name'=>['max:50'],
-            'email'=> Rule::unique('users')->ignore($this->id),
-            'avatar'=>['mimetypes:image/jpg,image/png,image/jpeg'],
+        return [
+            'name'=>['required','max:50'],
+            'email'=>['required','unique:users'],
+            'password'=>['required','min:8'],
             'birth_date'=>'required',
             'gender'=>'required',
+            'avatar'=>'required',
            
         ];
-       
-        return $validationRules;
     }
 }
