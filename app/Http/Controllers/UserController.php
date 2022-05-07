@@ -6,6 +6,7 @@ use App\Contracts\BaseRepositoryInterface;
 use App\Contracts\GymRepositoryInterface;
 use App\Http\Requests\EditClerkRequest;
 use App\Http\Requests\StoreClerkRequest;
+use App\Models\GymManager;
 use App\Models\User;
 use App\Repositories\CityManagerRepository;
 use App\Repositories\GymManagerRepository;
@@ -73,7 +74,7 @@ class UserController extends Controller
 
     public function showGymManagers()
     {
-        $gymManagers = $this->gymManagerRepository->all();
+        $gymManagers = $this->gymManagerRepository->allWithTrashed();
         return view('gymManagers.show', ['managers' => $gymManagers]);
     }
 
@@ -141,10 +142,8 @@ class UserController extends Controller
 
     public function deleteGymManager()
     {
-
-
         $selectedUserId = $this->gymManagerRepository->findById(request()->input('id'))->user_id;
-        $userResult = $this->userRepository->delete(request()->input('id'));
+        $userResult = $this->userRepository->delete($selectedUserId);
         $managerResult = $this->gymManagerRepository->delete(request()->input('id'));
 //        if ($userResult > 0)
 //            return ["success" => true];
