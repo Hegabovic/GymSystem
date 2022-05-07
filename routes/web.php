@@ -34,6 +34,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 
     Route::get('/create-city-manager', [UserController::class, 'createCityManager'])->name('create_city_manager');
+    Route::get('/show-city-manager', [UserController::class, 'showCityManagers'])->name('show_city_managers');
+    Route::get('/edit-city-manager/{id}', [UserController::class, 'editCityManagers'])->name('edit-city-managers');
+    Route::put('/update-city-manager', [UserController::class, 'updateCityManagers'])->name('update-city-managers');
+    Route::delete('/delete-city-manager', [UserController::class, 'deleteCityManagers'])->name('delete-city-managers');
+
     Route::get('/create-gym-manager', [UserController::class, 'createGymManager'])->name('create_gym_manager');
     Route::get('/show-users', [UserController::class, 'showUsers'])->name('show_users');
     Route::post('/store/{clerk}', [UserController::class, 'store'])->name('store_clerk');

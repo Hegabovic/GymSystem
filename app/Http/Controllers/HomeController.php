@@ -10,6 +10,7 @@ use App\Repositories\OrderRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use App\Models\City;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -82,4 +83,3 @@ class HomeController extends Controller
         ]);
     }
 }
-//Gym::with('city')->
