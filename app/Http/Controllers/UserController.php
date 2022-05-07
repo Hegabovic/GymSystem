@@ -138,4 +138,20 @@ class UserController extends Controller
 
         return to_route('show_gymManagers');
     }
+
+    public function deleteGymManager()
+    {
+
+
+        $selectedUserId = $this->gymManagerRepository->findById(request()->input('id'))->user_id;
+        $userResult = $this->userRepository->delete(request()->input('id'));
+        $managerResult = $this->gymManagerRepository->delete(request()->input('id'));
+//        if ($userResult > 0)
+//            return ["success" => true];
+//
+//        else
+//            return ["success" => false, "message" => "Delete hasn't completed successfully."];
+
+        return ["success" => true, "userResult" => $userResult, "managerResult" => $managerResult];
+    }
 }

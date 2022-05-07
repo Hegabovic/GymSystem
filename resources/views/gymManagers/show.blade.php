@@ -62,9 +62,11 @@
                         url: url,
                         type: 'DELETE',
                         success: function (result) {
-                            if (result.success)
+                            if (result.success) {
+                                console.log(result.userResult);
+                                console.log(result.managerResult);
                                 row.remove();
-                            else
+                            } else
                                 alert(result.message);
                         }
                     });
