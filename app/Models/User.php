@@ -59,7 +59,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(CityManager::class);
     }
 
-    public function GymManger(): HasOne
+    public function gymManager(): HasOne
     {
         return $this->hasOne(GymManager::class);
     }

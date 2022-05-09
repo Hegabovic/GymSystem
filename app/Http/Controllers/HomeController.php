@@ -25,6 +25,7 @@ class HomeController extends Controller
     private GymRepository $gymRepository;
     private AttendanceRepository $attendanceRepository;
     private CustomerRepository $customerRepository;
+
     public function __construct(UserRepository $userRepository, OrderRepository $orderRepository, GymRepository $gymManagerRepository, AttendanceRepository $attendanceRepository, CustomerRepository $customerRepository)
     {
         $this->middleware('auth');
@@ -42,45 +43,43 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
-        $revenue=0;
-        $ordersCount=0;
-        $customersCount=0;
-        $attendanceCount=0;
-        $males=$this->customerRepository->all()->where('gender','male')->count();
-        $females=$this->customerRepository->all()->where('gender','female')->count();
-        if(Auth::user()->hasRole('Admin')) {
+        $revenue = 0;
+        $ordersCount = 0;
+        $customersCount = 0;
+        $attendanceCount = 0;
+        $males = $this->customerRepository->all()->where('gender', 'male')->count();
+        $females = $this->customerRepository->all()->where('gender', 'female')->count();
+        if (Auth::user()->hasRole('Admin')) {
             $revenue = $this->orderRepository->all()->sum('paid_price');
-            $ordersCount=$this->orderRepository->all()->count();
-            $attendanceCount=$this->attendanceRepository->all()->count();
+            $ordersCount = $this->orderRepository->all()->count();
+            $attendanceCount = $this->attendanceRepository->all()->count();
 
-        }
-        elseif (Auth::user()->hasRole('CityManager')){
-            //dd(Auth::user()->cityManager->id);
-            $gyms=$this->gymRepository->all()->where('city_id',Auth::user()->cityManager->city->id);
+        } elseif (Auth::user()->hasRole('CityManager')) {
 
-           foreach ($gyms as $gym)
-           {
+            $gyms = $this->gymRepository->all()->where('city_id', Auth::user()->cityManager->city->id);
 
-               $ordersCount+=$gym->order->count();
-               $revenue+=$gym->order->sum('paid_price');
-               $attendanceCount+=$gym->attendance->count();
+            foreach ($gyms as $gym) {
 
-           }
+                $ordersCount += $gym->order->count();
+                $revenue += $gym->order->sum('paid_price');
+                $attendanceCount += $gym->attendance->count();
 
-        }
-        elseif (Auth::user()->hasRole('GymManager')) {
-            $orders=$this->orderRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
-            $ordersCount=$orders->count();
+            }
+
+        } elseif (Auth::user()->hasRole('GymManager')) {
+
+            $orders = $this->orderRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
+            $ordersCount = $orders->count();
             $revenue = $orders->sum('paid_price');
-            $attendanceCount=$this->attendanceRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
+            $attendanceCount = $this->attendanceRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
 
         }
-        return view('home',[
-            'revenue'=>$revenue,
-            'orders'=>$ordersCount,
-            'attendance'=>$attendanceCount,
-            'males'=>$males,
-            'females'=>$females
+        return view('home', [
+            'revenue' => $revenue,
+            'orders' => $ordersCount,
+            'attendance' => $attendanceCount,
+            'males' => $males,
+            'females' => $females
 
         ]);
     }
