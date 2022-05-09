@@ -252,7 +252,7 @@
                             </li>
                         </ul>
                     </li>
-
+                    @if(Auth::user()->hasRole('Admin') || Auth::user()->hasRole('CityManager'))
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tree"></i>
@@ -275,6 +275,8 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
+                    @if(Auth::user()->hasRole('Admin'))
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
@@ -298,6 +300,7 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
