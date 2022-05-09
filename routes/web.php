@@ -28,32 +28,46 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth','role:Admin|CityManager|GymManager']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 
-    Route::get('/create-city-manager', [UserController::class, 'createCityManager'])->name('create_city_manager');
-    Route::get('/show-city-manager', [UserController::class, 'showCityManagers'])->name('show_city_managers');
-    Route::get('/edit-city-manager/{id}', [UserController::class, 'editCityManagers'])->name('edit-city-managers');
-    Route::put('/update-city-manager', [UserController::class, 'updateCityManagers'])->name('update-city-managers');
-    Route::delete('/delete-city-manager', [UserController::class, 'deleteCityManagers'])->name('delete-city-managers');
+    Route::group(['middleware'=>'role:Admin'],function (){
+        Route::get('/create-city-manager', [UserController::class, 'createCityManager'])->name('create_city_manager');
+        Route::get('/show-city-manager', [UserController::class, 'showCityManagers'])->name('show_city_managers');
+        Route::get('/edit-city-manager/{id}', [UserController::class, 'editCityManagers'])->name('edit-city-managers');
+        Route::put('/update-city-manager', [UserController::class, 'updateCityManagers'])->name('update-city-managers');
+        Route::delete('/delete-city-manager', [UserController::class, 'deleteCityManagers'])->name('delete-city-managers');
 
-    Route::get('/create-gym-manager', [UserController::class, 'createGymManager'])->name('create_gym_manager');
+        Route::get('/city', [CityController::class, 'index'])->name('show_cities');
+        Route::get('/city-create', [CityController::class, 'create'])->name('create');
+        Route::post('/city-store', [CityController::class, 'store'])->name('store_city');
+        Route::get('/edit/{id}', [CityController::class, 'edit'])->name('city.edit');
+        Route::put('/update/{id}', [CityController::class, 'update'])->name('city.update');
+    });
+
+    Route::group(['middleware'=>['role:CityManager|Admin']],function () {
+        Route::get('/create-gym-manager', [UserController::class, 'createGymManager'])->name('create_gym_manager');
+        Route::get('/gym-managers', [UserController::class, 'showGymManagers'])->name('show_gymManagers');
+        Route::get('/gym-manager-edit/{id}', [UserController::class, 'editGymManger'])->name('edit_gymManger');
+        Route::put('/gym-manager-update/{id}', [UserController::class, 'storeEditGymManger'])->name('store_updated_gymManger');
+
+        Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
+        Route::get('/gyms/edit/{id}', [GymController::class, 'edit'])->name('edit.gyms');
+        Route::put('/gym-store/{id}', [GymController::class, 'storeUpdate'])->name('store_gyms');
+        Route::get('/create-gym', [GymController::class, 'create'])->name('create_gyms');
+        Route::post('/create-store', [GymController::class, 'store'])->name('store_gym');
+
+
+    });
+
     Route::get('/show-users', [UserController::class, 'showUsers'])->name('show_users');
     Route::post('/store/{clerk}', [UserController::class, 'store'])->name('store_clerk');
     Route::get('/show-users', [UserController::class, 'showUsers'])->name('show_users');
     Route::get('/edit-profile', [UserController::class, 'edit'])->name('edit_profile');
     Route::put('/edit-profile', [UserController::class, 'update'])->name('edit_profile');
-    Route::get('/gym-managers', [UserController::class, 'showGymManagers'])->name('show_gymManagers');
-    Route::get('/gym-manager-edit/{id}', [UserController::class, 'editGymManger'])->name('edit_gymManger');
-    Route::put('/gym-manager-update/{id}', [UserController::class, 'storeEditGymManger'])->name('store_updated_gymManger');
 
-    Route::get('/show-gyms', [GymController::class, 'show'])->name('show_gyms');
-    Route::get('/gyms/edit/{id}', [GymController::class, 'edit'])->name('edit.gyms');
-    Route::put('/gym-store/{id}', [GymController::class, 'storeUpdate'])->name('store_gyms');
-    Route::get('/create-gym', [GymController::class, 'create'])->name('create_gyms');
-    Route::post('/create-store', [GymController::class, 'store'])->name('store_gym');
 
     Route::get('/coach', [CoachController::class, 'index'])->name('show_coaches');
     Route::get('/coach-create', [CoachController::class, 'create'])->name('create_coach');
@@ -67,11 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/trainingSession-edit/{id}', [TrainingSessionController::class, 'edit'])->name('update_trainingSession');
     Route::put('/trainingSession-update/{id}', [TrainingSessionController::class, 'storeEdit'])->name('store_updated_trainingSession');
 
-    Route::get('/city', [CityController::class, 'index'])->name('show_cities');
-    Route::get('/city-create', [CityController::class, 'create'])->name('create');
-    Route::post('/city-store', [CityController::class, 'store'])->name('store_city');
-    Route::get('/edit/{id}', [CityController::class, 'edit'])->name('city.edit');
-    Route::put('/update/{id}', [CityController::class, 'update'])->name('city.update');
+
 
     Route::get('/attendance', [attendanceController::class, 'show'])->name('show.attendances');
     Route::get('/attendance-create', [attendanceController::class, 'create'])->name('create.attendances');

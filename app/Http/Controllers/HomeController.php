@@ -55,7 +55,7 @@ class HomeController extends Controller
 
         }
         elseif (Auth::user()->hasRole('CityManager')){
-            //dd(Auth::user()->cityManager->id);
+           // dd(Auth::user()->cityManager);
             $gyms=$this->gymRepository->all()->where('city_id',Auth::user()->cityManager->city->id);
 
            foreach ($gyms as $gym)
@@ -69,6 +69,7 @@ class HomeController extends Controller
 
         }
         elseif (Auth::user()->hasRole('GymManager')) {
+
             $orders=$this->orderRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
             $ordersCount=$orders->count();
             $revenue = $orders->sum('paid_price');
