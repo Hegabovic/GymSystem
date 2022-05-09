@@ -34,14 +34,14 @@ class AuthController extends Controller
     {
         $input=$request->validated();
         $avatarPath=$request->file('photo')->store('public/customers_avatars');
-        $userid=$this->userRepository->create([
+        $user=$this->userRepository->create([
             'name'=>$input['name'],
             'email'=>$input['email'],
             'avatar_path'=>$avatarPath,
             'password'=>Hash::make($input['password']),
         ]);
 
-        $user=$this->userRepository->findById($userid);
+       // $user=$this->userRepository->findById($userid);
 
         $this->customerRepository->create([
             'user_id'=>$user->id,
