@@ -60,7 +60,7 @@
                                     @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
                                         <th style="text-align: center;">Gym</th>
                                     @endif
-                                    @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
+                                    @if ( request()->user()->hasrole('Admin'))
                                         <th style="text-align: center;">city</th>
                                     @endif
                                     <th style="text-align: center;">price</th>
