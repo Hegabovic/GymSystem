@@ -7,11 +7,10 @@ use App\Models\Plan;
 use App\Repositories\CustomerRepository;
 use App\Repositories\GymRepository;
 use App\Repositories\PackageRepository;
-use App\Repositories\TrainingSessionsRepository;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
@@ -21,7 +20,7 @@ class PlanController extends Controller
     private GymRepository $gymRepository;
 
 
-    public function __construct(PlanRepositoryInterface $planRepository,CustomerRepository $customerRepository,PackageRepository $packageRepository,GymRepository $gymRepository)
+    public function __construct(PlanRepositoryInterface $planRepository, CustomerRepository $customerRepository, PackageRepository $packageRepository, GymRepository $gymRepository)
     {
 
         $this->planRepository = $planRepository;
@@ -40,13 +39,13 @@ class PlanController extends Controller
 
     public function show(Plan $plan, Request $request): Factory|View|Application
     {
-        $customer =  $this->customerRepository->all();
+        $customer = $this->customerRepository->all();
         $package = $this->packageRepository->all();
         $gym = $this->gymRepository->all();
         return view('plans.show_plan', [
             'plan' => $plan,
             'customer' => $customer,
-            'package'=>$package,
+            'package' => $package,
             'gym' => $gym,
         ]);
     }

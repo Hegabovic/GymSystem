@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use Laravel\Cashier\Billable;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -39,6 +39,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     /**
      * The attributes that should be cast.
@@ -50,16 +53,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return Carbon::parse($value);
     }
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    public function CityManager(): HasOne
+    public function cityManager(): HasOne
     {
         return $this->hasOne(CityManager::class);
     }
 
-    public function GymManger(): HasOne
+    public function gymManager(): HasOne
     {
         return $this->hasOne(GymManager::class);
     }

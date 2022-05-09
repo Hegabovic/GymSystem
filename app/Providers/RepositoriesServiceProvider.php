@@ -8,11 +8,10 @@ use App\Contracts\CityRepositoryInterface;
 use App\Contracts\CoachRepositoryInterface;
 use App\Contracts\GymRepositoryInterface;
 use App\Contracts\OrderRepositoryInterface;
-use App\Contracts\PlanRepositoryInterface;
-use App\Contracts\TrainingSessionInterface;
 use App\Contracts\PackageRepositoryInterface;
-
+use App\Contracts\PlanRepositoryInterface;
 use App\Contracts\SessionsCoachesRepositoryInterface;
+use App\Contracts\TrainingSessionInterface;
 use App\Contracts\TrainingSessionsRepositoryInterface;
 use App\Contracts\UserRepositoryInterface;
 use App\Repositories\AttendanceRepository;
@@ -21,12 +20,10 @@ use App\Repositories\CityManagerRepository;
 use App\Repositories\CityRepository;
 use App\Repositories\CoachRepository;
 use App\Repositories\GymManagerRepository;
-use App\Repositories\PlanRepository;
-
 use App\Repositories\GymRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\PackageRepository;
-
+use App\Repositories\PlanRepository;
 use App\Repositories\SessionsCoachesRepository;
 use App\Repositories\TrainingSessionsRepository;
 use App\Repositories\UserRepository;
@@ -67,6 +64,6 @@ class RepositoriesServiceProvider extends ServiceProvider
         $this->app->bind(AttendanceRepositoryInterface::class, AttendanceRepository::class);
         $this->app->bind(SessionsCoachesRepositoryInterface::class, SessionsCoachesRepository::class);
         $this->app->bind(GymRepositoryInterface::class, GymRepository::class);
-        
+
     }
 }

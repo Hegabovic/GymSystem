@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Attendance extends Model
 {
@@ -20,7 +20,7 @@ class Attendance extends Model
         'gym_id',
         'training_session_id',
     ];
-  
+
     public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value);
@@ -29,7 +29,7 @@ class Attendance extends Model
 
     public function training_session()
     {
-        
+
         return $this->belongsTo(Training_session::class);
     }
 

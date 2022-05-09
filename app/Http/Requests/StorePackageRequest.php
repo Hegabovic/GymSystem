@@ -25,17 +25,17 @@ class StorePackageRequest extends FormRequest
     public function rules()
     {
         return [
-         
-                'name' => [
-                    'required',
-                    'min:3',
-                    'max:255',
-                    Rule::unique('packages', 'name')->ignore($this->id)
-                ],
-                'price' =>  'required',
-                  
-                'number_of_sessions' => ' required'
-            ];
-      
+
+            'name' => [
+                'required',
+                'min:3',
+                'max:255',
+                Rule::unique('packages', 'name')->ignore($this->id)
+            ],
+            'price' => 'required',
+
+            'number_of_sessions' => ' required'
+        ];
+
     }
 }

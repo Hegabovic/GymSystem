@@ -4,5 +4,5 @@ namespace App\Contracts;
 
 interface UserRepositoryInterface
 {
-    public function updateAvatar($id,$path);
+    public function updateAvatar($id, $path);
 }

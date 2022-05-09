@@ -24,11 +24,6 @@ class AttendanceController extends Controller
         return view('attendance/show_attendance', ['items' => $attendances, 'userData' => request()->user()]);
     }
 
-    public function create()
-    {
-        return view('attendance/create_attendance');
-    }
-
     public function store(Request $request)
     {
         $data = request()->all();
@@ -41,6 +36,11 @@ class AttendanceController extends Controller
 
             ]);
         return to_route('show.attendances');
+    }
+
+    public function create()
+    {
+        return view('attendance/create_attendance');
     }
 
     public function restore()

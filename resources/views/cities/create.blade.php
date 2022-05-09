@@ -10,7 +10,8 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="cityName">City Name</label>
-                        <input type='text' class="form-control" name="cityName" id="cityName" placeholder="Enter city name">
+                        <input type='text' class="form-control" name="cityName" id="cityName"
+                               placeholder="Enter city name">
                     </div>
 
                 </div>

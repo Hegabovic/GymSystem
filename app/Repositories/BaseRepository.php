@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Contracts\BaseRepositoryInterface;
-use App\Models\Attendance;
 use Illuminate\Database\Eloquent\Model;
 
 class BaseRepository implements BaseRepositoryInterface
@@ -31,14 +30,14 @@ class BaseRepository implements BaseRepositoryInterface
         return $this->model->withTrashed()->get();
     }
 
-    public function findById($id)
-    {
-        return $this->model->find($id);
-    }
-
     public function update($id, $entity): bool|null
     {
         return $this->findById($id)->update($entity);
+    }
+
+    public function findById($id)
+    {
+        return $this->model->find($id);
     }
 
     public function delete($id): int

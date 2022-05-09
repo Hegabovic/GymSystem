@@ -67,52 +67,55 @@
 
                             {{-- <form> --}}
 
-                                <form method="POST" action="{{route('update.attendances',['id'=>$thisAttendance->id])}} enctype="multipart/form-data">
-                                    @csrf
-                                    @method('PUT')
-                                    {{-- @dd($attendance->customer) --}}
-                                    
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label ">Customer</label>
-                                        <select class="form-control" name="user">
-                                            @foreach ($attendances as $attendance)
-                                     {{-- @dd($attendance->customer) --}}
-                                    <option value="{{$attendance->customer->id}}">{{$attendance->customer->user->email}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            <form method="POST"
+                                  action="{{route('update.attendances',['id'=>$thisAttendance->id])}} enctype="
+                                  multipart
+                            /form-data">
+                            @csrf
+                            @method('PUT')
+                            {{-- @dd($attendance->customer) --}}
 
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label ">Gym</label>
-                                        <select class="form-control" name="gym">
-                                            @foreach ($attendances as $attendance)
-                                            {{-- @dd($attendance->gym) --}}
-                                            <option value="{{$attendance->gym->id}}">{{$attendance->gym->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label ">Customer</label>
+                                <select class="form-control" name="user">
+                                    @foreach ($attendances as $attendance)
+                                        {{-- @dd($attendance->customer) --}}
+                                        <option
+                                            value="{{$attendance->customer->id}}">{{$attendance->customer->user->email}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlTextarea1" class="form-label ">Training Session</label>
-                                        <select class="form-control" name="training_session">
-                                            @foreach ($attendances as $attendance)
-                                            {{-- @dd($posts->user->id) --}}
-                                            <option value="{{$attendance->training_session->id}}">{{$attendance->training_session->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label ">Gym</label>
+                                <select class="form-control" name="gym">
+                                    @foreach ($attendances as $attendance)
+                                        {{-- @dd($attendance->gym) --}}
+                                        <option value="{{$attendance->gym->id}}">{{$attendance->gym->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label ">Training Session</label>
+                                <select class="form-control" name="training_session">
+                                    @foreach ($attendances as $attendance)
+                                        {{-- @dd($posts->user->id) --}}
+                                        <option
+                                            value="{{$attendance->training_session->id}}">{{$attendance->training_session->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
 
-                                    
+                            {{-- <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">City Name</label>
+                                <input type="text" class="form-control" value="{{$attendance->gym->city->name}}" Name="city_name" />
+                            </div> --}}
 
-                                    {{-- <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">City Name</label>
-                                        <input type="text" class="form-control" value="{{$attendance->gym->city->name}}" Name="city_name" />
-                                    </div> --}}
-                        
-                                  <button class="btn btn-primary btn-lg">Update</button>
-                                </form>
-                        
+                            <button class="btn btn-primary btn-lg">Update</button>
+                            </form>
+
                             <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->

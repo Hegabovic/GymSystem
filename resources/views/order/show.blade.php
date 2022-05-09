@@ -3,7 +3,7 @@
     <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+            <img class="animation__wobble" src="/dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
         </div>
 
         <!-- Content Wrapper. Contains page content -->
@@ -16,7 +16,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">orders</a></li>
                             <li class="breadcrumb-item active">Dashboard v2</li>
                         </ol>
                     </div><!-- /.col -->
@@ -57,9 +57,11 @@
                                 <tr>
                                     <th style="text-align: center;">package ID</th>
                                     <th style="text-align: center;">Customer Name</th>
-                                    <th style="text-align: center;">Gym</th>
                                     @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
-                                    <th style="text-align: center;">city</th>
+                                        <th style="text-align: center;">Gym</th>
+                                    @endif
+                                    @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
+                                        <th style="text-align: center;">city</th>
                                     @endif
                                     <th style="text-align: center;">price</th>
                                     @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
@@ -78,16 +80,19 @@
                                         <tr>
                                             <td style="text-align: center;">{{$table->id}}</td>
                                             <td style="text-align: center;">{{$table->customer->user->name}}</td>
-                                            <td style="text-align: center;">{{$table->gym->name}}</td>
                                             @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
-                                            <td style="text-align: center;">{{$table->gym->city->name}}</td>
+                                                <td style="text-align: center;">{{$table->gym->name}}</td>
+                                            @endif
+                                            @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
+                                                <td style="text-align: center;">{{$table->gym->city->name}}</td>
                                             @endif
                                             <td style="text-align: center;">{{$table->paid_price }}</td>
                                             @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
-                                            <td style="text-align: center;">{{$table->created_at->format('H:i')}}</td>
+                                                <td style="text-align: center;">{{$table->created_at->format('H:i')}}</td>
                                             @endif
                                             <td style="text-align: center;">
-                                                <button class="btn btn-danger delete" id="{{$table->id}}"><i class="fas fa-trash-alt"></i>
+                                                <button class="btn btn-danger delete" id="{{$table->id}}"><i
+                                                        class="fas fa-trash-alt"></i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -118,6 +123,7 @@
                                             }
                                         });
                                     }
+
                                     sendDeleteRequest()
                                 </script>
 

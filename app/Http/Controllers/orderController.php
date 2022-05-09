@@ -1,17 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Order;
 use App\Repositories\GymRepository;
 use App\Repositories\OrderRepository;
-use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
-use App\Models\Order;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use JetBrains\PhpStorm\ArrayShape;
 
 class orderController extends Controller
 {
@@ -28,18 +28,16 @@ class orderController extends Controller
     public function show(): Factory|View|Application
     {
 //        $tableData = Order::withTrashed()->get();
-        if(Auth::user()->hasRole('Admin'))
-            $tableData=$this->orderRepository->all();
-        elseif (Auth::user()->hasRole('CityManager')){
-            $gyms=$this->gymRepository->all()->where('city_id',Auth::user()->cityManager->city->id);
-            $tableData=new Collection();
-            foreach ($gyms as $gym)
-            {
-                $tableData=$tableData->merge($gym->order);
+        if (Auth::user()->hasRole('Admin'))
+            $tableData = $this->orderRepository->all();
+        elseif (Auth::user()->hasRole('CityManager')) {
+            $gyms = $this->gymRepository->all()->where('city_id', Auth::user()->cityManager->city->id);
+            $tableData = new Collection();
+            foreach ($gyms as $gym) {
+                $tableData = $tableData->merge($gym->order);
             }
             // dd($gym->order->sum('paid_price'));
-        }
-        elseif (Auth::user()->hasRole('GymManager')) {
+        } elseif (Auth::user()->hasRole('GymManager')) {
             $tableData = $this->orderRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
         }
 
@@ -47,11 +45,6 @@ class orderController extends Controller
             'items' => $tableData,
             'userData' => request()->user()
         ]);
-    }
-
-    public function create(): Factory|View|Application
-    {
-        return view('order.create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -65,6 +58,11 @@ class orderController extends Controller
                 'gym_id' => $data['gym_id'],
             ]);
         return to_route('show.attendances');
+    }
+
+    public function create(): Factory|View|Application
+    {
+        return view('order.create');
     }
 
     public function restore(int $orderID): RedirectResponse

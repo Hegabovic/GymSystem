@@ -4,15 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Contracts\CoachRepositoryInterface;
 use App\Http\Requests\StoreCoachRequest;
-use App\Models\Attendance;
-use App\Models\Coach;
-use App\Models\SessionsCoaches;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
 
 class CoachController extends Controller
 {
@@ -60,11 +55,6 @@ class CoachController extends Controller
         return to_route('show_coaches');
     }
 
-    public function create(): Factory|View|Application
-    {
-        return view('coaches.create');
-    }
-
     public function store(StoreCoachRequest $request): RedirectResponse
     {
         $this->coachRepository->create([
@@ -73,5 +63,10 @@ class CoachController extends Controller
             "address" => $request->address
         ]);
         return to_route('show_coaches');
+    }
+
+    public function create(): Factory|View|Application
+    {
+        return view('coaches.create');
     }
 }

@@ -24,13 +24,13 @@ class StoreCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>['required','max:50'],
-            'email'=>['required','unique:users'],
-            'password'=>['required','min:8'],
-            'birth_date'=>'required',
-            'gender'=>'required',
-            'avatar'=>'required',
-           
+            'name' => ['required', 'max:50'],
+            'email' => ['required', 'unique:users'],
+            'password' => ['required', 'min:8'],
+            'birth_date' => 'required',
+            'gender' => 'required',
+            'avatar' => 'required',
+
         ];
     }
 }

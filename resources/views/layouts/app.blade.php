@@ -202,33 +202,32 @@
                             </ul>
                         </li>
                     @endif
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-chess-knight"></i>
-                            <p>
-                                Gym Manger
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            @can('permission_create_GymManager')
+                    @can('permission_create_GymManager')
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chess-knight"></i>
+                                <p>
+                                    Gym Manger
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('create_gym_manager')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Create</p>
                                     </a>
                                 </li>
-                            @endcan
-                            {{--@endcan--}}
-                            <li class="nav-item">
-                                <a href="{{route('show_gymManagers')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>show</p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
+                                {{--@endcan--}}
+                                <li class="nav-item">
+                                    <a href="{{route('show_gymManagers')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>show</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endcan
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
@@ -253,53 +252,53 @@
                         </ul>
                     </li>
                     @if(Auth::user()->hasRole('Admin') || Auth::user()->hasRole('CityManager'))
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tree"></i>
-                            <p>
-                                Gyms
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tree"></i>
+                                <p>
+                                    Gyms
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
 
-                                <a href="{{route('show_gyms')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>show</p>
-                                </a>
-                                <a href="{{route('create_gyms')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>create</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                                    <a href="{{route('show_gyms')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>show</p>
+                                    </a>
+                                    <a href="{{route('create_gyms')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>create</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     @endif
                     @if(Auth::user()->hasRole('Admin'))
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <p>
-                                Cities
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('show_cities')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>show</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>create</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Cities
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('show_cities')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>show</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('create')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>create</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     @endif
                     <li class="nav-item">
                         <a href="#" class="nav-link">

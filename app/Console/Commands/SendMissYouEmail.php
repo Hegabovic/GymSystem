@@ -30,11 +30,10 @@ class SendMissYouEmail extends Command
      */
     public function handle()
     {
-        $lastDate=Carbon::now('Africa/Cairo')->subMonth();
-        $customers=Customer::where('last_login',$lastDate)->get();
+        $lastDate = Carbon::now('Africa/Cairo')->subMonth();
+        $customers = Customer::where('last_login', $lastDate)->get();
         echo $lastDate;
-        foreach ($customers as $customer)
-        {
+        foreach ($customers as $customer) {
             $customer->user->notify(new MissYou());
         }
         return 0;

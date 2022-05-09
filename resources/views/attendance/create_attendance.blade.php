@@ -64,37 +64,42 @@
                                 </div>
                             </div>
                             <!-- /.card-header -->
-                            
+
                             {{-- <form> --}}
                             <form action="{{route('store.attendances')}}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" name="name" aria-describedby="emailHelp" placeholder="Enter training session name">
-                                  </div>
+                                    <input type="text" class="form-control" name="name" aria-describedby="emailHelp"
+                                           placeholder="Enter training session name">
+                                </div>
 
                                 <div class="form-group">
-                                  <label for="email">Email address</label>
-                                  <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
-                                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                    <label for="email">Email address</label>
+                                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp"
+                                           placeholder="Enter email">
+                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                        anyone else.</small>
                                 </div>
                                 <div class="form-group">
-                                  <label for="exampleInputPassword1">Password</label>
-                                  <input type="password" class="form-control" name="password" placeholder="Password">
+                                    <label for="exampleInputPassword1">Password</label>
+                                    <input type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label for="training_session_name">training session id</label>
-                                    <input type="text" class="form-control" name="training_session_name" aria-describedby="emailHelp" placeholder="Enter training session name">
-                                  </div>
+                                    <input type="text" class="form-control" name="training_session_name"
+                                           aria-describedby="emailHelp" placeholder="Enter training session name">
+                                </div>
 
-                                  <div class="form-group">
+                                <div class="form-group">
                                     <label for="gym_id">gym id</label>
-                                    <input type="text" class="form-control" name="gym_id" aria-describedby="emailHelp" placeholder="Enter gym id">
-                                  </div>
-                                
+                                    <input type="text" class="form-control" name="gym_id" aria-describedby="emailHelp"
+                                           placeholder="Enter gym id">
+                                </div>
+
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                              </form>
+                            </form>
                             <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->

@@ -6,15 +6,12 @@ use App\Contracts\AttendanceRepositoryInterface;
 use App\Contracts\SessionsCoachesRepositoryInterface;
 use App\Contracts\TrainingSessionsRepositoryInterface;
 use App\Http\Requests\StoreTrainingSessionRequest;
-use App\Models\Coach;
 use App\Models\Training_session;
 use App\Repositories\CoachRepository;
-use App\Repositories\TrainingSessionsRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class TrainingSessionController extends Controller
 {
@@ -78,12 +75,6 @@ class TrainingSessionController extends Controller
         return to_route('show_trainingSessions');
     }
 
-    public function create(): Factory|View|Application
-    {
-        $coaches = $this->coachRepository->all();
-        return view('trainingSessions.create', ['isOverlap' => false, 'coaches' => $coaches]);
-    }
-
     public function store(StoreTrainingSessionRequest $request): View|Factory|Application|RedirectResponse
     {
         $isLegalTime = $this->trainingSessionsRepository->isLegal($request->startAt, $request->finishAt);
@@ -108,5 +99,11 @@ class TrainingSessionController extends Controller
             return to_route('show_trainingSessions');
         } else
             return view('trainingSessions.create', ['isOverlap' => true, 'coaches' => $coaches]);
+    }
+
+    public function create(): Factory|View|Application
+    {
+        $coaches = $this->coachRepository->all();
+        return view('trainingSessions.create', ['isOverlap' => false, 'coaches' => $coaches]);
     }
 }

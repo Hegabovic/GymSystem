@@ -70,8 +70,10 @@
                                         <td>{{$cityManager->n_id}}</td>
 
                                         <td>
-                                            <button class="btn btn-danger delete" id="{{$cityManager->id}}"><i class="fas fa-trash-alt"></i></button>
-                                            <a href="{{ route('edit-city-managers',  $cityManager->id) }}" class="btn btn-primary edit"><i class="fas fa-edit"></i>
+                                            <button class="btn btn-danger delete" id="{{$cityManager->id}}"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                            <a href="{{ route('edit-city-managers',  $cityManager->id) }}"
+                                               class="btn btn-primary edit"><i class="fas fa-edit"></i>
                                             </a>
 
                                         </td>

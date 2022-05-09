@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use Illuminate\Auth\Events\Login;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Carbon;
 
 class UserLoginAt
@@ -22,13 +20,13 @@ class UserLoginAt
     /**
      * Handle the event.
      *
-     * @param  \Illuminate\Auth\Events\Login  $event
+     * @param Login $event
      * @return void
      */
     public function handle(Login $event)
     {
 //          if\
-        if( $event->user->customer != null) $event->user->customer->update(['last_login'=>Carbon::now()]);
+        if ($event->user->customer != null) $event->user->customer->update(['last_login' => Carbon::now()]);
 //
     }
 }

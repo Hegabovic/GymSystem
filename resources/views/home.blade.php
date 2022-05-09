@@ -66,34 +66,34 @@
                     <!-- /.col -->
 
                     <!-- fix for small devices only -->
-                  {{--  <div class="clearfix hidden-md-up"></div>
+                    {{--  <div class="clearfix hidden-md-up"></div>
 
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box mb-3">
-                            <span class="info-box-icon bg-success elevation-1"><i
-                                    class="fas fa-shopping-cart"></i></span>
+                      <div class="col-12 col-sm-6 col-md-3">
+                          <div class="info-box mb-3">
+                              <span class="info-box-icon bg-success elevation-1"><i
+                                      class="fas fa-shopping-cart"></i></span>
 
-                            <div class="info-box-content">
-                                <span class="info-box-text">Sales</span>
-                                <span class="info-box-number">{{$revenue}}</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box mb-3">
-                            <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+                              <div class="info-box-content">
+                                  <span class="info-box-text">Sales</span>
+                                  <span class="info-box-number">{{$revenue}}</span>
+                              </div>
+                              <!-- /.info-box-content -->
+                          </div>
+                          <!-- /.info-box -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-12 col-sm-6 col-md-3">
+                          <div class="info-box mb-3">
+                              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
-                            <div class="info-box-content">
-                                <span class="info-box-text">New Members</span>
-                                <span class="info-box-number">2,000</span>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>--}}
+                              <div class="info-box-content">
+                                  <span class="info-box-text">New Members</span>
+                                  <span class="info-box-number">2,000</span>
+                              </div>
+                              <!-- /.info-box-content -->
+                          </div>
+                          <!-- /.info-box -->
+                      </div>--}}
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
@@ -252,7 +252,15 @@
                 </button>
             </div>
         </div>
-        <div class="card-body" style="display: block;"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+        <div class="card-body" style="display: block;">
+            <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                    <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                    <div class=""></div>
+                </div>
+            </div>
             <canvas id="myChart" style="height: 30px; width:30px"></canvas>
         </div>
         <!-- /.card-body -->
@@ -286,7 +294,7 @@
                         beginAtZero: true
                     },
                 },
-                size:{width:100}
+                size: {width: 100}
             }
         });
     </script>

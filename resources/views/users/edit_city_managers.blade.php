@@ -49,31 +49,38 @@
                                     </button>
                                 </div>
 
-                            <form method="POST" action="{{route('update-city-managers')}}" enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT')
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">name</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name" name="name" value="{{$cityManager->user->name}}">
+                                <form method="POST" action="{{route('update-city-managers')}}"
+                                      enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">name</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                               placeholder="Enter name" name="name"
+                                               value="{{$cityManager->user->name}}">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="exampleInputEmail1">national Id</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter National ID" name="n_id" pattern="[0-9]{16}" value="{{$cityManager->n_id}}">
+                                        <label for="exampleInputEmail1">national Id</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                               placeholder="Enter National ID" name="n_id" pattern="[0-9]{16}"
+                                               value="{{$cityManager->n_id}}">
                                     </div>
 
                                     <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email" value="{{$cityManager->user->email}}">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                               placeholder="Enter email" name="email"
+                                               value="{{$cityManager->user->email}}">
                                     </div>
-                                <button  class="btn btn-primary btn-lg w-25">Update</button>
+                                    <button class="btn btn-primary btn-lg w-25">Update</button>
 
                                 </form>
                                 {{-- form done --}}
 
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
         </section>
     </div>
 @endsection

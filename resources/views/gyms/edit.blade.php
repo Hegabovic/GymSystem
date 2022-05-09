@@ -3,7 +3,7 @@
     <form method="post" action="{{ route('store_gyms',$gym->id) }}" enctype="multipart/form-data">
         @csrf
         @method("put")
-        
+
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label "> Name</label>
             <input name="name" class="form-control" id="exampleFormControlTextarea1" value="{{ $gym->name }}">

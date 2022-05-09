@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\CityRepositoryInterface;
-use App\Http\Requests\StoreCityRequest;
 use App\Models\City;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -28,14 +27,6 @@ class CityController extends Controller
         ]);
     }
 
-    public function create(): Factory|View|Application
-    {
-        $cities = City::all();
-        return view('cities.create', [
-            'cities' => $cities,
-        ]);
-    }
-
     public function store(Request $request)
     {
 
@@ -43,6 +34,14 @@ class CityController extends Controller
             'name' => $request['cityName'],
         ]);
         return to_route('show_cities');
+    }
+
+    public function create(): Factory|View|Application
+    {
+        $cities = City::all();
+        return view('cities.create', [
+            'cities' => $cities,
+        ]);
     }
 
     public function edit($cityID)
