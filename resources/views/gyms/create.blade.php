@@ -23,7 +23,7 @@
         </div>
 
         @can('permission_create_Gym')
-         <button class="btn btn-success">create</button>
+            <button class="btn btn-success">create</button>
         @endcan
 
 

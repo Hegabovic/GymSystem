@@ -2,13 +2,11 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Support\Facades\Hash;
-
-
 use App\Models\User;
 use Illuminate\Console\Command;
-use PHPUnit\TextUI\Exception;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Hash;
+
 
 class CreateAdminCommand extends Command
 {

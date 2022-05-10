@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Notifications\Welcome;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\Welcome;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 class EmailVerificationController extends Controller
 {
@@ -24,9 +24,9 @@ class EmailVerificationController extends Controller
         return ['status' => 'verification-link-sent'];
     }
 
-    public function verify( EmailVerificationRequest $request)
+    public function verify(EmailVerificationRequest $request)
     {
-       // return ["user"=>\request()->user()];
+        // return ["user"=>\request()->user()];
         if ($request->user()->hasVerifiedEmail()) {
             return [
                 'message' => 'Email already verified'
@@ -39,7 +39,7 @@ class EmailVerificationController extends Controller
         }
 
         return [
-            'message'=>'Email has been verified'
+            'message' => 'Email has been verified'
         ];
     }
 }

@@ -7,7 +7,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Coaches</div>
                         <div class="panel-body">
-                            <table  class="table table-bordered" style="color: black" id="datatable">
+                            <table class="table table-bordered" style="color: black" id="datatable">
                                 <thead>
 
                                 <tr>
@@ -32,10 +32,10 @@
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             @can('permission_delete_couch')
-                                            <a role="button" class="btn btn-danger m-1 d-inline-block delete"
-                                               data-id="{{$coach->id}}">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
+                                                <a role="button" class="btn btn-danger m-1 d-inline-block delete"
+                                                   data-id="{{$coach->id}}">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
                                             @endcan
                                         </td>
                                     </tr>

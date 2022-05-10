@@ -10,6 +10,11 @@ class SessionsCoaches extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'coach_id',
+        'training_session_id',
+    ];
+
     public function coaches(): BelongsTo
     {
         return $this->belongsTo(Coach::class);
@@ -19,11 +24,6 @@ class SessionsCoaches extends Model
     {
         return $this->belongsTo(Training_session::class);
     }
-
-    protected $fillable = [
-        'coach_id',
-        'training_session_id',
-    ];
 
 
 }

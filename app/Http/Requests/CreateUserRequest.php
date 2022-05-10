@@ -24,10 +24,10 @@ class CreateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>['required','max:50'],
-            'description'=>['required'],
-            'writer_id'=>['required','exists:users,id'],
-            'photo'=>['mimetypes:image/jpg,image/png,image/jpeg']
+            'name' => ['required', 'max:50'],
+            'description' => ['required'],
+            'writer_id' => ['required', 'exists:users,id'],
+            'photo' => ['mimetypes:image/jpg,image/png,image/jpeg']
         ];
     }
 }

@@ -28,18 +28,6 @@ class GymController extends Controller
         return view('gyms.show', ['gyms' => $gyms]);
     }
 
-
-    public function create()
-    {
-
-
-        $cities = $this->cityRepository->all();
-        return view('gyms.create', [
-            'cities' => $cities,
-        ]);
-
-    }
-
     public function delete()
 
     {
@@ -96,6 +84,17 @@ class GymController extends Controller
         ]);
 
         return to_route('show_gyms');
+    }
+
+    public function create()
+    {
+
+
+        $cities = $this->cityRepository->all();
+        return view('gyms.create', [
+            'cities' => $cities,
+        ]);
+
     }
 }
 

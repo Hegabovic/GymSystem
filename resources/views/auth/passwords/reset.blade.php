@@ -30,7 +30,7 @@
 
                 @php
                     if (!isset($token)) {
-                        $token = \Request::route('token');
+                        $token = Request::route('token');
                     }
                 @endphp
 

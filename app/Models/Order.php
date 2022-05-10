@@ -15,12 +15,13 @@ class Order extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable=[
+    protected $fillable = [
         'gym_id',
         'customer_id',
         'pkg_id',
         'remaining_sessions',
     ];
+
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
@@ -45,6 +46,7 @@ class Order extends Model
     {
         return $this->hasMany(Order::class)->count();
     }
+
     public function getCreatedAtAttribute($value)
     {
         return Carbon::parse($value);

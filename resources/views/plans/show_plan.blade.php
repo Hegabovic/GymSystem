@@ -32,7 +32,9 @@
 
                                         <select class="form-select form-control" id="created_by" name="package_id">
                                             @foreach($package as $info)
-                                                <option value="{{$info->id}}">{{$info->name}}, price: {{ number_format(($info->price)/100, 3)}}$</option>
+                                                <option value="{{$info->id}}">{{$info->name}},
+                                                    price: {{ number_format(($info->price)/100, 3)}}$
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -58,11 +60,11 @@
                                 </div>
                                 <!-- Used to display form errors. -->
                                 <div id="card-errors" role="alert"></div>
-                                <input type="hidden"  name="plan" value="{{ $plan->id }}" />
+                                <input type="hidden" name="plan" value="{{ $plan->id }}"/>
                             </div>
                         </div>
 
-                        <div class="card-footer" align="center" >
+                        <div class="card-footer" align="center">
                             <button class="btn btn-primary" type="submit" style="width: 300px">Pay</button>
                         </div>
                     </form>
@@ -74,7 +76,7 @@
 @section('scripts')
     <script src="https://js.stripe.com/v3"></script>
 
-        <script>
+    <script>
         // Create a Stripe client.
         let stripe = Stripe('{{ env("STRIPE_KEY") }}');
         {{--let clientSecret = Stripe('{{ env("STRIPE_SECRET") }}');--}}
@@ -110,13 +112,13 @@
         // Create an instance of the card Element.
 
         const elements = stripe.elements({stripe, appearance});
-        let card = elements.create('card', {style:  appearance });
+        let card = elements.create('card', {style: appearance});
 
         // Add an instance of the card Element into the `card-element` <div>.
         card.mount('#card-element');
 
         // Handle real-time validation errors from the card Element.
-        card.addEventListener('change', function(event) {
+        card.addEventListener('change', function (event) {
             let displayError = document.getElementById('card-errors');
             if (event.error) {
                 displayError.textContent = event.error.message;
@@ -127,10 +129,10 @@
 
         // Handle form submission.
         let form = document.getElementById('payment-form');
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            stripe.createToken(card).then(function(result) {
+            stripe.createToken(card).then(function (result) {
                 if (result.error) {
                     // Inform the user if there was an error.
                     let errorElement = document.getElementById('card-errors');

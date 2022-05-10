@@ -2,23 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Contracts\BaseRepositoryInterface;
 use App\Contracts\GymRepositoryInterface;
 use App\Http\Requests\EditClerkRequest;
 use App\Http\Requests\StoreClerkRequest;
 use App\Http\Requests\UpdateGymManagerRequest;
-use App\Models\GymManager;
-use App\Models\User;
 use App\Models\CityManager;
+use App\Models\User;
 use App\Repositories\CityManagerRepository;
 use App\Repositories\CityRepository;
 use App\Repositories\GymManagerRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -36,6 +31,63 @@ class UserController extends Controller
         $this->userRepository = $userRepository;
         $this->gymRepository = $gymRepository;
         $this->cityRepository = $cityRepository;
+    }
+
+    public function showGymManagers()
+    {
+        $gymManagers = $this->gymManagerRepository->allWithTrashed();
+        return view('gymManagers.show', ['managers' => $gymManagers]);
+    }
+
+    public function showUsers()
+    {
+        return view('users.show_users');
+    }
+
+    public function createCityManager()
+    {
+        $cities = $this->cityRepository->all();
+        return view('users.create_city_manager', ['cities' => $cities]);
+    }
+
+    public function createGymManager()
+    {
+        $gyms = $this->gymRepository->all();
+        return view('gymManagers.create', ['gyms' => $gyms]);
+    }
+
+    public function edit()
+    {
+        return view('users.edit_profile');
+    }
+
+    public function editGymManger($id)
+    {
+        $selectedGymManger = $this->gymManagerRepository->findById($id);
+        $gyms = $this->gymRepository->all();
+        return view('gymManagers.edit', ['manger' => $selectedGymManger, 'gyms' => $gyms]);
+    }
+
+    public function storeEditGymManger(UpdateGymManagerRequest $request)
+    {
+        $formData = $request->all();
+
+        $selectedUser = $this->userRepository->findById($request->id);
+
+        $updatedGymManager = [
+            "n_id" => $formData["n_id"],
+            "gym_id" => $formData["gym_id"]
+        ];
+
+        $updatedUser = [
+            "name" => $formData["name"],
+            "email" => $formData["email"],
+            "avatar_path" => $request->hasFile('avatar') ? $formData["avatar"]->store('public/avatars') : $selectedUser->avatar_path
+        ];
+        $this->userRepository->update($request->id, $updatedUser);
+        $this->gymManagerRepository->update($selectedUser->gymManger->id, $updatedGymManager);
+
+        return to_route('show_gymManagers');
     }
 
     public function store(StoreClerkRequest $request)
@@ -81,34 +133,6 @@ class UserController extends Controller
         return to_route('show_users');
     }
 
-    public function showGymManagers()
-    {
-        $gymManagers = $this->gymManagerRepository->allWithTrashed();
-        return view('gymManagers.show', ['managers' => $gymManagers]);
-    }
-
-    public function showUsers()
-    {
-        return view('users.show_users');
-    }
-
-    public function createCityManager()
-    {
-        $cities = $this->cityRepository->all();
-        return view('users.create_city_manager', ['cities' => $cities]);
-    }
-
-    public function createGymManager()
-    {
-        $gyms = $this->gymRepository->all();
-        return view('gymManagers.create', ['gyms' => $gyms]);
-    }
-
-    public function edit()
-    {
-        return view('users.edit_profile');
-    }
-
     public function update(EditClerkRequest $request)
     {
         $input = $request->validated();
@@ -120,35 +144,6 @@ class UserController extends Controller
         if (isset($input['password'])) $input['password'] = Hash::make($input['password']);
         $this->userRepository->update($request->user()->id, $input);
         return to_route('edit_profile');
-    }
-
-    public function editGymManger($id)
-    {
-        $selectedGymManger = $this->gymManagerRepository->findById($id);
-        $gyms = $this->gymRepository->all();
-        return view('gymManagers.edit', ['manger' => $selectedGymManger, 'gyms' => $gyms]);
-    }
-
-    public function storeEditGymManger(UpdateGymManagerRequest $request)
-    {
-        $formData = $request->all();
-
-        $selectedUser = $this->userRepository->findById($request->id);
-
-        $updatedGymManager = [
-            "n_id" => $formData["n_id"],
-            "gym_id" => $formData["gym_id"]
-        ];
-
-        $updatedUser = [
-            "name" => $formData["name"],
-            "email" => $formData["email"],
-            "avatar_path" => $request->hasFile('avatar') ? $formData["avatar"]->store('public/avatars') : $selectedUser->avatar_path
-        ];
-        $this->userRepository->update($request->id, $updatedUser);
-        $this->gymManagerRepository->update($selectedUser->gymManger->id, $updatedGymManager);
-
-        return to_route('show_gymManagers');
     }
 
     public function deleteGymManager()

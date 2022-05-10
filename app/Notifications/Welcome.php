@@ -24,7 +24,7 @@ class Welcome extends Notification implements ShouldQueue
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -35,23 +35,23 @@ class Welcome extends Notification implements ShouldQueue
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @param mixed $notifiable
+     * @return MailMessage
      */
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->from('barrett@example.com', 'Barrett Blair')
-                     ->greeting('Hello!')
-                    ->line('Welcome to our site')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->from('barrett@example.com', 'Barrett Blair')
+            ->greeting('Hello!')
+            ->line('Welcome to our site')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function toArray($notifiable)
