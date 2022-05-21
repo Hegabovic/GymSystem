@@ -56,7 +56,7 @@ class GymController extends Controller
     {
         $avatarPath = "";
         if ($request->hasFile('cover_image')) {
-            $avatarPath = $request->file('cover_image')->store('public/gym images');
+            $avatarPath = $request->file('cover_image')->store('public/gyms_logos');
         } else {
             $avatarPath = $this->gymRepository->findById($gymId)->cover_image;
         }
@@ -72,9 +72,9 @@ class GymController extends Controller
 
     public function store(Request $request)
     {
-        $avatarPath = "";
+    $avatarPath=env('DEFAULT_GYM_LOGO');
         if ($request->hasFile('cover_image')) {
-            $avatarPath = $request->file('cover_image')->store('public/gym images');
+            $avatarPath = $request->file('cover_image')->store('public/gyms_logos');
         }
 
         $this->gymRepository->create([

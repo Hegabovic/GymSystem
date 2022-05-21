@@ -32,50 +32,34 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
-                    <!-- Info boxes -->
 
-                    <!-- /.row -->
+                    @include('forms.form_header')
+                    <form method="post" action="{{route('store_clerk',['clerk'=>'city-manager'])}}"
+                          enctype="multipart/form-data">
+                        @csrf
+                        @include('forms.form_core')
+                        @include('forms.form_extra_info')
+                        <div class="row mt-3">
+                            <div class="col-md-6">
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
+                                <div class="form-group">
+                                    <label for="city-input">City</label>
+                                    <select name="facility" id="city-input" class="form-control">
+                                        @foreach($cities as $city)
+                                            <option value="{{$city->id}}">{{$city->name}}</option>
                                         @endforeach
-                                    </ul>
+                                    </select>
                                 </div>
-                            @endif
-                            <form method="post" action="{{route('store_clerk',['clerk'=>'city-manager'])}}"
-                                  enctype="multipart/form-data">
-                                @csrf
-                                <div class="card-body">
-                                    @include('forms.create_clerk_form')
-                                    <div class="form-group">
-                                        <label for="city-input">city</label>
-                                        <select name="facility" id="city-input" class="form-control">
-                                            @foreach($cities as $city)
-                                                <option value="{{$city->id}}">{{$city->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
 
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                            <!-- /.card -->
-
+                            </div>
                         </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
 
-                    <!-- Main row -->
+                        @include('forms.form_footer')
+                        <!-- /.row -->
 
-                    <!-- /.row -->
+                        <!-- Main row -->
+
+                        <!-- /.row -->
                 </div><!--/. container-fluid -->
             </section>
         </div>

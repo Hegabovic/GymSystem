@@ -6,6 +6,7 @@ use App\Contracts\GymRepositoryInterface;
 use App\Http\Requests\EditClerkRequest;
 use App\Http\Requests\StoreClerkRequest;
 use App\Http\Requests\UpdateGymManagerRequest;
+use App\Models\City;
 use App\Models\CityManager;
 use App\Models\User;
 use App\Repositories\CityManagerRepository;
@@ -65,7 +66,7 @@ class UserController extends Controller
     {
         $selectedGymManger = $this->gymManagerRepository->findById($id);
         $gyms = $this->gymRepository->all();
-        return view('gymManagers.edit', ['manger' => $selectedGymManger, 'gyms' => $gyms]);
+        return view('gymManagers.edit', ['gymManager' => $selectedGymManger, 'gyms' => $gyms]);
     }
 
     public function storeEditGymManger(UpdateGymManagerRequest $request)
@@ -184,10 +185,10 @@ class UserController extends Controller
 
     public function editCityManagers($id)
     {
-        $cityManagers = CityManager::All();
+        $cities = City::All();
         $cityManager = CityManager::find($id);
 
-        return view('users/edit_city_managers', ['cityManagers' => $cityManagers, 'cityManager' => $cityManager]);
+        return view('users/edit_city_managers', ['cities' => $cities, 'cityManager' => $cityManager]);
     }
 
     public function updateCityManagers(Request $request)
@@ -195,7 +196,7 @@ class UserController extends Controller
 
         $data = $request->all();
         // dd($data);
-        $cityManagerId = $request->user()->id;
+        $cityManagerId = $request->id;
 
         $cityManager = CityManager::find($cityManagerId);
         $UserCityManagerId = $cityManager->user_id;
@@ -207,6 +208,7 @@ class UserController extends Controller
         $UserCityManager->update([
             "name" => $data['name'],
             "email" => $data['email'],
+            "city"=>$data['facility']
         ]);
 
         return to_route('show_city_managers');
