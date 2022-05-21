@@ -19,9 +19,9 @@
                     <div class="col-md-12 ">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <table class="table table-bordered" style="color: black;" id="datatable">
+                                <table class="table table-bordered text-center" style="color: black;" id="datatable">
                                     <thead>
-                                    <tr align="center">
+                                    <tr>
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Start at</th>
@@ -31,17 +31,25 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-
                                     @foreach($trainingSessions as $trainingSession)
-                                        <tr align="center">
-                                            <td style="vertical-align: middle">{{$trainingSession->id}}</td>
-                                            <td style="vertical-align: middle">{{$trainingSession->name}}</td>
-                                            <td style="vertical-align: middle">{{$trainingSession->start_at->format('d-m-Y h:iA')}}</td>
-                                            <td style="vertical-align: middle">{{$trainingSession->finish_at->format('d-m-Y h:iA')}}</td>
-                                            <td style="vertical-align: middle">
+                                        <tr>
+                                            <td>{{$trainingSession->id}}</td>
+                                            <td>{{$trainingSession->name}}</td>
+                                            <td>
+                                                <span
+                                                    class="badge badge-warning">
+                                                    {{$trainingSession->start_at->format('d-m-Y h:iA')}}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <span class="badge badge-warning">
+                                                    {{$trainingSession->finish_at->format('d-m-Y h:iA')}}
+                                                </span>
+                                            </td>
+                                            <td>
                                                 <table class="table">
-                                                    <tr align="center">
-                                                        <td style="vertical-align: middle">
+                                                    <tr>
+                                                        <td>
                                                             @if($trainingSession->sessionsCoaches->count() > 0)
                                                                 @foreach ($trainingSession->sessionsCoaches as $sessionCoach)
                                                                     <option
@@ -55,7 +63,7 @@
                                                     </tr>
                                                 </table>
                                             </td>
-                                            <td style="vertical-align: middle">
+                                            <td>
                                                 <a role="button"
                                                    href="{{route('update_trainingSession',[$trainingSession->id])}}"
                                                    class="btn btn-primary m-1 d-inline-block"
