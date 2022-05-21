@@ -19,13 +19,13 @@
                 </div>
             </div>
         </div>
-        @include('forms.clerk_form_header')
+        @include('forms.form_header')
         <form method="POST"
               action="{{route('update-city-managers',['id'=>$cityManager->id])}}"
               enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        @include('forms.clerk_form_core')
+            @csrf
+            @method('PUT')
+            @include('forms.form_core')
             <div class="row mt-3">
                 <div class="col-md-6">
 
@@ -40,7 +40,7 @@
 
                 </div>
             </div>
-        @include('forms.clerk_form_footer')
+        @include('forms.form_footer')
 
     </div>
 @endsection

@@ -68,12 +68,12 @@
             {{--                    <!-- /.row -->--}}
             {{--                </div><!--/. container-fluid -->--}}
             {{--            </section>--}}
-            @include('forms.clerk_form_header')
+            @include('forms.form_header')
             <form method="post" action="{{route('store_clerk',['clerk'=>'gym-manager'])}}"
                   enctype="multipart/form-data">
-            @csrf
-            @include('forms.clerk_form_core')
-            @include('forms.clerk_form_extra_info')
+                @csrf
+                @include('forms.form_core')
+                @include('forms.form_extra_info')
                 <div class="row mt-3">
                     <div class="col-md-6">
 
@@ -88,7 +88,7 @@
 
                     </div>
                 </div>
-                @include('forms.clerk_form_footer')
+            @include('forms.form_footer')
 
         </div>
     </div>

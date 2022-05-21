@@ -8,6 +8,8 @@
                         src="{{Storage::url($gymManager->user->avatar_path)}}"
                      @elseif(isset($cityManager))
                         src="{{Storage::url($cityManager->user->avatar_path)}}"
+                    @elseif(isset($customer))
+                        src="{{Storage::url($customer->user->avatar_path)}}"
                     @else
                     src="{{Storage::url(env('DEFAULT_AVATAR'))}}"
                     @endif

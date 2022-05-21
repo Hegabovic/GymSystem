@@ -33,11 +33,12 @@
             <section class="content">
                 <div class="container-fluid">
 
-                    @include('forms.clerk_form_header')
-                    <form method="post" action="{{route('store_clerk',['clerk'=>'city-manager'])}}" enctype="multipart/form-data">
+                    @include('forms.form_header')
+                    <form method="post" action="{{route('store_clerk',['clerk'=>'city-manager'])}}"
+                          enctype="multipart/form-data">
                         @csrf
-                        @include('forms.clerk_form_core')
-                        @include('forms.clerk_form_extra_info')
+                        @include('forms.form_core')
+                        @include('forms.form_extra_info')
                         <div class="row mt-3">
                             <div class="col-md-6">
 
@@ -53,7 +54,7 @@
                             </div>
                         </div>
 
-                        @include('forms.clerk_form_footer')
+                        @include('forms.form_footer')
                         <!-- /.row -->
 
                         <!-- Main row -->
