@@ -19,69 +19,77 @@
                 </div>
             </div>
         </div>
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Edit City manager</h5>
+{{--        <section class="content">--}}
+{{--            <div class="container-fluid">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-12">--}}
+{{--                        <div class="card">--}}
+{{--                            <div class="card-header">--}}
+{{--                                <h5 class="card-title">Edit City manager</h5>--}}
 
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-tool dropdown-toggle"
-                                                data-toggle="dropdown">
-                                            <i class="fas fa-wrench"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right" role="menu">
-                                            <a href="#" class="dropdown-item">Action</a>
-                                            <a href="#" class="dropdown-item">Another action</a>
-                                            <a href="#" class="dropdown-item">Something else here</a>
-                                            <a class="dropdown-divider"></a>
-                                            <a href="#" class="dropdown-item">Separated link</a>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
+{{--                                <div class="card-tools">--}}
+{{--                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">--}}
+{{--                                        <i class="fas fa-minus"></i>--}}
+{{--                                    </button>--}}
+{{--                                    <div class="btn-group">--}}
+{{--                                        <button type="button" class="btn btn-tool dropdown-toggle"--}}
+{{--                                                data-toggle="dropdown">--}}
+{{--                                            <i class="fas fa-wrench"></i>--}}
+{{--                                        </button>--}}
+{{--                                        <div class="dropdown-menu dropdown-menu-right" role="menu">--}}
+{{--                                            <a href="#" class="dropdown-item">Action</a>--}}
+{{--                                            <a href="#" class="dropdown-item">Another action</a>--}}
+{{--                                            <a href="#" class="dropdown-item">Something else here</a>--}}
+{{--                                            <a class="dropdown-divider"></a>--}}
+{{--                                            <a href="#" class="dropdown-item">Separated link</a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <button type="button" class="btn btn-tool" data-card-widget="remove">--}}
+{{--                                        <i class="fas fa-times"></i>--}}
+{{--                                    </button>--}}
+{{--                                </div>--}}
 
-                                <form method="POST" action="{{route('update-city-managers')}}"
-                                      enctype="multipart/form-data">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">name</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                               placeholder="Enter name" name="name"
-                                               value="{{$cityManager->user->name}}">
-                                    </div>
+{{--                                <form method="POST" action="{{route('update-city-managers')}}"--}}
+{{--                                      enctype="multipart/form-data">--}}
+{{--                                    @csrf--}}
+{{--                                    @method('PUT')--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="exampleInputEmail1">name</label>--}}
+{{--                                        <input type="text" class="form-control" id="exampleInputEmail1"--}}
+{{--                                               placeholder="Enter name" name="name"--}}
+{{--                                               value="{{$cityManager->user->name}}">--}}
+{{--                                    </div>--}}
 
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">national Id</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1"
-                                               placeholder="Enter National ID" name="n_id" pattern="[0-9]{16}"
-                                               value="{{$cityManager->n_id}}">
-                                    </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="exampleInputEmail1">national Id</label>--}}
+{{--                                        <input type="text" class="form-control" id="exampleInputEmail1"--}}
+{{--                                               placeholder="Enter National ID" name="n_id" pattern="[0-9]{16}"--}}
+{{--                                               value="{{$cityManager->n_id}}">--}}
+{{--                                    </div>--}}
 
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
-                                               placeholder="Enter email" name="email"
-                                               value="{{$cityManager->user->email}}">
-                                    </div>
-                                    <button class="btn btn-primary btn-lg w-25">Update</button>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="exampleInputEmail1">Email address</label>--}}
+{{--                                        <input type="email" class="form-control" id="exampleInputEmail1"--}}
+{{--                                               placeholder="Enter email" name="email"--}}
+{{--                                               value="{{$cityManager->user->email}}">--}}
+{{--                                    </div>--}}
+{{--                                    <button class="btn btn-primary btn-lg w-25">Update</button>--}}
 
-                                </form>
-                                {{-- form done --}}
+{{--                                </form>--}}
+{{--                                --}}{{-- form done --}}
 
-                            </div>
-                        </div>
-                    </div>
-        </section>
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--        </section>--}}
+        @include('forms.clerk_form_header')
+        <form method="POST" action="{{route('update-city-managers')}}"
+                                              enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+        @include('forms.clerk_form_core')
+        @include('forms.clerk_form_footer')
+
     </div>
 @endsection
 
