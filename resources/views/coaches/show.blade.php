@@ -1,11 +1,24 @@
 @extends('layouts.app')
 @section('content')
     <div class="wrapper">
-        <div class="container-fluid">
+        <div class="container-fluid p-5">
+            <div class="content-header">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Show Coaches</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                            <li class=" breadcrumb-item active">Show Coaches
+                            </li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div>
             <div class="row">
                 <div class="col-md-12 ">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Coaches</div>
                         <div class="panel-body">
                             <table class="table table-bordered" style="color: black" id="datatable">
                                 <thead>
@@ -47,37 +60,36 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script>
-        $(document).ready(function () {
-            $('#datatable').DataTable();
-        });
-
-        sendDeleteRequest();
-
-        function sendDeleteRequest() {
-            $(document).on('click', '.delete', function (event) {
-                event.preventDefault();
-                let coachId = this.getAttribute('data-id');
-                let url = "{{route('coach.delete')}}" + `?id=${coachId}`;
-                let result = confirm('Are you sure you want to delete ?');
-                if (result) {
-                    let row = $(this).parent().parent();
-                    $.ajax({
-                        url: url,
-                        type: 'DELETE',
-                        success: function (result) {
-                            if (result.success)
-                                row.remove();
-                            else
-                                alert(result.message);
-                        }
-                    });
-                }
+        <script>
+            $(document).ready(function () {
+                $('#datatable').DataTable();
             });
-        }
 
-    </script>
+            sendDeleteRequest();
+
+            function sendDeleteRequest() {
+                $(document).on('click', '.delete', function (event) {
+                    event.preventDefault();
+                    let coachId = this.getAttribute('data-id');
+                    let url = "{{route('coach.delete')}}" + `?id=${coachId}`;
+                    let result = confirm('Are you sure you want to delete ?');
+                    if (result) {
+                        let row = $(this).parent().parent();
+                        $.ajax({
+                            url: url,
+                            type: 'DELETE',
+                            success: function (result) {
+                                if (result.success)
+                                    row.remove();
+                                else
+                                    alert(result.message);
+                            }
+                        });
+                    }
+                });
+            }
+
+        </script>
 @endsection
 
 

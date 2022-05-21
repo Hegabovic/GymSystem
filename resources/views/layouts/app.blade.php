@@ -424,7 +424,7 @@
         <!-- /.sidebar -->
     </aside>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="margin-top: 0;">
         {{--  Views --}}
         @yield('content')
     </div>
