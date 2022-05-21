@@ -41,7 +41,7 @@
                                         </td>
                                         <td>
                                             <img src="{{Storage::url($gym->cover_image)}}" alt="Cover image"
-                                                 class="img-fluid"
+                                                 class="img-fluid table-img img-circle img-thumbnail"
                                                  width="120px" height="100px">
                                         </td>
 
