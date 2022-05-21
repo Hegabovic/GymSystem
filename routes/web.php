@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth','role:Admin|CityManager|GymManager']], fun
         Route::get('/create-city-manager', [UserController::class, 'createCityManager'])->name('create_city_manager');
         Route::get('/show-city-manager', [UserController::class, 'showCityManagers'])->name('show_city_managers');
         Route::get('/edit-city-manager/{id}', [UserController::class, 'editCityManagers'])->name('edit-city-managers');
-        Route::put('/update-city-manager', [UserController::class, 'updateCityManagers'])->name('update-city-managers');
+        Route::put('/update-city-manager/{id}', [UserController::class, 'updateCityManagers'])->name('update-city-managers');
         Route::delete('/delete-city-manager', [UserController::class, 'deleteCityManagers'])->name('delete-city-managers');
 
         Route::get('/city', [CityController::class, 'index'])->name('show_cities');

@@ -33,33 +33,32 @@
             <section class="content">
                 <div class="container-fluid">
 
-                                    @include('forms.clerk_form_header')
-                                    <form method="post" action="{{route('edit_profile')}}" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('put')
-                                       @include('forms.clerk_form_core')
-                                       @include('forms.cleck_form_extra_info')
-                                        <div class="row mt-3">
-                                            <div class="col-md-6">
+                    @include('forms.clerk_form_header')
+                    <form method="post" action="{{route('store_clerk',['clerk'=>'city-manager'])}}" enctype="multipart/form-data">
+                        @csrf
+                        @include('forms.clerk_form_core')
+                        @include('forms.clerk_form_extra_info')
+                        <div class="row mt-3">
+                            <div class="col-md-6">
 
-                                                <div class="form-group">
-                                                    <label for="city-input">City</label>
-                                                    <select name="facility" id="city-input" class="form-control">
-                                                    @foreach($cities as $city)
-                                                        <option value="{{$city->id}}">{{$city->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                                </div>
+                                <div class="form-group">
+                                    <label for="city-input">City</label>
+                                    <select name="facility" id="city-input" class="form-control">
+                                        @foreach($cities as $city)
+                                            <option value="{{$city->id}}">{{$city->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
-                                            </div>
-                                        </div>
+                            </div>
+                        </div>
 
-                                       @include('forms.clerk_form_footer')
-                    <!-- /.row -->
+                        @include('forms.clerk_form_footer')
+                        <!-- /.row -->
 
-                    <!-- Main row -->
+                        <!-- Main row -->
 
-                    <!-- /.row -->
+                        <!-- /.row -->
                 </div><!--/. container-fluid -->
             </section>
         </div>

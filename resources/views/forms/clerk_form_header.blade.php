@@ -3,7 +3,16 @@
         <div class="col-md-4 border-right">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
 
-                <img src="{{Storage::url(env('DEFAULT_AVATAR'))}}" class="rounded-circle mt-5" alt="User Image"
+                <img
+                    @if(isset($gymManager))
+                        src="{{Storage::url($gymManager->user->avatar_path)}}"
+                     @elseif(isset($cityManager))
+                        src="{{Storage::url($cityManager->user->avatar_path)}}"
+                    @else
+                    src="{{Storage::url(env('DEFAULT_AVATAR'))}}"
+                    @endif
+
+                    class="rounded-circle mt-5" alt="User Image"
                      style="width: 200px;height: 200px">
 
                 <span class="font-weight-bold"></span>
