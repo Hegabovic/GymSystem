@@ -47,36 +47,36 @@
                 </table>
             </div>
         </div>
+    </div>
+    <script>
+        $(document).ready(function () {
 
-        <script>
-            $(document).ready(function () {
+            $('#dataTable').DataTable();
 
-                $('#dataTable').DataTable();
+            function sendDeleteRequest() {
+                $(document).on('click', '.delete', function (event) {
+                    event.preventDefault();
+                    let cityID = this.id;
+                    let url = "{{route('delete.city')}}" + `?id=${cityID}`;
+                    let result = confirm('Are you sure you want to delete ?');
+                    if (result) {
+                        let row = $(this).parent().parent();
+                        $.ajax({
+                            url: url,
+                            type: 'DELETE',
+                            success: function (result) {
+                                if (result.success)
+                                    row.remove()
+                                else
+                                    alert(result.msg)
+                            }
+                        });
+                    }
+                });
+            }
 
-                function sendDeleteRequest() {
-                    $(document).on('click', '.delete', function (event) {
-                        event.preventDefault();
-                        let cityID = this.id;
-                        let url = "{{route('delete.city')}}" + `?id=${cityID}`;
-                        let result = confirm('Are you sure you want to delete ?');
-                        if (result) {
-                            let row = $(this).parent().parent();
-                            $.ajax({
-                                url: url,
-                                type: 'DELETE',
-                                success: function (result) {
-                                    if (result.success)
-                                        row.remove()
-                                    else
-                                        alert(result.msg)
-                                }
-                            });
-                        }
-                    });
-                }
-
-                sendDeleteRequest()
-            });
-        </script>
+            sendDeleteRequest()
+        });
+    </script>
 @endsection
 

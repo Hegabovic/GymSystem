@@ -18,7 +18,7 @@
                 <div class="col-md-12 ">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <table class="table table-bordered" style="color: black" id="datatable">
+                            <table class="table table-bordered text-wrap" style="color: black" id="datatable">
                                 <thead>
 
                                 <tr>
