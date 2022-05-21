@@ -19,7 +19,7 @@
                 <div class="col-md-12 ">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <table class="table table-bordered" style="color: black;" id="datatable">
+                            <table class="table table-bordered text-center" style="color: black;" id="datatable">
                                 <thead>
                                 <tr>
                                     <th>Id</th>
@@ -39,10 +39,12 @@
                                         <td>{{ $customer->id }}</td>
                                         <td>{{ $customer->user->name}}</td>
                                         <td>{{ $customer->user->email}}</td>
-                                        <td>{{ $customer->birth_date }}</td>
+                                        <td><span class="badge badge-warning">{{ $customer->birth_date }}</span></td>
                                         <td>{{ $customer->gender }}</td>
                                         <td>{{ $customer->user->avatar_path}}</td>
-                                        <td>{{ $customer->getLastLoginAtAttribute()}}</td>
+                                        <td><span
+                                                class="badge badge-warning">{{ $customer->getLastLoginAtAttribute()}}</span>
+                                        </td>
                                         <td>
                                             <a role="button" href="{{route('customers.edit',[$customer->id])}}"
                                                class="btn btn-primary m-1 d-inline-block" data-id="{{$customer->id}}">

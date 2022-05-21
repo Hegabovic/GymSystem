@@ -52,7 +52,12 @@
                                     <td>{{$order->gym->city->name}}</td>
                                 @endif
 
-                                <td>{{$order->created_at->format('d-m-Y  h:iA')}}</td>
+                                <td>
+                                       <span class="badge badge-warning">
+                                    {{$order->created_at->format('d-m-Y  h:iA')}}
+                                    </span>
+
+                                </td>
 
                                 @if ( request()->user()->hasrole('CityManager')|| request()->user()->hasrole('Admin'))
                                     <td>${{$order->paid_price}}</td>

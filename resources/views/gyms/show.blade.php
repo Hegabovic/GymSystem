@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <div class="container-fluid p-5">
         <div class="content-header">
             <div class="row mb-2">
@@ -52,8 +51,6 @@
                                             @else
                                                 {{"Tanjero"}}
                                             @endif
-                                            {{--                                {{$gym->city->CityManager["user_id"]}}--}}
-
                                         </td>
 
                                         <td>

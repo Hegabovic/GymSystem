@@ -21,7 +21,7 @@ class CityController extends Controller
 
     public function index(): Factory|View|Application
     {
-        $cities = $this->cityRepository->all();
+        $cities = City::with('gyms')->get();
         return view('cities.cities', [
             'cities' => $cities,
         ]);

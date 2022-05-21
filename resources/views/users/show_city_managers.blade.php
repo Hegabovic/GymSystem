@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <div class="wrapper">
-        <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
-        </div>
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">

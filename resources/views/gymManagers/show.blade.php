@@ -1,67 +1,65 @@
 @extends('layouts.app')
 @section('content')
-    <div class="wrapper">
-        <div class="container-fluid p-5">
-            <div class="content-header">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Show Gyms Managers</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                            <li class=" breadcrumb-item active">Show Gyms Managers
-                            </li>
-                        </ol>
-                    </div>
+    <div class="container-fluid p-5">
+        <div class="content-header">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Show Gyms Managers</h1>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 ">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <table class="table table-bordered" style="color: black;" id="datatable">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>National ID</th>
-                                        <th>Options</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($managers as $manager)
-                                        @if(!$manager->trashed())
-                                            <tr>
-                                                <td>{{$manager->user_id}}</td>
-                                                <td>{{$manager->user->name}}</td>
-                                                <td>{{$manager->n_id}}</td>
-                                                <td>
-                                                    <a role="button" href="{{route('edit_gymManger',[$manager->id])}}"
-                                                       class="btn btn-primary m-1 d-inline-block"
-                                                       data-id="{{$manager->id}}">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <a role="button" class="btn btn-danger m-1 d-inline-block delete"
-                                                       data-id="{{$manager->id}}">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @else
-                                            <tr>
-                                                <td colspan="5" class="text-center">
-                                                    <a role="button"
-                                                       class="btn btn-warning m-1 d-inline-block restore"
-                                                       data-id="{{$manager->id}}">
-                                                        <i class="fas fa-redo"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class=" breadcrumb-item active">Show Gyms Managers
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <table class="table table-bordered" style="color: black;" id="datatable">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>National ID</th>
+                                    <th>Options</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($managers as $manager)
+                                    @if(!$manager->trashed())
+                                        <tr>
+                                            <td>{{$manager->user_id}}</td>
+                                            <td>{{$manager->user->name}}</td>
+                                            <td>{{$manager->n_id}}</td>
+                                            <td>
+                                                <a role="button" href="{{route('edit_gymManger',[$manager->id])}}"
+                                                   class="btn btn-primary m-1 d-inline-block"
+                                                   data-id="{{$manager->id}}">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a role="button" class="btn btn-danger m-1 d-inline-block delete"
+                                                   data-id="{{$manager->id}}">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td colspan="5" class="text-center">
+                                                <a role="button"
+                                                   class="btn btn-warning m-1 d-inline-block restore"
+                                                   data-id="{{$manager->id}}">
+                                                    <i class="fas fa-redo"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
