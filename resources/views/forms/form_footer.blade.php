@@ -1,5 +1,5 @@
 <div class="mt-5 text-right">
-    <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+    <button class="btn btn-primary profile-button" type="submit">Save</button>
 </div>
 </form>
 </div>
