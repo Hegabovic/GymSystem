@@ -27,22 +27,19 @@ class orderController extends Controller
 
     public function show(): Factory|View|Application
     {
-//        $tableData = Order::withTrashed()->get();
-        if (Auth::user()->hasRole('Admin'))
-            $tableData = $this->orderRepository->all();
-        elseif (Auth::user()->hasRole('CityManager')) {
+        $orders = $this->orderRepository->all();
+        if (Auth::user()->hasRole('CityManager')) {
             $gyms = $this->gymRepository->all()->where('city_id', Auth::user()->cityManager->city->id);
-            $tableData = new Collection();
+            $orders = new Collection();
             foreach ($gyms as $gym) {
-                $tableData = $tableData->merge($gym->order);
+                $orders = $orders->merge($gym->order);
             }
-            // dd($gym->order->sum('paid_price'));
         } elseif (Auth::user()->hasRole('GymManager')) {
-            $tableData = $this->orderRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
+            $orders = $this->orderRepository->all()->where('gym_id', Auth::user()->gymManager->gym->id);
         }
 
         return view('order.show', [
-            'items' => $tableData,
+            'orders' => $orders,
             'userData' => request()->user()
         ]);
     }
